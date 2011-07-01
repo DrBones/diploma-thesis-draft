@@ -1,0 +1,130 @@
+\input{header.tex}
+% INFO
+\author{Jonas Siegl}
+
+\begin{document}
+% \selectlanguage{american}
+
+\section{Boundary treatment}
+This sectin will explain the theoretical background for incorporating the infinite leads in terms of self energy matrices, the content will closely resemble
+explanations presented by Datta in ``From Atom to Transistor'' blah blah
+\subsection{Closed System}
+Beause system is open and the flux of electrons is the measured effect closed boundary conditions do not accurately model
+the desired phenomena as they would impose a restriction  that would lead to discretized energies in that dimension.
+Even the method of periodic boundary conditions does not lead to an improvemente in that regard. Although it does get rid of
+boundaryeffects, the composed loop is still a closed system and leads therefore to inaccurate energy treatment.
+\subsection{Open System}
+In principle the modeling of open systems is of no conceptual difficulty. The Hamiltonian governing the device will simply be
+extended over the Source and Drain Contacts and leads.
+\begin{equation}
+	G_T = \left[E\v{I}_T - \v{H}_T \right]^{-1}
+	\label{Total Hamiltonian}
+\end{equation}
+The usefullness of this in actual numeric computations is limited as some kind of discretization must be applied rendering
+the Hamiltonian-Matrix infinite because auf the infinite number of Nodes taking the infinte leads.
+Split up the Green's function into Reservoir and device regions
+\begin{equation}
+  \begin{bmatrix}
+	  E\mabol{1}_R - \mabol{H}_R +i\eta\mabol{1}_R 	& -\gv{\tau}^+ \\
+	  -\gv{\tau} 				& E\mabol{1} - \mabol{H}
+  \end{bmatrix}
+  \begin{pmatrix*}[c]
+	  \gv{\phi}_R + \gv{\chi}\\
+    \gv{\psi}
+  \end{pmatrix*}
+  = 
+  \begin{pmatrix*}[c]
+    \v{S}_R \\
+    \v{0}
+  \end{pmatrix*}
+  \label{green divided}
+\end{equation}
+
+In This expression the $\mabol{H}_R$ is still infinite.
+Using the solution to the Schr\"odinger-equation of the reservoir:
+\begin{equation}
+	\left[E\mabol{1}_R - \mabol{H}_R +i\eta\mabol{1}_R\right]\left(\gv{\phi}_R\right) = \left(\v{S}_R\right)
+	\label{schroedinger contact}
+\end{equation}
+to write the matrix equation:
+\begin{align}
+	\left[E\mabol{1}_R - \mabol{H}_R +i\eta\mabol{1}_R\right]\left(\gv{\chi}\right)-\left[\gv{\tau}^{+}\right]\left(\gv{\chi}\right) &= \left(\v{0}\right) \\
+	\left[E\mabol{1} - \mabol{H} \right] -\left[\gv{\tau}\right]\left(\gv{\chi}\right) &= \left[\gv{\tau}\right]\left(\gv{\phi}_R\right)
+	\label{separated green's function}
+\end{align}
+
+by simple matrix algebra one is able to express $\left(\chi\right)$ in terms of $\left(\psi\right)$:
+\begin{equation}
+	\left(\chi\right) = \left[E\mabol{1}_R - \mabol{H}_R +i\eta\mabol{1}_R\right]^{-1} \gv{\tau}^+ \left(\psi\right)
+	\label{chi}
+\end{equation}
+
+let 
+\begin{equation}
+	\v{G}_R \equiv \left[E\mabol{1}_R - \mabol{H}_R +i\eta\mabol{1}_R\right]^{-1}
+	\label{Green's function reservoir}
+\end{equation}
+and substitute into second equation to obtain:
+\begin{equation}
+	\left[ E\mabol{1} - \mabol{H} -\gv{\Sigma} \right] \left(\gv{\psi}\right) = \left(\v{S}\right)
+	\label{}
+\end{equation}
+with
+\begin{equation}
+	\gv{\Sigma} \equiv \gv{\tau} \v{G}_R \gv{\tau}^{+} \quad \v{S} \equiv \gv{\tau} \gv{\psi}_R
+	\label{Sigmadef}
+\end{equation}
+
+It seems as we had won nothing as the the Green's Function for the isolated contact $G_R$ is still infinite.
+The problem at hand is simplified significantly though as i will elaborate.
+\subsection*{Numerical reduction}
+Although the matrix of the Green's function is still huge or even infinite, as is the coupling matrix $\gv{\tau}$, for practical purposes
+it only connects to a subset of $r$ nodes along the surface elements of the contact adjacent to the device. So it is possible to truncate the coupling matrices
+to this subset and define the surface Green's function $\v{g}_R$:
+\begin{equation}
+	\begin{matrix}
+		\gv{\Sigma} &\equiv &\gv{\tau} &\v{g}_R &\gv{\tau}^+\\
+		(d \times d) & & (d \times r) &(r \times r) &(r \times d)
+	\end{matrix}
+	\label{Sigmasubset}
+\end{equation}
+
+Now it is only neccessary to find and compute the surface Green's Function on a finite subset of elements in $\mathbb{R}^n$
+
+\subsection*{Analytical reduction}
+An alternative way to overcome the problem of infinite elements to compute is to push the area of evaluation into a ``nice'' area of the lead
+and calculate the expression for Sigma analytically. This is presented for a semi infinte 2D lead in the Appendix. Here the result:
+\begin{equation}
+	\gv{\Sigma}(i,j) = -t \sum_{m \in \delta V} \chi_m(p_i) \chi_m(p_j) \exp(ik_m a)
+	\label{analytic surface greenfunction}
+\end{equation}
+
+I cannot stress enough that the problem of an infinite grid has been reduced to the inversion of a finite matrix with the effects of the
+infinite leads folded in \emph{exactly} with the use of the selfenergy matrix $\Sigma$. 
+The term selfenergy\ldots explain\ldots.
+Explain Selfenergy more general for scattering phonons, etc
+
+\section{Recursive Green's Function Algorithm}
+Inversion of matrix is for considered system ($e^4 \times  e^4$) too expensive, so an algorithm that only computes the needed main
+diagonal is desireable. The presented algorithm computes the main diagonal blocks. This is still overhead but much faster than
+direct inversion.
+
+
+\section{Physical Observables}
+
+Density matrix in general
+\begin{equation}
+	\rho = \int_{-\infty}^{+\infty}\frac{dE}{2 \pi} \left[G^n(E)\right]
+	\label{densmatrixgeneral}
+\end{equation}
+In equilibrium:
+\begin{equation}
+	G^n(E) = [A(E)]f_0(E-\mu)
+	\label{correlation function equi}
+\end{equation}
+Whereas in non-equilibrium:
+\begin{equation}
+	G^n(E) = [A_1(E)]f_0(E-\mu_1)+[A_2(E)]f_0(E-\mu_2)
+	\label{correlation function non-equi}
+\end{equation}
+\end{document}

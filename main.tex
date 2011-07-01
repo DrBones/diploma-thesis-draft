@@ -1,0 +1,52 @@
+\input{header.tex}
+% INFO
+\author{Jonas Siegl}
+\title{Diploma Thesis - Draft}
+
+\begin{document}
+%\svnInfo $Id: main.tex 205 2010-03-16 10:23:32Z claas $
+
+\selectlanguage{american}
+
+\maketitle
+\include{title}
+\thispagestyle{plain}
+
+% emtpy page
+%\clearpage
+%\thispagestyle{empty}
+%\mbox{}
+
+% TABLE OF CONTENTS
+\tableofcontents
+\clearpage
+\section{Theory}
+\subsection{Second Quantization}
+\subsection{Quantized Conduction}
+\subsection{Tight Binding Theory}
+\subsection{Hubbard Model extension of Tight binding}
+\subsection{Transfer Matrix Method}
+\input{changeofbasis.tex}
+\section{Parametrizing a perfect crystal}
+\subsubsection{Overcoming the Instability}
+The TMM is in general unstable because possible evanescent waves will lead to unphysically fast rising matrix coefficients.
+D.Y.K. Ko and J.C. Inkson reviews a case where the TMM revealed instability flaws (1988).
+\section{Numerical analysis of Hamiltonian}
+\input{numerical_analysis.tex}
+\section{ToDo}
+\begin{itemize}
+  \item 
+\end{itemize}
+\section{Questions}
+
+\begin{itemize}
+  \item temperature --> 0 necessary?
+  \item How is the coupling to the magnetic field done?
+  \item What are the Channel coefficients \cite{PhysRevB.31.6207}
+\end{itemize}
+
+\clearpage
+\bibliographystyle{amsalpha}
+\bibliography{thesis}
+
+\end{document}

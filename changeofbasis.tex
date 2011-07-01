@@ -1,0 +1,55 @@
+\subsubsection{Change of Basis}
+Consider a Transformation on a set of vectors and a representation as a Matrix called $\Theta$ defined as:
+\begin{equation}
+  \Theta = 
+  \begin{bmatrix*}[r]
+    \mabol{0} & \mabol{1} \\
+    -\mabol{H}_{+}^{-1}\mabol{H}_{-}^{-1} & \mabol{H}_{+}^{-1}(E_{F}-\mabol{B}_{0})
+  \end{bmatrix*}
+  \label{Theta}
+\end{equation}
+To obtain the Eigenbasis of the the Transformation defined by the Matrix $\Theta$ solve the corresponding eigenvalue equation:
+ \begin{equation}
+  \begin{bmatrix}
+    \mabol{0} & \mabol{1} \\
+    -\mabol{H}_{+}^{-1}\mabol{H}_{-}^{-1} & \mabol{H}_{+}^{-1}(E_{F}-\mabol{B}_{0})
+  \end{bmatrix}
+  \begin{bmatrix*}[r]
+    \v{u}_m \\
+    \lambda_m \v{u}_m
+  \end{bmatrix*}
+  = \lambda_m
+  \begin{bmatrix*}[r]
+    \v{u}_m \\
+    \lambda_m \v{u}_m
+  \end{bmatrix*}
+  \label{Eigenvalueeqn}
+\end{equation}
+This equation has 2M eigenvalues and 2M eigenvectors. The eigenvector is written this way in expectation of the things to come, that is because of the diagonal form of the Potential-Matrix \textbf{(always true?)} the eigenvalues occur in pairs $(\lambda, \lambda^{-1})$ with corresponding eigenvectors $(\v{u}, \mabol{J}\v{u})$ with  $\mabol{J}$ given by \cite{MacKinnon2003}:
+\begin{equation}
+  \mabol{J} = 
+  \begin{bmatrix*}
+    \mabol{0} & \mabol{1} \\
+    \mabol{1} & \mabol{0}
+  \end{bmatrix*}
+  \label{J}
+\end{equation}
+After all eigenvectors have been obtained, a matrix is composed of all the eigenvectors as columns representing the change of basis matrix from the eigenbasis $B$ of $\Theta$ to the standard basis $E$.
+\begin{equation}
+  T^{B}_{E}=
+  \begin{bmatrix}
+    \begin{pmatrix}
+      \v{u}_{1} \\
+      \lambda_{1} \v{u}_{1}
+    \end{pmatrix}
+    &
+    \cdots
+    &
+    \begin{pmatrix}
+      \v{u}_{2M} \\
+      \lambda_{2M} \v{u}_{2M}
+    \end{pmatrix}
+  \end{bmatrix}
+  \label{EigenBaseTheta}
+\end{equation}
+This change of basis matrix will be used later on in the formulation of the transfer matrix to transform the channel coefficients into a basis in which the Schr\"odinger equation is known.

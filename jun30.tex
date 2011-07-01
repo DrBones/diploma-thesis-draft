@@ -1,0 +1,33 @@
+\input{header.tex}
+% INFO
+\author{Jonas Siegl}
+
+\begin{document}
+% \selectlanguage{american}
+
+\section{Peierls Phase}
+Discretized Schr\"odinger Equation:
+\begin{align}
+	\frac{\hbar^2}{2ma^2} &[(4 +V_{nm}) \psi_{n,m} - \psi_{n-1,m} - \psi_{n+1,m} - \psi_{n,m-1} - \psi_{n,m+1} \nonumber \\
+	&+i \frac{e}{\hbar} B m a^2 (\psi_{n+1,m} - \psi_{n-1,m}) - \frac{e^2}{\hbar^2} B^2 m^2 a^4 \psi_{n,m} ] = E \psi_{n,m}
+\end{align}
+
+Substitute the $\psi_{n,m}$ in the $B^2$-Term the interpolation of two nodes to the center nodes:
+\begin{equation}
+	\psi_{n,m} = \frac{1}{2} (\psi_{n-1,m} + \psi_{n+1,m})
+	\label{interpolate_psi}
+\end{equation}
+
+Approximate the given expression and by using that group all the $\psi$s:
+\begin{equation}
+	1 + i \frac{e}{\hbar} m a^2 B - \frac{e^2}{\hbar^2} B^2 m^2 a^4 \approx exp(i m \frac{e}{\hbar} B a^2)
+	\label{approx_exp}
+\end{equation}
+
+It is easy to see the realtion of magnetic flux through cell of lattice $Ba^2$ and the ``flux-quant'' $h / e$, 
+it will be known from hereon as $B_{\alpha}$
+\begin{equation}
+	B_{\alpha} = \frac{e}{\hbar} B  a^2
+	\label{Balpha}
+\end{equation}
+\end{document}
