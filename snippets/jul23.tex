@@ -1,0 +1,41 @@
+\input{header.tex}
+% INFO
+\author{Jonas Siegl}
+
+\begin{document}
+% \selectlanguage{american}
+
+\section{Rashba Spin Orbit Interaction}
+Rashba Spin Orbit Coupling term:
+\begin{equation}
+	\hat{H}_{Rashba} = \frac{\alpha_{SO}}{\hbar} (\gv{\hat{\sigma}} \times \hat{\v{p}}) \cdot \hat{\v{e}}_{z}
+	\label{rashbacouple}
+\end{equation}
+
+So if Rashba Spin-Orbit Coupling is included the Hamiltonian without any external Potential has the following form:
+\begin{equation}
+	\hat{H}_{2D} = \frac{1}{2m^*}(\hat{p}_{x}+\hat{p}_{y}) \otimes \hat{I}_{S} + \frac{\alpha_{SO}}{\hbar}(\hat{p}_{y} \otimes \hat{\sigma}_{x} - \hat{p}_{x} \otimes \hat{\sigma}_{x})
+	\label{rashbahamiltonian}
+\end{equation}
+With $\hat{I}_{S}$ being the spin-space identity operator.
+
+Chirality Operator:
+\begin{equation}
+	\hat{C} = (\gv{\hat{\sigma}} \times \frac{\hat{\v{p}}}{|\hat{\v{p}}|}) \cdot \hat{\v{e}}_{z}
+	\label{chirality}
+\end{equation}
+
+Because of the commutator $[\hat{H},\hat{\v{p}}]=0$ we can assume plane wave eigenstates for the solutions of the Schr\"odinger equation. With the use of $\ket{\chi}_{S}$ as two-component spinor.
+\begin{equation}
+	\Psi(\v{r}) = A e^{i \v{k} \v{r}} \ket{\chi}_{S}
+	\label{planewaveeigenstate}
+\end{equation}
+
+Because of the commutator $[\hat{H},\hat{T}]=0$ the two eigenstates of opposite spin and momentum are degenerate, i.e: $E(\v{p},\sigma) = E(-\v{p},-\sigma)$
+
+If expanded in spin space as a 2x2 matrix and with the substitution of $\v{\hat{p}_{i}} --> \hbar k_{i}$, the eigenvalues of the Hamiltonian and so the Energy dispresion relation obtained by diagonalizings is:
+\begin{equation}
+	E_{\pm}(\v{k}) = \frac{\hbar \abs{\v{k}}^2}{2m^*} \pm \alpha_{SO} \abs{\v{k}}	
+	\label{2degdispersion}
+\end{equation}
+\end{document}
