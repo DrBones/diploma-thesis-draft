@@ -1,0 +1,49 @@
+\input{header.tex}
+% INFO
+\author{Jonas Siegl}
+%set spacing in multiline environments like align and gather
+\setlength{\jot}{10pt}
+\begin{document}
+% \selectlanguage{american}
+\section{Self energy, surface green's function}
+\begin{equation}
+	\left[\mabol{H}_{ll'}\right]_{\alpha\beta} = \bra{\Phi_\alpha(l)}\mabol{H}\ket{\Phi_\beta(l')}
+	\label{Hmatrixelements}
+\end{equation}
+
+\begin{equation}
+	\left[ \mabol{G}_{ll'}(E^+) \right]_{\alpha\beta} = \bra{\Phi_\alpha(l)}\frac{1}{\mabol{1}E^+-\mabol{H}}\ket{\Phi_\beta(l')}
+	\label{Gmatrixelements}
+\end{equation}
+
+lead  to:
+
+(Wikipedia:start)
+
+Linear homogeneous recurrence relations with constant coefficients.
+An order ''d'' linear homogeneous recurrence relation with constant coefficients  is an equation of the form:
+
+\begin{equation}
+	a_n = c_1a_{n-1} + c_2a_{n-2}+\cdots+c_da_{n-d} 
+	\label{linearrecformula}
+\end{equation}
+
+where the ''d'' coefficients $c_i$ (for all ''i'') are constants.
+
+More precisely, this is an infinite list of simultaneous linear equations, one for each $n> d-1$. A sequence which satisfies a relation of this form is called a '''linear recursive sequence''' or LRS. There are ''d'' degrees of freedom for LRS, the initial values $a_0,\dots,a_{d-1}$ can be taken to be any values but then the linear recurrence determines the sequence uniquely.
+
+The same coefficients yield the characteristic polynomial (also ``auxiliary polynomial'')
+\begin{equation}
+	p(t)= t^d - c_1t^{d-1} - c_2t^{d-2}-\cdots-c_{d}
+	\label{charactersitic polynomial}
+\end{equation}
+(Wikipedia:end)
+
+\begin{align}
+	&(\mabol{1}E^+-\mabol{H}_{00})\mabol{G}_{00}-\mabol{H}_{01}\mabol{G}_{10}=\mabol{1}\nonumber \\
+	&(\mabol{1}E^+-\mabol{H}_{11})\mabol{G}_{10}-\mabol{H}_{12}\mabol{G}_{20}-\mabol{H}_{10}\mabol{G}_{00}=\mabol{0}\\
+	&(\mabol{1}E^+-\mabol{H}_{22})\mabol{G}_{20}-\mabol{H}_{23}\mabol{G}_{30}-\mabol{H}_{21}\mabol{G}_{10}=\mabol{0}\nonumber \\
+	&\cdots\nonumber
+	\label{LRS}
+\end{align}
+\end{document}
