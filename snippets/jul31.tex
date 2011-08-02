@@ -4,16 +4,16 @@
 %set spacing in multiline environments like align and gather
 \setlength{\jot}{10pt}
 \begin{document}
-% \selectlanguage{american}
+\selectlanguage{american}
 \section{Self energy, surface green's function}
 \begin{equation}
 	\left[\mabol{H}_{ll'}\right]_{\alpha\beta} = \bra{\Phi_\alpha(l)}\mabol{H}\ket{\Phi_\beta(l')}
-	\label{Hmatrixelements}
+	\label{eq:Hmatrixelements}
 \end{equation}
 
 \begin{equation}
 	\left[ \mabol{G}_{ll'}(E^+) \right]_{\alpha\beta} = \bra{\Phi_\alpha(l)}\frac{1}{\mabol{1}E^+-\mabol{H}}\ket{\Phi_\beta(l')}
-	\label{Gmatrixelements}
+	\label{eq:Gmatrixelements}
 \end{equation}
 
 lead  to:
@@ -25,7 +25,7 @@ An order ''d'' linear homogeneous recurrence relation with constant coefficients
 
 \begin{equation}
 	a_n = c_1a_{n-1} + c_2a_{n-2}+\cdots+c_da_{n-d} 
-	\label{linearrecformula}
+	\label{eq:linearrecformula}
 \end{equation}
 
 where the ''d'' coefficients $c_i$ (for all ''i'') are constants.
@@ -35,15 +35,56 @@ More precisely, this is an infinite list of simultaneous linear equations, one f
 The same coefficients yield the characteristic polynomial (also ``auxiliary polynomial'')
 \begin{equation}
 	p(t)= t^d - c_1t^{d-1} - c_2t^{d-2}-\cdots-c_{d}
-	\label{charactersitic polynomial}
+	\label{eq:charactersitic_polynomial}
 \end{equation}
 (Wikipedia:end)
+For a layered system in which the inslice Hamiltonian $H_{00}$ is Hermitian and the hopping-matrices obey $H_{01}=H_{10}^{\dagger}$ the Schr\"odinger equation
+reads:
+\begin{equation}
+	\mabol{H}_{00}\psi_{l}+\mabol{H}_{01}\psi_{l+1}+\mabol{H}_{10}{\psi_{l-1}} = E \psi_{l}
+	\label{eq:hamilonian}
+\end{equation}
+The integer subscript $l$ indicating the location of a layer measured in interslice distances, lattice constants.
+The number of available degrees of freedom will be $\mu$ and the corresponding components will be declared e.g.
+$\psi_{l}^{\mu}$ in our case $\mu$ will run through all points on the lattice
+times the spin degree of freedom (2).So $\mu = 1,2,\cdots,2M$ if $M$ is the number of nodes per slice.
+Introducing the Bloch state with $\phi_{k_{\|}}$ being a normalized 2M column vector:
+\begin{equation}
+	\psi_{l}=const \cdot e^{ik_{\|}l} \phi_{k_{\|}}
+	\label{eq:blochstate}
+\end{equation}
+Substitution into equation (\ref{eq:hamilonian}) yields:
+\begin{equation}
+	(E-\mabol{H}_{00}-\mabol{H}_{01}e^{ik_{\|}l}-\mabol{H}_{10}e^{-ik_{\|}l})\phi_{k_{\|}} = 0
+	\label{eq:substhamilonian}
+\end{equation}
+Unlike usual band theory in which the $M$ values of $E$ are determined for a real $k$ the goal of this calculation is all possible complex values of $k_{\|}$ given a real $E$.
+The energy bands are degenerated in respect to the $k$-vector, so for any given energy there exists a pair of real values for one $k_{\|}=k$, corresponding to positive group velocity (right-moving):
+\begin{equation}
+	v_{k}=\frac{1}{\hbar}\pd{E(k)}{k} > 0
+	\label{posgroupvelocity}
+\end{equation}
+or $k_{\|}=\bar{k}$ with negative group velocity (left moving)\cite{PhysRevB.59.11936}:
+\begin{equation}
+	v_{k}=\frac{1}{\hbar}\pd{E(\bar{k})}{\bar{k}} < 0
+	\label{neggroupvelocity}
+\end{equation}
+
+All the real wave vectors constitute the open scattering channels available for transport through the device. For example has the simplest case
+$\bar{k}=-k$ if $H_{01}=H_{10}$.
+All wave vectors with finite imaginary part make up the closed or evanecent channels into which can be scattered but can in some situations be nelected.
+As can be seen by taking the Hermitian conjugate of equation (\ref{eq:substhamilonian}), each complex conjugate $k_{\|}^*$ of $k_{\|}$ is also a possible solution, 
+hence to every solution with a positive imaginary part, decaying with increasing $l$ i.e. right-decaying, there exists a solution with negative imaginary part which is left-decaying.
+By adding the small imaginary number to the energy in the calculations the modulus of the eigenvalues will be less than 1 for $k$s with positive imaginary part and greater than one if negative effectively enabling us to separate all the eigenvectors into equal parts of left- and right-movers\cite{JChemPhys.120.7733}.
 
 \begin{align}
 	&(\mabol{1}E^+-\mabol{H}_{00})\mabol{G}_{00}-\mabol{H}_{01}\mabol{G}_{10}=\mabol{1}\nonumber \\
 	&(\mabol{1}E^+-\mabol{H}_{11})\mabol{G}_{10}-\mabol{H}_{12}\mabol{G}_{20}-\mabol{H}_{10}\mabol{G}_{00}=\mabol{0}\\
 	&(\mabol{1}E^+-\mabol{H}_{22})\mabol{G}_{20}-\mabol{H}_{23}\mabol{G}_{30}-\mabol{H}_{21}\mabol{G}_{10}=\mabol{0}\nonumber \\
 	&\cdots\nonumber
-	\label{LRS}
+	\label{eq:LRS}
 \end{align}
+\clearpage
+\bibliographystyle{amsalpha}
+\bibliography{thesis}
 \end{document}
