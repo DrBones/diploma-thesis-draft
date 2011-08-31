@@ -70,13 +70,20 @@ or $k_{\|}=\bar{k}$ with negative group velocity (left moving)\cite{PhysRevB.59.
 	\label{neggroupvelocity}
 \end{equation}
 
-All the real wave vectors constitute the open scattering channels available for transport through the device. For example has the simplest case
-$\bar{k}=-k$ if $H_{01}=H_{10}$.
+All the real wave vectors constitute the open scattering channels available for transport through the device.The simplest case for example has $\bar{k}=-k$ if $H_{01}=H_{10}$.
 All wave vectors with finite imaginary part make up the closed or evanecent channels into which can be scattered but can in some situations be nelected.
 As can be seen by taking the Hermitian conjugate of equation (\ref{eq:substhamilonian}), each complex conjugate $k_{\|}^*$ of $k_{\|}$ is also a possible solution, 
 hence to every solution with a positive imaginary part, decaying with increasing $l$ i.e. right-decaying, there exists a solution with negative imaginary part which is left-decaying.
 By adding the small imaginary number to the energy in the calculations the modulus of the eigenvalues will be less than 1 for $k$s with positive imaginary part and greater than one if negative effectively enabling us to separate all the eigenvectors into equal parts of left- and right-movers\cite{JChemPhys.120.7733}.
 
+
+\subsection{Localized Basis}
+
+In this work it is assumed the the electron wavefunction can be expanded in terms of localized orbitals around each atomic site, or Linear Combination of Atomic Orbitals (LCAO), but the employed formalism allows a greater generality as for example the use of Muffin-Tin orbitals (LMTO). Because of a more direct physical accessabilty and a simpler formulation LCAO is used in the following.
+
+In the literature concerning the treatment of layered structured the term \emph{principle layer} is used for the unit cell consisting of one or more atomic layers for which a periodicity is given.
+The interaction beyond neighbouring principle layers (PL) is neglected. In the case under consideration there exists only one atomic layer in each PL so the terms coincide but PL will be used in the remainder for better recognition.
+A planar orbital is defined as a state 
 \begin{align}
 	&(\mabol{1}E^+-\mabol{H}_{00})\mabol{G}_{00}-\mabol{H}_{01}\mabol{G}_{10}=\mabol{1}\nonumber \\
 	&(\mabol{1}E^+-\mabol{H}_{11})\mabol{G}_{10}-\mabol{H}_{12}\mabol{G}_{20}-\mabol{H}_{10}\mabol{G}_{00}=\mabol{0}\\
@@ -84,6 +91,18 @@ By adding the small imaginary number to the energy in the calculations the modul
 	&\cdots\nonumber
 	\label{eq:LRS}
 \end{align}
+
+
+Formulas used in surface green's Function calculation:
+
+\begin{equation}
+	G_{L}^{S}= \left[(\mabol{1}E^{+}-\mabol{H}_{00}) -\mabol{H}_{01}\mabol{S}_{2}\mabol{S}_{1}^{-1}\right]
+	\label{surfgreenleft}
+\end{equation}
+\begin{equation}
+	G_{R}^{S}= \left[(\mabol{1}E^{+}-\mabol{H}_{00}) -\mabol{H}_{0\bar{1}}\mabol{S}_{3}\mabol{S}_{4}^{-1}\right]
+	\label{surfgreenright}
+\end{equation}
 \clearpage
 \bibliographystyle{amsalpha}
 \bibliography{thesis}
