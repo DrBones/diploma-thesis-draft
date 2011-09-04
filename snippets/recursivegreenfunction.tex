@@ -1,0 +1,32 @@
+\input{header.tex}
+% INFO
+\author{Jonas Siegl}
+
+\begin{document}
+% \selectlanguage{american}
+\section{Recursive Green's Function Algorithm}
+
+Dyson equation
+\begin{equation}
+	\mabol{G}_{n+1} = \mabol{G}^{(0)}_{n+1} + \mabol{G}^{(0)}_{n+1}\mabol{H}^{hop}_{n,n+1}\mabol{G}_{n+1}
+	\label{eqn:dyson}
+\end{equation} 
+\begin{equation}
+	\mabol{G}_{n+1}(n+1,n+1) = \frac{\mabol{1}_{n+1}}{\mabol{g}^{-1}_{n+1}-\mabol{H}_{n+1,n}\mabol{G}(n,n)\mabol{H}_{n,n+1}}
+	\label{eqn:recursionone}
+\end{equation}
+\begin{equation}
+	\mabol{G}_{n+1}(n+1,m) = \mabol{G}_{n+1}(n+1,n+1)\mabol{H}_{n+1,n}\mabol{G}_{n}(n,m)
+	\label{eqn:recursiontwo}
+\end{equation}
+
+\begin{itemize}
+	\item Initialize first element as :\begin{equation}
+			\mabol{G}_{0}(0,0) = (E+i\eta - \mabol{H}_{0})^{-1}
+			\label{eqn:initrec}
+		\end{equation}
+	\item For conductance use formulae \ref{eqn:recursionone} and \ref{eqn:recursiontwo} to compute the Green's functions matrix elements: $G_{n+1}(N+1,0)$
+	\item Compute transmission matrix eqn foo
+	\item Use Landauer B\"uttiker formula to calculate conductance
+\end{itemize}
+\end{document}
