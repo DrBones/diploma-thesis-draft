@@ -1,0 +1,17 @@
+	Separate nanowire into leads and conductor
+\begin{align}
+  \begin{bmatrix}
+  \mat{G}_{L} & \mat{G}_{L/C}\\
+  \mat{G}_{C/L} & \mat{G}_{C}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+  (E+i\eta)\mat{1}_{L} - \mat{H}_L  & -\gv{\tau}^+ \\
+	-\gv{\tau} & E\mat{1} - \mat{H}_C
+  \end{bmatrix}^{-1}
+  \label{green divided}
+\end{align}
+basic agebra obtains:
+\begin{align} \mat{G}_C& = \left[E-\mat{H}_C - \gv{\tau}^+ g_L^R \gv{\tau}\right]^{-1} \\
+g_L^R &= [(E+i\eta)\mat{1}_L - \mat{H}_L]^{-1}
+\end{align}
