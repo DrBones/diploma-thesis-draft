@@ -20,25 +20,37 @@
 % TABLE OF CONTENTS
 \tableofcontents
 \clearpage
+\section{Introduction}
 \section{Theory}
-\subsection{Second Quantization}
-\subsection{Quantized Conduction}
-\subsection{Tight Binding Theory}
-\subsection{Hubbard Model extension of Tight binding}
-\subsection{Transfer Matrix Method}
-\input{changeofbasis.tex}
-\section{Parametrizing a perfect crystal}
-\subsubsection{Overcoming the Instability}
-The TMM is in general unstable because possible evanescent waves will lead to unphysically fast rising matrix coefficients.
-D.Y.K. Ko and J.C. Inkson reviews a case where the TMM revealed instability flaws (1988).
-\section{Numerical analysis of Hamiltonian}
-\input{numerical_analysis.tex}
-\section{ToDo}
-\begin{itemize}
-  \item 
-\end{itemize}
-\section{Questions}
+  \subsection{Two Dimensional Electron Gas}
+  \subsection{Second Quantization}
+  \subsection{Spin}
+    \subsubsection{Spin Degree of Freedom}
+    \subsubsection{Spin Orbit Interaction}
+  \subsection{Electron Transport}
+    \subsubsection{Quantized Conduction}
+  \subsection{Compare to Transfer Matrix Method}
+  The TMM is in general unstable because possible evanescent waves will lead to unphysically fast rising matrix coefficients.
+  D.Y.K. Ko and J.C. Inkson reviews a case where the TMM revealed instability flaws (1988).
+\section{Method}
+  \subsection{Discrete Matrix Representation}
+  \input{method/discretization.tex}
+  \subsection{How to to reach Tractability}
+  \input{method/tractability.tex}
+\section{Implementation}
+\subsection{Natural Ordering}
+\subsection{Graph Representation}
+\subsection{Implementaion of RGA}
+pseudocode
+\subsection{Observables from Retarded Green's Function}
+\subsection{Validation}
+\subsection{Computer Language}
+\section{Results}
+\section{Conclusion}
+\section{Outlook}
+\section{Appendix}
 
+\section{Questions}
 \begin{itemize}
   \item temperature --> 0 necessary?
   \item How is the coupling to the magnetic field done?

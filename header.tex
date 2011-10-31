@@ -42,7 +42,12 @@
 % \DeclareMathOperator{\Sample}{Sample}
 \let\vaccent=\v % rename builtin command \v{} to \vaccent{}
 \renewcommand{\v}[1]{\ensuremath{\mathbf{#1}}} % for vectors
-\newcommand{\gv}[1]{\ensuremath{\mbox{\boldmath$ #1 $}}} 
+\newcommand{\mat}[1]{\ensuremath{\mabol{#1}}} % for matrices
+\newcommand{\gfnc}{\textsc{Green}\text{'s Function }}
+\newcommand{\hamil}{\textsc{Hamilton}\text{ian }}
+% \newcommand{\gv}[1]{\ensuremath{\mbox{\boldmath$ #1 $}}} 
+\newcommand{\gv}[1]{\ensuremath{\boldsymbol{#1}}} 
+\newcommand{\gmat}[1]{\ensuremath{\boldsymbol{#1}}} 
 % for vectors of Greek letters
 \newcommand{\uv}[1]{\ensuremath{\mathbf{\hat{#1}}}} % for unit vector
 \newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
@@ -57,8 +62,8 @@
 \newcommand{\pdc}[3]{\left( \frac{\partial #1}{\partial #2}
  \right)_{#3}} % for thermodynamic partial derivatives
  \newcommand{\mabol}[1]{\ensuremath{\boldsymbol{#1}}}
-\newcommand{\ket}[1]{\left| #1 \right>} % for Dirac bras
-\newcommand{\bra}[1]{\left< #1 \right|} % for Dirac kets
+\newcommand{\ket}[1]{\left| #1 \right>} % for Dirac kets
+\newcommand{\bra}[1]{\left< #1 \right|} % for Dirac bras
 \newcommand{\braket}[2]{\left< #1 \vphantom{#2} \right|
  \left. #2 \vphantom{#1} \right>} % for Dirac brackets
 \newcommand{\matrixel}[3]{\left< #1 \vphantom{#2#3} \right|
