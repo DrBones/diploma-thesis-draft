@@ -1,4 +1,4 @@
-	Separate nanowire into leads and conductor
+Separate nanowire into leads and conductor
 \begin{align}
   \begin{bmatrix}
   \mat{G}_{L} & \mat{G}_{L/C}\\
@@ -12,6 +12,27 @@
   \label{green divided}
 \end{align}
 basic agebra obtains:
-\begin{align} \mat{G}_C& = \left[E-\mat{H}_C - \gv{\tau}^+ g_L^R \gv{\tau}\right]^{-1} \\
+\begin{align}
+\mat{G}_C& = \left[E-\mat{H}_C - \gv{\tau}^+ g_L^R \gv{\tau}\right]^{-1} \\
+\end{align}
+with the so called surface \gfnc
+\begin{align}
 g_L^R &= [(E+i\eta)\mat{1}_L - \mat{H}_L]^{-1}
 \end{align}
+\subsubsection{Lead Surface \gfnc s}
+Although now finite the dimension of the matrices obtained by inclusion of the self energy term is determined by the number of lattice points which make up the discretized system.
+If a reasonable resolution i.e lattice spacing in the nanometer range is desired the number of nodes easily exceeds magnitudes of $10^5$ for a mesoscopic device in the range of micrometers. 
+The full inversion of matrices of this size has high demands on memory and computational speed and is therefore, even with specialised algorithms, a very time-consuming affair.\textcolor{red}{(find citation)}
+Therefore faster and more efficient techniques for the computation of the \gfnc{} are desireable.
+\subsubsection{Recursive \gfnc{} Algorithm}
+One such technique is the Recursive-\gfnc-Algorithm (RGA)(Drouvelis et.al. 2006)\cite{MacKinnon1985}. Exploiting the observation that common quantum mechanical observables of interest only depend on certain elements of the \gfnc-matrix (vgl formel mit dichteoperator oder transmission) the RGA seeks to compute those elements with as little overhead as possible. While still some superfluous elements are computed the complexity is greatly reduced. (Complexity and implementation in Appendix, see Wimmer page 189) 
+A derivation of the RGA can by achieved by using the \textsc{Dyson}'s equation for the retarded \gfnc{} for example:
+\begin{align}
+	\mat{G} = \mat{G}_0+\mat{G}_0\mat{U}\mat{G}
+	\label{eqn:DysonEquationG}
+\end{align}
+
+and can be found in the Appendix (ABCD???).  The application of a scheme like the RGA is based on the possibility that the \hamil{} can be written in a block tri-diagonal from for any system in the tight-binding approximation as can be seen for a simple colinear/layered geometry in the previous chapter.
+For the observables of interest, namely conduction, spin- and electrondensities the retarded and lesser \gfnc{} have to be computed.
+It is advisable to use a specialised algorithm to compute the lesser \gfnc{} instead of the direct approach by equation (????). Because the computation of the lesser \gfnc{} is based on a prior computation of the retarded \gfnc{} the results of the former can be saved to avoid redundancies.
+

@@ -6,14 +6,30 @@
 %%%%%%%%%%%%%% PACKAGE INCLUDES %%%%%%%%%%%%%%%
 \usepackage[american,ngerman]{babel}
 \usepackage[T1]{fontenc}
-\usepackage{ae,aecompl}
+% \usepackage{ae,aecompl}
 \usepackage[tbtags]{mathtools}
 %\usepackage{amsmath} % AMS Math Package
 \usepackage{amsthm} % Theorem Formatting
 \usepackage{amssymb}	% Math symbols such as \mathbb
 \usepackage{graphicx} % Allows for eps images
 \usepackage{multicol} % Allows for multiple columns
-\usepackage{bbold}
+\usepackage{color}
+% \usepackage{bbold}
+% \usepackage{bold-extra} % Ugly bitmap fonts, but holds bold glyphs!
+% \usepackage{kpfonts} % Pretty complete fontpackage but looks 'different'
+\usepackage[
+    pdftitle={Spin-dependend transport simulations in two-dimensionsal electron systems},    % title
+    pdfauthor={Jonas Siegl},     % author
+    pdfsubject={Quantum Transport},   % subject of the document
+    pdfcreator={Jonas Siegl},   % creator of the document
+    pdfproducer={Jonas Siegl}, % producer of the document
+    pdfkeywords={Green's Function } {Numerical } {Transport}, % list of keywords
+    % linktocpage=true,
+    linkcolor=red,          % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan,           % color of external links
+pagebackref=true]{hyperref}
 %\usepackage{array}
 %\usepackage[final]{svninfo}
 %\usepackage{ifthen}
@@ -43,8 +59,8 @@
 \let\vaccent=\v % rename builtin command \v{} to \vaccent{}
 \renewcommand{\v}[1]{\ensuremath{\mathbf{#1}}} % for vectors
 \newcommand{\mat}[1]{\ensuremath{\mabol{#1}}} % for matrices
-\newcommand{\gfnc}{\textsc{Green}\text{'s Function }}
-\newcommand{\hamil}{\textsc{Hamilton}\text{ian }}
+\newcommand{\gfnc}{\textsc{Green}\text{'s function}}
+\newcommand{\hamil}{\textsc{Hamilton}\text{ian}}
 % \newcommand{\gv}[1]{\ensuremath{\mbox{\boldmath$ #1 $}}} 
 \newcommand{\gv}[1]{\ensuremath{\boldsymbol{#1}}} 
 \newcommand{\gmat}[1]{\ensuremath{\boldsymbol{#1}}} 

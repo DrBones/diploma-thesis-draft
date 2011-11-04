@@ -9,15 +9,16 @@
 \selectlanguage{american}
 
 \maketitle
-\include{title}
-\thispagestyle{plain}
+% \include{title}
+% \thispagestyle{plain} %removes the header 
 
 % emtpy page
-%\clearpage
-%\thispagestyle{empty}
-%\mbox{}
-
+\clearpage
+\thispagestyle{empty}
+\mbox{}
+\clearpage
 % TABLE OF CONTENTS
+\thispagestyle{plain} %removes the header from TOC
 \tableofcontents
 \clearpage
 \section{Introduction}
@@ -52,7 +53,7 @@ pseudocode
 
 \section{Questions}
 \begin{itemize}
-  \item temperature --> 0 necessary?
+  \item temperature $\rightarrow$ 0 necessary?
   \item How is the coupling to the magnetic field done?
   \item What are the Channel coefficients \cite{PhysRevB.31.6207}
 \end{itemize}
