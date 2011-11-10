@@ -1,4 +1,14 @@
-Separate nanowire into leads and conductor
+Although a discrete representation of the \hamil{} is found the matrix inversion is not trivial. The device is an open system and the incorporation of in- and outflow via the leads that stretch to infinity results in an infinite dimensional matrix.
+Simple truncation of the matrices under consideration would effectively describe a closed system. Via the concept of the self-energy however the influence of the leads may be accurately "projected" onto the device.
+The technique will be outlined following \textsc{Datta} for a system with only one contact as depicted in figure \ref{fig:selfenergy} but can be applied to an arbitray number of leads.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{images/selfenergy}
+\caption{Separation of conductor and lead}
+\label{fig:selfenergy}
+\end{figure}
+
+Consider the following partition of the infinite dimensional \gfnc{} matrix:
 \begin{align}
   \begin{bmatrix}
   \mat{G}_{L} & \mat{G}_{L/C}\\
@@ -6,33 +16,42 @@ Separate nanowire into leads and conductor
   \end{bmatrix}
   =
   \begin{bmatrix}
-  (E+i\eta)\mat{1}_{L} - \mat{H}_L  & -\gv{\tau}^+ \\
-	-\gv{\tau} & E\mat{1} - \mat{H}_C
+  (E+i\eta)\mat{1}_{L} - \mat{H}_L  & -\v{\tau}^+ \\
+	-\v{\tau} & E\mat{1} - \mat{H}_C
   \end{bmatrix}^{-1}
-  \label{green divided}
+  \label{eqn:greendivided}
 \end{align}
-basic agebra obtains:
+Here $G_L$ is the \gfnc{} of the isolated lead, $G_{L/C}$ and $G_{C/L}$ are \gfnc{} between lead and conductor, all of them are row and/or column infinite. $G_L$ is the finite \gfnc{} of the now isolated conductor. The coupling matrices $\tau$ are only nonzero on the interface of lead and conductor cf. figure \ref{fig:selfenergy}.
+Basic agebra obtains\cite{Datta1997}:
 \begin{align}
-\mat{G}_C& = \left[E-\mat{H}_C - \gv{\tau}^+ g_L^R \gv{\tau}\right]^{-1} \\
+\mat{G}_C& = \left[E-\mat{H}_C - \v{\tau}^+ g_L^R \v{\tau}\right]^{-1} 
 \end{align}
-with the so called surface \gfnc
+with the so called retarded lead surface \gfnc{}
 \begin{align}
 g_L^R &= [(E+i\eta)\mat{1}_L - \mat{H}_L]^{-1}
+\label{eqn:leadsurfacegfnc}
 \end{align}
+
 \subsubsection{Lead Surface \gfnc s}
-Although now finite the dimension of the matrices obtained by inclusion of the self energy term is determined by the number of lattice points which make up the discretized system.
-If a reasonable resolution i.e lattice spacing in the nanometer range is desired the number of nodes easily exceeds magnitudes of $10^5$ for a mesoscopic device in the range of micrometers. 
+Even with this separation the direct evaluation of equation \ref{eqn:leadsurfacegfnc} is still unfeasible as it still includes $\mat{H}_L$ which is infinite. Fortunately there exist alternative ways of obtaining the leads \gfnc{}.
+If no fields or extra complexity in the leads are assumed the surface \gfnc{} can  be calculated semi analytically via the eigenstate decomposition of their companio matrix \cite{PhysRevB.55.5266} \cite{PhysRevB.66.205319} or if further interactions are of interest iterative methods ....
+used eigenstate decomp and schur decomp (wimmer) as more stable if near singular, maybe picture of typical self energy matrix, maybe discussion what physical insights $\Gamma = \Sigma^R - \Sigma^A$ can give (lifetime, etc)
+
+The concept of self energy may also be applied to include the effects of e.g. phonon scattering or electron-electron interactions in an approximate manner.
+
+The now finite dimension of the matrices obtained by inclusion of the self energy term is determined by the number of lattice points which make up the discretized system.
+If a reasonable resolution i.e lattice spacing in the nanometer range is desired the number of lattice-points easily exceeds magnitudes of $10^5$ for a mesoscopic device in the range of micrometers. 
 The full inversion of matrices of this size has high demands on memory and computational speed and is therefore, even with specialised algorithms, a very time-consuming affair.\textcolor{red}{(find citation)}
 Therefore faster and more efficient techniques for the computation of the \gfnc{} are desireable.
 \subsubsection{Recursive \gfnc{} Algorithm}
-One such technique is the Recursive-\gfnc-Algorithm (RGA)(Drouvelis et.al. 2006)\cite{MacKinnon1985}. Exploiting the observation that common quantum mechanical observables of interest only depend on certain elements of the \gfnc-matrix (vgl formel mit dichteoperator oder transmission) the RGA seeks to compute those elements with as little overhead as possible. While still some superfluous elements are computed the complexity is greatly reduced. (Complexity and implementation in Appendix, see Wimmer page 189) 
-A derivation of the RGA can by achieved by using the \textsc{Dyson}'s equation for the retarded \gfnc{} for example:
+One such technique is the Recursive-\gfnc-Algorithm (RGA) (Drouvelis et.al. 2006)\cite{MacKinnon1985}.
+The application of a scheme like the RGA is based on the possibility that the \hamil{} can be written in a block tri-diagonal from which arises naturally for a simple layered structure as can be seen in the previous chapter. This form however can be be achieved for any system in the tight-binding approximation \cite{Wimmer2009Thesis}.
+Exploiting the observation that common quantum mechanical observables of interest only depend on certain elements of the \gfnc-matrix (vgl formel mit dichteoperator oder transmission) the RGA seeks to compute those elements with as little overhead as possible. While still some superfluous elements are computed the complexity is greatly reduced. (Complexity and implementation in Appendix \ref{app:RGA}, see Wimmer page 189). A derivation of the RGA can by achieved by using the \textsc{Dyson}'s equation for the retarded \gfnc{} for example:
 \begin{align}
 	\mat{G} = \mat{G}_0+\mat{G}_0\mat{U}\mat{G}
 	\label{eqn:DysonEquationG}
 \end{align}
-
-and can be found in the Appendix (ABCD???).  The application of a scheme like the RGA is based on the possibility that the \hamil{} can be written in a block tri-diagonal from for any system in the tight-binding approximation as can be seen for a simple colinear/layered geometry in the previous chapter.
+This ansatz allows the calcualtion of the \gfnc{} by separating the system in question into isolated sections. The \gfnc{} for each section is easily attained. By treating the neightbouring layers in a pertubational manner via the coupling matrix $U$ a set of equations is found which allows the recursive calculation of connected blocks of the \gfnc{} matrix. A detailed derivation can be found in Appendix \ref{app:RGA}.
 For the observables of interest, namely conduction, spin- and electrondensities the retarded and lesser \gfnc{} have to be computed.
 It is advisable to use a specialised algorithm to compute the lesser \gfnc{} instead of the direct approach by equation (????). Because the computation of the lesser \gfnc{} is based on a prior computation of the retarded \gfnc{} the results of the former can be saved to avoid redundancies.
 

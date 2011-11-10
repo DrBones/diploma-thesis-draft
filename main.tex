@@ -22,18 +22,25 @@
 \tableofcontents
 \clearpage
 \section{Introduction}
-\section{Theory}
+\clearpage
+\section{Theory of Electron Transport}
+The focus of this work lies with the study of the transport properties of two dimensional electron system. The flow of electrons and their spin within such low dimensional systems might supply methods of realization of spin tronic devices.
+ The following chapters present the physical foundation necessary for the computation of spin-dependent transport properties in two dimensional electron systems.
   \subsection{Two Dimensional Electron Gas}
-  \subsection{Second Quantization}
+    \input{theory/2deg.tex}
+  \subsection{Effective Mass Hamiltonian}
+    \input{theory/effectivemasshamil.tex}
   \subsection{Spin}
-    \subsubsection{Spin Degree of Freedom}
-    \subsubsection{Spin Orbit Interaction}
-  \subsection{Electron Transport}
-    \subsubsection{Quantized Conduction}
+    \input{theory/spin.tex}
+  \subsection{Quantized Conduction}
+  \subsection{\gfnc{} Formalism}
+  Landauer buettiker kram
   \subsection{Compare to Transfer Matrix Method}
   The TMM is in general unstable because possible evanescent waves will lead to unphysically fast rising matrix coefficients.
   D.Y.K. Ko and J.C. Inkson reviews a case where the TMM revealed instability flaws (1988).
-\section{Method}
+\clearpage
+\section{Computational Methods}
+This chapter will outline the numerical and mathmatical methods applied in this work.
   \subsection{Discrete Matrix Representation}
   \input{method/discretization.tex}
   \subsection{How to to reach Tractability}
@@ -43,13 +50,14 @@
 \subsection{Graph Representation}
 \subsection{Implementaion of RGA}
 pseudocode
-\subsection{Observables from Retarded Green's Function}
+\subsection{Observables from Retarded \gfnc}
 \subsection{Validation}
 \subsection{Computer Language}
 \section{Results}
 \section{Conclusion}
 \section{Outlook}
 \section{Appendix}
+\input{appendix/RGA.tex}
 
 \section{Questions}
 \begin{itemize}
