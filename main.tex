@@ -23,18 +23,21 @@
 \clearpage
 \section{Introduction}
 \clearpage
-\section{Theory of Electron Transport}
+\section{Theory of Quantum Transport}
 The focus of this work lies with the study of the transport properties of two dimensional electron system. The flow of electrons and their spin within such low dimensional systems might supply methods of realization of spin tronic devices.
  The following chapters present the physical foundation necessary for the computation of spin-dependent transport properties in two dimensional electron systems.
   \subsection{Two Dimensional Electron Gas}
     \input{theory/2deg.tex}
-  \subsection{Effective Mass Hamiltonian}
+  \subsection{Effective Mass \hamil{}}
     \input{theory/effectivemasshamil.tex}
-  \subsection{Spin}
+  \subsection{Extending the \hamil{}}
     \input{theory/spin.tex}
   \subsection{Quantized Conduction}
-  \subsection{\gfnc{} Formalism}
+(mean free path,electrons near fermi energy,only conduction band, electrons no holes)
   Landauer buettiker kram
+  \input{theory/quantizedconductance.tex}
+  \subsection{\cgfnc{} Formalism}
+  \input{theory/greensfunctionformalism.tex}
   \subsection{Compare to Transfer Matrix Method}
   The TMM is in general unstable because possible evanescent waves will lead to unphysically fast rising matrix coefficients.
   D.Y.K. Ko and J.C. Inkson reviews a case where the TMM revealed instability flaws (1988).
@@ -45,6 +48,7 @@ This chapter will outline the numerical and mathmatical methods applied in this 
   \input{method/discretization.tex}
   \subsection{How to to reach Tractability}
   \input{method/tractability.tex}
+  need fast method (rga) for self consistent simulation
 \section{Implementation}
 \subsection{Natural Ordering}
 \subsection{Graph Representation}
