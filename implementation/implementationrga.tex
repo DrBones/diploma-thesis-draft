@@ -1,0 +1,45 @@
+Since only specific elements of the retarded and lesser \gfnc{} are required one can fortunately circumvent the costly full inversion in equation \ref{eqn:finitegreensfunction} and make use of specialized algorithms to reduce computaion time. The implementation of the recursive \gfnc{} algorithm presented in chapter \ref{sec:rgapresentation} will here be described in further detail.
+
+\begin{table}[!ht]
+% \centering
+\begin{tabularx}{\textwidth}{l X l}\toprule
+  \multicolumn{2}{l}{Recursive Algorithm for $G^r$}  \\ \cmidrule{1-1}\addlinespace
+  $\mat{G}^{r,0}_{0,0} := \mat{A}_{0,0}^{-1}$&& $\blacktriangleright$ initialize first element\\\addlinespace[12pt]
+  \textbf{for} $i = 1:N-1$ \textbf{do} && \multirow{3}{45mm}{$\blacktriangleright$ recursively compute\\\hspace{10pt} left connected\\\hspace{10pt} \gfnc{}}\\
+  \qquad$\mat{G}^{r,i}_{i,i} := \left[\mat{A}_{i,i}-\mat{A}_{i,i-1}\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i}\right]^{-1}$&& \\
+  \textbf{end for} 			&& \\\addlinespace[12pt]
+  $\mat{G}^r_{N,N} := \mat{G}^{r,N}_{N,N}$   	&&$\blacktriangleright N$-th element found\\ \addlinespace[12pt]
+  \textbf{for} $i = N-1:1$ \textbf{do}&&$\blacktriangleright$ backward pass\\
+  \qquad$\mat{G}^r_{i,i-1} := -\mat{G}^r_{i,i}\mat{A}_{i,i-1}\mat{G}^{r,i-1}_{i-1,i-1}$  \tikz \node[coordinate,yshift=1em,xshift=10.2em] (n1) {}; && \multirow{2}{45mm}{\hspace{10pt} off-diagonal elements}\\ \addlinespace
+  \qquad$\mat{G}^r_{i-1,i} := -\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i} \mat{G}^{r}_{i,i}$ \tikz \node[coordinate,xshift=10.2em] (n2) {}; && \\ \addlinespace
+  \qquad$\mat{G}^r_{i-1,i-1} := \mat{G}^{r,i}_{i-1,i-1}-\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i}\mat{G}^{r}_{i,i-1}$   & &$\blacktriangleright$ diagonal elements \\ 
+  \textbf{end for}&& \\\addlinespace \bottomrule 
+\end{tabularx}
+\caption{Pseudocode illustrating the algorithm to compute the retarded \gfnc{} $G^r$}
+\label{tab:rga}
+\end{table}
+\begin{tikzpicture}[overlay]
+      \path (n2) -| node[coordinate] (n3) {} (n1);
+      \draw[line width=2pt,decorate,decoration={brace,amplitude=5pt}]
+            (n1) -- (n3) node[midway, right=4pt] {};
+\end{tikzpicture}
+
+\begin{table}[!ht]
+\centering
+\begin{tabularx}{\textwidth}{l l}\toprule
+ \multicolumn{2}{l}{Recursive Algorithm for $G^<$}  \\ \cmidrule{1-1}\addlinespace
+ $\mat{G}^{<,0}_{0,0} := \mat{G}^{r,0}_{0,0}\mat{\Sigma}^<_{0,0} \mat{G}^{a,0}_{0,0}$& $\blacktriangleright$ initialize first element\\\addlinespace[12pt]
+ \textbf{for} $i = 1:N-1$ \textbf{do} & \multirow{3}{45mm}{$\blacktriangleright$ recursively compute\\\hspace{10pt} left connected\\\hspace{10pt} \textsc{Green}'s function}\\
+ \qquad$\mat{G}^{<,i}_{i,i} := \mat{G}^{r,i}_{i,i}( \mat{\Sigma}^<_{i,i}+\mat{\sigma}^<_{i})\mat{G}^{a,i}_{i,i}$& \\
+ \textbf{end for} 				& \\\addlinespace[12pt]
+ $\mat{G}^<_{N,N} := \mat{G}^{<,N}_{N,N}$   	&$\blacktriangleright N$-th element found \\ \addlinespace[12pt]
+ \textbf{for} $i = N-1:1$ \textbf{do} 	  	&$\blacktriangleright$ backward pass\\
+ \qquad$\mat{G}^<_{i,i-1} := \mat{G}^r_{i,i}\mat{A}_{i,i-1}\mat{G}^{<,i-1}_{i-1,i-1} +\mat{G}^<_{i,i}\mat{A}^+_{i,i-1}\mat{G}^{a,i-1}_{i-1,i-1}$ &$\blacktriangleright$ off-diagonal elements\\ \addlinespace
+ \qquad$\mat{G}^<_{i-1,i-1} := \mat{G}^{<,i-1}_{i-1,i-1} +\mat{G}^{r,i-1}_{i-1,i-1}(\mat{A}_{i-1,i}\mat{G}^{<}_{i,i}\mat{A}^+_{i,i-1})\mat{G}^{a,i-1}_{i-1,i-1}$ &\multirow{3}{45mm}{\hspace{10pt} diagonal elements} \\ \addlinespace
+ \hspace{4.5cm}$ + \mat{G}^{<,i-1}_{i-1,i-1}\mat{A}^+_{i-1,i}\mat{G}^a_{i,i-1}$&\\\addlinespace
+ \hspace{4.5cm}$+\mat{G}^r_{i-1,i}\mat{A}_{i,i-1}\mat{G}^{<,i-1}_{i-1,i-1}$&\\ 
+ \textbf{end for}& \\\addlinespace \bottomrule 
+\end{tabularx}
+\caption{Pseudocode illustrating the algorithm to compute the lesser \gfnc{} $G^<$}
+\label{tab:lesserrga}
+\end{table}
