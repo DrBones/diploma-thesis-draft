@@ -2,8 +2,9 @@
 % ******************* PHYSICS HEADER ************************
 % ***********************************************************
 %\documentclass[11pt]{article} 
-\documentclass[12pt,twoside,a4paper]{article}
-% \documentclass[12pt,twoside,a4paper]{scrreprt}
+% \documentclass[12pt,twoside,a4paper]{article}
+\documentclass[12pt,twoside,a4paper]{scrartcl}
+\setkomafont{sectioning}{\normalcolor\bfseries}
 %%%%%%%%%%%%%% PACKAGE INCLUDES %%%%%%%%%%%%%%%
 \usepackage[utf8]{inputenc} %allows input of utf8 characters
 \usepackage[american,ngerman]{babel}
@@ -14,8 +15,13 @@
 \usepackage{amsthm} % Theorem Formatting
 \usepackage{amssymb}	% Math symbols such as \mathbb
 \usepackage{graphicx} % Allows for eps images
+\usepackage{multirow}
 \usepackage{multicol} % Allows for multiple columns
 \usepackage{color} % well, supplies colors
+\usepackage{todonotes}
+\usepackage{booktabs}
+\usepackage{setspace} %Zeilenabstand
+%\onehalfspacing
 % \usepackage{mathptmx}
 % \usepackage{bbold}
 % \usepackage{bold-extra} % Ugly bitmap fonts, but holds bold glyphs!
@@ -36,6 +42,8 @@ pagebackref=true]{hyperref}
 \usepackage[all]{hypcap} % shifts the link point to the top of tables or figures so it is visible when clicked
 %\usepackage{array}
 %\usepackage[final]{svninfo}
+\usepackage{tabulary}
+\usepackage{tabularx}
 %\usepackage{ifthen}
 %\usepackage[dvips]{graphicx}
 %\usepackage[small,bf]{caption}
@@ -45,9 +53,10 @@ pagebackref=true]{hyperref}
 %\usepackage{courier}
 %\usepackage{geometry}
 %\usepackage{url}
-%\usepackage{tikz}
+\usepackage{tikz}
+\tikzstyle{every picture}+=[remember picture]
+\usetikzlibrary{decorations.pathreplacing}
 %\usepackage{paralist}
-%\usepackage{setspace}
 %\usepackage{xspace}
 %\usepackage[dvips,letterpaper,margin=0.75in,bottom=0.5in]{geometry}
  % Sets margins and page size
@@ -113,26 +122,26 @@ pagebackref=true]{hyperref}
 %\geometry{hmargin={1in,1in},vmargin={2.0in,1.5in}}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-%\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername} \ \thechapter. \ \textbf{#1}}{}}
-%\renewcommand{\sectionmark}[1]{\markright{\textbf{\thesection \ #1}}}
-%\fancyhead[RE,LO]{}
-%\fancyhead[RO]{\rightmark}
-%\fancyhead[LE]{\leftmark}
+% \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername} \ \thechapter. \ \textbf{#1}}{}}
+% \renewcommand{\sectionmark}[1]{\markright{\textbf{\thesection \ #1}}}
+\fancyhead[RE,LO]{}
+% \fancyhead[RO]{\rightmark}
+% \fancyhead[LE]{\leftmark}
 %%\fancyfoot{}
 %%\fancyfoot[RO,LE]{\thepage}
-%\renewcommand{\footrulewidth}{0.4pt}
-%\renewcommand{\headrulewidth}{0.4pt}
-%
-%\fancypagestyle{plain}{%
-%\fancyhf{}
-%\fancyfoot[C]{\thepage}
-%\renewcommand{\headrulewidth}{0pt}
-%\renewcommand{\footrulewidth}{0.4pt}}
-%
-%
-%% configure subfig
-%\captionsetup[subfloat]{labelformat=simple,listofformat=subsimple}
-%\def\thesubfigure{(\alph{subfigure})} 
+\renewcommand{\footrulewidth}{0.4pt}
+% \renewcommand{\headrulewidth}{0.4pt}
+
+\fancypagestyle{plain}{%
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}}
+
+
+% configure subfig
+\captionsetup[subfloat]{labelformat=simple,listofformat=subsimple}
+\def\thesubfigure{(\alph{subfigure})} 
 %
 %% url
 %\makeatletter
@@ -142,7 +151,7 @@ pagebackref=true]{hyperref}
 %\urlstyle{leo}
 %
 %
-%\numberwithin{equation}{section}
+\numberwithin{equation}{section}
 %
 %%%%%%%%%%%%%%%% CODE LISTING SETTINGS %%%%%%%%%%%%%%%
 %\usepackage{listings}

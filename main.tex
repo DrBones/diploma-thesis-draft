@@ -24,23 +24,20 @@
 \section{Introduction}
 \clearpage
 \section{Theory of Quantum Transport}
+  \subsection{Quantized Conduction}
+\todo[noline]{mean free path, electrons near fermi energy, only conduction band, electrons no holes}
+  \input{theory/quantizedconductance.tex}
 The focus of this work lies with the study of the transport properties of two dimensional electron system. The flow of electrons and their spin within such low dimensional systems might supply methods of realization of spin tronic devices.
  The following chapters present the physical foundation necessary for the computation of spin-dependent transport properties in two dimensional electron systems.
   \subsection{Two Dimensional Electron Gas}
     \input{theory/2deg.tex}
-  \subsection{Effective Mass \hamil{}}
-    \input{theory/effectivemasshamil.tex}
-  \subsection{Extending the \hamil{}}
-    \input{theory/spin.tex}
-  \subsection{Quantized Conduction}
-(mean free path,electrons near fermi energy,only conduction band, electrons no holes)
-  Landauer buettiker kram
-  \input{theory/quantizedconductance.tex}
+      \subsection{Effective Mass \hamil{}}
+	\input{theory/effectivemasshamil.tex}
+	\input{theory/spin.tex}
   \subsection{\cgfnc{} Formalism}
   \input{theory/greensfunctionformalism.tex}
-  \subsection{Compare to Transfer Matrix Method}
-  The TMM is in general unstable because possible evanescent waves will lead to unphysically fast rising matrix coefficients.
-  D.Y.K. Ko and J.C. Inkson reviews a case where the TMM revealed instability flaws (1988).
+  \subsection{Comparison of Transport Models}
+  \input{theory/comparemethods.tex}
 \clearpage
 \section{Computational Methods}
 This chapter will outline the numerical and mathmatical methods applied in this work.
@@ -48,19 +45,23 @@ This chapter will outline the numerical and mathmatical methods applied in this 
   \input{method/discretization.tex}
   \subsection{How to to reach Tractability}
   \input{method/tractability.tex}
-  need fast method (rga) for self consistent simulation
+\todo[noline]{need fast method (rga) for self consistent simulation}
+% \clearpage
 \section{Implementation}
+The numerical simulation of devices too complex to solve analytically can advance the physical insight and help develop asociated experiments. To this end the concepts presented in the preceding chapters will have to be translated in a language suitable for execution on a computer. This chapter describes the implementation of the \gfnc{} formalism without spending too much focus on the specifics of software engineering.
+Typical nano structures in a 2DEG usually include constraints to limit the flow of electrons or spin in a particular way to achieve some kind of two dimensional circuit. Within this circuit different spin-tronical devices are located to control and manipulate the flow of information. These structures range from simple wires to complex spin filter cascades, \textsc{Hall} bars or quantum point contacts and any combination of the above.
 \subsection{Natural Ordering}
 \subsection{Graph Representation}
-\subsection{Implementaion of RGA}
-pseudocode
-\subsection{Observables from Retarded \gfnc}
+\subsection{Implementation of Recursive \cgfnc{} Algorithm}
+\label{sec:recursivegreenfncalgorithm}
+\input{implementation/implementationrga.tex}
+\subsection{Observables from Retarded \cgfnc{}}
 \subsection{Validation}
-\subsection{Computer Language}
+\subsection{Computational framework}
 \section{Results}
 \section{Conclusion}
 \section{Outlook}
-\section{Appendix}
+\appendix
 \input{appendix/RGA.tex}
 
 \section{Questions}
