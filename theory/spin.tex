@@ -1,0 +1,39 @@
+The dynamics of the electrons in the conductance band are subject to numerous quantummechanical phenomena and interactions which may be included via additive pertubations making up the single particle single-band effective mass \hamil{}:
+\begin{align}
+\hat{H}_{\text{spem}} = \hat{H}_0 + \hat{H}_{\text{int}}+\dotsb \label{eqn:generalhamil}
+\end{align}
+\todo[noline]{find better name than "spem"}
+One important aspect to obtain a more realistic picture is the inclusion of the effects of the internal spin degree of freedom of the electrons.
+\subsubsection{Spin Degree of Freedom}
+The inclusion of the electron spin and associated effects "blows up" the phase-space to be considered by two, reflecting the two possible spin orientations with the $2 \times 2$ spin identity matrix $\mat{I}_S$. 
+\begin{align}
+\hat{H} \rightarrow \hat{H} \otimes \mat{I}_S
+\end{align}
+When a particle in vacuum moves through an electric field its orbital and spin degrees of freedom become coupled. This essentially relativistic effect is known as spin-orbit interaction. If the \textsc{Dirac} equation governing this sort of interaction is non-relativistically expanded in powers of $1/c$ one finds as a first order correction\cite{Nowack2009Thesis}:
+\begin{align}
+\hat{H}_{SO} = \frac{1}{2m_0c^2} \v{\sigma} \otimes \left( \nabla V \times \frac{\v{p}}{m_0}\right)
+\label{eqn:spinorbithamil}
+\end{align}
+Here $m_0$ is the electron rest mass, $\v{\sigma} = (\sigma_x, \sigma_y,\sigma_z)$ the spin vector of pauli-matrices and $V$ describing the electric field. 
+\subsubsection{Spin Orbit Interaction}
+For the movement of electrons in a crystal lattice the same phenomenon gives rise to spin-orbit interactions as the electron moves through the field of the atomic cores.
+The potential that is responsible for the $z$-confinement of the 2DEG also interacts with the lateral movement of the electrons. Because of its nonzero gradient if put into Eqn. (\ref{eqn:spinorbithamil}) it will give rise to the so called \rash{} \hamil{}:
+\begin{align}
+  \hat{H}_{RSO} =\frac{\alpha_{RSO}}{\hbar}(\hat{p}_{y} \otimes \hat{\sigma}_{x} - \hat{p}_{x} \otimes \hat{\sigma}_{y})
+	\label{eqn:rashbahamiltonian}
+\end{align}
+The parameter $\alpha_{RSO}$ governs the strength of the interaction and has its origin in the lack of structural inversion symmetry of the boundary layer.
+As can be seen in Fig. (\ref{fig:hetero2deg}) the confining potential is not strictly symmetric leading in addition to finite-wall effects of the potential well to a material constant defined by\cite{Metalidis2007Thesis}:
+\begin{align}
+\alpha_{RSO} = \frac{\hbar}{2m_0c^2} \left<\pd{V}{z} \right> 
+\end{align}
+The $\left< \right>$ denoting a suitable averaging procedure arising from the spatial dependence of $V$. The average is quite intricate as the effect depends on the detailed bandstructure including also the influence of holes\cite{JApplPhys.83.4324}.
+As the \rash{} effect is a suitable candidate to realize certain spintronic applications it is worth noting that the strength of $\alpha_{RSO}$ and therefor the properties of conduction can be tuned by the addition of a gate electrode on top of the 2DEG\cite{PhysRevLett.78.1335}.
+Although other corrections to the single-band effective-mass \hamil{} like the \textsc{Dresselhaus} spin-orbit coupling \cite{PhysRev.100.580} may be considered in small band-gap materials like GaAs and InAs the spin-orbit coupling is largely dominated by the \rash{} effect\cite{PhysRevB.61.15588}. As this work focuses on 2DEGs housed by the aforementioned materials no further contributions to the \hamil{} will be added.\par
+With the effects of the inherent spin degree of electrons considered it is now possible to compute additional observables to obtain quantificative conclusions.
+The spatial probability distribution of up or down pointing electron-spin in respect to an arbitrary but fixed quantization axis $i$ is for example given by the spin-density $S^i$ \cite{JPhysA:MathGen.18.671}:
+\begin{align}
+S^i  = \frac{\hbar}{2} \left< \psi^+ \hat{\sigma}_i \psi \right>
+\label{eqn:spindensity}
+\end{align}
+The $\hat{\sigma}_i$ is the spin-operator in the corresponding direction, i.e in matrix representation a \textsc{Pauli} matrix. The arguments of the wavefunctions will be suppressed for brevity from now on.

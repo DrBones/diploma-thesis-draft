@@ -1,0 +1,30 @@
+The \gfnc{} formulation of quantum mechanics is not the only possible method to compute the transport properties desired.\par
+There exist numerous approaches to analytical and numerical calculation of quantum mechanical observalbles only a selection will be presented here. A detailed discussion of the Formulations presented in tab.(\ref{tab:comparison}) can be found in \cite{Biegel97quantumelectronic}. The table lists the capabilities and numerical efficiency in a direct computation. It includes for reference the classical \textsc{Boltzmann} Transport Equation (BTE), the \sdg{} Equation (SE), the Transfer Matrix (TM), Density Matrix (DM), \cgfnc{} and \textsc{Wigner} Function formulations.\par
+\begin{table}[!ht]
+\centering
+\begin{tabulary}{\textwidth}{l c c c c c c}\toprule
+& \multicolumn{6}{c}{Formulations}  \\ \cmidrule{2-7}
+Characteristic &BTE& SE&TM&DM&GF&WF\\ \midrule
+State Function Bases &yes&yes&yes&yes&yes&yes  \\
+Far-From-Equilibrium &yes&yes&yes&yes&yes&yes  \\
+Irreversibility      &yes&no&no&yes&yes&yes\\
+Transient Simulation &yes&yes&no&yes&yes&yes \\
+Absorbing Boundaries &yes&no&yes&yes&yes&yes \\
+Computational Efficiency &3&4&4&4&2&3 \\
+Intuitive State Function &5&3&4&3&2&4 \\ \bottomrule
+\end{tabulary}
+\caption{Comparison of quantum system analysis approaches, see \cite{Biegel97quantumelectronic}. In the ranking 5 = good and 1 = poor.}
+\label{tab:comparison}
+\end{table}
+The most obvious method the direct solution of the \sdg{} is unsuitable for a couple of reasons.In a many body theory it soon becomes unmanagebly complex for a rising number of carriers inside the conductor. Also absorbing boundary conditions and inelastic scattering have not been treated accurately \cite{Biegel97quantumelectronic} although developement has not halted \cite{JApplPhys.69.7153}\cite{gullapalli:2971}\par
+A popular quantum device simulation method capable of describing steady state transport in a fast and straight forward to implement way is the so called Transfer Matrix Method (TMM)\cite{MacKinnon2003}.\par
+TMM formulations are in general unstable because possible evanescent waves will lead to unphysically fast rising matrix coefficients \cite{PhysRevB.38.9945}.
+While the instability issues can be resolved using a redesigned TMM technique by T.Usuki \cite{PhysRevB.50.7615}\cite{PhysRevB.52.8244} as a direct descendend of the \sdg{} the TMM presents the same theoretical limitations.\par
+A different approach in spirit related to the solution of classical electronic systems via a \textsc{Boltzmann} transport equation present quantum statistical formulations. 
+Due to the nature of many body systems a statistical state function even in the limit of non-interacting particle should present a quite accurate representation of the 2DEG.\par
+The choice of a \gfnc{} as a state function has several advantages over a \textsc{Wigner} function or density matrix approach.
+The more general formalism makes it more flexible and powerful because it also profits from advances in the solution to \gfnc{} which can be applied in a diverse field.\par
+The the application of all quantum statistical formulations is currently limited to systems of reduced size or resolution as the computations involved are highly sensitive to the discretization.\par
+An advantage of the \gfnc{} method over other state functions in relation to the implementation on a computer is the development of fast and efficient algorithms suitable to compute all the desired observables\cite{JApplPhys.91.2343} in two or even three dimensions or in a parallel computing environment \cite{Drouvelis2006parallel}.
+\todo[noline]{ small chatpers ? cite pourfath 3.10 \cite{Pourfath2007Thesis}}
+

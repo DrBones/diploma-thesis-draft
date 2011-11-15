@@ -1,0 +1,53 @@
+\todo[noline]{metalidis. haug, now there will be vectors $(x,y)\rightarrow \v{r}$}
+Due to the size of mesoscopic systems the calculation of its properties should be treated as a many-body problem. This leads to a many-body \hamil{} like:
+\begin{align}
+\mathcal{H}(\v{r};t) = \mathcal{H}_0(\v{r}) + \mathcal{H}_{\text{int}}(\v{r})+\mathcal{H}_{\text{ext}}(t)
+\end{align}
+Here the $\mathcal{H}_0$ indicates a non-interacting system and the other terms introduce the interactions and possible external time dependend pertubation. 
+All information about the systems may be obtained by solving its time-dependend \sdg{}:
+\begin{align}
+i\hbar \pd{}{t} \ket{\psi(\v{r};t)} = \mathcal{H}(\v{r};t) \ket{\psi(\v{r};t)}
+\label{eqn:timedependendsdg}
+\end{align}
+Currently such large ensembles cannot be solved exactly so some kind of physically motivated approximation is needed. In the regime of high electron density and strongly coupled external influences one can model a 2DEG reasonable well in terms of non-interactig particles in an effective potential\cite{fetter2003quantum}. \par
+How does one go to find the quantum mechanical terms to compute the desired observables?. It turns out it is advantageous to skip the computation of eigenstates used in the previous chapters and to use a technique to compute the transport properties in a direct way. One such technique which combines a powerful and general formalism and is especially suited to be numerically implemented is the non-equilibrium \gfnc{} formalism (NEGF) developed by \textsc{Kadanoff} and \textsc{Baym} \cite{kadanoff1962quantum} and refined by \textsc{Keldysh} \cite{keldysh1965}. This is especially the case as several efficient algorithms exist that compute for example the electron density or the transmission coefficients one of which will be outlined in chapter \ref{sec:recursivegreenfncalgorithm}.\par
+The non-equilibrium \gfnc{} formalism is very powerful and as it is based on a quantum-field theoretical approach capable of describing non-equilibrium systems with interactions. As this might seems excessive in face of the relative simplicity of the problem at hand and a rigorous derivation would obscure its central results only key concepts neccessary for the computation of the desired observables shall be discussed following \textsc{Wimmer}s(math) \cite{Wimmer2009Thesis} and \textsc{Datta}(physics) \cite{Datta1997}.\par
+\subsubsection{Equilibrium \cgfnc s}
+In the field of electrodynamics the \gfnc{} where first introduced as a means to solve a inhomogeneous differential equation of the form
+\begin{align}
+\hat{LD}G(\v{r},\v{r}';t,t') = \delta(\v{r}-\v{r}')\delta(t-t')
+\label{eqn:lineardiff}
+\end{align}
+where $\hat{LD}$ is any linear differential operator. It \todo{in the appendix?} is easily shown that the proper \gfnc{} for non-interacting many-body systems is identical to the \gfnc{} obtained by solving the single-particle effective mass \sdg{} \cite{ferry1999transport}:
+\begin{align}
+\left[ E -\hat{H}(\v{r})\right] \hat{G}(\v{r},\v{r}';E) = \delta (\v{r}-\v{r}')
+\end{align}
+For equilibrium \cite{fetter2003quantum} and non-equilibrium steady state \cite{haug2008quantum} the \gfnc{} only depends on time differencens and can therefore be \textsc{Fourier} transformed to the energy domain ($t \rightarrow E$). The \gfnc{} that solves the above equation is actually not unique. Two solutions can be found. One can be considered a wavefunction at point $\v{r}$ as a result from a unit excitation at point $\v{r}'$. The other describes the situation with the points exchanged. In simple systems this would in the first case correspond to an incoming wave in point $\v{r}$ in the other to an outgoing wave.
+Those two solutions are called retarded and advanced \gfnc{} respectively and can be distinguished by the addition of an infinitismal imaginary part $i\eta$.
+\begin{align}
+\left[ E \pm i \eta -\hat{H}(\v{r})\right] \hat{G}^{r(a)}(\v{r},\v{r}';E) = \delta (\v{r}-\v{r}')
+\end{align}
+This equation can be formally inverted and the \gfnc{} can be defined in the second quantization in terms of an operator identity as:
+\begin{align}
+\hat{G}^{r(a)}(\v{r},\v{r}';E) = \bra{\v{r}} [E\pm i \eta - \hat{H}(\v{r})]^{-1} \ket{\v{r}'}
+\end{align}
+Positive for the retared and negative for the advanced \gfnc{}. One sees immediately that the retarded and advanced \gfnc{} are the complex conjugate from each other why the superscripts will be dropped and the retarded \gfnc{} will be refered to simply as \gfnc{}
+\begin{align}
+\hat{G}^r = (\hat{G}^a)^+ \equiv \hat{G}
+\end{align}
+\subsubsection{Non-Equilibrium \cgfnc s}
+keldysh equation
+\begin{align}
+\hat{G}^<(E) = \hat{G}^r(E) \hat{\Sigma}^<(E) \hat{G}^a(E)
+\label{eqn:keldyshequation}
+\end{align}
+with $\Sigma = \dotsb$
+lesser \gfnc{}
+\begin{align}
+	n(\v{r}) = \left< \psi^+ (\v{r}) \psi(\v{r})\right> = -i\hbar \hat{G}^<(\v{r},\v{r};E)
+\end{align}
+connection to scattering (fisher lee) in matrix notation for tight binding
+\begin{align}
+T_{pq} = \text{Tr}(\Gamma_p G_{pq} \Gamma_q G^+_{pq}) = \sum_{n,m} \abs{t^{pq}_{ll'}}^2
+\end{align}
+
