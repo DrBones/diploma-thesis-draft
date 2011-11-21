@@ -3,9 +3,11 @@
 % ***********************************************************
 %\documentclass[11pt]{article} 
 % \documentclass[12pt,twoside,a4paper]{article}
-\documentclass[12pt,twoside,a4paper]{scrartcl}
-\setkomafont{sectioning}{\normalcolor\bfseries}
+% \documentclass[12pt,twoside,a4paper]{scrbook}
+\documentclass[12pt,twoside,a4paper]{scrreprt}
+% \setkomafont{sectioning}{\normalcolor\bfseries}
 %%%%%%%%%%%%%% PACKAGE INCLUDES %%%%%%%%%%%%%%%
+% \usepackage{scrhack}
 \usepackage[utf8]{inputenc} %allows input of utf8 characters
 \usepackage[american,ngerman]{babel}
 \usepackage[T1]{fontenc} %more complete but lower quality than ComMod fontpacke
@@ -20,7 +22,33 @@
 \usepackage{color} % well, supplies colors
 \usepackage{todonotes}
 \usepackage{booktabs}
+\usepackage[section]{placeins} %supplies \FloatBarrier to stop floats
 \usepackage{setspace} %Zeilenabstand
+\usepackage[pagestyles,raggedright]{titlesec}
+\usepackage{float}
+
+% %define custom float
+% \floatstyle{plain}
+% \newfloat{algo}{thp}{lop}[chapter]
+% \floatname{algo}{Algorithm}
+
+% Page setup (titlesec)
+\newpagestyle{main}{%
+  \headrule
+  \sethead[\chaptername~\thechapter\quad\chaptertitle][][]{}{}{\thesection\quad\sectiontitle}
+  \setfoot[][\thepage][]{}{\thepage}{}
+}
+\pagestyle{main}
+% \usepackage{calligra}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+% \DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+% \DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newenvironment{pzcseries}{\fontfamily{pzc}\selectfont}{}
+\newcommand{\textpzc}[1]{{\pzcseries#1}}
+\newenvironment{frcseries}{\fontfamily{frc}\selectfont}{}
+\newcommand{\textfrc}[1]{{\frcseries#1}}
+\newcommand{\mathfrc}[1]{\text{\textfrc{#1}}}
+\assignpagestyle{\chapter}{empty} %pages on which chapters start have now {} layout
 %\onehalfspacing
 % \usepackage{mathptmx}
 % \usepackage{bbold}
@@ -38,7 +66,7 @@
     citecolor=green,        % color of links to bibliography
     filecolor=magenta,      % color of file links
     urlcolor=cyan,           % color of external links
-pagebackref=true]{hyperref}
+    pagebackref=true]{hyperref}
 \usepackage[all]{hypcap} % shifts the link point to the top of tables or figures so it is visible when clicked
 %\usepackage{array}
 %\usepackage[final]{svninfo}
@@ -50,8 +78,24 @@ pagebackref=true]{hyperref}
 \usepackage{subfig} 		%enabled the use of subfloats within a float
 %\usepackage{textcomp}
 %\usepackage{pstricks}
+% % Fix latex
+% \def\smallskip{\vskip\smallskipamount}
+% \def\medskip{\vskip\medskipamount}
+% \def\bigskip{\vskip\bigskipamount}
+%  
+%  % Hand made theorem
+%  \newcounter{thm}
+%  \renewcommand{\thethm}{\thechapter.\arabic{thm}}
+%  \def\claim#1{\par\medskip\noindent\refstepcounter{thm}\hbox{\bf #1 \arabic{thm}.}
+%  %\ignorespaces
+%  }
+%  \def\endclaim{
+%  \par\medskip}
+%  \newenvironment{thm}{\claim}{\endclaim}
 %\usepackage{courier}
 %\usepackage{geometry}
+\usepackage{caption}
+% \usepackage[algo2e,algoruled,algochapter]{algorithm2e}
 %\usepackage{url}
 \usepackage{tikz}
 \tikzstyle{every picture}+=[remember picture]
@@ -67,6 +111,7 @@ pagebackref=true]{hyperref}
 %	\vskip 10pt \large \@author \hskip 20pt \@date \end{center}
 %  \vskip 10pt \endgroup \setcounter{footnote}{0} }
 %\makeatother % End of region containing @ commands
+\usepackage{enumerate}
 \renewcommand{\labelenumi}{(\alph{enumi})} 		% Use letters for enumerate
 
 % Shortcuts to Named Objects
@@ -110,33 +155,34 @@ pagebackref=true]{hyperref}
 
 \let\baraccent=\= 				% rename builtin command \= to \baraccent
 \renewcommand{\=}[1]{\stackrel{#1}{=}} 		% for putting numbers above =
-\newtheorem{prop}{Proposition}
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{lem}[thm]{Lemma}
+% \newtheorem{prop}{Proposition}
+% \newtheorem{thm}{Theorem}[section]
+% \newtheorem{lem}[thm]{Lemma}
 \theoremstyle{definition}
 \newtheorem{dfn}{Definition}
+\newtheorem{algo}{Algorithm}
 \theoremstyle{remark}
 \newtheorem*{rmk}{Remark}
 
 %%%%%%%%%%%%%% STYLE %%%%%%%%%%%%%%%
 %\geometry{hmargin={1in,1in},vmargin={2.0in,1.5in}}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-% \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername} \ \thechapter. \ \textbf{#1}}{}}
-% \renewcommand{\sectionmark}[1]{\markright{\textbf{\thesection \ #1}}}
-\fancyhead[RE,LO]{}
-% \fancyhead[RO]{\rightmark}
-% \fancyhead[LE]{\leftmark}
-%%\fancyfoot{}
-%%\fancyfoot[RO,LE]{\thepage}
-\renewcommand{\footrulewidth}{0.4pt}
-% \renewcommand{\headrulewidth}{0.4pt}
-
-\fancypagestyle{plain}{%
-\fancyhf{}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0.4pt}}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% % \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername} \ \thechapter. \ \textbf{#1}}{}}
+% % \renewcommand{\sectionmark}[1]{\markright{\textbf{\thesection \ #1}}}
+% \fancyhead[RE,LO]{}
+% % \fancyhead[RO]{\rightmark}
+% % \fancyhead[LE]{\leftmark}
+% \fancyfoot{}
+% % \fancyfoot[RO,LE]{\thepage}
+% \renewcommand{\footrulewidth}{0.4pt}
+% % \renewcommand{\headrulewidth}{0.4pt}
+% 
+% % \fancypagestyle{plain}{%
+% % \fancyhf{}
+% \fancyfoot[C]{\thepage}
+% % \renewcommand{\headrulewidth}{0pt}
+% % \renewcommand{\footrulewidth}{0.4pt}}
 
 
 % configure subfig
@@ -151,10 +197,10 @@ pagebackref=true]{hyperref}
 %\urlstyle{leo}
 %
 %
-\numberwithin{equation}{section}
+\numberwithin{equation}{chapter}
 %
 %%%%%%%%%%%%%%%% CODE LISTING SETTINGS %%%%%%%%%%%%%%%
-%\usepackage{listings}
+% \usepackage{listings}
 %
 %\lstset{
 %frame=tb,

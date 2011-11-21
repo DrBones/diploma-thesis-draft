@@ -12,7 +12,7 @@ i\hbar \pd{}{t} \ket{\psi(\v{r};t)} = \mathcal{H}(\v{r};t) \ket{\psi(\v{r};t)}
 Currently such large ensembles cannot be solved exactly so some kind of physically motivated approximation is needed. In the regime of high electron density and strongly coupled external influences one can model a 2DEG reasonable well in terms of non-interactig particles in an effective potential\cite{fetter2003quantum}. \par
 How does one go to find the quantum mechanical terms to compute the desired observables?. It turns out it is advantageous to skip the computation of eigenstates used in the previous chapters and to use a technique to compute the transport properties in a direct way. One such technique which combines a powerful and general formalism and is especially suited to be numerically implemented is the non-equilibrium \gfnc{} formalism (NEGF) developed by \textsc{Kadanoff} and \textsc{Baym} \cite{kadanoff1962quantum} and refined by \textsc{Keldysh} \cite{keldysh1965}. This is especially the case as several efficient algorithms exist that compute for example the electron density or the transmission coefficients one of which will be outlined in chapter \ref{sec:recursivegreenfncalgorithm}.\par
 The non-equilibrium \gfnc{} formalism is very powerful and as it is based on a quantum-field theoretical approach capable of describing non-equilibrium systems with interactions. As this might seems excessive in face of the relative simplicity of the problem at hand and a rigorous derivation would obscure its central results only key concepts neccessary for the computation of the desired observables shall be discussed following \textsc{Wimmer}s(math) \cite{Wimmer2009Thesis} and \textsc{Datta}(physics) \cite{Datta1997}.\par
-\subsubsection{Equilibrium \cgfnc s}
+\subsection{Equilibrium \cgfnc s}
 In the field of electrodynamics the \gfnc{} where first introduced as a means to solve a inhomogeneous differential equation of the form
 \begin{align}
 \hat{LD}G(\v{r},\v{r}';t,t') = \delta(\v{r}-\v{r}')\delta(t-t')
@@ -35,7 +35,7 @@ Positive for the retared and negative for the advanced \gfnc{}. One sees immedia
 \begin{align}
 \hat{G}^r = (\hat{G}^a)^+ \equiv \hat{G}
 \end{align}
-\subsubsection{Non-Equilibrium \cgfnc s}
+\subsection{Non-Equilibrium \cgfnc s}
 keldysh equation
 \begin{align}
 \hat{G}^<(E) = \hat{G}^r(E) \hat{\Sigma}^<(E) \hat{G}^a(E)

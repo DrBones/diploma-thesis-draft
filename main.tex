@@ -13,64 +13,58 @@
 % \thispagestyle{plain} %removes the header 
 
 % emtpy page
-\clearpage
-\thispagestyle{empty}
-\mbox{}
-\clearpage
+% \clearpage
+% \thispagestyle{empty}
+% \mbox{}
+% \clearpage
 % TABLE OF CONTENTS
 \thispagestyle{plain} %removes the header from TOC
 \tableofcontents
 \clearpage
 \section{Introduction}
 \clearpage
-\section{Theory of Quantum Transport}
-  \subsection{Quantized Conduction}
+\chapter{Theory of Quantum Transport}
+  \section{Quantized Conduction}
 \todo[noline]{mean free path, electrons near fermi energy, only conduction band, electrons no holes}
   \input{theory/quantizedconductance.tex}
 The focus of this work lies with the study of the transport properties of two dimensional electron system. The flow of electrons and their spin within such low dimensional systems might supply methods of realization of spin tronic devices.
  The following chapters present the physical foundation necessary for the computation of spin-dependent transport properties in two dimensional electron systems.
-  \subsection{Two Dimensional Electron Gas}
+  \section{Two Dimensional Electron Gas}
     \input{theory/2deg.tex}
       \subsection{Effective Mass \hamil{}}
 	\input{theory/effectivemasshamil.tex}
 	\input{theory/spin.tex}
-  \subsection{\cgfnc{} Formalism}
+  \section{\cgfnc{} Formalism}
   \input{theory/greensfunctionformalism.tex}
-  \subsection{Comparison of Transport Models}
+  \section{Comparison of Transport Models}
   \input{theory/comparemethods.tex}
-\clearpage
-\section{Computational Methods}
+% \clearpage
+\chapter{Computational Methods}
 This chapter will outline the numerical and mathmatical methods applied in this work.
-  \subsection{Discrete Matrix Representation}
+  \section{Discrete Matrix Representation}\label{sec:discretematrixrep}
   \input{method/discretization.tex}
-  \subsection{How to to reach Tractability}
+  \section{How to to reach Tractability}
   \input{method/tractability.tex}
 \todo[noline]{need fast method (rga) for self consistent simulation}
 % \clearpage
-\section{Implementation}
+\chapter{Implementation}
 The numerical simulation of devices too complex to solve analytically can advance the physical insight and help develop asociated experiments. To this end the concepts presented in the preceding chapters will have to be translated in a language suitable for execution on a computer. This chapter describes the implementation of the \gfnc{} formalism without spending too much focus on the specifics of software engineering.
 Typical nano structures in a 2DEG usually include constraints to limit the flow of electrons or spin in a particular way to achieve some kind of two dimensional circuit. Within this circuit different spin-tronical devices are located to control and manipulate the flow of information. These structures range from simple wires to complex spin filter cascades, \textsc{Hall} bars or quantum point contacts and any combination of the above.
-\subsection{Natural Ordering}
-\subsection{Graph Representation}
-\subsection{Implementation of Recursive \cgfnc{} Algorithm}
+\section{Natural Ordering}
+\input{implementation/naturalordering.tex}
+\section{Recursive \cgfnc{} Algorithm}
+\input{implementation/rga.tex}
+\section{Complex Geometries}
 \label{sec:recursivegreenfncalgorithm}
-\input{implementation/implementationrga.tex}
-\subsection{Observables from Retarded \cgfnc{}}
-\subsection{Validation}
-\subsection{Computational framework}
-\section{Results}
+\input{implementation/graphrepresentation.tex}
+\section{Observables from Retarded \cgfnc{}}
+\section{Validation}
+\section{Computational framework}
+\chapter{Results}
 \section{Conclusion}
 \section{Outlook}
 \appendix
 \input{appendix/RGA.tex}
-
-\section{Questions}
-\begin{itemize}
-  \item temperature $\rightarrow$ 0 necessary?
-  \item How is the coupling to the magnetic field done?
-  \item What are the Channel coefficients \cite{PhysRevB.31.6207}
-\end{itemize}
-
 \clearpage
 \bibliographystyle{amsalpha}
 \bibliography{thesis}

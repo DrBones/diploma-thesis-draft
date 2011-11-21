@@ -7,6 +7,7 @@ The technique will be outlined following \textsc{Datta} for a system with only o
 \label{fig:selfenergy}
 \end{figure}
 
+\subsection{The Self Energy}
 Consider the following partition of the infinite dimensional \gfnc{} matrix:
 \begin{align}
   \begin{bmatrix}
@@ -31,35 +32,27 @@ with the so called retarded lead surface \gfnc{}
 g_L^R &= [(E+i\eta)\mat{1}_L - \mat{H}_L]^{-1}
 \label{eqn:leadsurfacegfnc}
 \end{align}
+\todo[noline]{How can self energy be used for scattering, etc}
 The following discussion hold for non-interacting systems i.e  when $\Sigma$ only holds contributions from the lead.
 
-\subsubsection{Lead Surface \cgfnc s}
+\subsection{Lead Surface \cgfnc s}
 \todo[noline]{Finish, formulas are missing and explain what i used}
-Even with this separation the direct evaluation of equation \ref{eqn:leadsurfacegfnc} is still unfeasible as it still includes $\mat{H}_L$ which is infinite. Fortunately there exist alternative ways of obtaining the leads \gfnc{}.
-If no fields or extra complexity in the leads are assumed the surface \gfnc{} can  be calculated semi analytically via the eigenstate decomposition of their companio matrix \cite{PhysRevB.55.5266} \cite{PhysRevB.66.205319} or if further interactions are of interest iterative methods ....
+Even with this separation the direct evaluation of eqn. (\ref{eqn:leadsurfacegfnc}) is still unfeasible as it still includes $\mat{H}_L$ which is infinite. Fortunately there exist alternative ways of obtaining the leads \gfnc{}.
+If translation invariance along the lead exists the so called \textsc{Ando} method \cite{PhysRevB.44.8017} computes the the surface \gfnc{} for a homogenuous lead consiting of repeating suppercells, i.e the smallest layer that exhibits periodicity.\par
+For simple systems without fields it can even be calculated analytically \cite{Datta1997} or for leads including fields and further interactions semi analytically via the \emph{eigenstate decomposition} of their \emph{companion matrix} or \emph{transfer matrix} \cite{PhysRevB.55.5266} \cite{PhysRevB.66.205319}.
+\begin{align}
+  \mat{C} =
+  \begin{bmatrix}
+  \mat{0}  &\mat{I} \\
+  -\mat{H}_{+}^{-1}\mat{H}_{-} &\mat{H}_{+}^{-1} (E\mat{1} - \mat{H}_{\perp})
+  \end{bmatrix}
+  \label{eqn:greendivided}
+\end{align}
+Here $\mat{H}_{\pm}$ signify matrices governing the interaction between slices with \hamil{} $\mat{H}_{\perp}$
+For non-homogenous leads one can apply a continued fraction method \cite{Velev2004} that connects \gfnc{} from one layer to neighbouring layers and repeats that process until the interactions betweenlayers becomes negligible.\par
+As the leads in this work need to include fields and spin-orbit effects analytical methods did not suffice. With the appropriate gauge one can ensure invariance along the lead and therefore the a modification of the eigenstate decomposition method is employed.\par
+The lead surface \gnfc{} is expanded in eigenstates of an \emph{invariant subspace} which yields higher numerical stability as expansions in eigenstates of the full \hamil{} with the same result.
 used eigenstate decomp and schur decomp (wimmer) as more stable if near singular, maybe picture of typical self energy matrix, maybe discussion what physical insights $\Gamma = \Sigma^R - \Sigma^A$ can give (lifetime, etc)
 
 The concept of self energy may also be applied to include the effects of e.g. phonon scattering or electron-electron interactions in an approximate manner.
 
-The now finite dimension of the matrices obtained by inclusion of the self energy term is determined by the number of lattice points which make up the discretized system.
-If a reasonable resolution i.e lattice spacing in the nanometer range is desired the number of lattice-points easily exceeds magnitudes of $10^5$ for a mesoscopic device in the range of micrometers. 
-The full inversion of matrices of this size has high demands on memory and computational speed and is therefore, even with specialised algorithms, a very time-consuming affair.\textcolor{red}{(find citation)}
-Therefore faster and more efficient techniques for the computation of the \gfnc{} are desireable.
-\subsubsection{Recursive \cgfnc{} Algorithm}
-\label{sec:rgapresentation}
-\todo[noline]{finish, more formulas and maybe nice infographic}
-One such technique is the Recursive-\gfnc-Algorithm (RGA) (Drouvelis et.al. 2006)\cite{MacKinnon1985}.
-The application of a scheme like the RGA is based on the possibility that the \hamil{} can be written in a block tri-diagonal from which arises naturally for a simple layered structure as can be seen in the previous chapter. This form however can be be achieved for any system in the tight-binding approximation \cite{Wimmer2009Thesis}.
-Exploiting the observation that common quantum mechanical observables of interest only depend on certain elements of the \gfnc-matrix (vgl formel mit dichteoperator oder transmission) the RGA seeks to compute those elements with as little overhead as possible. While still some superfluous elements are computed the complexity is greatly reduced. (Complexity and implementation in Appendix \ref{app:RGA}, see Wimmer page 189). A derivation of the RGA can by achieved by using the \textsc{Dyson}'s equation for the retarded \gfnc{} for example:
-\begin{align}
-	\mat{G} = \mat{G}_0+\mat{G}_0\mat{U}\mat{G}
-	\label{eqn:DysonEquationG}
-\end{align}
-This ansatz allows the calcualtion of the \gfnc{} by separating the system in question into isolated sections. The \gfnc{} for each section is easily attained. By treating the neightbouring layers in a pertubational manner via the coupling matrix $U$ a set of equations is found which allows the recursive calculation of connected blocks of the \gfnc{} matrix. A detailed derivation can be found in Appendix \ref{app:RGA}.
-For the observables of interest, namely conduction, spin- and electrondensities the retarded and lesser \gfnc{} have to be computed.
-It is advisable to use a specialised algorithm to compute the lesser \gfnc{} instead of the direct approach by equation (????). Because the computation of the lesser \gfnc{} is based on a prior computation of the retarded \gfnc{} the results of the former can be saved to avoid redundancies.
-\begin{figure}
-\missingfigure{RGA infographic ..Pretty and simple!!!}
-\caption{Schematic how the RGA works}
-\label{fig:rgaschematic}
-\end{figure}
