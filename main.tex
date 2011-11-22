@@ -38,28 +38,29 @@ The focus of this work lies with the study of the transport properties of two di
   \input{theory/greensfunctionformalism.tex}
   \section{Comparison of Transport Models}
   \input{theory/comparemethods.tex}
-% \clearpage
 \chapter{Computational Methods}
-This chapter will outline the numerical and mathmatical methods applied in this work.
+This chapter will outline the numerical and mathmatical methods employed in the calculation of transport properties in this work.
   \section{Discrete Matrix Representation}\label{sec:discretematrixrep}
   \input{method/discretization.tex}
-  \section{How to to reach Tractability}
+  \section{How to to reach Tractability}\label{sec:tractability}
   \input{method/tractability.tex}
-\todo[noline]{need fast method (rga) for self consistent simulation}
-% \clearpage
+  \section{Observables from \cgfnc{} in Tight-Binding}
+  \input{implementation/observables.tex}
 \chapter{Implementation}
 The numerical simulation of devices too complex to solve analytically can advance the physical insight and help develop asociated experiments. To this end the concepts presented in the preceding chapters will have to be translated in a language suitable for execution on a computer. This chapter describes the implementation of the \gfnc{} formalism without spending too much focus on the specifics of software engineering.
 Typical nano structures in a 2DEG usually include constraints to limit the flow of electrons or spin in a particular way to achieve some kind of two dimensional circuit. Within this circuit different spin-tronical devices are located to control and manipulate the flow of information. These structures range from simple wires to complex spin filter cascades, \textsc{Hall} bars or quantum point contacts and any combination of the above.
 \section{Natural Ordering}
 \input{implementation/naturalordering.tex}
 \section{Recursive \cgfnc{} Algorithm}
+\todo[noline]{need fast method (rga) for self consistent simulation}
 \input{implementation/rga.tex}
 \section{Complex Geometries}
 \label{sec:recursivegreenfncalgorithm}
 \input{implementation/graphrepresentation.tex}
-\section{Observables from Retarded \cgfnc{}}
 \section{Validation}
+\input{implementation/validation.tex}
 \section{Computational framework}
+\input{implementation/framework.tex}
 \chapter{Results}
 \section{Conclusion}
 \section{Outlook}

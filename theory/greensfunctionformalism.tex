@@ -36,18 +36,23 @@ Positive for the retared and negative for the advanced \gfnc{}. One sees immedia
 \hat{G}^r = (\hat{G}^a)^+ \equiv \hat{G}
 \end{align}
 \subsection{Non-Equilibrium \cgfnc s}
-keldysh equation
+In the case of an non-interacting system in equilibrium and also to some degree for non-equilibrium systems with interactions the retarded \gfnc{} describes the spectrum that is the eigenstates and eigenenergies but one needs to know how this spectrum is filled.\par 
+For this purpose one can define other \gfnc{} such as the \emph{lesser \gfnc{}} \cite{haug2008quantum}. There exist numerous variations of \gfnc{} that are  but are interdepend.
+Within a non-equilibirum pertubation theory discribing the dependence of the system on the full \hamil{} $\mathcal{H}$ only in terms of the non-interacting \hamil{} $\mathcal{H}_0$\cite{Jauho2006} the  can be expressed in terms of the retarded \gfnc{}. With the retarded self-energy term $\hat{\Sigma}_x$ which will be discussed in further detail in chapter (\ref{sec:tractability}) the following expression describes the strenght of the coupling of the central scattering region to the leads \cite{Datta1997}:
+\begin{align}
+\hat{\Gamma}_p = i\left[\hat{\Sigma}_p(E)-\hat{\Sigma}_p^+(E)\right]
+\end{align}
+with the lesser self-energy
+\begin{align}
+\hat{\Sigma}^<=i\left[\hat{\Gamma}_l(E)f_l(E)+\hat{\Gamma}_r(E)f_r(E) \right]
+\end{align}
+one can write the lesser \gfnc{}a compact expression known as the \textsc{Keldysh} equation can be derived:
 \begin{align}
 \hat{G}^<(E) = \hat{G}^r(E) \hat{\Sigma}^<(E) \hat{G}^a(E)
 \label{eqn:keldyshequation}
 \end{align}
-with $\Sigma = \dotsb$
-lesser \gfnc{}
+
 \begin{align}
 	n(\v{r}) = \left< \psi^+ (\v{r}) \psi(\v{r})\right> = -i\hbar \hat{G}^<(\v{r},\v{r};E)
-\end{align}
-connection to scattering (fisher lee) in matrix notation for tight binding
-\begin{align}
-T_{pq} = \text{Tr}(\Gamma_p G_{pq} \Gamma_q G^+_{pq}) = \sum_{n,m} \abs{t^{pq}_{ll'}}^2
 \end{align}
 
