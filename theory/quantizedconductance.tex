@@ -37,11 +37,10 @@ G_{pq}=\frac{I\abs{e}}{(\mu_p - \mu_q)}=\frac{e^2}{h} T_{pq}(E_F)
 \label{eqn:conductance}
 \end{align}
 \subsection{Conductance from Transmission}
-This quantity can be calculated by quantum mechanical methods. A system of non-interacting particles as the 2DEG can be characterized by the eigenstates its single-particle \hamil{}. The transmission coefficients $T_{pq}(E)$ are directly related to the transmission probabilities $t^{pq}_{ll'}$.
+This quantity can be calculated by quantum mechanical methods. The transmission coefficients $T_{pq}(E)$ are directly related to the \emph{transmission probabilities amplitudes} $t^{pq}_{ll'}$.
 \begin{align}
-T_{pq} = \sum_{ll'} \lvert t^{pq}_{ll'} \rvert ^2
+G_{pq}=\frac{e^2}{h} T_{pq} =\frac{e^2}{h} \sum_{ll'} \abs{t^{pq}_{ll'}}^2
 \label{eqn:transcoeff}
 \end{align}
- 
-
-\todo[noline]{connection to greensfnc and quantum mechanics}
+The $\abs{t^{pq}_{ll'}}$ describe the electron flux amplitude for an electron traveling from channel $l'$ in lead $q$ to channel $l$ in lead $p$. This definition only holds for leads that are longitudinally translational invariant.\par
+The transmission coefficients are matrix elements of a so called \emph{scattering wavefunction} which governs the electron flow from and to the leads. As will be shown in chapter (\ref{sec:observables}) there exist an alternative method to direct quantum mechanical evaluation of the scattering wave function to obtain the transmission coefficients.

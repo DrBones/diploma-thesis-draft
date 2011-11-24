@@ -44,14 +44,14 @@ The concept of the self energy allows for further inclusions of interactions lik
 \subsection{Lead Surface \cgfnc s}
 Even with this separation the direct evaluation of eqn. (\ref{eqn:leadsurfacegfnc}) is still unfeasible as it still includes $\mat{H}_L$ which is infinite.\par Fortunately there exist alternative ways of obtaining the leads \gfnc{}.
 If translation invariance along the lead exists the so called \textsc{Ando} method \cite{PhysRevB.44.8017} computes the surface \gfnc{} for a homogeneous lead consisting of repeating super-cells, i.e the smallest layer that exhibits periodicity.\par
-For simple systems without fields and spin phenomena it can even be calculated analytically \cite{Datta1997} or for leads including fields and further interactions semi-analytically via the \emph{eigenstate decomposition} of their \emph{companion matrix} or \emph{transfer matrix} \cite{PhysRevB.55.5266} \cite{PhysRevB.66.205319}:
+For simple systems without fields and spin phenomena it can even be calculated analytically \cite{Datta1997} or for leads including fields and further interactions semi-analytically via the \emph{eigenstate decomposition} of their \emph{companion matrix}\,\cite{PhysRevB.25.3975} or \emph{transfer matrix} \cite{PhysRevB.55.5266} \cite{PhysRevB.66.205319}:
 \begin{align}
   \mat{C} =
   \begin{bmatrix}
   \mat{0}  &\mat{1} \\
   -\mat{H}_{+}^{-1}\mat{H}_{-} &\mat{H}_{+}^{-1} (E\mat{1} - \mat{H}_{\perp})
   \end{bmatrix}
-  \label{eqn:greendivided}
+  \label{eqn:companionmatrix}
 \end{align}
 Here $\mat{H}_{\pm}$ denotes matrices governing the interaction between slices with \hamil{} $\mat{H}_{\perp}$
 For non-homogeneous leads one can apply a continued fraction method \cite{Velev2004} that connects \gfnc{} from one layer to neighbouring layers and repeats that process until the interactions between layers becomes negligible.\par
@@ -62,9 +62,9 @@ One obtains the lead surface \gfnc{} by first calculating the \textsc{Schur} dec
 \mat{C} = \mat{Q}\mat{D}\mat{Q}^+
 \label{eqn:schurdecomposition}
 \end{align}
+\todo[noline]{ maybe picture of typical self energy matrix}
 One reorders matrix \mat{D} such that the eigenvalues corresponding to modes traveling either towards or away from the scattering region align in the upper left quarter and uses only these modes to construct the surface \gfnc{}:
 \begin{align}
 \mat{g}^r_L = \mat{Q}_{llq}\mat{Q}_{ulq}^{-1}\mat{H}_{-}^{-1}
 \end{align}
-\todo[noline]{ maybe picture of typical self energy matrix, maybe discussion what physical insights $\Gamma = \Sigma^R - \Sigma^A$ can give (lifetime, etc)}
 With $\mat{Q}_{llq}$ and $\mat{Q}_{ulq}$ represent the lower-left and upper-left quarter respectively. 

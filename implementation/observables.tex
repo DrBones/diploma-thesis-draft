@@ -1,14 +1,27 @@
-Spin density \cite{Wimmer2009Thesis}
+To calculate the desired transport properties of the device in the discrete tight binding approximation the expressions for transmission eqn. (\ref{eqn:transcoeff}), electron denisty eqn. (\ref{eqn:analyticalelectrondensity}) and spin denisty eqn. (\ref{eqn:spindensity}) have to be recast in terms of steady-state tight-binding quantities, namely spin dependent \gfnc s.\par
+The energy dependent local density of states (LDOS) is written in terms of the retarded \gfnc{}\cite{AnLunNik2008}:
+\begin{align}
+\text{LDOS}_{\v{m}}(E)=-\frac{1}{\pi} \text{Im}(\text{Tr}_S[\mat{G}_{\v{mm}}^r(E)])
+\label{eqn:ldos}
+\end{align}
+To obtain real space iformation the spin degree of freedom has to be reducted. This is done by taking the \emph{partial trace}\,\cite{Jacobs} of the operator in question effectively adding up the density of state for spin up and spin down electrons in this case.\par
+The index (\v{mm}) shows that the density of states can be calculates only from the diagonal of the \gfnc{}.
+The electron density can easily be obtained from the lesser \gfnc{} given as an example in eqn. (\ref{eqn:edensfromgreensfnc}). For experimentally measurable quantities an integration over energy has to be performed, which can be divided into equilibrium and non-equilibrium parts if a distinction between total and conducting electrons is desired.
+\begin{align}
+	\expv{n_{\v{m}}} = \frac{1}{2\pi} \int_{-\infty}^{\infty}\text{d}E\text{Tr}_S[\mat{G}_{\v{mm}}^<(E)]
+\end{align}
+The lesser \gfnc{} also allows the definition and calculation  of a local spin density by multiplication with the \textsc{Pauli} matrix $\mat{\sigma}_i$, here for the out of plane polarisation $\expv{s^z_{\v{m}}}$\,\cite{Wimmer2009Thesis}:
 \begin{align}
 \expv{s^z_{\v{m}}} = \frac{\hbar}{4 \pi i} \int^{\infty}_{-\infty}\text{d}E\text{ Tr}_S\left[\mat{\sigma}_z\mat{G}^<_{\v{mm}}\right]
 \end{align}
-Bond current \cite{EPL.80.47001}
+In the tight-binding picture one can also define a bond spin current operator \cite{EPL.80.47001}. The bond spin current is the amount of spin polariation flowing between two adjacent lattice-points.
 \begin{align}
 \expv{\v{j}_{\v{m}\v{m}'}^{s_z(tot)}} &=\expv{\v{j}_{\v{m}\v{m}'}^{s_z(eq)}}+ \expv{\v{j}_{\v{m}\v{m}'}^{s_z(neq)}}\\
 	&=\frac{t_{SO}}{2} \int_{E_{\text{cut-off}}}^{E_F-eV/2} \frac{\text{d}E}{2 \pi} \text{Tr}_S \left[\mat{\sigma}_z\left(\mat{G}^<_{\v{m}'\v{m}}(E)- \mat{G}^<_{\v{m}\v{m}'}(E)\right)\right]\\
 	&+\frac{t_{SO}}{2} \int_{E_F-eV/2}^{E_F-eV/2} \frac{\text{d}E}{2 \pi} \text{Tr}_S \left[\mat{\sigma}_z\left(\mat{G}^<_{\v{m}'\v{m}}(E)- \mat{G}^<_{\v{m}\v{m}'}(E)\right)\right]
 \end{align}
-connection to scattering (fisher lee) in matrix notation for tight binding
+With the help of the the so called \textsc{Fisher-Lee} relation \cite{PhysRevB.23.6851} connecting the scattering formalism of \textsc{Landauer-B\"uttiker} with the \gnfc s the total transmission probability can be written as:
 \begin{align}
 T_{pq} = \text{Tr}(\Gamma_p G_{pq} \Gamma_q G^+_{pq}) = \sum_{n,m} \abs{t^{pq}_{ll'}}^2
 \end{align}
+This formula is known as the \textsc{Caroli} expression. In the linear response regime it is equivalent to \textsc{Landauer}'s formula\cite{PhysRevB.72.035450}.
