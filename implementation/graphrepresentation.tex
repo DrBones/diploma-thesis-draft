@@ -72,8 +72,8 @@ With the maximum number of levels $N_i$ in $\mathpzc{l}_i$ known the graph is cu
 \end{align}
 With $\abs{\mathpzc{l}_i}$ denoting the number of nodes in that level.  All the nodes in each of those sections are distributed into levels by a BFS and optional further optimization starting from both ends where the graph has been cut. This section is in turn cut into ideally equal number of levels and the process is recursively repeated until only one level remains. The ordered collection of these final levels of all recursive paths constitutes the sought level-structure.\par
 If the nodes have been named from 1 to $k$ with $k$ being the size of the square \hamil{} the matrix reordering is achieved by simply rearranging the rows and columns symmetrically according to the sequence of the nodes in the level-structure. The order of the sequence of nodes within one level is of minor importance. 
-A modification of this algorithm minus detailed optimizations as used in this work is presented in algorithm (\ref{alg:wimmeralgorithm}).
-\noindent\begin{minipage}{\textwidth}
+A modification of this algorithm minus detailed optimizations as used in this work is presented in algorithm \ref{alg:wimmeralgorithm}.\par
+% \noindent\begin{minipage}{\textwidth}
 \begin{algo}\label{alg:wimmeralgorithm} 
 \textit{Block-Tridiagonalization Algorithm}\\
 \begin{tabularx}{\textwidth}{l}
@@ -98,6 +98,6 @@ A modification of this algorithm minus detailed optimizations as used in this wo
  \bottomrule 
 \end{tabularx}
 \end{algo}
-\end{minipage}\vskip 1em\par
+% \end{minipage}\vskip 1em\par
 By reordering the matrix one can use the unaltered RGA even for more complex geometries but also gains the ability to this conventional two-terminal algorithm for multiple terminals.
 \FloatBarrier
