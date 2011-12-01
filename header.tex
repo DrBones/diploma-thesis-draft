@@ -22,11 +22,29 @@
 \usepackage{color} % well, supplies colors
 \usepackage{todonotes}
 \usepackage{booktabs}
+\usepackage{url}
+\usepackage{grffile}
+\usepackage{tikz}
+\newcommand{\axes}{\draw[style={<->,thin}] (-1,0.65) node[left,align=center] {$x$} -- (0,0) --  (1,0.65) node[right] {$y$};}
+\usetikzlibrary{matrix,decorations.pathreplacing,shapes.multipart,calc}
 \usepackage[section]{placeins} %supplies \FloatBarrier to stop floats
 \usepackage{setspace} %Zeilenabstand
 \usepackage[pagestyles,raggedright]{titlesec}
 \usepackage{float}
-
+#--------------------------------------
+# Loosen latex float to text ratio and other float related things. Explanation
+on pages 199–200, section C.9 of the LaTeX manual.
+\renewcommand{\topfraction}{.85}
+\renewcommand{\bottomfraction}{.7}
+\renewcommand{\textfraction}{.15}
+\renewcommand{\floatpagefraction}{.66}
+\renewcommand{\dbltopfraction}{.66}
+\renewcommand{\dblfloatpagefraction}{.66}
+\setcounter{topnumber}{9}
+\setcounter{bottomnumber}{9}
+\setcounter{totalnumber}{20}
+\setcounter{dbltopnumber}{9}
+#----------------------------------------
 % %define custom float
 % \floatstyle{plain}
 % \newfloat{algo}{thp}{lop}[chapter]
@@ -67,7 +85,7 @@
     urlcolor=cyan,           % color of external links
     pagebackref=true]{hyperref}
 \usepackage[all]{hypcap} % shifts the link point to the top of tables or figures so it is visible when clicked
-%\usepackage{array}
+\usepackage{array}
 %\usepackage[final]{svninfo}
 \usepackage{tabulary}
 \usepackage{tabularx}
@@ -75,6 +93,9 @@
 %\usepackage[dvips]{graphicx}
 %\usepackage[small,bf]{caption}
 \usepackage{subfig} 		%enabled the use of subfloats within a float
+\usepackage[capitalize]{cleveref}
+% \crefname{equation}{Eqn.}{Eqn}
+\crefformat{equation}{Eqn.~#2#1#3}
 %\usepackage{textcomp}
 %\usepackage{pstricks}
 % % Fix latex
