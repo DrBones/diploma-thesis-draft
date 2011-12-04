@@ -1,26 +1,24 @@
-A practical way to actually perform the necessary inversion of of the \hamil{} to obtain the \gfnc{} is to leverage numerics to obtain an approximation to the solution for:
-
+A practical way to actually perform the necessary inversion of the \hamil{} to obtain the \gfnc{} is to leverage numerics to obtain an approximation to the solution for
 \begin{equation}
 	\hat{G} = \left[E-\hat{H} \right]^{-1}\text{.}
-  \label{eqn:effectivemasshamiltonian}
+  \label{eqn:greensfnccompmethods}
 \end{equation}
 Spin-interactions are neglected to outline the discretization method. They are however included in a straightforward way compatible to the following procedure.
-
-To use numerical methods to find the inverse the system has to be discretized in some way. With $E$ being easily discretized by multiplication with the appropriate identity matrix. Discretization of the \hamil{} requires non-trivial techniques. The choice of space and basis to discretize on is in principle arbitrary but significant advantages can be achieved if a discretization method suitable to the system is used.
+To use numerical methods to find the inverse in \cref{eqn:greensfnccompmethods} the system has to be discretized in some way. With $E$ being easily discretized by multiplication with the appropriate identity matrix. Discretization of the \hamil{} requires more care. The choice of space and basis to discretize on is in principle arbitrary but significant advantages can be achieved if a discretization method suitable to the system is used.
 Due to the cubic zincblende crystal structure of the materials like GaAs and InAs which constitute common environments of 2DEGs it is convenient to discretize on a square lattice.
 Consider following \hamil{}:
 \begin{equation}
   \hat{H}=-\frac{\hbar^{2}}{2m^*}\left[\pdd{}{x}+\pdd{}{y}\right]+U(x,y)\text{\,.}
     \label{eqn:Hamil}
 \end{equation}
-To achieve a discrete matrix-representation of the \hamil{}, Self-Energies and \gfnc{} one can expand the equations in any localized basis functions like Muffin-Tin orbitals, \textsc{Wannier} functions, or \textsc{Dirac} distributions giving rise to a so called tight-binding \hamil{}. In the following a coordinate in descrete-space will be refered to as a lattice-point regardless of the nature and space of the localized function.
-(dirac function mean taking the funktion on that space-coordinate ) \cite{JApplPhys.92.3730}.
+To achieve a discrete matrix-representation of the \hamil{}, self-energies and \gfnc{} one can expand the equations in any localized basis functions like Muffin-Tin orbitals, \textsc{Wannier} functions, or \textsc{Dirac} distributions giving rise to a so called tight-binding \hamil{}. In the following a coordinate in discrete space will be refered to as a lattice point regardless of the nature and space of the localized function.
+Using a \textsc{Dirac} delta distribution basis amounts to replacing the continuous function with it's values at the respective points in space \cite{JApplPhys.92.3730}.
 \begin{equation}
   \int \delta (\v{r}-\v{r}') f(\v{r}) \mathrm{d}\v{r} = f(\v{r}')
   \label{eqn:deltabasis}
 \end{equation}
-As one of the goals of this work is the study of the influence of geometry on the transport properties of a 2DEG a real-space approach with \textsc{Dirac} delta distributions was chosen. Real-space discretization leads to the replament of continuous real space X and Y directions by an infinite net of lattice points. Here the same spacing $a$ is assumed in both directions. The lattice points are located in the pre-discrete space at the coordinates $x=i*a$ and $y=j*a$ with $i,j$ being integers and $a$ the lattice spacing. The \hamil{} now operates on functions defined on discrete points in space obtained by:
-\begin{equation}
+One of the goals of this work is the study of the influence of geometry on the transport properties of a 2DEG. Thus a real-space approach with \textsc{Dirac} delta distributions was chosen. Real-space discretization leads to the replacement of continuous real space $x$ and $y$ directions by an infinite net of lattice points. Here the same spacing $a$ is assumed in both directions. The lattice points are located in the pre-discrete space at the coordinates $x=i*a$ and $y=j*a$ with $i,j$ being integers and $a$ the lattice spacing. The \hamil{} now operates on functions defined on discrete points in space obtained by:
+\begin{equation }
   T_{i,j} \leftrightarrow T(x=ia,y=ja) \mbox{ and } U_{i,j}\leftrightarrow U(x=ia,y=ja)
   \label{FunctionDescrete}
 \end{equation}
@@ -30,18 +28,18 @@ The \hamil{} is expressed accordingly:
   \left[\v{H}T\right]_{x=ia,y=ja}=-\frac{\hbar^{2}}{2m^*}\left[\pdd{T}{x}+\pdd{T}{y}\right]_{x=ia,y=ja}+U_{i,j}T_{i,j}
   \label{DiscreteHamil}
 \end{equation}
-Using finite differences scheme and assuming small $a$ the first derivative in each direction is approximated by:
+Using the finite-differences scheme and assuming small $a$ the first derivative in each direction is approximated by:
 \begin{equation}
   \left[\pd{T}{x}\right]_{x=(i+1/2)a} \sim  \frac{1}{a}\left(T_{i+1}-T_{i}\right)
   \label{ApproximateFirstDerivative}
 \end{equation}
-In this case the subscript denotes evaulation at that point. By applying the concept a second time for the second derivative:
+In this case the subscript denotes evaulation at that point. By applying the concept a second time for the second derivative one arrives at
 \begin{align}
   \left[\pdd{T}{x}\right]_{x=(i+1/2)a} &\sim \frac{1}{a}\left( \left[\pd{T}{x}\right]_{x=(i+1/2)a}-\left[\pd{T}{x}\right]_{x=(i-1/2)a} \right) \\
-  &\sim \frac{1}{a^2}\left(T_{i+1}-2T_{i}+T_{i-1}\right)
+  &\sim \frac{1}{a^2}\left(T_{i+1}-2T_{i}+T_{i-1}\right)\ .
   \label{ApproximateSecondDerivative}
 \end{align}
-Following Nicoli\'c \cite{Nikolic2010} the bras $\bra{}$ and kets $\ket{}$ denote localized states at the lattice-points. The finite difference aproximation is  expressend in the second quantization formalism with a point $(i,j) = \v{m}$ as:
+Following Nicoli\'c \cite{Nikolic2010} the bras $\bra{}$ and kets $\ket{}$ denote localized states at the lattice-points. The finite-difference aproximation is  expressend in the second quantization formalism with a point $(i,j) = \v{m}$ as
 \begin{align}
 	\bra{m} \pd{}{x} \ket{n} &= \frac{\braket{m+1}{n}-\braket{m-1}{n}}{2a}\\ 
 				&= \frac{\delta_{n,m+1}-\delta_{n,m-1}}{2a}
@@ -50,61 +48,57 @@ Following Nicoli\'c \cite{Nikolic2010} the bras $\bra{}$ and kets $\ket{}$ denot
 and
 \begin{align}
 	\bra{m} \dd{}{x} \ket{n} &= \frac{\braket{m+1}{n}-2\braket{m}{n}+\braket{m-1}{n}}{a^2} \\
-				 &= \frac{\delta_{n,m+1}-2\delta_{n,m}+\delta_{n,m-1}}{a^2}
+				 &= \frac{\delta_{n,m+1}-2\delta_{n,m}+\delta_{n,m-1}}{a^2}.
 	\label{eqn:finitediffsecondderivative}
 \end{align}
-with the help of these relations any discrete one particle operators can be expressed in second quantization:
+With the help of these relations any discrete one-particle operators can be expressed in second quantization
 \begin{align}
-	\hat{A} = \sum_{m,n} \bra{m}\hat{A}\ket{n} \hat{c}^+_m \hat{c}_n
+	\hat{A} = \sum_{m,n} \bra{m}\hat{A}\ket{n} \hat{c}^{\dagger}_m \hat{c}_n.
  \label{eqn:singleparticleopinsecondquantization}
 \end{align}
-
-with $\hat{c}^+_m \hat{c}_n $ being creation and annihilation operators in chosen localized basis.
-taking \ref{eqn:finitedifffirstderivative}, \ref{eqn:finitediffsecondderivative} and \ref{eqn:singleparticleopinsecondquantization} one arrives at the tight-binding version of the \hamil{} :
+with $\hat{c}^{\dagger}_m \hat{c}_n $ being creation and annihilation operators in chosen localized basis.
+taking \ref{eqn:finitedifffirstderivative}, \ref{eqn:finitediffsecondderivative} and \ref{eqn:singleparticleopinsecondquantization} one arrives at the tight-binding version of the \hamil{}:
 \begin{align}
 	\hat{H} = \sum_{\v{m},\sigma} \epsilon_{\v{m}} \hat{c}^+_{\v{m}\sigma} \hat{c}_{\v{m},\sigma} +
 	\sum_{\v{m},\v{m'},\sigma} t_{\v{m},\v{m'}} \hat{c}^+_{\v{m}\sigma} \hat{c}_{\v{m'},\sigma}
 	\label{eqn:discretizedeffectivemassHamil}
 \end{align}
 The $\epsilon$ account for any localized potential in the from of $U(x,y)$ like lateral confinement or atomic disorder.
-The spin independend hopping parameter $t_{\v{m}\v{m'}}$ is with $t_0 = \hbar^2/2m^*a^2$  given as:
+The spin independend hopping parameter $t_{\v{m}\v{m'}}$ is given as
 \begin{align}
-t_{\v{m}\v{m'}} = \left\{ \begin{array}[c]{cl} -t_0 & \text{if } \v{m} = \v{m} \pm a \cdot \v{e}_{x,y} \\ 0 & \text{else} \end{array} \right.
+t_{\v{m}\v{m'}} = \left\{ \begin{array}[c]{cl} -t_0 & \text{if } \v{m} = \v{m} \pm a \cdot \v{e}_{x,y} \\ 0 & \text{else} \end{array} \right.\ .
 	\label{eqn:t0hopping}
 \end{align}
-
-if extended to include spin-orbit interactions one finds the discretized \rash{} \hamil{} as:
+With $t_0 = \hbar^2/2m^*a^2$. If extended to include spin-orbit interactions one finds the discretized \rash{} \hamil{} as
 \begin{align}
-	\hat{H} = \sum_{\v{m},\sigma} \epsilon_{\v{m}} \hat{c}^+_{\v{m}\sigma} \hat{c}_{\v{m},\sigma} +
-	\sum_{\v{m},\v{m'},\sigma}  \hat{c}^+_{\v{m}\sigma} \mat{t}_{\v{m},\v{m'},\sigma,\sigma '} \hat{c}_{\v{m'},\sigma}
+	\hat{H} = \sum_{\v{m},\sigma} \epsilon_{\v{m}} \hat{c}^{\dagger}_{\v{m}\sigma} \hat{c}_{\v{m},\sigma} +
+	\sum_{\v{m},\v{m'},\sigma}  \hat{c}^{\dagger}_{\v{m}\sigma} \mat{t}_{\v{m},\v{m'},\sigma,\sigma '} \hat{c}_{\v{m'},\sigma}\ .
 	\label{eqn:discretizedrashbahamil}
 \end{align}
-
 Now the hopping parameter $\mat{t}_{\v{m},\v{m'},\sigma,\sigma '}$ is a non-trivial $2 \times 2$ matrix with distinct coefficients depending on hopping direction:
 \begin{align}
 	\mat{t}_{\v{m}\v{m'},\sigma,\sigma '} = \left\{ \begin{array}[c]{cl} -t_0\mat{1}_S - i t_{SO} \mat{\sigma}_y & \text{if } \v{m} = \v{m} \pm a \v{e}_{x} \\
-		-t_0\mat{1}_S + i t_{SO} \mat{\sigma}_x & \text{if } \v{m} = \v{m} \pm a \v{e}_{y} \end{array} \right.
+		-t_0\mat{1}_S + i t_{SO} \mat{\sigma}_x & \text{if } \v{m} = \v{m} \pm a \v{e}_{y} \end{array} \right. 
 	\label{eqn:tsohopping}
 \end{align}
-This means that in the matrix representation each element of the spin-less Hamiltonian becomes a $2 \times 2$ matrix of itself increasing the number of matrix-elements four-fold.
+This means that in the matrix representation each element of the spin-less \hamil{} becomes a $2 \times 2$ matrix of itself increasing the number of matrix-elements four-fold.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.5\textwidth]{images/blocktridiagonal}
 \caption{Block tridiagonal (Sample picture)}
 \label{fig:blocktridiagonal}
 \end{figure}
-The on-site energies $\epsilon_{\v{m}}$ in this Hamiltonian are
+The on-site energies $\epsilon_{\v{m}}$ in this \hamil{} are
 \begin{equation}
-\epsilon_{\v{m}} = 4t_0 + U_{\v{m}} 
+\epsilon_{\v{m}} = 4t_0 + U_{\v{m}}\ .
 \end{equation}
 Because of the shift of $4 t_0$ the dispersion relation for free ($V_{\v{m}}=0$) electrons in an infinite empty lattice now is:
 \begin{equation}
 \epsilon = 4t_0(1-cos(\abs{\v{k}}a))
 \end{equation}
-It can be shown that the tight-binding model is a good approximation if the lattice spacing is below the \textsc{Fermi}-wavelength:
+It can be shown that the tight-binding model is a good approximation if the lattice spacing is below the \textsc{Fermi}-wavelength
 \begin{equation}
-\abs{\v{k}}a \ll  2\pi \Leftrightarrow a \ll \lambda_F = \frac{2\pi}{\abs{\v{k}}}
+\abs{\v{k}}a \ll  2\pi \Leftrightarrow a \ll \lambda_F = \frac{2\pi}{\abs{\v{k}}} \ .
 \end{equation}
-In this regime the dispersion relation is approximately parabolic as in the continuum case.\cite{Metalidis2007Thesis}
-
-For simple systems with colinear leads the matrix representaion in the given approximation of the \hamil{} takes on a natural block tri-diagonal form. Each block on the main diagonal belongs to a set of lattice-points called a layer. All interactions within the layer correspond to matrix elements within the block. Interactions across layers are found in blocks on the first off-diagonal\cite{AnLunNik2008}.
+In this regime the dispersion relation is approximately parabolic as in the continuum case \cite{Metalidis2007Thesis}.
+For simple systems with colinear leads the matrix representaion in the given approximation of the \hamil{} takes a natural block tridiagonal form. Each block on the main diagonal belongs to a set of lattice points called a layer. All interactions within the layer correspond to matrix elements within the block. Interactions across layers are found in blocks on the first off-diagonal \cite{AnLunNik2008}.

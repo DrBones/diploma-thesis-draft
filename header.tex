@@ -31,9 +31,9 @@
 \usepackage{setspace} %Zeilenabstand
 \usepackage[pagestyles,raggedright]{titlesec}
 \usepackage{float}
-#--------------------------------------
-# Loosen latex float to text ratio and other float related things. Explanation
-on pages 199–200, section C.9 of the LaTeX manual.
+%--------------------------------------
+% Loosen latex float to text ratio and other float related things. Explanation
+%on pages 199–200, section C.9 of the LaTeX manual.
 \renewcommand{\topfraction}{.85}
 \renewcommand{\bottomfraction}{.7}
 \renewcommand{\textfraction}{.15}
@@ -44,7 +44,7 @@ on pages 199–200, section C.9 of the LaTeX manual.
 \setcounter{bottomnumber}{9}
 \setcounter{totalnumber}{20}
 \setcounter{dbltopnumber}{9}
-#----------------------------------------
+%----------------------------------------
 % %define custom float
 % \floatstyle{plain}
 % \newfloat{algo}{thp}{lop}[chapter]
@@ -92,9 +92,11 @@ on pages 199–200, section C.9 of the LaTeX manual.
 %\usepackage{ifthen}
 %\usepackage[dvips]{graphicx}
 %\usepackage[small,bf]{caption}
-\usepackage{subfig} 		%enabled the use of subfloats within a float
+\usepackage[margin=10pt]{subfig} 		%enabled the use of subfloats within a float
 \usepackage[capitalize]{cleveref}
-% \crefname{equation}{Eqn.}{Eqn}
+\crefname{table}{Tab.}{Tab}
+\crefname{section}{Sec.}{Sec}
+\crefname{algo}{Alg.}{Alg}
 \crefformat{equation}{Eqn.~#2#1#3}
 %\usepackage{textcomp}
 %\usepackage{pstricks}

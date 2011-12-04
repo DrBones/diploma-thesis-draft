@@ -1,25 +1,25 @@
-The application of the RGA requires the \hamil{} to be in a specific block tri-diagonal layout. Layered systems lead naturally to a block tri-diagonal \hamil{} but a further requirement of the RGA limits the choice of geometry for such systems. The RGA is in its construction highly serial. For the computation of each \gfnc{} it traverses the blocks of the $A$-Matrix first from start to end and then vice versa. It can not take any detours or traverse each element only once per path. In other words it needs a beginning and end. Because of this restriction given a device pictured in \ref{fig:noncolinear} once the angled output has been reached one would have to assign all the remaining lattice-points to a large last layer what would result in a very large block. As can be seen in the previous chaper (\ref{sec:rgacomplexity}) large blocks in the \hamil{} are prohibitively expensive and would effectively render the algorithm useless.
+The application of the RGA requires the \hamil{} to be in a specific block tridiagonal layout. Layered systems naturally lead to a block tridiagonal \hamil{} but a further requirement of the RGA limits the choice of geometry for such systems. The RGA is highly serial in its construction. For the computation of each \gfnc{} it traverses the blocks of the $A$-Matrix first from start to end and then vice versa. It can not take any detours or traverse each element more than once per path. In other words it needs a beginning and an end. Because of this restriction, given a device similar to \ref{fig:noncolinear} one has thus to assign all remainging nodes to a large last layer one the angled output has been reached. This results in a very large last block. As can be seen in \cref{sec:rgacomplexity} large blocks in the \hamil{} are prohibitively expensive and would effectively render the algorithm useless.
 \begin{figure}[!ht]
 \missingfigure{non-colinear device}
 \caption{Non-colinear device}
 \label{fig:noncolinear}
 \end{figure}
-In essence one needs a \hamil{} with a particular block tri-diagonal structure that has a small bandwidth \todo{define bandwidth?} i.e small blocks. This can in principle be achieved by a process called matrix reordering. Because the diagonal elements represent the on-site energy the reordering should only exchange one diagonal element with another. In order to do so, the same permutation is applied to the rows and column. These \emph{symmetric permutations} can be realised by a permutation martix $P$ as follows\,\cite{saad2003iterative}:
+In essence one needs a \hamil{} with a particular block tri-diagonal structure that has a small bandwidth \todo{define bandwidth?} i.e small blocks. This can in principle be achieved by a process called matrix reordering. Because the diagonal elements represent the on-site energy the reordering should only exchange one diagonal element with another. In order to do so, the same permutation is applied to the rows and columns. These \emph{symmetric permutations} can be realised by a permutation martix $P$ as follows\,\cite{saad2003iterative}:
 \begin{align}
 \mat{H}' = \mat{P} \mat{H} \mat{P}^{T}
 \label{eqn:permutation}
 \end{align}
 In order to find such a permutation matrix enabling the use of the RGA one needs an algorithm adhering to the requirements of the RGA.
-A potent formulation of matrix reordering can be achieved in the form of graph theory. Recognizing the fact that the tight-binding \hamil{} and therefore the matrix $A$ to invert is sparse as well as Hermitian one can use a natural one-to-one correspondence beween sparse matrices an graphs.
+A potent formulation of matrix reordering can be achieved in the form of graph theory. The tight-binding \hamil{} and therefore the matrix $A$ to invert is sparse as well as Hermitian. Thus one can use a natural one-to-one correspondence between sparse matrices an graphs.
 \subsection{Graph Representation}
-A graph is a way to represent binary relations between objects of a set. While many notions of graphs of different generality exist a common definition that suites the problem at hand is as follows.
+A graph is a way to represent binary relations between objects of a set. While many notions of graphs of different generality exist, a common definition that suites the problem at hand is as follows.
 \begin{dfn}
 A \emph{graph} \textpzc{G} consists of an ordered pair $\mathpzc{G} :=(\mathpzc{N},\mathpzc{E})$, where \textpzc{N} is a non-empty set of \emph{nodes} \textpzc{n} and \textpzc{E} a set of ordered pairs of nodes $(\mathpzc{n}_1,\mathpzc{n}_2) \in \mathpzc{N} \times \mathpzc{N}$ called \emph{edges}.
 A graph is called \emph{directed} if the edges observe a direction of incidence  and it is called \emph{undirected} if for any two $(\mathpzc{n}_1,\mathpzc{n}_2) \in \mathpzc{E}$ also $(\mathpzc{n}_2,\mathpzc{n}_1) \in \mathpzc{E}$.
-Two nodes $\mathpzc{n}_i$ and $\mathpzc{n}_j$ are \emph{adjacent} if $(\mathpzc{n}_i,\mathpzc{n}_j) \in \mathpzc{E}$.\,\cite{graham1995handbook}
+Two nodes $\mathpzc{n}_i$ and $\mathpzc{n}_j$ are \emph{adjacent} if $(\mathpzc{n}_i,\mathpzc{n}_j) \in \mathpzc{E}$. \cite{graham1995handbook}
 \end{dfn}
-The \emph{adjacency graph} of a sparse $n \times n$ matrix $\mat{A}$ is a graph $\mathpzc{G}$ whose $n$ nodes represent the $n$ unknowns of the equation system the matrix is based on and the edges represent the dependence on the unknowns. For each non-zero matrix entry $\mat{A}_{i,j}\neq 0$ there exists an edge $(\mathpzc{i},\mathpzc{j}) \in \mathpzc{E}$. The matrix corresponding to a undirected graph is the \emph{adjacency matrix}. Because the \hamil{} is often Hermitian the non-zero matrix elements are usually symmetric. Therefore an undirected adjacency graph represents the matrix \emph{structure}. It is important to note that by default the graph does not hold any information about the value of the matrix elements only their relation. However it is a simple matter of storing the values of the matrix elements as a \emph{weight} of the edges.\par
-A graph may be pictured as a collection of circles as nodes and connecting lines representing the edges. Incidentally for tight-binding models each circle corresponds to a site and the lines depict the hopping options. If the graph is weighted the thickness of a line may represent the hopping \emph{possibility}. An example for a small number of grid points can be seen in fig. (\ref{fig:matrixtograph}).
+The \emph{adjacency graph} of a sparse $n \times n$ matrix $\mat{A}$ is a graph $\mathpzc{G}$ whose $n$ nodes represent the $n$ unknowns of the equation system the matrix is based on and the edges represent the dependence on the unknowns. For each non-zero matrix entry $\mat{A}_{i,j}\neq 0$ there exists an edge $(\mathpzc{i},\mathpzc{j}) \in \mathpzc{E}$. The matrix corresponding to an undirected graph is the \emph{adjacency matrix}. Because the \hamil{} is often Hermitian, the non-zero matrix elements are usually symmetric. Hence an undirected adjacency graph represents the matrix \emph{structure}. It is important to note that by default the graph does not hold any information about the value of the matrix elements but only their relation. However it is a simple matter of storing the values of the matrix elements as a \emph{weight} of the edges.\par
+A graph may be pictured as a collection of circles as nodes and connecting lines representing the edges. Incidentally for tight-binding models each circle corresponds to a site and the lines depict the hopping options. If the graph is weighted the thickness of a line may represent the hopping \emph{possibility}. An example for a small number of grid points can be seen in \cref{fig:matrixtograph}.
 \begin{figure}[!h]
 \centering
 \subfloat[Discretized device]{\label{fig:discretizeddevice}\includegraphics[scale=10]{images/7x6l_leads}} \quad\quad
@@ -28,10 +28,9 @@ A graph may be pictured as a collection of circles as nodes and connecting lines
 \caption{\hamil{} matrix and adjacency graph of a small grid}
 \label{fig:matrixtograph}
 \end{figure}
-\subsection{Matrix Reordering as a Graph Partitioning problem}
-The process of matrix reordering with symmetric permutations corresponds to renaming the names of the nodes of a graph without altering the edges. In order to find the permutation matrix $P$ one has sort the nodes of the graph.\par
-There exist numerous algorithms that can reduce the bandwidth of the adjacency matrix like the well known reverse \textsc{Cuthill-McKee} algorithm but the application of the RGA imposes an additional constraint. It requires that the last block of the matrix (the end-nodes of the graph) has to be the endpoint of the walk of the algorithm i.e the sites adjacent to a contact have to be in the upper-left and lower right corners of the matrix. That means the nodes representing these sites may not be renamed.\par
-In other words one seeks a \emph{partition} of the graph that yields a so called \emph{level-structure} \cite{gibbs.Siam.13.236}.
+\subsection{Matrix Reordering as a Graph Partitioning Problem}
+The process of matrix reordering with symmetric permutations corresponds to renaming of the nodes of a graph without altering the edges. In order to find the permutation matrix $P$ one has to sort the nodes of the graph.\par
+There exist numerous algorithms that can reduce the bandwidth of the adjacency matrix like the well known reverse \textsc{Cuthill-McKee} algorithm but the application of the RGA imposes an additional constraint. It requires that the last block of the matrix (the end-nodes of the graph) has to be the endpoint of the walk of the algorithm i.e the sites adjacent to a contact have to be in the upper-left and lower-right corners of the matrix. That means the nodes representing these sites may not be renamed. In other words one seeks a \emph{partition} of the graph that yields a so called \emph{level-structure} \cite{gibbs.Siam.13.236}.
 \begin{dfn}
 A level-structure $\mathpzc{L}(\mathpzc{G}) = (\mathpzc{l}_0,\mathpzc{l}_1,\mathpzc{l}_2,\dotsc,\mathpzc{l}_N)$, of a graph \textpzc{G} is a partition of the set of nodes \textpzc{V} into $N$ \emph{levels} $\mathpzc{l}_i$ such that
 \begin{enumerate}
@@ -40,14 +39,10 @@ A level-structure $\mathpzc{L}(\mathpzc{G}) = (\mathpzc{l}_0,\mathpzc{l}_1,\math
 \item for $1 < i < N$, all nodes adjacent to nodes in level $\mathpzc{l}_{i}$ are either in level $\mathpzc{l}_{i-1}$, $\mathpzc{l}_{i}$ or $\mathpzc{l}_{i+1}$
 \end{enumerate}
 \end{dfn}
-For a simple colinear geometry a level this is usually identical to a slice for more complex geometries a level and a slice may differ greatly.\par
-A possible choice to fulfill these requirements is the \textsc{Gibbs-Poole-Stockmeyer} (GPS) algorithm \cite{gibbs.Siam.13.236}.\par
-Two conditions are of crucial importance for the reordering in order to achieve high RGA performance.\par
-As the complexity of the RGA is of order $\mathcal{O}(N^3)$(\ref{sec:rgacomplexity}) one has to avoid large blocks. In addition one seeks a balanced level-structure that is all the levels ideally have the same number of nodes.
+For a simple colinear geometry a level is usually identical to a slice. For more complex geometries a level and a slice may differ greatly. A possible choice to fulfill these requirements is the \textsc{Gibbs-Poole-Stockmeyer} (GPS) algorithm \cite{gibbs.Siam.13.236}. Two conditions are of crucial importance for the reordering in order to achieve high RGA performance. As the complexity of the RGA is of order $\mathcal{O}(N^3)$(\cref{sec:rgacomplexity}) one has to avoid large blocks. In addition one seeks a balanced level-structure that is all the levels ideally have the same number of nodes.
 An algorithm tailored to the demands of high RGA performance has been introduced by \textsc{Wimmer}. As it outperforms the GPS algorithm and offers greater versatility \cite{Wimmer2009JComPhys} it is applied to the adjacency graph of the \hamil{} prior to the execution of the RGA.
 \subsection{RGA Tailored Block-Tridiagonalization Algorithm}\todo[noline]{better or no section title}
-The process of graph partitioning is known to be NP-Complete \cite{GareyTCS.1.237} therefore one cannot compute the optimal level-structure from first principles but has to employ heuristics.\par
-The algorithm used by \textsc{Wimmer} incorporates a global and a local approach. To find the maximum number of levels for a given geometry a \emph{Breadth-First-Search} (BFS) as described in algorithm \ref{alg:bfs} is performed as it yields a level-structure by construction.
+The process of graph partitioning is known to be NP-Complete \cite{GareyTCS.1.237}. Hence one cannot compute the optimal level-structure from first principles but has to employ heuristics. The algorithm used by \textsc{Wimmer} incorporates a global and a local approach. To find the maximum number of levels for a given geometry a \emph{Breadth-First-Search} (BFS) as described in \cref{alg:bfs} is performed as it yields a level-structure by construction as well as the maximum number of levels $N_0$.
 \begin{algo} \label{alg:bfs}
 \textit{Breadth-First-Search Algorithm}\\
 \begin{tabularx}{\textwidth}{l}
@@ -71,8 +66,8 @@ With the maximum number of levels $N_i$ in $\mathpzc{l}_i$ known the graph is cu
 \abs{\mathpzc{l}_{i_1}} \approx \frac{N_{i_1}}{N_i}\abs{\mathpzc{l}_{i_1}} \qquad\text{and}\qquad \abs{\mathpzc{l}_{i_2}} \approx \frac{N_{i_2}}{N_i}\abs{\mathpzc{l}_{i_1}}
 \end{align}
 With $\abs{\mathpzc{l}_i}$ denoting the number of nodes in that level.  All the nodes in each of those sections are distributed into levels by a BFS and optional further optimization starting from both ends where the graph has been cut. This section is in turn cut into ideally equal number of levels and the process is recursively repeated until only one level remains. The ordered collection of these final levels of all recursive paths constitutes the sought level-structure.\par
-If the nodes have been named from 1 to $k$ with $k$ being the size of the square \hamil{} the matrix reordering is achieved by simply rearranging the rows and columns symmetrically according to the sequence of the nodes in the level-structure. The order of the sequence of nodes within one level is of minor importance. 
-A modification of this algorithm minus detailed optimizations as used in this work is presented in algorithm \ref{alg:wimmeralgorithm}.\par
+If the nodes have been named from 1 to $k$ with $k$ being the size of the square \hamil{} the matrix reordering is achieved by simply rearranging the rows and columns symmetrically according to the sequence of the nodes in the level-structure. The ordering of the nodes within one level is of minor importance. 
+A modification of this algorithm omitting detailed optimizations as used in this work is presented in algorithm \ref{alg:wimmeralgorithm}.\par
 % \noindent\begin{minipage}{\textwidth}
 \begin{algo}\label{alg:wimmeralgorithm} 
 \textit{Block-Tridiagonalization Algorithm}\\
@@ -88,7 +83,7 @@ A modification of this algorithm minus detailed optimizations as used in this wo
    \item  \textbf{Stop}, if $N_i$ = 1.\label{alg:wimmeralgorithm3a}
    \item Do a BFS starting from level $\mathpzc{l}_l$ up to level $N_{i_1} = \text{Floor}(N_i/2)$ and a BFS starting from level $\mathpzc{l}_r$ up to level $N_{i_2}= N_i - \text{Floor}(N_i/2)$. The nodes found are assigned to $\mathpzc{l}_{i_1}$ and $\mathpzc{l}_{i_2}$ respectively and marked as visited.
    \item Distribute remaining nodes in level. Continue BFSs from previous step from both sides and assign nodes according to the balance criterion (\ref{eqn:balancecriterion}).
-   \item Recursively apply step (\ref{alg:wimmeralgorithm3}) for levels $\mathpzc{l}_{i_1}$ and$\mathpzc{l}_{i_2}$ until in (\ref{alg:wimmeralgorithm3a}) final level is reached.
+   \item Recursively apply step (\ref{alg:wimmeralgorithm3}) for levels $\mathpzc{l}_{i_1}$ and $\mathpzc{l}_{i_2}$ until in (\ref{alg:wimmeralgorithm3a}) final level is reached.
    \end{enumerate}
    \item Collect all levels from (\ref{alg:wimmeralgorithm3}) into level-structure \textpzc{L} and reorder matrix rows and columns according to the sequence of nodes found  in \textpzc{L}
    \end{enumerate}
