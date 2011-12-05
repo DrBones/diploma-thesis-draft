@@ -1,0 +1,108 @@
+\label{sec:rgapresentation}
+One such technique is the \emph{Recursive-\gfnc-Algorithm} (RGA) \cite{MacKinnon1985} extended to compute $G^<$ by \textsc{Svizhenko} et al. \cite{JApplPhys.91.2343}.
+The application of a scheme like the RGA is based on the possibility that the \hamil{} can be written in a block tri-diagonal from which arises naturally for a simple layered structure as can be seen in the chapter \ref{sec:naruralordering}.
+This form however can be be achieved for any system in the tight-binding approximation \cite{Wimmer2009Thesis}.\par
+\todo{Complexity and implementation in Appendix \ref{app:RGA}, see Wimmer page 189}Exploiting the observation that common quantum mechanical observables of interest only depend on certain elements of the \gfnc-matrix, as in \cref{eqn:ldos} for example. The RGA seeks to compute those elements with as little overhead as possible. While still some superfluous elements are computed the complexity is greatly reduced. A derivation of the RGA can by achieved by using the \textsc{Dyson}'s equation for the retarded \gfnc{}, for example:
+\begin{align}
+	\mat{G} = \mat{G}_0+\mat{G}_0\mat{U}\mat{G}\ .
+	\label{eqn:DysonEquationG}
+\end{align}
+This ansatz allows the calculation of the \gfnc{} by separating the system in question into isolated sections. The \gfnc{} for each section is easily attained. By treating the neighbouring layers in a pertubational manner via the coupling matrix $U$ a set of equations is found which allows the recursive calculation of connected blocks of the \gfnc{} matrix. A detailed derivation can be found in Appendix \ref{app:RGA}.\par
+For the observables of interest, namely conduction, spin and electron densities the retarded and lesser \gfnc{} have to be computed.
+It is advisable to use a specialized algorithm to compute the lesser \gfnc{} instead of the direct approach via the \textsc{Keldysh} equation, \cref{eqn:keldyshequation}. Because the computation of the lesser \gfnc{} is based on a prior computation of the retarded \gfnc{} the results of the former can be saved to avoid redundancies.\par
+With equation (\ref{eqn:finitegreensfunctionwithselfenergy}) rewritten for brevity as
+\begin{align}
+(E\mat{1}-\mat{H})\mat{G} = \mat{A}\mat{G}^r=\mat{I}\ .
+\label{eqn:amatrix}
+\end{align}
+Following \textsc{Svizhenko} et. al. the central object in the recursive scheme to compute the retarded \gfnc{} is the left-connected \gfnc{} $\mat{G}^{r,i-1}$ containing all the blocks/slices with index up to $i-1$. Using the \textsc{Dyson} equation a link to $\mat{G}^{r,i}$ is established allowing the recursive evaluation of all blocks.\par
+Let $\mat{G}=\mat{G}^{r,i-1}$ be the \gfnc{} for the connected system including index $i-1$ (\cref{fig:rga1}) then $\mat{G}_0$ corresponds to the \gfnc{} for the system up to index $i-1$ plus the \emph{isolated} block $i$ (\cref{fig:rga2}).  This system is described by following altered \hamil{} $\mat{A}$
+\begin{align}
+\mat{A} = 
+\begin{pmatrix}
+\ddots 	& \vdots 	   & 		   & \\
+\dots   & \mat{A}_{i-2,i-2}&\mat{A}_{i-2,i-1}& \\
+     	& \mat{A}_{i-1,i-2}  &\mat{A}_{i-1,i-1}  & \mat{0} \\ 
+	&  		   & \mat{0} 	   & \mat{A}_{i,i}
+\end{pmatrix}\ .
+\end{align}
+The isolated block is attached to the rest of the system via the \emph{hopping matrices} (\cref{fig:rga3})
+\begin{align}
+\mat{U} = 
+\begin{pmatrix}
+\mat{0}& -\mat{A}_{i-1,i}\\
+-\mat{A}_{i,i-1}&\mat{0}
+\end{pmatrix}
+\end{align}
+If inserted into equation (\ref{eqn:DysonEquationG}) the recursive relation between block $i$ and $i+1$ is found to be
+\begin{align}
+\mat{G}^{r,i}_{i,i} := \left[\mat{A}_{i,i}-\mat{A}_{i,i-1}\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i}\right]^{-1}\ .
+\label{eqn:rga}
+\end{align}
+With similar calculations the relations between other parts of the \gfnc{} can be found enabling the computation of arbitrary matrix blocks:
+\begin{align}
+\mat{G}^r_{i,i-1} &= -\mat{G}^r_{i,i}\mat{A}_{i,i-1}\mat{G}^{r,i-1}_{i-1,i-1}\\
+\mat{G}^r_{i-1,i} &= -\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i} \mat{G}^{r}_{i,i}\\
+\mat{G}^r_{i-1,i-1} &= \mat{G}^{r,i}_{i-1,i-1}-\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i}\mat{G}^{r}_{i,i-1}\ .
+\end{align}
+It is important to note that not all matrix elements can be calculated during one pass of the algorithm. The pseudocode in alg. (\ref{alg:retardedrga}) illustrates the process. After calculation of the first left-connected \gfnc{} at the starting lead $i=0$ eqn. (\ref{eqn:rga} is used successively until the other lead at index $i=N$ is reached. The $N$th element is already identical to the $N$th element of the retarded \gfnc{} but influence of this lead needs to be propagated to all prior slices. This is done in a \emph{backward pass} during which all desired blocks can be computed.\par
+\begin{figure}
+\subfloat[First picture]{\label{fig:rga1}\includegraphics[width=0.33\textwidth]{images/rga1.pdf}}
+\subfloat[Second picture]{\label{fig:rga2}\includegraphics[width=0.33\textwidth]{images/rga2.pdf}}
+\subfloat[Third picture]{\label{fig:rga3}\includegraphics[width=0.33\textwidth]{images/rga3.pdf}}
+\caption{Schematic how the RGA works}
+\label{fig:rgaschematic}
+\end{figure}
+\noindent\begin{minipage}{\textwidth}
+\begin{algo}\label{alg:retardedrga}
+\textit{Recursive Algorithm for $\mat{G}^r$}\\
+\begin{tabularx}{\textwidth}{l X l}
+\addlinespace \cmidrule(r{1.2cm}){1-1}\addlinespace
+  $\mat{G}^{r,0}_{0,0} := \mat{A}_{0,0}^{-1}$&& $\blacktriangleright$ initialize first element\\\addlinespace[12pt]
+  \textbf{for} $i = 1:N-1$ \textbf{do} && \multirow{3}{45mm}{$\blacktriangleright$ recursively compute\\\hspace{10pt} left-connected\\\hspace{10pt} \gfnc{}}\\
+  \qquad$\mat{G}^{r,i}_{i,i} := \left[\mat{A}_{i,i}-\mat{A}_{i,i-1}\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i}\right]^{-1}$&& \\
+  \textbf{end for} 			&& \\\addlinespace[12pt]
+  $\mat{G}^r_{N,N} := \mat{G}^{r,N}_{N,N}$   	&&$\blacktriangleright N$-th element found\\ \addlinespace[12pt]
+  \textbf{for} $i = N-1:1$ \textbf{do}&&$\blacktriangleright$ backward pass\\
+  \qquad$\mat{G}^r_{i,i-1} := -\mat{G}^r_{i,i}\mat{A}_{i,i-1}\mat{G}^{r,i-1}_{i-1,i-1}$  \tikz \node[coordinate,yshift=1em,xshift=11.3em] (n1) {}; && \multirow{2}{45mm}{\hspace{10pt} off-diagonal elements}\\ \addlinespace
+  \qquad$\mat{G}^r_{i-1,i} := -\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i} \mat{G}^{r}_{i,i}$ \tikz \node[coordinate,xshift=11.3em] (n2) {}; && \\ \addlinespace
+  \qquad$\mat{G}^r_{i-1,i-1} := \mat{G}^{r,i}_{i-1,i-1}-\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i}\mat{G}^{r}_{i,i-1}$   & &$\blacktriangleright$ diagonal elements \\ 
+  \textbf{end for}&& \\\addlinespace \bottomrule 
+\end{tabularx}
+\end{algo}
+\begin{tikzpicture}[overlay]
+      \path (n2) -| node[coordinate] (n3) {} (n1);
+      \draw[line width=1.5pt,decorate,decoration={brace,amplitude=5pt}]
+            (n1) -- (n3) node[midway, right=4pt] {};
+\end{tikzpicture}
+\end{minipage}
+The recursive computation of the lesser \gfnc{} follows the same concept starting from the \textsc{Keldysh} equation (\ref{eqn:keldyshequation}) for non-interacting systems rewritten as:
+\begin{align}
+\mat{G}^<_{i,j} = \mat{G}^r_{i,0}\mat{\Sigma}^<_L(\mat{G}^r_{j,0})^++\mat{G}^r_{i,N+1}\mat{\Sigma}^<_R(\mat{G}^r_{j,N+1})^+
+\end{align}
+Here $\Sigma^<_L$ and $\Sigma^<_R$ denote the self-energy term  for the left and right lead. Hence for the computation of the lesser \gfnc{} it is sufficient to compute diagonal and one off-diagonal of the retarded \gfnc{} $\mat{G}^r$.\par
+The recursive algorithm to compute the lesser \gfnc{} is the more costly one as it requires the prior computation of the retarded \gfnc{}. However it is still more efficient than direct evaluation via equation \ref{eqn:keldyshequation}. The process is illustrated in algorithm \ref{alg:lesserrga} as it also requires a forward and a backward pass.\par
+\noindent\begin{minipage}{\textwidth}
+\begin{algo}\label{alg:lesserrga} 
+\textit{Recursive Algorithm for $\mat{G}^<$}\\
+\begin{tabularx}{\textwidth}{l l}
+\addlinespace\cmidrule(r{3.5cm}){1-1}\addlinespace
+ $\mat{G}^{<,0}_{0,0} := \mat{G}^{r,0}_{0,0}\mat{\Sigma}^<_{0,0} \mat{G}^{a,0}_{0,0}$& $\blacktriangleright$ initialize first element\\\addlinespace[12pt]
+ \textbf{for} $i = 1:N-1$ \textbf{do} & \multirow{3}{45mm}{$\blacktriangleright$ recursively compute\\\hspace{10pt} left-connected\\\hspace{10pt} \textsc{Green}'s function}\\
+ \qquad$\mat{G}^{<,i}_{i,i} := \mat{G}^{r,i}_{i,i}( \mat{\Sigma}^<_{i,i}+\mat{\sigma}^<_{i})\mat{G}^{a,i}_{i,i}$& \\
+ \textbf{end for} 				& \\\addlinespace[12pt]
+ $\mat{G}^<_{N,N} := \mat{G}^{<,N}_{N,N}$   	&$\blacktriangleright N$-th element found \\ \addlinespace[12pt]
+ \textbf{for} $i = N-1:1$ \textbf{do} 	  	&$\blacktriangleright$ backward pass\\
+ \qquad$\mat{G}^<_{i,i-1} := \mat{G}^r_{i,i}\mat{A}_{i,i-1}\mat{G}^{<,i-1}_{i-1,i-1} +\mat{G}^<_{i,i}\mat{A}^+_{i,i-1}\mat{G}^{a,i-1}_{i-1,i-1}$ &$\blacktriangleright$ off-diagonal elements\\ \addlinespace
+ \qquad$\mat{G}^<_{i-1,i-1} := \mat{G}^{<,i-1}_{i-1,i-1} +\mat{G}^{r,i-1}_{i-1,i-1}(\mat{A}_{i-1,i}\mat{G}^{<}_{i,i}\mat{A}^+_{i,i-1})\mat{G}^{a,i-1}_{i-1,i-1}$ &$\blacktriangleright$ diagonal elements \\ \addlinespace
+ \hspace{4.5cm}$ + \mat{G}^{<,i-1}_{i-1,i-1}\mat{A}^+_{i-1,i}\mat{G}^a_{i,i-1}$&\\\addlinespace
+ \hspace{4.5cm}$+\mat{G}^r_{i-1,i}\mat{A}_{i,i-1}\mat{G}^{<,i-1}_{i-1,i-1}$&\\ 
+ \textbf{end for}& \\\addlinespace \bottomrule 
+\end{tabularx}
+\end{algo}
+\end{minipage}
+\subsection{Computational Complexity of RGA}\label{sec:rgacomplexity}
+Within the presented algorithms, the most demanding operations are the matrix multiplication and inversion. Both operations scale $\mathcal{O}(N^3)$ with the size of the involved $N \times N$ matrices. As the algorithms carry out a constant number of operations per slice the overall RGA scales as $\mathcal{O}(N^3M)$ with $M$ being the number of blocks\,\cite{Li2009Thesis}.\par
+For an elongated device that is much longer in the $x$ than in the $y$ direction, the number of lattice points in that direction is larger than the other ($N_y \ll N_x$). On a simple square lattice this amounts to a running time order of $\mathcal{O}(N_y^3N_x)$  instead of the direct approach $\mathcal{O}(N_y^3N_x^3=\text{Number of lattice-points})$.\par
+However this is based on the selective computation of matrix blocks if all entries of $\mat{G}$ were required the computational cost would also be $\mathcal{O}(N_y^3N_x^3)$.
+\FloatBarrier
