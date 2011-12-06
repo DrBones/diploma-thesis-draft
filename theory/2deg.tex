@@ -12,7 +12,20 @@ The 2DEG forms in the interior of the heterostructure between two layers, see \c
 The bending of the conductance band below the \textsc{Fermi} energy of the combined heterostructure creates a very pronounced dip in the bandstructure resulting in a potential well where the electrons can move freely. The confinement perpendicular to the 2DEG however leads to quantized energy levels of motion in $z$ direction as can be seen in \cref{fig:potentialwell} (a) and (b) for three states with different cutoff energies i.e different band bottoms. The offset conduction bands can often be treated independently. Usually the lowest energy level comprises the 2DEG\cite{Datta1997}.
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.9\textwidth]{images/davies.png}
-\caption{Modes in $z$-confined potential well. (a) Eigenstate densities in a potential well for energy quantum number $n$ and cut-off energies $E_1$,$E_2$,$E3$ in dependence on the position. (b) Conductance bands in the potential well in k-space.}
+\subfloat[]{\label{fig:modesinzconf1}\begin{tikzpicture}\node at (0,0) [above]{\includegraphics[scale=0.55]{images/modesinzconf1}};
+\node at (0,-0.4){$z$};
+\node at (-2.5,0.5){$n=1$};
+\node at (-2.5,2.7){$n=2$};
+\node at (-2.5,5.2){$n=3$};
+\node at (-1.8,7.2){$E$};
+\end{tikzpicture}}
+\subfloat[]{\label{fig:modesinzconf2}\begin{tikzpicture}\node at (0,0) [above]{\includegraphics[scale=0.55]{images/modesinzconf2}};
+\node at (0,-0.4){$\v{k}$};
+\node at (0.7,2.2){$E_1(\v{k})$};
+\node at (0.7,4.4){$E_2(\v{k})$};
+\node at (0.7,6.9){$E_3(\v{k})$};
+\end{tikzpicture}}
+% \includegraphics[width=0.9\textwidth]{images/davies.png}
+\caption{Modes in $z$-confined potential well. (a) Eigenstate densities in a potential well for energy quantum number $n$ and cut-off energies $E_1$,$E_2$,$E_3$ in dependence on the position. (b) Conductance bands in the potential well in k-space.}
 \label{fig:potentialwell}
 \end{figure}

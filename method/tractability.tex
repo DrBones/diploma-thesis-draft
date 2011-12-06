@@ -2,8 +2,18 @@ Although a discrete representation of the \hamil{} is found the matrix inversion
 Simple truncation of the matrices under consideration would effectively describe a closed system. Via the concept of the self-energy however the influence of the leads may be accurately projected onto the device.
 The technique will be outlined following \textsc{Datta} for a system with only one contact as depicted in \cref{fig:selfenergy} but can be applied to an arbitray number of leads. \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.7]{images/selfenergy}
-\caption{Separation of conductor and lead. The dots denote lattice points. The white area represents the semi-infinite lead, the gray area denotes the conductor.}
+\begin{tikzpicture}
+\node at (0,0)[above] {\includegraphics[scale=0.7]{images/selfenergy}};
+\draw[style={latex-latex,line width=2pt}] (-4,1) node[right]{$y$} -- +(0,-1) node [below left]{$z$} -- +(1,-1) node[below]{$x$};
+\draw (-4,0) circle (4pt) [fill=black];
+% \draw[latex-latex,line width=1.5pt]  (0,0) to (2,0);
+\draw[latex-latex, line width=1.5pt] (-1,3.4) node (x) {}
+            +(1,0) node (y) {}
+            (node cs:name=x) .. controls +(-0.2,0.8) and +(0.2,0.8) ..
+            (node cs:name=y);
+\node at (-0.5,4.5) {$\tau$} ;
+\end{tikzpicture}
+\caption{Separation of conductor and lead. The dots denote lattice points. The white area represents the semi-infinite lead with the \hamil{} $\mat{H}_L$, the gray area denotes the conductor with the \hamil{} $\mat{H}_C$. The arrow indicates the coupling by the matrix $\mat{\tau}$}
 \label{fig:selfenergy}
 \end{figure}
 \subsection{The Self Energy}

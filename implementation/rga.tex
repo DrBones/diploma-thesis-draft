@@ -48,12 +48,27 @@ With analogous calculations the relations between diagonal and off-diagonal part
 \mat{G}^r_{i-1,i-1} &= \mat{G}^{r,i}_{i-1,i-1}-\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i}\mat{G}^{r}_{i,i-1}
 \end{align}
 can be found enabling the computation of all matrix blocks.\par
-It is important to note that not all matrix elements can be calculated during one pass of the algorithm. After calculation of the first left-connected \gfnc{} at the starting lead $i=0$ \cref{eqn:rga} is used successively until the other lead at index $i=N$ is reached. The $N$th element of the left connected \gfnc{} is already identical to the $N$th element of the full retarded \gfnc{}. The influence of the final lead needs to be propagated to all prior slices. This is done in a \emph{backward pass} during which all desired blocks can be computed,see \cref{alg:retardedrga}.\par
+It is important to note that not all matrix elements can be calculated during one pass of the algorithm. After calculation of the first left-connected \gfnc{} at the starting lead $i=0$ \cref{eqn:rga} is used successively until the other lead at index $i=N$ is reached. The $N$th element of the left connected \gfnc{} is already identical to the $N$th element of the full retarded \gfnc{}. The influence of the final lead needs to be propagated to all prior slices. This is done in a \emph{backward pass} during which all desired blocks can be computed, see \cref{alg:retardedrga}.\par
 \begin{figure}
-\subfloat[First picture]{\label{fig:rga1}\includegraphics[width=0.33\textwidth]{images/rga1.pdf}}
-\subfloat[Second picture]{\label{fig:rga2}\includegraphics[width=0.33\textwidth]{images/rga2.pdf}}
-\subfloat[Third picture]{\label{fig:rga3}\includegraphics[width=0.33\textwidth]{images/rga3.pdf}}
-\caption{Schematic of the recursive \gfnc{} algorithm. (a) Slices connected up to index i-1. (b) }
+\subfloat[]{\label{fig:rga1}\begin{tikzpicture}\node at (0,0)[above] {\includegraphics[width=0.28\textwidth]{images/rga1.pdf}};
+\node at (0,4) {$G^{r,i-1}$};
+\node at (0,-0.3) {$i-1$};
+\node at (-1.8,-0.3) {$i-3$};
+\end{tikzpicture}}
+\subfloat[]{\label{fig:rga2}\begin{tikzpicture}\node at (0,0)[above]{\includegraphics[width=0.28\textwidth]{images/rga2.pdf}};
+\node at (0,4) {$G_0$};
+\node at (0,-0.3) {$i-1$};
+\node at (1.8,-0.3) {$i$};
+\node at (-1.8,-0.3) {$i-3$};
+\node[font=\Large] at (1,1.8) {+};
+\end{tikzpicture}}
+\subfloat[]{\label{fig:rga3}\begin{tikzpicture}\node at (0,0)[above]{\includegraphics[width=0.28\textwidth]{images/rga3.pdf}};
+\node at (0,4) {$G^{r,i}$};
+\node at (0,-0.3) {$i-1$};
+\node at (1,-0.3) {$i$};
+\node at (-1.8,-0.3) {$i-3$};
+\end{tikzpicture}}
+\caption{Schematic of the recursive \gfnc{} algorithm. (a) Slices connected up to index i-1. (b) The \gfnc{} $\mat{G}_0$ of the blocks up to $i-1$ plus the isolated \gfnc{} at index $i$. (c) The isolated block is connected and the \gfnc{} $\mat{G}^{r,i}$ is obtained.}
 \label{fig:rgaschematic}
 \end{figure}
 \noindent\begin{minipage}{\textwidth}

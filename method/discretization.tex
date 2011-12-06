@@ -82,8 +82,24 @@ Now the hopping parameter $\mat{t}_{\v{m},\v{m'},\sigma,\sigma '}$ is a non-triv
 In the matrix representation each element of the spin-less \hamil{} becomes a $2 \times 2$ matrix of itself increasing the number of matrix-elements four-fold.
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.9\textwidth]{images/blocktridiagonal}
-\caption{Block tridiagonal matrix of the tight-binding \hamil{}, Hii is hamil of slice hi,i+1 ,hi+1,i hoppping matrices Hl,Vl,Hr,Vr denote the coupling matrices to the leads)}
+\begin{align*}
+\mat{H}=
+\renewcommand*{\arraystretch}{1.5}
+\begin{pmatrix} 
+\ddots& & & & & & & & & \\
+& \mat{H}_p& \mat{V}_p& & & && &&\\
+& \mat{V}^{\dagger}_p& \mat{H}_p& \mat{H}_{0,1}& &\ddots& & &\\
+& &\mat{H}_{1,0}&\mat{H}_{1,1} &\mat{H}_{1,2} & &0 & &\\
+& & &\mat{H}_{2,1} & &\ddots & &\ddots &\\
+& & & &\ddots &\mat{H}_{N-2,N-2} &\mat{H}_{N-2,N-1} & &\\
+& & \ddots& &\mat{H}_{N-1,N-2} &\mat{H}_{N-1,N-1} &\mat{H}_{N-1,N} &\\
+& & &0 & & &\mat{H}_{N,N-1} &\mat{H}_q &\mat{V}_q\\
+& & & &\ddots & & &\mat{V}^{\dagger}_q &\mat{H}_q\\
+& & & & & & && &\ddots
+\end{pmatrix}
+% \includegraphics[width=0.9\textwidth]{images/blocktridiagonal}
+\end{align*}
+\caption{Block tridiagonal matrix of the tight-binding \hamil{}, $\mat{H}_{i,i}$ denotes the \hamil{} of layer $i$ and $\mat{H}_{i,i+1},\mat{H}_{i+1,i}$the interaction between layers. The matrices $\mat{H}_p,\mat{V}_p,\mat{H}_q,\mat{V}_q$ denote the \hamil s and coupling matrices of leads $p$ and $q$ respectively.)}
 \label{fig:blocktridiagonal}
 \end{figure}
 The on-site energies $\epsilon_{\v{m}}$ in this \hamil{} are
@@ -99,4 +115,4 @@ The tight-binding model is a good approximation if the lattice spacing is below 
 \abs{\v{k}}a \ll  2\pi \Leftrightarrow a \ll \lambda_F = \frac{2\pi}{\abs{\v{k}}} \ .
 \end{equation}
 In this regime the dispersion relation is approximately parabolic as in the continuum case \cite{Metalidis2007Thesis}.
-For simple systems with colinear leads the matrix representaion in the given approximation of the \hamil{} takes a natural block tridiagonal form. Each block on the main diagonal belongs to a set of lattice points called a layer. All interactions within the layer correspond to matrix elements within the block. Interactions across layers are found in blocks on the first off-diagonal \cite{AnLunNik2008}.
+For simple systems with colinear leads the matrix representaion in the given approximation of the \hamil{} takes a natural block tridiagonal form. Each block on the main diagonal belongs to a set of lattice points called a layer. All interactions within the layer correspond to matrix elements within the block. Interactions across layers are found in blocks on the first off-diagonal, see \cref{fig:blocktridiagonal} \cite{AnLunNik2008}.
