@@ -1,6 +1,5 @@
-In classical electronic devices information is processed in terms of current. For computational applications for example $``0"$ referring to no current and $``1"$ referring to a flowing current above some threshold through the device. The common property of the device governing the current is the resistance and its inverse the conductance.
+In transport measuremens of mesoscopic systems at low temperatures a quantized conduction has been observed \cite{PhysRevLett.45.494}. Thus conductance of mesoscopic systems exhibits peculiarities with no classical analogon.
 \subsection{\clanbform{}}\label{sec:landauerbuettiker}
-The conductance of mesoscopic systems exhibits peculiarities with no classical analogon.  
 In an ideal lattice the electrons would move like in a vacuum (empty lattice) but with an effective mass. Impurities or phonons introduce scattering into the system altering the momentum of moving electrons through collisions.
 If the size of the electronic device shrinks in size below the mean free path of an electron i.e. the distance an electron has to travel until its initial momentum is destroyed the transport becomes ballistic\,\cite{datta1989quantum}. 
 \begin{align}
@@ -11,34 +10,39 @@ Due to the lack of scattering one would suspect zero resistivity. Nonetheless a 
 A popular approach to the effects of nano-scale devices initialized by \textsc{Landauer}\,\cite{PhilMag.21.863} and extended by \textsc{B\"uttiker} is the so called \lanbform{}\,\cite{PhysRevB.31.6207}.  
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{images/landauer} 
-\caption{Schematic of Device in \lanbform{}}
+\begin{tikzpicture}
+      % \draw[step=.5cm,gray,very thin] (-4,0) grid (4,4);
+      \node at (0,0)[above] {\includegraphics[width=.5\textwidth]{images/landauer}};
+      \node at (-4,4)[below] {$T_1,\mu_1,f_1$};
+      \node at (3,4)[below] {$T_2,\mu_2,f_2$};
+      \node at (4,0.5)[above] {$T_3,\mu_3,f_3$};
+      \node at (-0.1,2)[align=center] {Scattering\\ region};
+\end{tikzpicture}
+\caption{Schematic of device in \lanbform{} with three reservoirs and leads. The blue area is the active scattering region. Each reservoir has distinct Temperature $T_i$, chemical potential $\mu_i$ and therefore \textsc{Fermi} distribution $f_i$.}
 \label{fig:lanbform}
 \end{figure}
-The model considered is in essence quite general but all devices share a common layout. The device of interest is theoretically divided into a scattering area henceforth called conductor and multiple leads connecting the conductor to macroscopic reservoirs. The reservoirs may have fixed but distinct Temperature $T_R$, \textsc{Fermi} distribution $f_R$ and chemical potential $\mu_R$ as can be seen \cref{fig:lanbform}.
-The \lanbform{} establishes relations between the current flowing in and out of the leads and the chemical potential of the reservoirs. The formulation of the current derived by \textsc{Meir} and \textsc{Wingreen}\cite{PhysRevLett.68.2512} that holds for non-interacting systems is
+The \textsx{Landauer-B\"uttiker} model is in essence quite general but all devices are composed of a scattering region and one or more leads. The device of interest is theoretically divided into a scattering area henceforth called conductor and multiple leads connecting the conductor to macroscopic reservoirs. All reservoirs and their adjacent leads are assumed to be in thermal equilibrium. Each lead has a distinct \textsc{Fermi} distribution $f_R$ of temperature $T_R$ and chemical potential $\mu_R$ as can be seen \cref{fig:lanbform}.
+The \lanbform{} relates the current flow between leads to the chemical potential of the reservoirs. The current in lead $p$ \cite{PhysRevLett.68.2512}
 \begin{align}
 I_p=\frac{-e}{h} \sum_q \int \text{d}E T_{pq}(E) [f_p(E) - f_q(E)].
 \label{eqn:current}
 \end{align}
-Describing the current going into lead $q$ from lead $p$ with their respective \textsc{Fermi} energies $f_i(E)$ via the tranmission $T_{pq}$ as they are assumed to be in thermal equilibrium. 
-The \lanbform{} seeks to relate the conductance of the device with the possibility of an electron traveling through it. The transmission coefficients $T_{pq}(E)$ state the probability of an electron traveling from lead $q$ to lead $p$. 
-In the linear response regime i.e. for sufficiently small biases the expression can be linearized with low temperatures as
+results from the leads $q$ with their respective \textsc{Fermi} distributions $f_i(E)$ via the tranmission coefficients $T_{pq}(E)$. The current includes the electron charge $e$ and the \textsc{Planck} constant $\hbar$. The \lanbform{} relates the conductance of the device with the possibility of an electron passing through it. The transmission coefficients $T_{pq}(E)$ state the probability of an electron traveling from lead $q$ to lead $p$. 
+In the linear response regime with low temperatures the expression can be linearized 
 \begin{align}
 I_p=\frac{e}{h} \sum_q T_{pq}(E_F) [\mu_p - \mu_q].
 \label{eqn:currentlin}
 \end{align}
-That $E$ can be replaced with the \textsc{Fermi} energy $E_F$ also shows that the conductance is effectively a \emph{\textsc{Fermi} surface} property depending only on states near the \textsc{Fermi} energy.
-Assuming that the conductance can be expressed in terms of current and chemical potential one arrives at the conductance from lead $q$ to lead $p$, $G_{pq}$
+In the low temperature regime the \textsc{Fermi} distributions can be replaced by their respective \emph{chemical potential} $\mu_i$. The possibility that the energy $E$ can be replaced by the \textsc{Fermi} energy $E_F$ shows that the conductance is effectively a \emph{\textsc{Fermi} surface} property depending only on states near the \textsc{Fermi} energy.
+\subsection{Conductance from Transmission}\label{sec:conductancefromtransmission}
+Assuming that the conductance can be expressed in terms of current and chemical potential results in a relation between the conductance from lead $q$ to lead $p$ and the transmission coefficients 
 \begin{align}
 G_{pq}=\frac{I\abs{e}}{(\mu_p - \mu_q)}=\frac{e^2}{h} T_{pq}(E_F).
 \label{eqn:conductance}
 \end{align}
-\subsection{Conductance from Transmission}\label{sec:conductancefromtransmission}
-This quantity can be calculated by quantum mechanical methods. The transmission coefficients $T_{pq}(E)$ are directly related to the \emph{transmission probabilities amplitudes} $t^{pq}_{ll'}$ by
+The conductance can be calculated by quantum mechanical methods. The transmission coefficients $T_{pq}(E)$ are directly related to the \emph{transmission probabilities amplitudes} $t^{pq}_{ll'}$ leading to
 \begin{align}
 G_{pq}=\frac{e^2}{h} T_{pq} =\frac{e^2}{h} \sum_{ll'} \abs{t^{pq}_{ll'}}^2.
 \label{eqn:transcoeff}
 \end{align}
-The $\abs{t^{pq}_{ll'}}$ describe the electron flux amplitude for an electron traveling from channel $l'$ in lead $q$ to channel $l$ in lead $p$. This definition only holds for leads that are longitudinally translational invariant.\par
-The transmission coefficients are matrix elements of a so called \emph{scattering wavefunction} which governs the electron flow from and to the leads\cite{Datta1997}. As will be shown in \cref{sec:observables} there exists an alternative method to direct quantum mechanical evaluation of the scattering wave function to obtain the transmission coefficients.
+The transmission probability amplitudes $\abs{t^{pq}_{ll'}}$ describe the electron flux amplitude for an electron traveling from channel $l'$ in lead $q$ to channel $l$ in lead $p$. This definition only holds for leads that are longitudinally translational invariant. The transmission coefficients are matrix elements of a so-called \emph{scattering wavefunction} which governs the electron flow from and to the leads\cite{Datta1997}. There exists an alternative method to direct quantum mechanical evaluation of the scattering wave function to obtain the transmission coefficients as will be shown in \cref{sec:observables}.

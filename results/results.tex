@@ -88,7 +88,7 @@ In the following different domains of potential change are illustrated. \Cref{fi
 The presented QPCs serve only as examples for three classes of constrictions. A sample of constrictions of different geometry are considered for each class in the following. The simulations sweeps either the geometrical opening of the constriction or the energy domain, which is equivalent for example for the QPC formed by point charges. Modifying the width of the QPC opening is usually experimentally achieved by the placement of several gate electrodes on or in the 2DEG on a negative potential effectively depopulating the conductance band in their vicinity. The width of the constriction can either be directly geometrically modified ore for the case of the point charges via the charge $q$. It is important to note that by changing the voltage on the electrodes and therefore the charge not only the width of the opening is changed but also the steepness of the confining potential for a given energy. The transfer from the adiabatic to the diabatic i.e steep walled domain is possible.\par
 The simulation is set up that electrons with a wavevector pointing in the direction of the constriction are placed in the lead at the top of all density plots corresponding to the linear response regime of transport.
 For all presented quantum point contacts, some sketched in \cref{fig:hardwalled,fig:variationalwalled}, the width of the constriction is varied for a fixed energy of $E=0.06t_0$ corresponding to 15 modes within the unconstriced wire of 200nm width. A lattice spacing of a=1nm, and an effective mass of $0.026 \times m_0$ as in \cref{sec:validation}. The \textsc{Rashba} parameter is set to a typical value of $\alpha = 20^{-12}$eVm\,\cite{Jacob2009Thesis}.
-\subsubsection{Hard-Walled QPCs}
+\subsection{Hard-Walled QPCs}
 \todo[noline]{translate all transmission plots to 'width'}The general geometry of quantum devices embedded in 2DEGs prepared by etching commonly exhibits steep walls of the confining potential. Thus the influence of unbiased geometrical constrictions on the transport properties of the 2DEG are considered first.
 \begin{figure}[h]
 \subfloat[Edens]{\label{fig:rectedens}\includegraphics[]{images/238916-wire400x200-Nov-28-2011-17.41edens}}
@@ -127,7 +127,7 @@ It is interesting to note that there are almost no steps visible in \cref{fig:tr
 % \caption{Simulated transmission profile}
 % \end{figure}
 \FloatBarrier
-\subsubsection{Soft-Walled QPCs}
+\subsection{Soft-Walled QPCs}
 The geometrical shape of the constriction influences the transport properties of the device as seen in the previous section. Changing the geometry perpendicular to the $z$-axis smoothed out most features related to quantized conductance either physically or by introducing artificial complexity not found in the actual continuous system.\par
 One possible remedy is to alter the slope of the confining potential landscape perpendicular to the $x$ and $y$-axis. This stands in opposition to the infinite slope of the hard walled potentials considered before. A potential wall slowly varying in respect to the $x$ and $y$ coordinates will be called \emph{soft walled}.\par
 \begin{figure}[h]
@@ -166,7 +166,7 @@ The only obvious change in the 2DEG at lower charge is the height and steepness 
 \caption{Conductance profile and sample of confining potential at different charge.}\label{fig:pointtrans}
 \end{figure}
 \FloatBarrier
-\subsubsection{Variational-Walled QPCs}
+\subsection{Variational-Walled QPCs}
 The effects of wall slope on the smoothness of the conductance profile and thus possibly on inter-subband scattering are investigated by increasing the width of the constriction for many different slopes $m$. Above a slope of $m \approx 0.03$ the conduction shows quantized steps of conduction with no significant effects if the slope changes in that interval. For slowly varying potential slopes a noticeable change in conduction quantization can be observed as can be seen in \cref{fig:slopes}. \Cref{fig:conductances} shows conductance profiles at constant slopes. A significant change in quantization is only seen in the slope-interval $0.008 \lt m \lt 0.032$.\par
 The electron densities in \cref{fig:variedens1} and \cref{fig:variedens2} provide further indications of inter-subband scattering. The comparison shows that the electron density for the softer QPC is much less localized in discrete channels. This could indicate an increase in interaction of the modes passing through the QPC.\par
 \begin{figure}[h] 
@@ -189,7 +189,9 @@ There seem to be strong indications for the interaction of wall slope and possib
 \end{figure}
 \FloatBarrier
 \section{Non-Colinear devices}
-Changes in the geometry of the device can be made to exploit the knowledge of local properties of the 2DEG. Due to the symmetrical nature of the spin-plit breaking the symmetry of the system introduces new effects. To that end the assumption of colinear leads has to be dropped. A simple bend in the nano-wire already introduces complex interactions in real-space as well as spin-space. This is demonstrated in \cref{fig:curvedens1,fig:curvedens2,fig:curvedens3,fig:curvspindens1,fig:curvspindens2,fig:curvspindens3}. The first three modes correspond respectively to the energies 0.003eV, 0.036eV and 0.081eV of a straight nano-wire of same width. If compared to \cref{fig:dens1,fig:dens2,fig:dens3} for example an apparent change is immeadiatlely seen. Not only is the spacial distribution of electrons along the wire not constant but the spin densities exhibit a preference for up polarized electrons. Note that the scales change about the order of 2 to prevent the loss of details for smaller spin-split and electron densities. The features of the curved 2DEG are highly energy dependent and only serve to illustrate the enhanced complexity of non-colinear geometry.
+Changes in the geometry of the device can be made to exploit the knowledge of local properties of the 2DEG. Due to the symmetrical nature of the spin-plit breaking the symmetry of the system introduces new effects. To that end the assumption of colinear leads has to be dropped.
+\subsection{Curved Nanowire}
+A simple bend in the nano-wire already introduces complex interactions in real-space as well as spin-space. This is demonstrated in \cref{fig:curvedens1,fig:curvedens2,fig:curvedens3,fig:curvspindens1,fig:curvspindens2,fig:curvspindens3}. The first three modes correspond respectively to the energies 0.003eV, 0.036eV and 0.081eV of a straight nano-wire of same width. If compared to \cref{fig:dens1,fig:dens2,fig:dens3} for example an apparent change is immeadiatlely seen. Not only is the spacial distribution of electrons along the wire not constant but the spin densities exhibit a preference for up polarized electrons. Note that the scales change about the order of 2 to prevent the loss of details for smaller spin-split and electron densities. The features of the curved 2DEG are highly energy dependent and only serve to illustrate the enhanced complexity of non-colinear geometry.
 \begin{figure}[h!]
 \subfloat[Electron density of first mode in curved nano-wire. $E_{mode}=0.003$eV.]{\label{fig:curvedens1}\includegraphics[]{images/curve_1modes_edens}}
 \subfloat[Electron density of second mode in curved nano-wire. $E_{mode}=0.036$eV.]{\label{fig:curvedens2}\includegraphics[]{images/curve_2modes_edens}}
@@ -202,6 +204,7 @@ Changes in the geometry of the device can be made to exploit the knowledge of lo
 \subfloat[Spin density of third mode in curved nano-wire. $E_{mode}=0.081$eV.]{\label{fig:curvspindens3}\includegraphics[]{images/curve_3modes_spindens}}
 \caption{Spin densities for a curved nano-wire of 40nm width. Because of the bend the wire-width is marginally reduced in the curve. Colours indicate spin polarization. Red=Up, Blue=Down.}
 \end{figure}
+\subsection{\textsc{Aharonov-Bohm} Ring Interferometer}
 A common approach to the manipulation of properties of wave objects is an interferometer. A simple realization of such an interferometer can be realized as a modification of the \textsc{Arahonov-Bohm} ring. The \textsc{Arahonov-Bohm} ring is a two-dimensional annulus with a radius larger than separation of the concentric circles. Spin interference has been achieved via the attachment of multiple leads \cite{PhysRevB.75.035304} or the application of an electro-magnetic field \cite{PhysRevB.69.155335} to the \textsc{Arahonov-Bohm} ring.\par
 \begin{figure}[!h]
 \centering
@@ -260,4 +263,11 @@ Plus and minus denotes the direction of travel and $\uparrow,\downarrow$ spin up
 \includegraphics[scale=0.5]{images/spinors}
 \caption{Expansion of spin states in eigenstates of the closed ring. Negative $\phi$ corresponds to the left arm and positive $\phi$ to the right.}
 \end{figure}
-For enclosing angles not an integer multiple of $\pi/2$ this model breaks down quickly. Due to the finite spin polarization within the lead the isolated eigenstates of the closed ring do not give an accurate model of the physical situation.
+This model breaks down for arbitrary enclosing angles as the coupling to the leads becomes significant. Due to the coupling of spin states to the lead the eigenstates of the isolated ring do not give an accurate model of the physical situation.
+\begin{figure}[h!]
+\subfloat[Spin density $s_z$. Enclosing angle $\alpha=0$.]{\label{fig:ring0spindens}\includegraphics[]{images/ring0spindens}}
+\subfloat[Spin density $s_z$. Enclosing angle $\alpha=\pi/2$.]{\label{fig:ring90spindens}\includegraphics[]{images/ring90spindens}}
+\subfloat[Spin density $s_z$. Enclosing angle $\alpha=-\pi/2$]{\label{fig:ringneg90spindens}\includegraphics[]{images/ringneg90spindens}}
+\caption{Spin densities in \textsc{Aharonov-Bohm} type ring for three different enclosing angles. Color denotes spin polarization. Blue=Down, Red=Up}
+\end{figure}
+
