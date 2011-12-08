@@ -2,15 +2,15 @@ The calculation of the properties of a mesoscopic system should be, due to its s
 \begin{align}
 \mathcal{H}(\v{r};t) = \mathcal{H}_0(\v{r}) + \mathcal{H}_{\text{int}}(\v{r})+\mathcal{H}_{\text{ext}}(t)\ .
 \end{align}
-Here the $\mathcal{H}_0$ indicates a non-interacting system and the other terms introduce the interactions and possible external time-dependend pertubation. To shorten the notation a two-dimensional vector $\v{r}=(x,y)$ is introduced.  
-All information about the systems may be obtained by solving the time-dependend \sdg{}
+Here the $\mathcal{H}_0$ indicates a non-interacting system and the other terms introduce the interactions and possible external time-dependent pertubation. To shorten the notation a two-dimensional vector $\v{r}=(x,y)$ is introduced.  
+All information about the systems may be obtained by solving the time-dependent \sdg{}
 \begin{align}
 i\hbar \pd{}{t} \ket{\psi(\v{r};t)} = \mathcal{H}(\v{r};t) \ket{\psi(\v{r};t)}\ .
 \label{eqn:timedependendsdg}
 \end{align}
-Currently such large ensembles cannot be solved exactly so some kind of physically motivated approximation is needed. In the regime of high electron density and strongly coupled external influences one can model a 2DEG reasonably well in terms of non-interactig particles in an effective potential\cite{fetter2003quantum}. \par
+Currently such large ensembles cannot be solved exactly so some kind of physically motivated approximation is needed. In the regime of high electron density and strongly coupled external influences one can model a 2DEG reasonably well in terms of non-interacting particles in an effective potential \cite{fetter2003quantum}. \par
 It is advantageous to skip the computation of eigenstates used in the previous chapters and use a technique to compute the transport properties in a direct way. One such technique is the non-equilibrium \gfnc{} formalism (NEGF) developed by \textsc{Kadanoff} and \textsc{Baym} \cite{kadanoff1962quantum} and refined by \textsc{Keldysh} \cite{keldysh1965}. This is especially the case as several efficient algorithms exist that compute for example the electron density or the transmission coefficients one of which will be outlined in \cref{sec:recursivegreenfncalgorithm}.\par
-The non-equilibrium \gfnc{} formalism is very powerful as it is based on a quantum-field theoretical approach capable of describing non-equilibrium systems with interactions. As a rigorous derivation would obscure its central results only key concepts neccessary for the computation of the desired observables will be presented following \textsc{Wimmer}s \cite{Wimmer2009Thesis} and \textsc{Datta} \cite{Datta1997}.\par
+The non-equilibrium \gfnc{} formalism is very powerful as it is based on a quantum-field theoretical approach capable of describing non-equilibrium systems with interactions. As a rigorous derivation would obscure its central results only key concepts necessary for the computation of the desired observables will be presented following \textsc{Wimmer}s \cite{Wimmer2009Thesis} and \textsc{Datta} \cite{Datta1997}.\par
 \subsection{Equilibrium \cgfnc s}
 In electrodynamics the \gfnc{} were first introduced as a means to solve an inhomogeneous differential equation of the form
 \begin{align}
@@ -24,25 +24,25 @@ where $\hat{L}$ is any linear differential operator. The proper \gfnc{} for non-
 \end{align}
 The \hamil{} of the complete system is denoted by $\hat{H}$ with the energy $E$ and the \gfnc{} is written as an operator $\hat{G}$.
 For equilibrium \cite{fetter2003quantum} and non-equilibrium steady state \cite{haug2008quantum} the \gfnc{} only depends on time differences, see \cref{eqn:lineardiff}. It can therefore be \textsc{Fourier} transformed to the energy domain ($t \rightarrow E$), see \cref{eqn:energysdg}. The \gfnc{} that solves the above equation is actually not unique. Two solutions can be found. One can be considered a wavefunction at point $\v{r}$ as a result from a unit excitation at point $\v{r}'$. The advanced \gfnc{} describes the prior situation with the points $\v{r}$ and $\v{r}'$ exchanged. In simple systems this would in the first case correspond to an incoming wave in point $\v{r}$ in the other to an outgoing wave.
-Those two solutions are called retarded \gfnc{} $G^r$ and advanced \gfnc{} $G^a$ respectively and can be distinguished by the addition of an infinitismal imaginary part $i\eta$. \begin{align}
+Those two solutions are called retarded \gfnc{} $G^r$ and advanced \gfnc{} $G^a$, respectively and can be distinguished by the addition of an infinitesmal imaginary part $i\eta$. \begin{align}
 \left[ E \pm i \eta -\hat{H}(\v{r})\right] \hat{G}^{r(a)}(\v{r},\v{r}';E) = \delta (\v{r}-\v{r}')\ .
 \end{align}
-The imginary part $\pm i\eta$ sets the boundary conditions that the only viable solution becomes the retarded \gfnc{} for $+i\eta$ and the advanced \gfnc{} for $-i \eta$.
+The imaginary part $\pm i\eta$ sets the boundary conditions that the only viable solution becomes the retarded \gfnc{} for $+i\eta$ and the advanced \gfnc{} for $-i \eta$.
 This equation can be inverted and the \gfnc{} can be defined in the second quantization in terms of an operator identity as
 \begin{align}
 \hat{G}^{r(a)}(\v{r},\v{r}';E) = \bra{\v{r}} [E\pm i \eta - \hat{H}(\v{r})]^{-1} \ket{\v{r}'}\ .
 \end{align}
 One sees immediately the retarded and advanced \gfnc{} are the complex conjugate from each other. Thus the superscripts will be dropped and in non-ambiguous cases the retarded \gfnc{} will simply be referred to as \gfnc{}
 \begin{align}
-\hat{G}^r = (\hat{G}^a)^+ \equiv \hat{G}\ .
+\hat{G}^r = (\hat{G}^a)^{\dagger} \equiv \hat{G}\ .
 \end{align}
 \subsection{Non-Equilibrium \cgfnc s}
-In the case of a non-interacting system in equilibrium as well as in non-equilibrium the retarded \gfnc{} describes the spectrum i.e the eigenstates and eigenenergies. However, one needs to know how this spectrum is filled.\par 
-There exist different but interdependent variations of \gfnc{} each one especially suited to access certain information about the system.
-In addition to the retarded \gfnc{} the so-called \emph{lesser \gfnc{}} is employed in transport caclucaltions \cite{haug2008quantum}.\par
-Within a non-equilibirum pertubation theory describing the dependence of the system on the full \hamil{} $\mathcal{H}$ only in terms of the non-interacting \hamil{} $\mathcal{H}_0$ \cite{Jauho2006} the lesser \gfnc{} can be expressed in terms of the retarded \gfnc{} in \cref{eqn:keldyshequation}. The retarded self-energy term $\hat{\Sigma}_p$ describes the coupling of the device to the lead $p$. The strength of the coupling of the central scattering region to the leads is given by \cite{datta2005quantum}
+In the case of a non-interacting system in equilibrium as well as in non-equilibrium the retarded \gfnc{} describes the spectrum i.e the eigenstates and eigenenergies. However, one needs to know how these states is filled.\par 
+There exist different but interdependent variations of \gfnc s each one especially suited to access certain information about the system.
+In addition to the retarded \gfnc{} the so-called \emph{lesser \gfnc{}} is employed in transport calculations \cite{haug2008quantum}.\par
+Within a non-equilibrium pertubation theory describing the dependence of the system on the full \hamil{} $\mathcal{H}$ only in terms of the non-interacting \hamil{} $\mathcal{H}_0$ \cite{Jauho2006} the lesser \gfnc{} can be expressed in terms of the retarded \gfnc{}. The retarded self-energy term $\hat{\Sigma}_p$ describes the coupling of the device to the lead $p$. The strength of the coupling of the central scattering region to the leads is given by \cite{datta2005quantum}
 \begin{align}
-\hat{\Gamma}_p = i\left[\hat{\Sigma}_p(E)-\hat{\Sigma}_p^+(E)\right]\ .
+\hat{\Gamma}_p = i\left[\hat{\Sigma}_p(E)-\hat{\Sigma}_p^{\dagger}(E)\right]\ .
 \end{align}
 With the lesser self-energy
 \begin{align}
@@ -54,9 +54,9 @@ the \textsc{Keldysh} equation is obtained
 \label{eqn:keldyshequation}
 \end{align}
 which yields an expression for the lesser \gfnc{} $\hat{G}^<$.
-For example the electron density  $n(\v{r})$ can easily be calculated from the lesser \gfnc{}
+For example the electron density  $n(\v{r})$ can be calculated from the lesser \gfnc{}
 \begin{align}
-	n(\v{r}) = \left< \psi^+ (\v{r}) \psi(\v{r})\right> = -i\hbar \hat{G}^<(\v{r},\v{r};E)\ .
+	n(\v{r}) = \left< \psi^{\dagger} (\v{r}) \psi(\v{r})\right> = -i\hbar \hat{G}^<(\v{r},\v{r};E)\ .
 	\label{eqn:edensfromgreensfnc}
 \end{align}
 

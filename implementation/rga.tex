@@ -1,18 +1,18 @@
 \label{sec:rgapresentation}
 The \emph{Recursive-\gfnc-Algorithm} (RGA) \cite{MacKinnon1985} is an optimized algorithm to compute the retarded \gfnc{}. It has been extended by the \textsc{Keldysh} equation to compute the lesser \gfnc{} $G^<$ \cite{JApplPhys.91.2343}.
 The RGA is based on the possibility that the \hamil{} can be written in a block tridiagonal form as described in \cref{sec:naruralordering}.
-This form can be be achieved for any system in the tight-binding approximation  each block representing a distinct section of the device \cite{Wimmer2009Thesis}.\par
+This form can be achieved for any system in the tight-binding approximation  each block representing a distinct section of the device \cite{Wimmer2009Thesis}.\par
 % \todo{Complexity and implementation in Appendix \ref{app:RGA}, see Wimmer page 189}
-Due to the fact that the electron and spin density only depend on certain elements of the \gfnc-matrix the RGA computes those elements with only a little overhead. While still superfluous elements are computed the complexity is greatly reduced. The algorithm can be derived by the \textsc{Dyson} equation
+Due to the fact that the electron and spin density only depend on certain elements of the \gfnc{} matrix the RGA computes those elements with only a little overhead. While still superfluous elements are computed the complexity is greatly reduced. The algorithm can be derived by the \textsc{Dyson} equation
 \begin{align}
 	\mat{G} = \mat{G}_0+\mat{G}_0\mat{U}\mat{G}\ .
 	\label{eqn:DysonEquationG}
 \end{align}
 Here $G_0$ denotes the \gfnc{} of the isolated block and $G$ includes the remaining blocks and their interactions. The recursive calculation of connected blocks of the \gfnc{} matrix is obtained by the pertubation term $\mat{G}_0\mat{U}\mat{G}$. A detailed derivation can be found in Appendix \ref{app:RGA}.\par
 For conduction, spin and electron densities the retarded and lesser \gfnc s have to be computed. Because the computation of the lesser \gfnc{} is based on a prior computation of the retarded \gfnc{} the results of the former can be saved to obtain both \gfnc s.\par
-In order to simplify the notation \cref{eqn:finitegreensfunctionwithselfenergy} can be written as
+In order to simplify the notation, the subscript $C$ will be dropped and the inverse of \cref{eqn:finitegreensfunctionwithselfenergy} can be written as
 \begin{align}
-(E\mat{I}-\mat{H})\mat{G} = \mat{A}\mat{G}=\mat{I}
+(E\mathds{1}-\mat{H})\mat{G}_C = \mat{A}\mat{G}=\mathds{1}\ .
 \label{eqn:amatrix}
 \end{align}
 with the \hamil{} $\mat{H}=\mat{H}_C +\mat{\Sigma}_{Ll}+\mat{\Sigma}_{Lr}+\mat{\Sigma}_{\text{scat}} $.
@@ -27,7 +27,7 @@ Let $\mat{G}=\mat{G}^{r,i-1}$ be the \gfnc{} for the connected blocks up to inde
 	&  		   & \mat{0} 	   & \mat{A}_{i,i}
 \end{pmatrix}\ .
 \end{align}
-Diagonal blocks $\mat{A}_{i,i} = E\mat{I}-\mat{H}_{i,i}$ describe each isolated section and the off-diagonal blocks the interactions between neighbouring sections. The isolated block is attached to the rest of the matrix via the \emph{hopping matrices} (\cref{fig:rga3})
+Diagonal blocks $\mat{A}_{i,i} = E\mathds{1}-\mat{H}_{i,i}$ describe each isolated section and the off-diagonal blocks the interactions between neighbouring sections. The isolated block is attached to the rest of the matrix via the \emph{hopping matrices} (\cref{fig:rga3})
 \begin{align}
 \mat{U} = 
 \begin{pmatrix}
@@ -36,7 +36,7 @@ Diagonal blocks $\mat{A}_{i,i} = E\mat{I}-\mat{H}_{i,i}$ describe each isolated 
 \end{pmatrix}\ .
 \label{eqn:umatrix}
 \end{align}
-Inserting \cref{eqn:umatrix} into \cref{eqn:DysonEquationG} the recursive relation between block $i$ and $i+1$ reads 
+When inserting \cref{eqn:umatrix} into \cref{eqn:DysonEquationG} the recursive relation between block $i$ and $i+1$ reads 
 \begin{align}
 \mat{G}^{r,i}_{i,i} := \left[\mat{A}_{i,i}-\mat{A}_{i,i-1}\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i}\right]^{-1}\ .
 \label{eqn:rga}
@@ -45,7 +45,7 @@ With analogous calculations the relations between diagonal and off-diagonal part
 \begin{align}
 \mat{G}^r_{i,i-1} &= -\mat{G}^r_{i,i}\mat{A}_{i,i-1}\mat{G}^{r,i-1}_{i-1,i-1}\\
 \mat{G}^r_{i-1,i} &= -\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i} \mat{G}^{r}_{i,i}\\
-\mat{G}^r_{i-1,i-1} &= \mat{G}^{r,i}_{i-1,i-1}-\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i}\mat{G}^{r}_{i,i-1}
+\mat{G}^r_{i-1,i-1} &= \mat{G}^{r,i}_{i-1,i-1}-\mat{G}^{r,i-1}_{i-1,i-1}\mat{A}_{i-1,i}\mat{G}^{r}_{i,i-1}\ .
 \end{align}
 can be found enabling the computation of all matrix blocks.\par
 It is important to note that not all matrix elements can be calculated during one pass of the algorithm. After calculation of the first left-connected \gfnc{} at the starting lead $i=0$ \cref{eqn:rga} is used successively until the other lead at index $i=N$ is reached. The $N$th element of the left connected \gfnc{} is already identical to the $N$th element of the full retarded \gfnc{}. The influence of the final lead needs to be propagated to all prior slices. This is done in a \emph{backward pass} during which all desired blocks can be computed, see \cref{alg:retardedrga}.\par
@@ -96,10 +96,11 @@ It is important to note that not all matrix elements can be calculated during on
 \end{minipage}
 The recursive computation of the lesser \gfnc{} follows the same concept starting from the \textsc{Keldysh} equation (\ref{eqn:keldyshequation}) for non-interacting systems rewritten as
 \begin{align}
-\mat{G}^<_{i,j} = \mat{G}^r_{i,0}\mat{\Sigma}^<_L(\mat{G}^r_{j,0})^{\dagger}+\mat{G}^r_{i,N+1}\mat{\Sigma}^<_R(\mat{G}^r_{j,N+1})^{\dagger}
+\mat{G}^<_{i,j} = \mat{G}^r_{i,0}\mat{\Sigma}^<_L(\mat{G}^r_{j,0})^{\dagger}+\mat{G}^r_{i,N+1}\mat{\Sigma}^<_R(\mat{G}^r_{j,N+1})^{\dagger}\ .
 \end{align}
 Here $\Sigma^<_L$ and $\Sigma^<_R$ denote the self-energy term  for the left and right lead. For the computation of the lesser \gfnc{} it is sufficient to compute diagonal and one off-diagonal of the retarded \gfnc{} $\mat{G}^r$.\par
-The algoritm to compute the lesser \gfnc{} is illustrated in algorithm \ref{alg:lesserrga}. It requires a forward and a backward pass like the algorithm for the retarded \gfnc{}.\par
+The algoritm to compute the lesser \gfnc{} is illustrated in \cref{alg:lesserrga}. It requires a forward and a backward pass like the algorithm for the retarded \gfnc{}.\par
+\vskip 1em
 \noindent\begin{minipage}{\textwidth}
 \begin{algo}\label{alg:lesserrga} 
 \textit{Recursive Algorithm for $\mat{G}^<$}\\
@@ -111,9 +112,9 @@ The algoritm to compute the lesser \gfnc{} is illustrated in algorithm \ref{alg:
  \textbf{end for} 				& \\\addlinespace[12pt]
  $\mat{G}^<_{N,N} := \mat{G}^{<,N}_{N,N}$   	&$\blacktriangleright N$-th element found \\ \addlinespace[12pt]
  \textbf{for} $i = N-1:1$ \textbf{do} 	  	&$\blacktriangleright$ backward pass\\
- \qquad$\mat{G}^<_{i,i-1} := \mat{G}^r_{i,i}\mat{A}_{i,i-1}\mat{G}^{<,i-1}_{i-1,i-1} +\mat{G}^<_{i,i}\mat{A}^+_{i,i-1}\mat{G}^{a,i-1}_{i-1,i-1}$ &$\blacktriangleright$ off-diagonal elements\\ \addlinespace
- \qquad$\mat{G}^<_{i-1,i-1} := \mat{G}^{<,i-1}_{i-1,i-1} +\mat{G}^{r,i-1}_{i-1,i-1}(\mat{A}_{i-1,i}\mat{G}^{<}_{i,i}\mat{A}^+_{i,i-1})\mat{G}^{a,i-1}_{i-1,i-1}$ &$\blacktriangleright$ diagonal elements \\ \addlinespace
- \hspace{4.5cm}$ + \mat{G}^{<,i-1}_{i-1,i-1}\mat{A}^+_{i-1,i}\mat{G}^a_{i,i-1}$&\\\addlinespace
+ \qquad$\mat{G}^<_{i,i-1} := \mat{G}^r_{i,i}\mat{A}_{i,i-1}\mat{G}^{<,i-1}_{i-1,i-1} +\mat{G}^<_{i,i}\mat{A}^{\dagger}_{i,i-1}\mat{G}^{a,i-1}_{i-1,i-1}$ &$\blacktriangleright$ off-diagonal elements\\ \addlinespace
+ \qquad$\mat{G}^<_{i-1,i-1} := \mat{G}^{<,i-1}_{i-1,i-1} +\mat{G}^{r,i-1}_{i-1,i-1}(\mat{A}_{i-1,i}\mat{G}^{<}_{i,i}\mat{A}^{\dagger}_{i,i-1})\mat{G}^{a,i-1}_{i-1,i-1}$ &$\blacktriangleright$ diagonal elements \\ \addlinespace
+ \hspace{4.5cm}$ + \mat{G}^{<,i-1}_{i-1,i-1}\mat{A}^{\dagger}_{i-1,i}\mat{G}^a_{i,i-1}$&\\\addlinespace
  \hspace{4.5cm}$+\mat{G}^r_{i-1,i}\mat{A}_{i,i-1}\mat{G}^{<,i-1}_{i-1,i-1}$&\\ 
  \textbf{end for}& \\\addlinespace \bottomrule 
 \end{tabularx}

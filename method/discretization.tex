@@ -3,13 +3,14 @@ A practical way to perform the necessary inversion of the \hamil{} to obtain the
 	\hat{G} = \left[E-\hat{H} \right]^{-1}\text{.}
   \label{eqn:greensfnccompmethods}
 \end{equation}
-Spin-interactions are neglected to outline the discretization method. They are however included in an analogous way. To use numerical methods to find the inverse in \cref{eqn:greensfnccompmethods} the system has to be discretized. The energy $E$ is easily discretized by multiplication with the appropriate identity matrix. The choice of space and basis to discretize the \hamil{} is in principle arbitrary but significant advantages can be achieved if a discretization method suitable to the system is used. Due to the cubic zincblende crystal structure of the 2DEG host materials, like GaAs or InAs, it is convenient to discretize on a square lattice.
+Spin interactions are neglected to outline the discretization method. They are however included in an analogous way. To use numerical methods to find the inverse in \cref{eqn:greensfnccompmethods} the system has to be discretized. The energy $E$ is discretized by multiplication with the appropriate identity matrix $\mathds{1}$. This ensures the same energy parameter $E_i=E$ for every discrete state $i$. The choice of space and basis to discretize the \hamil{} is in principle arbitrary but significant advantages can be achieved if a discretization method suitable to the system is used. Due to the cubic zincblende crystal structure of the 2DEG host materials, like GaAs or InAs, it is convenient to discretize on a square lattice.
 The procedure will be outlined for the \hamil{} in the effective mass $m^*$ approximation
 \begin{equation}
   \hat{H}=-\frac{\hbar^{2}}{2m^*}\left[\pdd{}{x}+\pdd{}{y}\right]+U(x,y)\ .
     \label{eqn:Hamil}
 \end{equation}
-To achieve a discrete matrix-representation of the \hamil{}, self-energies and \gfnc{} one can expand the equations in any localized basis functions like Muffin-Tin orbitals, \textsc{Wannier} functions, or \textsc{Dirac} distributions giving rise to a so-called tight-binding \hamil{} limiting the interaction e.g. to nearest neighbours. In the following a coordinate in discrete space will be refered to as a lattice point regardless of the nature and space of the localized function.
+
+To achieve a discrete matrix-representation of the \hamil{}, self-energies and\sloppy{~\gfnc{} one can expand the equations in any localized basis functions like Muffin-Tin orbitals, \textsc{Wannier} functions, or \textsc{Dirac} distributions giving rise to a so-called tight-binding \hamil{} limiting the interaction, e.g. to nearest neighbours. A coordinate in discrete space will be refered to as a lattice point regardless of the nature and space of the localized function.}
 Using a \textsc{Dirac} delta distribution basis amounts to replacing the continuous function with it's values at the respective points in space \cite{JApplPhys.92.3730}.
 \begin{equation}
   \int \delta (\v{r}-\v{r}') f(\v{r}) \mathrm{d}\v{r} = f(\v{r}')\ .
@@ -31,15 +32,15 @@ Using the finite-differences scheme and assuming small $a$ the first derivative 
   \left[\pd{T}{x}\right]_{x=(i+1/2)a} \sim  \frac{1}{a}\left(T_{i+1}-T_{i}\right)\ .
   \label{ApproximateFirstDerivative}
 \end{equation}
-In this case the subscript denotes evaluation at a point between two lattice points $x=(i+1/2)$. By applying the concept of finite differeneces a second time for the second derivative one arrives at
+In this case the subscript denotes evaluation at a point between two lattice points $x=(i+1/2)$. By applying the concept of finite differences a second time for the second derivative one arrives at
 \begin{align}
   \left[\pdd{T}{x}\right]_{x=(i+1/2)a} &\sim \frac{1}{a}\left( \left[\pd{T}{x}\right]_{x=(i+1/2)a}-\left[\pd{T}{x}\right]_{x=(i-1/2)a} \right) \notag \\
   &\sim \frac{1}{a^2}\left(T_{i+1}-2T_{i}+T_{i-1}\right)\ .
   \label{ApproximateSecondDerivative}
 \end{align}
-Following Nicoli\'c \cite{Nikolic2010} the bras $\bra{m}$ and kets $\ket{n}$ denote localized states at the lattice-points. The finite-difference aproximation is  expressend in the second quantization formalism with a point $(i,j) = \v{m}$ as
+Following Nicoli\'c \cite{Nikolic2010} the bras $\bra{\v{m}}$ and kets $\ket{\v{n}}$ denote localized states at the lattice-points. The finite-difference aproximation is  expressend in the second quantization formalism with a point $(i,j) = \v{m}$ as
 \begin{align}
-	\bra{\v{m}} \pd{}{x} \ket{\v{n}} &= \frac{\braket{\v{m}+1}{\v{n}}-\braket{m-1}{n}}{2a}\notag\\ 
+	\bra{\v{m}} \pd{}{x} \ket{\v{n}} &= \frac{\braket{\v{m}+1}{\v{n}}-\braket{\v{m}-1}{\v{n}}}{2a}\notag\\ 
 				&= \frac{\delta_{\v{n},\v{m}+1}-\delta_{\v{n},\v{m}-1}}{2a}\ .
 	\label{eqn:finitedifffirstderivative}
 \end{align}
@@ -51,32 +52,32 @@ and
 \end{align}
 With the help of these relations any discrete one-particle operators can be expressed in second quantization
 \begin{align}
-	\hat{A} = \sum_{\v{m},\v{n}} \bra{\v{m}}\hat{A}\ket{\v{n}} \hat{c}^{\dagger}_\v{m} \hat{c}_\v{n}.
+	\hat{A} = \sum_{\v{m},\v{n}} \bra{\v{m}}\hat{A}\ket{\v{n}} \hat{c}^{\dagger}_{\v{m}} \hat{c}_{\v{n}}.
  \label{eqn:singleparticleopinsecondquantization}
 \end{align}
-with $\hat{c}^{\dagger}_\v{m} \hat{c}_\v{n} $ being creation and annihilation operators in chosen localized basis.
+with the creation and annihilation operators $\hat{c}^{\dagger}_{\v{m}}$ and $\hat{c}_{\v{n}}$ in a localized basis.
 Inserting \cref{eqn:finitedifffirstderivative}, \ref{eqn:finitediffsecondderivative} and \ref{eqn:singleparticleopinsecondquantization} leads to the tight-binding version of the \hamil{}
 \begin{align}
-	\hat{H} = \sum_{\v{m},\sigma} \epsilon_{\v{m}} \hat{c}^{\dagger}_{\v{m}\sigma} \hat{c}_{\v{m},\sigma} +
-	\sum_{\v{m},\v{m}',\sigma} t_{\v{m},\v{m}'} \hat{c}^{\dagger}_{\v{m}\sigma} \hat{c}_{\v{m}',\sigma}\ .
+	\hat{H} = \sum_{\v{m},\sigma} \epsilon_{\v{m}} \hat{c}^{\dagger}_{\v{m}\sigma} \hat{c}_{\v{m}\sigma} +
+	\sum_{\v{m},\v{m}',\sigma} t_{\v{m},\v{m}'} \hat{c}^{\dagger}_{\v{m}\sigma} \hat{c}_{\v{m}'\sigma}\ .
 	\label{eqn:discretizedeffectivemassHamil}
 \end{align}
-The $\epsilon$ account for local potentials in the from of $U(x,y)$ like lateral confinement or atomic disorder.
-The spin independend hopping parameter $t_{\v{m}\v{m'}}$ is given as
+The sum runs in addition to the states $\v{m}$ over the spin $\sigma=\uparrow,\downarrow$. The $\epsilon$ account for local potentials in the form of $U(x,y)$ like lateral confinement or atomic disorder.
+The spin independend hopping parameter $t_{\v{m}\v{m'}}$ is given by
 \begin{align}
-t_{\v{m}\v{m'}} = \left\{ \begin{array}[c]{cl} -t_0 & \text{if } \v{m} = \v{m} \pm a \cdot \v{e}_{x,y} \\ 0 & \text{else} \end{array} \right.\ .
+t_{\v{m}\v{m'}} = \left\{ \begin{array}[c]{cl} -t_0 & \text{if } \v{m} = \v{m}' \pm a \cdot \v{e}_{x,y} \\ 0 & \text{elsewhise} \end{array} \right.\ .
 	\label{eqn:t0hopping}
 \end{align}
 The hopping parameter $t_0 = \hbar^2/2m^*a^2$ describes the probability of one electron propagating to a neighbouring lattice point. Introducing the discretized \rash{} \hamil{}
 \begin{align}
-	\hat{H} = \sum_{\v{m},\sigma} \epsilon_{\v{m}} \hat{c}^{\dagger}_{\v{m}\sigma} \hat{c}_{\v{m},\sigma} +
-	\sum_{\v{m},\v{m'},\sigma}  \hat{c}^{\dagger}_{\v{m}\sigma} \mat{t}_{\v{m},\v{m'},\sigma,\sigma '} \hat{c}_{\v{m'},\sigma}\ .
+	\hat{H} = \sum_{\v{m},\sigma} \epsilon_{\v{m}} \hat{c}^{\dagger}_{\v{m}\sigma} \hat{c}_{\v{m}\sigma} +
+	\sum_{\v{m},\v{m'},\sigma}  \hat{c}^{\dagger}_{\v{m}\sigma} \mat{t}_{\v{m}\v{m'}\sigma\sigma '} \hat{c}_{\v{m'}\sigma}\ .
 	\label{eqn:discretizedrashbahamil}
 \end{align}
-Now the hopping parameter $\mat{t}_{\v{m},\v{m'},\sigma,\sigma '}$ is a non-trivial $2 \times 2$ matrix with distinct coefficients depending on hopping direction:
+Now the hopping parameter $\mat{t}_{\v{m}\v{m'}\sigma\sigma '}$ is a non-trivial $2 \times 2$ matrix with distinct coefficients depending on hopping direction:
 \begin{align}
-	\mat{t}_{\v{m}\v{m'},\sigma,\sigma '} = \left\{ \begin{array}[c]{cl} -t_0\mat{1}_S - i t_{SO} \mat{\sigma}_y & \text{if } \v{m} = \v{m} \pm a \v{e}_{x} \\
-		-t_0\mat{1}_S + i t_{SO} \mat{\sigma}_x & \text{if } \v{m} = \v{m} \pm a \v{e}_{y} \end{array} \right. 
+	\mat{t}_{\v{m}\v{m'}\sigma\sigma '} = \left\{ \begin{array}[c]{cl} -t_0\mathds{1}_S - i t_{SO} \mat{\sigma}_y & \text{if } \v{m} = \v{m}' \pm a \v{e}_{x} \\
+		-t_0\mathds{1}_S + i t_{SO} \mat{\sigma}_x & \text{if } \v{m} = \v{m}' \pm a \v{e}_{y} \end{array} \right.\ .
 	\label{eqn:tsohopping}
 \end{align}
 In the matrix representation each element of the spin-less \hamil{} becomes a $2 \times 2$ matrix of itself increasing the number of matrix-elements four-fold.
@@ -84,22 +85,21 @@ In the matrix representation each element of the spin-less \hamil{} becomes a $2
 \centering
 \begin{align*}
 \mat{H}=
-\renewcommand*{\arraystretch}{1.5}
+\renewcommand*{\arraystretch}{1.6}
 \begin{pmatrix} 
 \ddots& & & & & & & & & \\
 & \mat{H}_p& \mat{V}_p& & & && &&\\
-& \mat{V}^{\dagger}_p& \mat{H}_p& \mat{H}_{0,1}& &\ddots& & &\\
-& &\mat{H}_{1,0}&\mat{H}_{1,1} &\mat{H}_{1,2} & &0 & &\\
-& & &\mat{H}_{2,1} & &\ddots & &\ddots &\\
-& & & &\ddots &\mat{H}_{N-2,N-2} &\mat{H}_{N-2,N-1} & &\\
-& & \ddots& &\mat{H}_{N-1,N-2} &\mat{H}_{N-1,N-1} &\mat{H}_{N-1,N} &\\
-& & &0 & & &\mat{H}_{N,N-1} &\mat{H}_q &\mat{V}_q\\
-& & & &\ddots & & &\mat{V}^{\dagger}_q &\mat{H}_q\\
-& & & & & & && &\ddots
+& \mat{V}^{\dagger}_p& \mat{H}_p& \mat{H}_{p,0}& &\ddots& & &\\
+& &\mat{H}_{0,p}&\mat{H}_{0,0} &\mat{H}_{0,1} & &0 & &\\
+& & &\mat{H}_{1,0}& &\ddots & &\ddots &\\
+& \ddots& & &\ddots &\mat{H}_{N,N} &\mat{H}_{N,q}& & \\
+& &0 & & &\mat{H}_{q,N} &\mat{H}_q &\mat{V}_q&\\
+& & &\ddots & & &\mat{V}^{\dagger}_q &\mat{H}_q&\\
+& & & & & & & &\ddots
 \end{pmatrix}
 % \includegraphics[width=0.9\textwidth]{images/blocktridiagonal}
 \end{align*}
-\caption{Block tridiagonal matrix of the tight-binding \hamil{}, $\mat{H}_{i,i}$ denotes the \hamil{} of layer $i$ and $\mat{H}_{i,i+1},\mat{H}_{i+1,i}$the interaction between layers. The matrices $\mat{H}_p,\mat{V}_p,\mat{H}_q,\mat{V}_q$ denote the \hamil s and coupling matrices of leads $p$ and $q$ respectively.)}
+\caption{Block tridiagonal matrix of the tight-binding \hamil{}, $\mat{H}_{i,i}$ denotes the \hamil{} of layer $i$ and $\mat{H}_{i,i+1},\mat{H}_{i+1,i}$the interaction between layers. The matrices $\mat{H}_{p,0},\mat{H}_{0,p},\mat{H}_{q,N}$ and $\mat{H}_{N,q}$ represent the coupling of conductor and lead $p$ and $q$. The matrices $\mat{H}_p,\mat{V}_p,\mat{H}_q,\mat{V}_q$ denote the \hamil s and coupling matrices of leads $p$ and $q$ respectively.}
 \label{fig:blocktridiagonal}
 \end{figure}
 The on-site energies $\epsilon_{\v{m}}$ in this \hamil{} are

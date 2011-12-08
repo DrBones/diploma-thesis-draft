@@ -1,4 +1,4 @@
-Although a discrete representation of the \hamil{} is found the matrix inversion is not trivial. The device is an open system and the incorporation of in- and outflow via the leads that stretch to infinity results in an infinite dimensional matrix.
+Although a discrete representation of the \hamil{} is found the matrix inversion is not trivial. The device is an open system and the incorporation of in- and outflow via the leads that stretch to infinity results in an infinite matrix.
 Simple truncation of the matrices under consideration would effectively describe a closed system. Via the concept of the self-energy however the influence of the leads may be accurately projected onto the device.
 The technique will be outlined following \textsc{Datta} for a system with only one contact as depicted in \cref{fig:selfenergy} but can be applied to an arbitray number of leads. \begin{figure}[h!]
 \centering
@@ -13,11 +13,11 @@ The technique will be outlined following \textsc{Datta} for a system with only o
             (node cs:name=y);
 \node at (-0.5,4.5) {$\tau$} ;
 \end{tikzpicture}
-\caption{Separation of conductor and lead. The dots denote lattice points. The white area represents the semi-infinite lead with the \hamil{} $\mat{H}_L$, the gray area denotes the conductor with the \hamil{} $\mat{H}_C$. The arrow indicates the coupling by the matrix $\mat{\tau}$}
+\caption{Separation of conductor and lead. The dots denote lattice points. The white area represents the semi-infinite lead with the \hamil{} $\mat{H}_L$, the gray area denotes the conductor with the \hamil{} $\mat{H}_C$. The arrow indicates the coupling by the matrix $\mat{\tau}$.}
 \label{fig:selfenergy}
 \end{figure}
 \subsection{The Self Energy}
-The infinite dimensional \gfnc{} matrix can be partitioned as
+The \gfnc{} matrix can be partitioned as
 \begin{align}
   \begin{bmatrix}
   \mat{G}_{L} & \mat{G}_{L/C}\\
@@ -30,7 +30,7 @@ The infinite dimensional \gfnc{} matrix can be partitioned as
   \end{bmatrix}^{-1}\ .
   \label{eqn:greendivided}
 \end{align}
-Here $G_L$ is the \gfnc{} of the isolated lead, $\mat{G}_{L/C}$ and $\mat{G}_{C/L}$ are \gfnc{} between lead and conductor, all of them are row and column infinite. $\mat{G}_L$ is the finite \gfnc{} of the now isolated conductor. The coupling matrices $\tau$ are only nonzero on the interface of lead and conductor, confer \cref{fig:selfenergy}.
+Here $\mat{G}_L$ is the infinite \gfnc{} matrix of the isolated lead, $\mat{G}_{L/C}$ and $\mat{G}_{C/L}$ represent inifinite \gfnc s matrices between lead and conductor. The finite \gfnc{} of the isolated conductor is $\mat{G}_L$. The coupling matrices $\tau$ are only nonzero on the interface of lead and conductor, confer \cref{fig:selfenergy}.
 Basic algebraic transformations yield \cite{Datta1997}
 \begin{align}
 \mat{G}_C& = \left[E\mat{1}-\mat{H}_C -\v{\tau}^{\dagger} \mat{g}_L^r \v{\tau} \right]^{-1} \ .
@@ -45,14 +45,14 @@ one can write the \emph{self energy} term $\mat{\Sigma}_L$ as
 \begin{align}
 \mat{\Sigma}_L = \v{\tau}^{\dagger} \mat{g}_L^r \v{\tau}\ .
 \end{align}
-The concept of the self energy allows for further inclusions of interactions like phonon or impurity scattering. In contrast to the theoretical accurate self energy of the lead the self energy due to scattering is usually only feasible to compute approximatly. The self energy includs a left $\mat{\Sigma}_{Ll}$ and a right lead $\mat{\Sigma}_{Ll}$ and for example a scattering term $\mat{\Sigma}_{\text{scat}}$. With this the \gfnc{} can be written as
+The concept of the self energy allows for further inclusions of interactions like phonon or impurity scattering. In contrast to the theoretical accurate self energy of the lead the self energy due to scattering is usually only feasible to compute approximatly. The self energy includes a left lead $\mat{\Sigma}_{Ll}$ and a right lead $\mat{\Sigma}_{Lr}$ and for example a scattering term $\mat{\Sigma}_{\text{scat}}$. With this the \gfnc{} can be written as
 \begin{align}
 \mat{G}_C& = \left[E\mat{1}-\mat{H}_C -\mat{\Sigma}_{Ll}-\mat{\Sigma}_{Lr}-\mat{\Sigma}_{\text{scat}} \right]^{-1} \ .
 \label{eqn:finitegreensfunctionwithselfenergy}
 \end{align}
-\subsection{Lead Surface \cgfnc s}
+\subsection{Lead Surface \cgfncs{}}
 Even with this separation the direct evaluation of \cref{eqn:leadsurfacegfnc} is still unfeasible as it still includes $\mat{H}_L$ which is infinite.
-If translation invariance along the lead exists, the so-called \textsc{Ando} method \cite{PhysRevB.44.8017} computes the surface \gfnc{} for a homogeneous lead consisting of repeating supercells, i.e the smallest layer that exhibits periodicity.\par
+If translation invariance along the lead exists, the so-called \textsc{Ando} method \cite{PhysRevB.44.8017} computes the surface \gfnc{} for a homogeneous lead consisting of repeating supercells, i.e. the smallest layer that exhibits periodicity.\par
 For simple systems without fields and spin phenomena \cref{eqn:leadsurfacegfnc} can be calculated analytically \cite{Datta1997}. For leads including fields and further interactions it has to be calculated semi-analytically via the \emph{eigenstate-decomposition} of their \emph{companion matrix} \cite{PhysRevB.25.3975} or \emph{transfer matrix} \cite{PhysRevB.55.5266} \cite{PhysRevB.66.205319}
 \begin{align}
   \mat{C} =
@@ -62,11 +62,11 @@ For simple systems without fields and spin phenomena \cref{eqn:leadsurfacegfnc} 
   \end{bmatrix}\ .
   \label{eqn:companionmatrix}
 \end{align}
-Here $\mat{H}_{\pm}$ denotes matrices governing the interaction between slices with \hamil{} $\mat{H}_{\perp}$
-For non-homogeneous leads one can apply a continued fraction method \cite{Velev2004} that connects \gfnc{} from one layer to neighbouring layers and repeats that process until the interactions between layers becomes negligible.\par
+Here $\mat{H}_{\pm}$ denotes matrices governing the interaction between slices with \hamil{} $\mat{H}_{\perp}$.
+For non-homogeneous leads one can apply a continued fraction method \cite{Velev2004} that connects \gfncs{} from one layer to neighbouring layers and repeats that process until the interactions between layers becomes negligible.\par
 For spin-dependent simulations the leads need to include fields and spin-orbit effects and analytical methods do not suffice. With the appropriate gauge one can ensure invariance along the lead and therefore a modification of the eigenstate-decomposition method is employed.\par
 The lead surface \gfnc{} is expanded in eigenstates of an \emph{invariant subspace} of unidirectional modes which yields higher numerical stability as expansions in eigenstates of the full \hamil{} with the same result \cite{Wimmer2009JComPhys}.\par
-One obtains the lead surface \gfnc{} by first calculating the \textsc{Schur} decomposition of matrix $\mat{C}$ into the diagonal matrix $D$ and the unitary matric $Q$
+One obtains the lead surface \gfnc{} by first calculating the \textsc{Schur} decomposition of matrix $\mat{C}$ into the diagonal matrix $\mat{D}$ and the unitary matric $\mat{Q}$
 \begin{align}
 \mat{C} = \mat{Q}\mat{D}\mat{Q}^{\dagger}\ .
 \label{eqn:schurdecomposition}

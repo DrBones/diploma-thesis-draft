@@ -4,28 +4,28 @@ The energy dependent local density of states (LDOS) is written in terms of the r
 \text{LDOS}_{\v{m}}(E)=-\frac{1}{\pi} \text{Im}(\text{Tr}_S[\mat{G}_{\v{mm}}^r(E)]) \ .
 \label{eqn:ldos}
 \end{align}
-To obtain real space information the spin degree of freedom has to be reducted. This is done by taking the \emph{partial trace} \cite{Jacobs} of the operator effectively adding up the density of state for spin up and spin down electrons.\par
-It is important to note that for open systems there are no predetermined eigenenergies and therefore the energy $E$ is a free parameter. The \gfnc{} measures the \emph{response of the system} to electron states in one of the leads of a given energy $E$. The index (\v{mm}) shows that the density of states can be calculated only from the diagonal of the \gfnc{}.
-The electron density can easily be obtained from the lesser \gfnc{} given as an example in \cref{eqn:edensfromgreensfnc}. For experimentally measurable quantities an integration over energy has to be performed, which can be divided into equilibrium and non-equilibrium parts if a distinction between total and conducting electrons is desired
+The matrix index (\v{mm}) shows that the density of states can be calculated only from the diagonal of the retarded \gfnc{}.
+To obtain real space information the spin degree of freedom has to be reducted. This is done by taking the \emph{partial trace} \cite{Jacobs} of the operator effectively adding up the density of states for spin up and spin down electrons.\par
+It is important to note that for open systems there are no predetermined eigenenergies and therefore the energy $E$ is a free parameter. The \gfnc{} measures the \emph{response of the system} to electron states in one of the leads of a given energy $E$. The electron density can be obtained from the lesser \gfnc{} given as an example in \cref{eqn:edensfromgreensfnc}. For experimentally measurable quantities an integration over energy has to be performed, which can be divided into equilibrium and non-equilibrium parts if a distinction between total and conducting electrons is desired
 \begin{align}
 	\expv{n_{\v{m}}} = \frac{1}{2\pi} \int_{-\infty}^{\infty}\text{d}E\text{Tr}_S[\mat{G}_{\v{mm}}^<(E)] \ .
 	\label{eqn:gfncdensity}
 \end{align}
 The lesser \gfnc{} also allows the definition and calculation  of a local spin density by multiplication with the \textsc{Pauli} matrix $\mat{\sigma}_i$, here for the out-of-plane polarization $\expv{s^z_{\v{m}}}$\,\cite{Wimmer2009Thesis}:
 \begin{align}
-\expv{s^z_{\v{m}}} = \frac{\hbar}{4 \pi i} \int^{\infty}_{-\infty}\text{d}E\text{ Tr}_S\left[\mat{\sigma}_z\mat{G}^<_{\v{mm}}\right]
+\expv{s^z_{\v{m}}} = \frac{\hbar}{4 \pi i} \int^{\infty}_{-\infty}\text{d}E\text{ Tr}_S\left[\mat{\sigma}_z\mat{G}^<_{\v{mm}}\right]\ .
 \label{eqn:gfncspindensity}
 \end{align}
 In the tight-binding picture one can also define a bond spin-current operator \cite{EPL.80.47001}. The bond spin current is the amount of spin polarization flowing between two adjacent lattice points
 \begin{align}
 \expv{\v{j}_{\v{m}\v{m}'}^{s_z(tot)}} &=\expv{\v{j}_{\v{m}\v{m}'}^{s_z(eq)}}+ \expv{\v{j}_{\v{m}\v{m}'}^{s_z(neq)}}\\
 	&=\frac{t_{SO}}{2} \int_{E_{\text{cut-off}}}^{E_F-eV/2} \frac{\text{d}E}{2 \pi} \text{Tr}_S \left[\mat{\sigma}_z\left(\mat{G}^<_{\v{m}'\v{m}}(E)- \mat{G}^<_{\v{m}\v{m}'}(E)\right)\right]\\
-	&+\frac{t_{SO}}{2} \int_{E_F-eV/2}^{E_F-eV/2} \frac{\text{d}E}{2 \pi} \text{Tr}_S \left[\mat{\sigma}_z\left(\mat{G}^<_{\v{m}'\v{m}}(E)- \mat{G}^<_{\v{m}\v{m}'}(E)\right)\right] \ .
+	&+\frac{t_{SO}}{2} \int_{E_F+eV/2}^{E_F-eV/2} \frac{\text{d}E}{2 \pi} \text{Tr}_S \left[\mat{\sigma}_z\left(\mat{G}^<_{\v{m}'\v{m}}(E)- \mat{G}^<_{\v{m}\v{m}'}(E)\right)\right] \ .
 	\label{eqn:gfnccurrent}
 \end{align}
-With the help of the the so called \textsc{Fisher-Lee} relation \cite{PhysRevB.23.6851} connecting the scattering formalism of \textsc{Landauer-B\"uttiker} with the \gfnc s the total transmission probability can be written as
+With the help of the so called \textsc{Fisher-Lee} relation \cite{PhysRevB.23.6851} connecting the scattering formalism of \textsc{Landauer-B\"uttiker} with the \gfnc s the total transmission probability can be written as
 \begin{align}
 T_{pq} = \text{Tr}(\Gamma_p G_{pq} \Gamma_q G^+_{pq}) = \sum_{n,m} \abs{t^{pq}_{ll'}}^2\ .
 \label{eqn:transmissionfunction}
 \end{align}
-This formula is known as the \textsc{Caroli} expression. In the linear response regime it is equivalent to \textsc{Landauer}'s formula\cite{PhysRevB.72.035450}.
+This formula is known as the \textsc{Caroli} expression. In the linear response regime it is equivalent to \textsc{Landauer}'s formula \cite{PhysRevB.72.035450}.

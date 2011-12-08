@@ -24,6 +24,7 @@
 \usepackage{booktabs}
 \usepackage{url}
 \usepackage{grffile}
+\usepackage{dsfont}%supplies 1 and lowercase k in blackboard bold
 \usepackage{tikz}
 \newcommand{\axes}{\draw[style={<->,thin}] (-1,0.65) node[left,align=center] {$x$} -- (0,0) --  (1,0.65) node[right] {$y$};}
 \usetikzlibrary{matrix,decorations.pathreplacing,shapes.multipart,calc}
@@ -139,7 +140,9 @@
 
 % Shortcuts to Named Objects
 \newcommand{\gfnc}{\textsc{Green}'s function} 		% call with {} like \gfnc{} to ensure following whitespace
+\newcommand{\gfncs}{\textsc{Green}'s functions} 		% call with {} like \gfnc{} to ensure following whitespace
 \newcommand{\cgfnc}{\textsc{Green}'s Function} 		% call with {} like \gfnc{} to ensure following whitespace
+\newcommand{\cgfncs}{\textsc{Green}'s Functions} 		% call with {} like \gfnc{} to ensure following whitespace
 \newcommand{\hamil}{\textsc{Hamilton}ian}
 \newcommand{\rash}{\textsc{Rashba}}
 \newcommand{\sdg}{\textsc{Schr\"odinger} equation}
