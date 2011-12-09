@@ -20,9 +20,10 @@ In the tight-binding picture one can also define a bond spin-current operator \c
 \begin{align}
 \expv{\v{j}_{\v{m}\v{m}'}^{s_z(tot)}} &=\expv{\v{j}_{\v{m}\v{m}'}^{s_z(eq)}}+ \expv{\v{j}_{\v{m}\v{m}'}^{s_z(neq)}}\\
 	&=\frac{t_{SO}}{2} \int_{E_{\text{cut-off}}}^{E_F-eV/2} \frac{\text{d}E}{2 \pi} \text{Tr}_S \left[\mat{\sigma}_z\left(\mat{G}^<_{\v{m}'\v{m}}(E)- \mat{G}^<_{\v{m}\v{m}'}(E)\right)\right]\\
-	&+\frac{t_{SO}}{2} \int_{E_F+eV/2}^{E_F-eV/2} \frac{\text{d}E}{2 \pi} \text{Tr}_S \left[\mat{\sigma}_z\left(\mat{G}^<_{\v{m}'\v{m}}(E)- \mat{G}^<_{\v{m}\v{m}'}(E)\right)\right] \ .
+	&+\frac{t_{SO}}{2} \int_{E_F-eV/2}^{E_F+eV/2} \frac{\text{d}E}{2 \pi} \text{Tr}_S \left[\mat{\sigma}_z\left(\mat{G}^<_{\v{m}'\v{m}}(E)- \mat{G}^<_{\v{m}\v{m}'}(E)\right)\right] \ .
 	\label{eqn:gfnccurrent}
 \end{align}
+The bond current can be separated into equilibrium current in the interval $[E_{\text{cut-off}}, E-eV/2]$ and non-equilibrium current in the interval $[E-eV/2, E+eV/2]$. In the linear response regime the energy $E\pm eV/2$ du to the lead potentials $eV/2$ can be replaced by the thermal energy of the electrons $\approx k_B T$. Here $k_B$ denotes the \textsc{Boltzmann} constant and $T$ the temperature in \textsc{Kelvin}.
 With the help of the so called \textsc{Fisher-Lee} relation \cite{PhysRevB.23.6851} connecting the scattering formalism of \textsc{Landauer-B\"uttiker} with the \gfnc s the total transmission probability can be written as
 \begin{align}
 T_{pq} = \text{Tr}(\Gamma_p G_{pq} \Gamma_q G^+_{pq}) = \sum_{n,m} \abs{t^{pq}_{ll'}}^2\ .

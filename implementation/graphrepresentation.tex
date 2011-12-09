@@ -10,7 +10,7 @@ The application of the RGA requires a block tridiagonal \hamil{}. Layered system
 \caption{Non-colinear device. Dots denote lattice points and slices, if treated as a layered structure, are indicated by alternating white and gray background.}
 \label{fig:noncolinear}
 \end{figure}
-In essence one needs a \hamil{} with a particular block tri-diagonal structure that has a small bandwidth i.e. small blocks. This can in principle be achieved by a process called matrix reordering. Because the diagonal elements represent the on-site energy the reordering should only exchange one diagonal element with another. In order to do so, the same permutation is applied to the rows and columns. These \emph{symmetric permutations} can be realised by a permutation martix $P$ as follows \cite{saad2003iterative}:
+In essence one needs a \hamil{} with a particular block tri-diagonal structure that has a small bandwidth i.e. small blocks. This can in principle be achieved by a process called matrix reordering. Because the diagonal elements represent the on-site energy the reordering should only exchange one diagonal element with another. In order to do so, the same permutation is applied to the rows and columns. These \emph{symmetric permutations} can be realized by a permutation martix $P$ as follows \cite{saad2003iterative}:
 \begin{align}
 \mat{H}' = \mat{P} \mat{H} \mat{P}^{T}\ .
 \label{eqn:permutation}
@@ -57,7 +57,7 @@ A graph may be pictured as a collection of circles as nodes and connecting lines
 \end{figure}
 \subsection{Matrix Reordering as a Graph Partitioning Problem}
 The process of matrix reordering with symmetric permutations corresponds to renaming of the nodes of a graph without altering the edges. In order to find the permutation matrix $P$ one has to sort the nodes of the graph.\par
-There exist numerous algorithms that can reduce the bandwidth of the adjacency matrix like the well known reverse \textsc{Cuthill-McKee} algorithm but the application of the RGA imposes an additional constraint. It requires that the last block of the matrix (the end-nodes of the graph) has to be the endpoint of the walk of the algorithm i.e. the sites adjacent to a contact have to be in the upper-left and lower-right corners of the matrix. That means the nodes representing these sites may not be renamed. A \emph{partition} of the graph yields a so-called \emph{level structure} \cite{gibbs.Siam.13.236}.
+There exist numerous algorithms that can reduce the bandwidth of the adjacency matrix like the well known reverse \textsc{Cuthill-McKee} algorithm but the application of the RGA imposes an additional constraint. It requires that the last block of the matrix (the end nodes of the graph) has to be the endpoint of the walk of the algorithm i.e. the sites adjacent to a contact have to be in the upper-left and lower-right corners of the matrix. That means the nodes representing these sites may not be renamed. A \emph{partition} of the graph yields a so-called \emph{level structure} \cite{gibbs.Siam.13.236}.
 \begin{dfn}
 A level structure $\mathpzc{L}(\mathpzc{G}) = (\mathpzc{l}_0,\mathpzc{l}_1,\mathpzc{l}_2,\dotsc,\mathpzc{l}_N)$, of a graph \textpzc{G} is a partition of the set of nodes \textpzc{V} into $N$ \emph{levels} $\mathpzc{l}_i$ such that
 \begin{enumerate}
@@ -112,7 +112,7 @@ A modification of this algorithm omitting detailed optimizations as used in this
    \item Distribute remaining nodes in level. Continue BFSs from previous step from both sides and assign nodes according to the balance criterion (\ref{eqn:balancecriterion}).
    \item Recursively apply step (\ref{alg:wimmeralgorithm3}) for levels $\mathpzc{l}_{i_1}$ and $\mathpzc{l}_{i_2}$ until in (\ref{alg:wimmeralgorithm3a}) final level is reached.
    \end{enumerate}
-   \item Collect all levels from (\ref{alg:wimmeralgorithm3}) into level-structure \textpzc{L} and reorder matrix rows and columns according to the sequence of nodes found  in \textpzc{L}
+   \item Collect all levels from (\ref{alg:wimmeralgorithm3}) into level structure \textpzc{L} and reorder matrix rows and columns according to the sequence of nodes found  in \textpzc{L}
    \end{enumerate}
    \vskip 4pt
  \end{minipage}

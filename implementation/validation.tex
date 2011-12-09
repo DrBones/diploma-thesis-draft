@@ -6,14 +6,6 @@ Because of this the wavefunction can be separated into transverse $\sqrt{2/L}\te
 \Psi(x,y) = \sqrt{2/L}\text{ sin}(n\pi/L \cdot y) \cdot e^{ik_xx}\ .
 \end{align}
 Because of the transverse confinement the eigenenergies become discrete similar to the case of the $z$ confinement illustrated in \cref{fig:potentialwell}.
-The analytically calculated probability distribution is renormalized to experimentally measured electron densities $n \sim 10^{17}/m^2$ typical for a 2DEG embedded in heterojunctions containing InAs \cite{gelfand2006} \cite{JJAP.26.L59}
-In \cref{fig:mode1,fig:mode2,fig:mode3} the analytical calculation for the first three modes is superimposed with the simulated results for a nano-wire of 100nm. 
-The parameters for the effective mass of an electron in a InAs 2DEG are taken to be $0.026\times m_0$ with $m_0$ being the electron rest mass \cite{PhysRev.105.460}.\par
-The relative error between analytical and numerical results is defined by
-\begin{align}
-\delta_{\text{rel}} = \frac{ni_{ana}-ni_{sim}}{ni_{sim}}\ .
-\end{align}
-The electron densities for each mode $i$ are denoted by $ni_{ana}$ for the analytical and $ni_{sim}$ for the simulated result.
 \begin{figure}[h!]
   \begin{center}
     % \showthe\columnwidth % Use this to determine the width of the figure.
@@ -21,7 +13,7 @@ The electron densities for each mode $i$ are denoted by $ni_{ana}$ for the analy
     \subfloat[]{\label{fig:overlay1}\includegraphics[width=210pt]{images/overlay1}}\\
     \subfloat[]{\label{fig:relerror1}\includegraphics[width=210pt]{images/error1}}\qquad
     \subfloat[]{\label{fig:dens1}\includegraphics[width=210pt]{images/dens1}}
-    \caption{Comparison of analytical and simulated electron densities for the first mode in dependence on the position $y$ perpendicular to the direction of electron propagation $x$. (a) Analytical wavefunction (dotted green line) and probability amplitude (blue line) in arbitrary units. (b) Cut of simulated electron density (red markers) and analytical calculation (blue line) perpendicular to the length of the wire overlayed , (c) Relative error of the simulated result, (d) Two-dimensional electron density. Color code denotes the electron density. }\label{fig:mode1}
+    \caption{Comparison of analytical and simulated electron densities for the first mode in dependence on the position $y$ perpendicular to the direction of electron propagation $x$. (a) Analytical wavefunction (dotted green line) and probability amplitude (blue line) in arbitrary units. (b) Cut of simulated electron density close to the band edge (red markers) and analytical calculation (blue line) perpendicular to the length of the wire overlayed , (c) Relative error of the simulated result, (d) Two-dimensional electron density. Color code denotes the electron density. }\label{fig:mode1}
   \end{center}
 \end{figure}
 The electrons populate only the first mode at the calculated energy using the dispersion relation of electrons on a lattice in transverse direction
@@ -29,8 +21,17 @@ The electrons populate only the first mode at the calculated energy using the di
 E_{n} = 2t_0(1-\text{cos}(n\pi a/L)).
 \label{eqn:dispersionlattice}
 \end{align}
-Here $L=100$nm is the transverse extent of the nano-wire and $n=1$ the number of the mode. Figure~\ref{fig:analytical1} shows the normalized wavefunction and probability density for the first mode.\par
-In \cref{fig:overlay1} of the tableau of \cref{fig:mode1} the overlay of re-normalized analytical wavefunction and simulated electron density shows the excellent agreement of theory and simulation. This becomes especially clear noting the relative error in \cref{fig:relerror1} of magnitude $10^{-11}$ normalized to \emph{mean electron density}.\par
+Here $L=100$ nm is the transverse extent of the nanowire and $n=1,2,3,\dotsc$ the number of the modes. Figure~\ref{fig:analytical1} shows the normalized wavefunction and probability density for the first mode.\par
+The mode energies obtained by \cref{eqn:dispersionlattice} correspond to electrons directly at the band edge. Thus a group velocity of $v_n=0$. However, at $v_n=0$ the local density of states (LDOS) exhibits singularities \cite{ghasemi:69010R} impeding the numerical calculation of the electron density \cite{Wimmer2009Thesis}.
+All electron densities are calculated with energies as close to the band edge as possible to ensure comparability to the analytically calculated results. Due to the divergence of the LDOS the simulated energy dependent electron densities close to the band edge are elevated by about a factor of 10 regarding experimental measurements of $n \sim2.3\cdot 10^{16}/m^2$ \cite{gelfand2006} \cite{JJAP.26.L59}. Calculating the energy independent electron density via \cref{eqn:gfncdensity} leads to values comparable to experimental results. For qualitative comparison the analytical probility distribution is normalized to the simulated electron density.
+In \cref{fig:mode1,fig:mode2,fig:mode3} the analytical calculation for the first three modes is superimposed with the simulated results for a nanowire of 100nm. 
+The parameters for the effective mass of an electron in a InAs 2DEG are taken to be $0.026\times m_0$ with $m_0$ being the electron rest mass \cite{PhysRev.105.460}.\par
+The relative error between analytical and numerical results is defined by
+\begin{align}
+\delta_{\text{rel}} = \frac{ni_{ana}-ni_{sim}}{ni_{sim}}\ .
+\end{align}
+The electron densities for each mode $i$ are denoted by $ni_{ana}$ for the analytical and $ni_{sim}$ for the simulated result.
+In \cref{fig:overlay1} of the tableau of \cref{fig:mode1} the overlay of the renormalized analytical wavefunction and the simulated electron density shows the excellent agreement of theory and simulation. This becomes especially clear noting the relative error in \cref{fig:relerror1} of magnitude $10^{-11}$ normalized to \emph{mean electron density}.\par
 \Cref{fig:dens1} displays a top view of the two-dimensional electron density. Red denoting high and blue low density. The electron density is uniform in $x$ direction as expected.\par
 \begin{figure}[h]
   \begin{center}
@@ -39,27 +40,26 @@ In \cref{fig:overlay1} of the tableau of \cref{fig:mode1} the overlay of re-norm
     \subfloat[]{\label{fig:overlay2}\includegraphics[width=210pt]{images/overlay2}}\\
     \subfloat[]{\label{fig:relerror2}\includegraphics[width=210pt]{images/error2}}\qquad
     \subfloat[]{\label{fig:dens2}\includegraphics[width=210pt]{images/dens2}}
-    \caption{Comparison of analytical and simulated electron densities for the second mode in dependence on the position $y$ perpendicular to the direction of electron propagation $x$. (a) Analytical wavefunction (dotted green line) and probability amplitude (blue line) in arbitrary units. (b) Cut of simulated electron density of the first mode (red markers), second mode (green markers) and analytical calculation (blue line) perpendicular to the length of the wire overlayed , (c) Relative error of the simulated result, (d) Two-dimensional electron density. Color code denotes the electron density.}\label{fig:mode2}
+    \caption{Comparison of analytical and simulated electron densities for the second mode in dependence on the position $y$ perpendicular to the direction of electron propagation $x$. (a) Analytical wavefunction (dotted green line) and probability amplitude (blue line) in arbitrary units. (b) Cut of simulated electron density of the first mode close to the band edge (red markers), second mode (green markers) and analytical calculation (blue line) perpendicular to the length of the wire overlayed , (c) Relative error of the simulated result, (d) Two-dimensional electron density. Color code denotes the electron density.}\label{fig:mode2}
   \end{center}
 \end{figure}
-The second mode is also appropriately populated for $n=2$. The analytical calculation does not consider the existence of lower modes at a certain energy, in contrast the model employed in the simulations does. The electron densities for the first and second modes have therefore to be superposed what is shown in \cref{fig:overlay2}. The total energy independent electron density is obtained by integrating over energy space as is shown in \cref{eqn:gfncdensity}.For transport properties it suffices to focus on energies $E=E_F\pm k_bT$ because the conductance is a \textsc{Fermi} surface property c.f \cref{sec:landauerbuettiker}. $E_F$ denotes the \textsc{Fermi} energy and $k_bT$ the thermal energy contribution $k_b$ being the \textsc{Boltzmann} constant and $T$ the temperature.\par
-The relative error increases considerably but stays within acceptable bounds considering the rather simple analytical model.
-Also the uniform distribution along the wire remains and the two maxima in electron density can clearly be seen in \cref{fig:dens2}.\par
+The second mode is also appropriately populated for $n=2$. The analytical calculation does not consider the existence of lower modes at a certain energy, in contrast the model employed in the simulations does. The electron densities for the first and second modes at the band edge of the second mode have therefore to be superposed what is shown in \cref{fig:overlay2}. Note the decreasing population of the first mode, \cref{fig:overlay1}, above the second mode band edge seen as red markers in \cref{fig:overlay2}. The relative error increases considerably but stays within acceptable bounds considering the rather simple analytical model.
+Also the uniform distribution along the wire remains and the two maxima in electron density can clearly be seen in \cref{fig:dens2}. The simulated electron densities are also elevated due to the divergence of the LSDOS at the band edge of the second mode.\par
 \begin{figure}[h]
   \begin{center}
 \subfloat[]{\label{fig:analytical3}\includegraphics[width=210pt]{images/analytical3}} \qquad
     \subfloat[]{\label{fig:overlay3}\includegraphics[width=210pt]{images/overlay3}}\\
     \subfloat[]{\label{fig:relerror3}\includegraphics[width=210pt]{images/error3}}\qquad
     \subfloat[]{\label{fig:dens3}\includegraphics[width=210pt]{images/dens3}}
-    \caption{Comparison of analytical and simulated electron densities for the third mode in dependence on the position $y$ perpendicular to the direction of electron propagation $x$. (a) Analytical wavefunction (dotted green line) and probability amplitude (blue line) in arbitrary units. (b) Cut of simulated electron density of the second mode (green markers), third mode (black markers) and analytical calculation (blue line) perpendicular to the length of the wire overlayed , (c) Relative error of the simulated result, (d) Two-dimensional electron density. Color code denotes the electron density.}\label{fig:mode3}
+    \caption{Comparison of analytical and simulated electron densities for the third mode in dependence on the position $y$ perpendicular to the direction of electron propagation $x$. (a) Analytical wavefunction (dotted green line) and probability amplitude (blue line) in arbitrary units. (b) Cut of simulated electron density of the second mode close to the band edge (green markers), third mode (black markers) and analytical calculation (blue line) perpendicular to the length of the wire overlayed , (c) Relative error of the simulated result, (d) Two-dimensional electron density. Color code denotes the electron density.}\label{fig:mode3}
   \end{center}
 \end{figure}
-The results of simulation and simple analytical model begin to derivate stronger for the case of the third mode. Only the previous lower mode is considered in the renormalization of the analytical result in the overlay of transversal electron densities but the simulated results are for still within acceptable bounds for as \cref{fig:relerror3} shows. Derivations in the predictions of electron density for the compared models continue to exist as is expected because the analytical model does not incorporate the many-particle nature of the 2DEG like the \gfnc{} theory does.
+The results of simulation and simple analytical model begin to derivate stronger for the case of the third mode. Only the previous lower mode is considered in the renormalization of the analytical result at the energy of the third modes band edge in the overlay of transversal electron densities but the simulated results are for still within acceptable bounds as \cref{fig:relerror3} shows. Derivations in the predictions of electron density for the compared models continue to exist as is expected because the analytical model does not incorporate the many-particle nature of the 2DEG like the \gfnc{} theory does.
 The electron density calculation show throughout satisfactory and acceptable results.\par
 \FloatBarrier
 \subsubsection{Spin densities}
 Validating the results of the spin density calculations is a rather intricate process because of the number of parameters and physical influences involved.\par
-The spin density of flowing electrons in a conductor with spin-orbit coupling exhibits a characteristic spin split in the local magnetic field due to the \textsc{Rashba} interaction. The spin-split has been measured through optical means by \textsc{Kato} et. al.\,\cite{Kato2004Science} and is shown in \cref{fig:spinplitkato}. It shows the split of electron spin flowing along the wire. There is an accumulation of upward spin in the upper half and of downward spin in the lower half.
+The spin density of flowing electrons in a conductor with spin-orbit coupling exhibits a characteristic spin split in the local magnetic field due to the \textsc{Rashba} interaction. The spin-split has been measured through optical means by \textsc{Kato} et al. \cite{Kato2004Science} and is shown in \cref{fig:spinplitkato}. It shows the split of electron spin flowing along the wire. There is an accumulation of upward spin in the upper half and of downward spin in the lower half.
 \begin{figure}[h]
   \begin{center}
     \subfloat[]{\label{fig:spinplitkato}\includegraphics[width=\textwidth]{images/spinsplitkato}}\qquad
@@ -71,7 +71,7 @@ The spin density of flowing electrons in a conductor with spin-orbit coupling ex
 The spin split is also shown in the results of the simulations in the \gfnc{} model. Due to the approximative and simplifying nature of the model considered only an idealized system is described therefore lacking common physical features like temperature induced noise although they can be implemented in an efficient fashion.\par
 \FloatBarrier
 \subsubsection{Transmission}
-Validating the results from the transmission calculations can be done in a very straightforward manner. For quantum point contacts of varying constriction or if the energy parameter is altered the conductance will vary only in discrete steps.\par
+Validating the results from the transmission calculations can be done in a straightforward manner. For quantum point contacts of varying constriction or if the energy parameter is altered the conductance will vary only in discrete steps.\par
 This is a direct quantum mechanical consequence, as from a classical point of view a linear relation between conductance and device width is expected.
 Is has been found out that the conductance is quantized in steps of the conductance quantum $e^2/h$ c.f. \cref{eqn:conductance}.
 It is due to the finite transverse size of the modes within the conductor that only if space permits another mode is established. The transmission probability function (\cref{eqn:transmissionfunction}) will reach a plateau when each new mode is established and ideally performs a unit step per mode when the next higher or lower state begins to exist in the conductor. The shape and height of the steps is subject to a multitude of influences but because of its discrete step height under certain conditions a valuable tool for comparison.\par
@@ -79,10 +79,10 @@ It is due to the finite transverse size of the modes within the conductor that o
   \begin{center}
     \subfloat[] {\includegraphics[]{images/qpcwees}}
     \subfloat[]{\includegraphics[]{images/qpcme}}
-    \caption{Comparison of experimental and simulated conductances of an QPC constriction of variable size. (a) Experimentally measured conductance for varying gate voltage changing the width of the quantum point contact \cite{PhysRevLett.60.848}. (b) Simulated conductance changing the width of the QPC constriction geometrically}
+    \caption{Comparison of experimental and simulated conductances of an QPC constriction of variable size. (a) Experimentally measured conductance for varying gate voltage changing the width of the quantum point contact \cite{PhysRevLett.60.848}. (b) Simulated conductance changing the width of the QPC constriction geometrically. Note the conductance quantum of $2e^2/h$ for spin degenerate measurements.}
 \end{center}
 \end{figure}
-The comparison of experimentally measured and simulated conductance quantization show a very good agreement in step height as new propagating modes are established.\par
+The comparison of experimentally measured and simulated conductance quantization show excellent agreement in step height as new propagating modes are established.\par
 The simulated results show in summary acceptable results to merit its application in the theoretical analysis of quantum devices embedded in a 2DEG.
 The roughness and shape of the steps is subject to investigation of the following chapter.\par
 \FloatBarrier

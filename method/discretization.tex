@@ -10,7 +10,7 @@ The procedure will be outlined for the \hamil{} in the effective mass $m^*$ appr
     \label{eqn:Hamil}
 \end{equation}
 
-To achieve a discrete matrix-representation of the \hamil{}, self-energies and\sloppy{~\gfnc{} one can expand the equations in any localized basis functions like Muffin-Tin orbitals, \textsc{Wannier} functions, or \textsc{Dirac} distributions giving rise to a so-called tight-binding \hamil{} limiting the interaction, e.g. to nearest neighbours. A coordinate in discrete space will be refered to as a lattice point regardless of the nature and space of the localized function.}
+To achieve a discrete matrix-representation of the \hamil{}, self-energies and\sloppy{~\gfnc{} one can expand the equations in any localized basis functions like Muffin-Tin orbitals, \textsc{Wannier} functions, or \textsc{Dirac} distributions giving rise to a so-called tight-binding \hamil{} limiting the interaction, e.g. to nearest neighbors. A coordinate in discrete space will be refered to as a lattice point regardless of the nature and space of the localized function.}
 Using a \textsc{Dirac} delta distribution basis amounts to replacing the continuous function with it's values at the respective points in space \cite{JApplPhys.92.3730}.
 \begin{equation}
   \int \delta (\v{r}-\v{r}') f(\v{r}) \mathrm{d}\v{r} = f(\v{r}')\ .
@@ -63,12 +63,12 @@ Inserting \cref{eqn:finitedifffirstderivative}, \ref{eqn:finitediffsecondderivat
 	\label{eqn:discretizedeffectivemassHamil}
 \end{align}
 The sum runs in addition to the states $\v{m}$ over the spin $\sigma=\uparrow,\downarrow$. The $\epsilon$ account for local potentials in the form of $U(x,y)$ like lateral confinement or atomic disorder.
-The spin independend hopping parameter $t_{\v{m}\v{m'}}$ is given by
+The spin independent hopping parameter $t_{\v{m}\v{m'}}$ is given by
 \begin{align}
-t_{\v{m}\v{m'}} = \left\{ \begin{array}[c]{cl} -t_0 & \text{if } \v{m} = \v{m}' \pm a \cdot \v{e}_{x,y} \\ 0 & \text{elsewhise} \end{array} \right.\ .
+t_{\v{m}\v{m'}} = \left\{ \begin{array}[c]{cl} -t_0 & \text{if } \v{m} = \v{m}' \pm a \cdot \v{e}_{x,y} \\ 0 & \text{otherwise} \end{array} \right.\ .
 	\label{eqn:t0hopping}
 \end{align}
-The hopping parameter $t_0 = \hbar^2/2m^*a^2$ describes the probability of one electron propagating to a neighbouring lattice point. Introducing the discretized \rash{} \hamil{}
+The hopping parameter $t_0 = \hbar^2/2m^*a^2$ describes the probability of one electron propagating to a neighboring lattice point. Introducing the discretized \rash{} \hamil{}
 \begin{align}
 	\hat{H} = \sum_{\v{m},\sigma} \epsilon_{\v{m}} \hat{c}^{\dagger}_{\v{m}\sigma} \hat{c}_{\v{m}\sigma} +
 	\sum_{\v{m},\v{m'},\sigma}  \hat{c}^{\dagger}_{\v{m}\sigma} \mat{t}_{\v{m}\v{m'}\sigma\sigma '} \hat{c}_{\v{m'}\sigma}\ .
@@ -108,7 +108,7 @@ The on-site energies $\epsilon_{\v{m}}$ in this \hamil{} are
 \end{equation}
 The potential offset $4t_0$ arises naturally in the process of approximation with finite differences. Because of the offset the dispersion relation for free electrons ($V_{\v{m}}=0$) in an infinite empty lattice reads
 \begin{equation}
-\epsilon = 4t_0(1-cos(\abs{\v{k}}a))\ .
+\epsilon = 4t_0(1-\text{cos}(\abs{\v{k}}a))\ .
 \end{equation}
 The tight-binding model is a good approximation if the lattice spacing is below the \textsc{Fermi}-wavelength
 \begin{equation}
