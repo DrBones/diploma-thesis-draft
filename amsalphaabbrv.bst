@@ -1,45 +1,3 @@
-%%% ====================================================================
-%%%  @BibTeX-style-file{
-%%%     filename        = "amsalpha.bst",
-%%%     version         = "2.0",
-%%%     date            = "2000/03/27",
-%%%     time            = "13:49:36 EST",
-%%%     checksum        = "00166 1404 4124 29978",
-%%%     author          = "American Mathematical Society",
-%%%     address         = "American Mathematical Society,
-%%%                        Technical Support,
-%%%                        Electronic Products and Services,
-%%%                        P. O. Box 6248,
-%%%                        Providence, RI 02940,
-%%%                        USA",
-%%%     telephone       = "401-455-4080 or (in the USA and Canada)
-%%%                        800-321-4AMS (321-4267)",
-%%%     FAX             = "401-331-3842",
-%%%     email           = "tech-support@ams.org (Internet)",
-%%%     copyright       = "Copyright 1995 American Mathematical Society,
-%%%                        all rights reserved.  Copying of this file is
-%%%                        authorized only if either:
-%%%                        (1) you make absolutely no changes to your copy,
-%%%                        including name; OR
-%%%                        (2) if you do make changes, you first rename it
-%%%                        to some other name.",
-%%%     codetable       = "ISO/ASCII",
-%%%     keywords        = "bibtex, bibliography, amslatex, ams-latex",
-%%%     supported       = "yes",
-%%%     abstract        = "BibTeX bibliography style `amsalpha' for BibTeX
-%%%                        versions 0.99a or later and LaTeX version 2e.
-%%%                        Produces alphabetic-label bibliography items in
-%%%                        a form typical for American Mathematical Society
-%%%                        publications.",
-%%%     docstring       = "The checksum field above contains a CRC-16
-%%%                        checksum as the first value, followed by the
-%%%                        equivalent of the standard UNIX wc (word
-%%%                        count) utility output of lines, words, and
-%%%                        characters.  This is produced by Robert
-%%%                        Solovay's checksum utility.",
-%%%  }
-%%% ====================================================================
-
 % See the file btxbst.doc for extra documentation other than
 % what is included here.  And see btxhak.tex for a description
 % of the BibTeX language and how to use it.
@@ -437,12 +395,18 @@ FUNCTION {format.year}
   if$
 }
 
-FUNCTION {first.page} { 't := "" { t empty$ not t #1 #1 substring$ "-" = not and } { t #1 #1 substring$ * t #2 global.max$ substring$ 't := } while$ }
+FUNCTION {first.page}
+{ 't :=
+  "" 
+  { t empty$ not t #1 #1 substring$ "-" = not and }
+  { t #1 #1 substring$ * t #2 global.max$ substring$ 't := }
+while$
+}
 
 FUNCTION {format.pages}
 { pages empty$
     { "" }
-    %{ pages n.dashify }
+%    { pages n.dashify }
     { pages first.page }
   if$
 }
@@ -450,21 +414,20 @@ FUNCTION {format.pages}
 FUNCTION {format.journal.vol.pages.year}
 { journal empty$
     { "" "journal name" missing.warning }
-    { journal output
+    { journal 
       volume empty$
         'skip$
         { " \textbf{" * volume * "}" * }
       if$
       pages empty$
         'skip$
-        {format.pages output}
+        {", " format.pages * *}
       if$
       year empty$
         { "year" missing.warning }
         { " (" *  year *  ")" * }
-      if$
-    }
-  if$
+      if$}
+    if$
 }
 
 FUNCTION {format.booktitle.vol}
@@ -812,8 +775,8 @@ FUNCTION {article}
     { format.article.crossref output.nonnull
     }
   if$
-  format.language *
-  note output
+  %format.language *
+  %note output
   fin.entry
 }
 
