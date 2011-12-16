@@ -251,6 +251,27 @@ FUNCTION {output.nonnull}
   s
 }
 
+FUNCTION {output.nonnull.nocomma}
+% remove the top item from the stack because it's in the way.
+{ 's :=
+  output.state mid.sentence =
+% If we're in mid-sentence, add a comma to the new top item and write it
+    { " " * write$ }
+% Otherwise, if we're at the beginning of a bibitem,
+    { output.state before.all =
+% just write out the top item from the stack;
+      'write$
+% and the last alternative is that we're at the end of the current
+% bibitem, so we add a period to the top stack item and write it out.
+        { add.period$ " " * write$ }
+      if$
+      mid.sentence 'output.state :=
+    }
+  if$
+% Put the top item back on the stack that we removed earlier.
+  s
+}
+
 % Output checks to see if the stack top is empty; if not, it
 % calls output.nonnull to write it out.
 
@@ -401,10 +422,60 @@ FUNCTION {format.nonauthor.editors}
   if$
 }
 
+
 FUNCTION {format.title}
 { title empty$
     { "" }
     { title "t" change.case$ emphasize }
+  if$
+}
+
+FUNCTION {format.year}
+{ year empty$
+    { "there's no year in " cite$ * warning$}
+    { " ("  year  ")" * * }
+  if$
+}
+
+FUNCTION {first.page} { 't := "" { t empty$ not t #1 #1 substring$ "-" = not and } { t #1 #1 substring$ * t #2 global.max$ substring$ 't := } while$ }
+
+FUNCTION {format.pages}
+{ pages empty$
+    { "" }
+    %{ pages n.dashify }
+    { pages first.page }
+  if$
+}
+
+FUNCTION {format.journal.vol.pages.year}
+{ journal empty$
+    { "" "journal name" missing.warning }
+    { journal output
+      volume empty$
+        'skip$
+        { " \textbf{" * volume * "}" * }
+      if$
+      pages empty$
+        'skip$
+        {format.pages output}
+      if$
+      year empty$
+        { "year" missing.warning }
+        { " (" *  year *  ")" * }
+      if$
+    }
+  if$
+}
+
+FUNCTION {format.booktitle.vol}
+{ booktitle empty$
+    { "" "booktitle name" missing.warning }
+    { booktitle 
+      volume empty$
+        'skip$
+        { " \textbf{" * volume * "}" * }
+      if$
+    }
   if$
 }
 
@@ -479,7 +550,7 @@ FUNCTION {format.bookvolume.series.number}
             'skip$          % do nothing, otherwise
             { ", " * }      % add a comma and space to separate.
           if$
-          "no." number tie.or.space.connect * % add the number information
+          %"no." number tie.or.space.connect * % add the number information
         }
       if$
     }
@@ -514,7 +585,7 @@ FUNCTION {format.bookvolume.series.number}
 %%      Likewise we add parentheses around the editors' names.
 
 FUNCTION {format.inproc.title.address.editors}
-{ booktitle empty$
+{ title empty$
     { "" }
     { booktitle
       address empty$
@@ -523,7 +594,8 @@ FUNCTION {format.inproc.title.address.editors}
       if$
       editor empty$
         'skip$
-        { add.space.if.necessary "(" * format.nonauthor.editors * ")" * }
+        'skip$
+        %{ add.space.if.necessary "(" * format.nonauthor.editors * ")" * }
       if$
     }
   if$
@@ -578,12 +650,6 @@ FUNCTION {multi.page.check}
   multiresult
 }
 
-FUNCTION {format.pages}
-{ pages empty$
-    { "" }
-    { pages n.dashify }
-  if$
-}
 
 FUNCTION {format.book.pages}
 { pages empty$
@@ -740,12 +806,10 @@ FUNCTION {article}
   format.authors "author" output.check
   format.title "title" output.check
   crossref missing$
-    { format.journal.vol.year "journal, volume, and year" output.check
-      format.number output
-      format.pages "pages" output.check
+    { format.journal.vol.pages.year "journal, volume, pages, and year" output.check
+%      format.number output
     }
     { format.article.crossref output.nonnull
-      format.pages "pages" output.check
     }
   if$
   format.language *
@@ -768,7 +832,7 @@ FUNCTION {book}
   format.edition output
   crossref missing$
     { format.bookvolume.series.number output
-      publisher "publisher" output.check
+      " (" publisher *  output.nonnull.nocomma 
       address output
     }
     { format.book.crossref output.nonnull
@@ -776,6 +840,7 @@ FUNCTION {book}
   if$
   format.date "year" output.check
   format.language *
+  ")" *
   note output
   fin.entry
 }
@@ -827,16 +892,17 @@ FUNCTION {incollection}
   crossref missing$
     { format.incoll.title.editors "booktitle" output.check
       format.bookvolume.series.number output
-      publisher "publisher" output.check
-      address output
+      " (" publisher *  output.nonnull.nocomma
+      %address output
       format.edition output
+      format.pages output
       format.date "year" output.check
+      ")" *
     }
     { format.incoll.inproc.crossref output.nonnull
     }
   if$
   note output
-  format.book.pages output
   format.language *
   fin.entry
 }
@@ -846,17 +912,19 @@ FUNCTION {inproceedings}
   format.authors "author" output.check
   format.title "title" output.check
   crossref missing$
-    { format.inproc.title.address.editors "booktitle" output.check
-      format.bookvolume.series.number output
-      organization output
-      publisher output
-      format.date "year" output.check
+    %{ format.inproc.title.address.editors "title" output.check
+  { format.booktitle.vol "booktitle, and volume" output.check
+      %format.bookvolume.series.number output
+      %organization output
+      %publisher output
     }
     { format.incoll.inproc.crossref output.nonnull
     }
   if$
   note output
-  format.book.pages output
+  %format.book.pages output
+  format.pages output
+  %format.year "year" output.check
   format.language *
   fin.entry
 }
@@ -924,7 +992,7 @@ FUNCTION {phdthesis}
   "Ph.D. thesis" format.thesis.type output.nonnull
   school "school" output.check
   address output
-  format.date "year" output.check
+  format.year "year" output.check
   note output
   format.book.pages output
   fin.entry
