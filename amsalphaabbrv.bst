@@ -924,7 +924,7 @@ FUNCTION {inproceedings}
   note output
   %format.book.pages output
   format.pages output
-  %format.year "year" output.check
+  format.year output.nonnull.nocomma
   format.language *
   fin.entry
 }
@@ -992,7 +992,7 @@ FUNCTION {phdthesis}
   "Ph.D. thesis" format.thesis.type output.nonnull
   school "school" output.check
   address output
-  format.year "year" output.check
+  format.year output.nonnull.nocomma
   note output
   format.book.pages output
   fin.entry
