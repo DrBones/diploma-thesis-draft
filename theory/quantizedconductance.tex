@@ -1,13 +1,13 @@
-In transport measurements of mesoscopic systems at low temperatures a quantized conduction has been observed \cite{PhysRevLett.45.494}. Thus conductance of mesoscopic systems exhibits peculiarities with no classical analogon.
+In transport measurements of mesoscopic systems at low temperatures a quantized conduction has been observed \cite{PhysRevLett.45.494}. Thus, conductance of mesoscopic systems exhibits peculiarities with no classical analogon.
 \subsection{\clanbform{}}\label{sec:landauerbuettiker}
-In an ideal lattice the electrons would move like in vacuum (empty lattice) but with an effective mass. Impurities or phonons introduce scattering into the system altering the momentum of moving electrons through collisions.
+In an ideal lattice the electrons would move like in vacuum (empty lattice) but with an effective mass. Impurities or phonons introduce scattering to the system altering the momentum of moving electrons through collisions.
 If the size of the electronic device shrinks below the mean free path of an electron, i.e. the distance an electron has to travel until its initial momentum is destroyed, the transport becomes ballistic\,\cite{datta1989quantum}. 
 \begin{align}
 	\text{length of device} \lesssim \lambda_{\text{mfp}}\quad \Rightarrow \quad\text{ballistic regime}
 	\label{eqn:meanfreepath}
 \end{align}
 Due to the lack of scattering one would suspect zero resistivity. Nonetheless a finite resistivity which is quantized as a function of the width of the conductor was found \cite{PhysRevLett.60.848}.
-A popular approach to the effects of nano-scale devices initialized by \textsc{Landauer} \cite{PhilMag.21.863} and extended by \textsc{B\"uttiker} is the so called \lanbform{} \cite{PhysRevB.31.6207}.
+A popular approach to the effects of nano-scale devices initialized by \textsc{Landauer} \cite{PhilMag.21.863} and extended by \textsc{B\"uttiker} is the so-called \lanbform{} \cite{PhysRevB.31.6207}.
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
@@ -21,8 +21,8 @@ A popular approach to the effects of nano-scale devices initialized by \textsc{L
 \caption{Schematic of device in \lanbform{} with three reservoirs and leads. The blue area is the active scattering region. Each reservoir has distinct Temperature $T_i$, chemical potential $\mu_i$ and therefore \textsc{Fermi} distribution $f_i$.}
 \label{fig:lanbform}
 \end{figure}
-The \textsc{Landauer-B\"uttiker} model is in essence quite general but all devices are composed of a scattering region and one or more leads. The device of interest is theoretically divided into a scattering area henceforth called conductor and multiple leads connecting the conductor to macroscopic reservoirs. All reservoirs and their adjacent leads are assumed to be in thermal equilibrium. Each lead has a distinct \textsc{Fermi} distribution $f_R$ of temperature $T_R$ and chemical potential $\mu_R$, see \cref{fig:lanbform}.
-The \lanbform{} relates the current flow between leads to the chemical potential of the reservoirs. In hindsight of the inclusion of spin the expressions are given per spin state of the electron. Otherwise one would have to include a 2 in the calculations for spin degeneracy. The current in lead $p$ \cite{PhysRevLett.68.2512}
+The \textsc{Landauer-B\"uttiker} model is in essence quite general but all devices are composed of a scattering region and one or more leads. The device of interest is theoretically divided into a scattering area, henceforth called conductor, and multiple leads connecting the conductor to macroscopic reservoirs. All reservoirs and their adjacent leads are assumed to be in thermal equilibrium. Each lead has a distinct \textsc{Fermi} distribution $f_R$ of temperature $T_R$ and chemical potential $\mu_R$, see \cref{fig:lanbform}.
+The \lanbform{} relates the current flow between leads to the chemical potential of the reservoirs. In hindsight of the inclusion of spin the expressions are given per spin state of the electron. Otherwise, a 2  would have to be included in the calculations for spin degeneracy. The current in lead $p$ \cite{PhysRevLett.68.2512}
 \begin{align}
 I_p=\frac{-e}{h} \sum_q \int T_{pq}(E) [f_p(E) - f_q(E)] \text{ d}E.
 \label{eqn:current}
@@ -40,7 +40,7 @@ Assuming that the conductance can be expressed in terms of current and chemical 
 G_{pq}=\frac{\abs{I\cdot e}}{(\mu_p - \mu_q)}=\frac{e^2}{h} T_{pq}(E_F).
 \label{eqn:conductance}
 \end{align}
-The conductance can be calculated by quantum mechanical methods. The transmission coefficients $T_{pq}(E)$ are directly related to the \emph{transmission probabilities amplitudes} $t^{pq}_{ll'}$ leading to
+The conductance can be calculated by quantum mechanical methods. The transmission coefficients $T_{pq}(E)$ are directly related to the \emph{transmission probability amplitudes} $t^{pq}_{ll'}$ leading to
 \begin{align}
 G_{pq}=\frac{e^2}{h} T_{pq} =\frac{e^2}{h} \sum_{ll'} \abs{t^{pq}_{ll'}}^2.
 \label{eqn:transcoeff}
