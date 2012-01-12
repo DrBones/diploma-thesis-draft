@@ -75,31 +75,6 @@ Different potential changes are illustrated in \cref{fig:hardwalled,fig:softwall
   % \end{tabularx}
   \caption{Potential landscape of a soft walled quantum point contact of two point charges of charge $q$ and dislocation $w$. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The dimensionless analytical expression of the potential is presented on the right.}\label{fig:softwalled}
 \end{figure}
-% \begin{figure}[h!]
-%   \begin{minipage}[c]{0.5\textwidth}
-%   \begin{tikzpicture}%[every text node part/.style={align=center}]
-%       \node at (0,0)[above] {\includegraphics[width=.9\textwidth]{images/qpcvariational-crop.png}};
-%       \axes
-% % \draw[style={-,thin}] (2,0.65) -- (2,1.3) node[midway,above] {$w$};
-% % \draw [help lines] (0,0) grid (3,3);
-%   \coordinate (a) at ($1.125*(1.05,1.62)$);
-%   \coordinate (b) at ($1.125*(1.75,2.015)$);
-%   % \coordinate (c) at ($(b)+(-0.2,1.322)$);
-%   \coordinate (c) at ($1.125*(1.75,3.582)$);
-%   \coordinate (d) at ($1.125*(0.21,2.05)$);
-%   \coordinate (e) at (0.0506,2.508);
-%   \coordinate (f) at (0.73,4.5);
-%   \draw[-] (a) node[above,yshift=2em]{$m$} -- (b) node[midway,below,xshift=0.8em]{$\Delta y$} -- (c) --cycle;
-%   \draw[dashed] (a) -- (d);
-%   \draw[-] (e) -- (f);
-%   \draw[dashed] (c) -- (f);
-%     \end{tikzpicture}
-% \end{minipage}
-% \begin{minipage}[c]{0.5\textwidth}
-% \begin{flalign}\quad\text{Pot}(x,y) &= e^{-x^2/\xi^2}\cdot\abs{m\cdot y}&\end{flalign} 
-% \end{minipage}
-% \caption{Example potential landscape of variational-walled quantum point contact used in analysis}\label{fig:variationalwalled}
-% \end{figure}
 \begin{figure}[h!]
     \begin{minipage}[c]{0.5\textwidth}
     \begin{tikzpicture}%[every text node part/.style={align=center}]
@@ -181,30 +156,30 @@ It is interesting to note that there are almost no steps visible in \cref{fig:tr
 The geometrical shape of the constriction influences the transport properties of the device as seen in the previous section. Changing the geometry perpendicular to the $z$ axis smoothed out most features related to quantized conductance either physically or by introducing artificial complexity not found in the actual continuous system.\par
 One possible remedy is to alter the slope of the confining potential landscape perpendicular to the $x$ and $y$ axis. This stands in opposition to the infinite slope of the hard walled potentials considered before. A potential wall slowly varying in respect to the $x$ and $y$ coordinates will be called \emph{soft walled}.\par
 \begin{figure}[h]
-\subfloat[]{\label{fig:sphericaledens}\includegraphics[]{images/wire400x200-Nov-27-2011-21.41edens}}
-  \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
-      \node at (-6.8,-2.3) {\includegraphics[width=0.13\textwidth]{images/qpcspherical-crop.png}};
-      \end{tikzpicture}
-\subfloat[]{\label{fig:sphericalspindens}\includegraphics[]{images/wire400x200-Nov-27-2011-21.41spindens}}
-\caption{Simulated electron and spin density of a quantum point contact with spherical constriction of width $w$=100 nm, and radius of the tip $r$=60 nm. (a) Two-dimensional electron density. Note the well defined continuous areas of electron density within the constriction. Color code denotes the electron density $n$. (b) Two-dimensional spin density. Color code denotes the spin density $s_z$. The corresponding potential landscape is depicted on the left.}
+  \subfloat[]{\label{fig:sphericaledens}\includegraphics[]{images/wire400x200-Nov-27-2011-21.41edens}}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node at (-6.8,-2.3) {\includegraphics[width=0.13\textwidth]{images/qpcspherical-crop.png}};
+	\end{tikzpicture}
+  \subfloat[]{\label{fig:sphericalspindens}\includegraphics[]{images/wire400x200-Nov-27-2011-21.41spindens}}
+  \caption{Simulated electron and spin density of a quantum point contact with spherical constriction of width $w$=100 nm, and radius of the tip $r$=60 nm. (a) Two-dimensional electron density. Note the well defined continuous areas of electron density within the constriction. Color code denotes the electron density $n$. (b) Two-dimensional spin density. Color code denotes the spin density $s_z$. The corresponding potential landscape is depicted on the left.}
 \end{figure}
 The \emph{spherical} electrode tip has a shape with characteristics of both the abrupt and adiabatically varying potential walls. The hard walls perpendicular to each lateral axis are gradually smoothed towards higher potential. The rectangular or triangular tip of the gate electrodes are replaced by a quarter-circle which for small intrusions mimics the potential introduced by a top gate above the 2DEG. Looking at the electron density in \cref{fig:sphericaledens} a resemblance to the prior tip shapes can be seen. The structure exhibits increased continuous electron densities as well as points of high electron densities symmetrically arranged in the upper and lower half similar to the triangular tip. Also the spin densities in \cref{fig:sphericalspindens} only differ slightly from the triangular case.\par
 \begin{figure}[h]
-\centering
-\includegraphics[]{images/wire400x200-Nov-27-2011-21.41trans}
-  \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
-      \node at (-10.8,-1.7) {\includegraphics[width=0.13\textwidth]{images/qpcspherical-crop.png}};
-      \end{tikzpicture}
-\caption{Simulated conduction profile of a quantum point contact with spherical constriction in dependence of the width of the constriction. The corresponding potential landscape is depicted on the left.}\label{fig:sphericaltrans}
+  \centering
+  \includegraphics[]{images/wire400x200-Nov-27-2011-21.41trans}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node at (-10.8,-1.7) {\includegraphics[width=0.13\textwidth]{images/qpcspherical-crop.png}};
+	\end{tikzpicture}
+  \caption{Simulated conduction profile of a quantum point contact with spherical constriction in dependence of the width of the constriction. The corresponding potential landscape is depicted on the left.}\label{fig:sphericaltrans}
 \end{figure}
 Despite the similarities to the triangular case clearly pronounced steps are seen in the conductance profile. The variations near the steps are smoothed out without the loss of discrete steps of height 2 $e^2/h$. Because of these characteristics the spherical potential is used to validate the results of the conductance calculations in section \ref{sec:validation}.\par
 \begin{figure}[h]
-\subfloat[]{\label{fig:pointedens}\includegraphics[]{images/242255-wire400x200-Dec-02-2011-23.08edens}}
-  \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
-      \node at (-6.8,-2.3) {\includegraphics[width=0.13\textwidth]{images/qpcpoint-crop.png}};
-      \end{tikzpicture}
-\subfloat[]{\label{fig:pointspindens}\includegraphics[]{images/242255-wire400x200-Dec-02-2011-23.08spindens}}
-\caption{Simulated electron and spin density for a constriction formed by two point charges c.f.~\cref{fig:softwalled}. The point charges are located at the transverse boundary of the wire 200 nm apart. The charge of the point charges is $q\approx 1.5\cdot 10^{-18}$ C. (a) Two-dimensional electron density. Note the lack of pronounced electron density in the center of the figure and the symmetrical reflection interference in the bottom and top part. Color code denotes the electron density $n$. (b) Two-dimensional spin density. Color code denotes the spin density $s_z$. The corresponding potential landscape is depicted on the left.}
+  \subfloat[]{\label{fig:pointedens}\includegraphics[]{images/242255-wire400x200-Dec-02-2011-23.08edens}}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node at (-6.8,-2.3) {\includegraphics[width=0.13\textwidth]{images/qpcpoint-crop.png}};
+	\end{tikzpicture}
+  \subfloat[]{\label{fig:pointspindens}\includegraphics[]{images/242255-wire400x200-Dec-02-2011-23.08spindens}}
+  \caption{Simulated electron and spin density for a constriction formed by two point charges c.f.~\cref{fig:softwalled}. The point charges are located at the transverse boundary of the wire 200 nm apart. The charge of the point charges is $q\approx 1.5\cdot 10^{-18}$ C. (a) Two-dimensional electron density. Note the lack of pronounced electron density in the center of the figure and the symmetrical reflection interference in the bottom and top part. Color code denotes the electron density $n$. (b) Two-dimensional spin density. Color code denotes the spin density $s_z$. The corresponding potential landscape is depicted on the left.}
 \end{figure}
 In the following simulation point charges are introduced in the vicinity of the 2DEG to model a constriction formed by gate electrodes more closely. A quantum point contact of this kind exhibits a very slow varying potential throughout large parts with almost infinite slopes near the location $r_q$ of the point charges due to the $\sim 1/r_q$ dependency.\par
 The electron density illustrated in \cref{fig:pointedens} show the expected continuous flux tube at the very edge of the nanowire while the center region is subject to complex interference. An interference pattern can also be observed before and after the quantum point contact. The pattern is much simpler in comparison to all prior quantum point contacts. The lateral offset near the upper and lower lead are due to the necessity to cut off the potential at some point which would otherwise extend to infinity.
