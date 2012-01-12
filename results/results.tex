@@ -5,76 +5,75 @@ The two-dimensional electron gas in a semiconductor heterojunction has a \textsc
 The quantization of the conductance measurements depends on the width of the constriction. Additionally the \emph{potential landscape}, if smooth or abrupt, influences the conductance \cite{PhysRevB.44.8017}.\par
 Different potential changes are illustrated in \cref{fig:hardwalled,fig:softwalled,fig:variationalwalled}. \Cref{fig:hardwalled} shows a potential constriction with abrupt walls or \emph{hard walled} potential. This type of potential is found for example in devices etched out of a parent layer via reactive gases or the cleaved edge technique \cite{ApplPhysLett.66.323}. In the adiabatic or soft walled case the potential landscape varies only slowly in any direction. \Cref{fig:softwalled} illustrates the adiabatic constriction formed of two electrical point charges. A potential which can be varied between hard and soft walled will be called \emph{variational potential}. A variational potential is designed to investigate the dependence of the conduction on the slope of the constricting potential, see \cref{fig:variationalwalled}. Here the walls can be symmetrically modified to achieve different but constant slopes of the confinement.
 \begin{figure}[h!]
-\begin{minipage}[c]{0.5\textwidth}
-  \begin{tikzpicture}%[every text node part/.style={align=center}]
-      \node at (0,0)[above] {\includegraphics[width=0.9\textwidth]{images/qpcrect-crop.png}};
-      \axes
-\draw[style={<->,thin}] ($1.125*(-1.3,3.6247)$) -- ($1.125*(-0.55,3.25)$) node[midway,left,yshift=-0.5em] {$d$};
-\draw[style={<->,thin}] ($1.125*(0,2)$) -- ($1.125*(1,2.5)$) node[midway,above] {$w$};
-    \end{tikzpicture}
-    \end{minipage}
-\begin{minipage}[c]{0.5\textwidth}
- \begin{flalign}\quad\text{Pot}(x,y) =\ &\Theta\left(\frac{d}{2}-\abs{x}\right)&\notag\\
- \cdot\ &\Theta\left(\abs{y}-\frac{w}{2}\right)&\end{flalign}
- \end{minipage}
-\caption{Potential landscape of a hard walled quantum point contact. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The depth of the wall $d$ and the width of the confinement $w$ are illustrated by the arrows. The dimensionless analytical expression of the potential is presented on the right. The \textsc{Heaviside} step function is denoted by $\Theta$.}\label{fig:hardwalled}
+  \begin{minipage}[c]{0.5\textwidth}
+    \begin{tikzpicture}%[every text node part/.style={align=center}]
+	\node at (0,0)[above] {\includegraphics[width=0.9\textwidth]{images/qpcrect-crop.png}};
+	\axes
+  \draw[style={<->,thin}] ($1.125*(-1.3,3.6247)$) -- ($1.125*(-0.55,3.25)$) node[midway,left,yshift=-0.5em] {$d$};
+  \draw[style={<->,thin}] ($1.125*(0,2)$) -- ($1.125*(1,2.5)$) node[midway,above] {$w$};
+      \end{tikzpicture}
+      \end{minipage}
+  \begin{minipage}[c]{0.5\textwidth}
+   \begin{flalign}\quad\text{Pot}(x,y) =\ &\Theta\left(\frac{d}{2}-\abs{x}\right)&\notag\\
+   \cdot\ &\Theta\left(\abs{y}-\frac{w}{2}\right)&\end{flalign}
+   \end{minipage}
+  \caption{Potential landscape of a hard walled quantum point contact. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The depth of the wall $d$ and the width of the confinement $w$ are illustrated by the arrows. The dimensionless analytical expression of the potential is presented on the right. The \textsc{Heaviside} step function is denoted by $\Theta$.}\label{fig:hardwalled}
 \end{figure}
 \begin{figure}[h!]
-\begin{minipage}[c]{0.5\textwidth}
-  \begin{tikzpicture}%[every text node part/.style={align=center}]
-      \node at (0,0)[above] {\includegraphics[width=0.9\textwidth]{images/qpctriangular-crop.png}};
-      \axes
-\draw[style={<->,thin}] ($1.125*(-1.3,3.6247)$) -- ($1.125*(-0.55,3.25)$) node[midway,left,yshift=-0.5em] {$d$};
-\draw[style={dashed,thin}] (0.3,4.85) -- node (m1){}(1.48,4.43);
-\draw[style={<->,thin}] (m1) -- (0.37,4.45) node[left] {$t$};
-\draw[style={<->,thin}] (-0.25,2.25) -- (0.25,2.53) node[midway,above] {$w$};
-% \draw[help lines,step=0.25cm] (0,0) grid (4,4);
-    \end{tikzpicture}
-    \end{minipage}
-\begin{minipage}[c]{0.5\textwidth}
- \begin{flalign}\quad\text{Pot}(x,y) =\ &\Theta\left(\frac{d}{2}-\abs{x}\right)&\notag\\
- \cdot\ &\Theta\left(\frac{\abs{y}-w/2}{t}+x\right)&\notag\\
- \cdot\ &\Theta\left(\frac{\abs{y}-w/2}{t}-x\right)&
- \end{flalign}
- \end{minipage}
-\caption{Potential landscape of a hard walled quantum point contact with triangular edges. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The depth of the wall $d$ and the width of the confinement $w$ are illustrated by the arrows. The parameter $t$ controls the extent of the triangle tip. The dimensionless analytical expression of the potential is presented on the right. The \textsc{Heaviside} step function is denoted by $\Theta$.}\label{fig:hardwalled}
+  \begin{minipage}[c]{0.5\textwidth}
+    \begin{tikzpicture}%[every text node part/.style={align=center}]
+	\node at (0,0)[above] {\includegraphics[width=0.9\textwidth]{images/qpctriangular-crop.png}};
+	\axes
+  \draw[style={<->,thin}] ($1.125*(-1.3,3.6247)$) -- ($1.125*(-0.55,3.25)$) node[midway,left,yshift=-0.5em] {$d$};
+  \draw[style={dashed,thin}] (0.3,4.85) -- node (m1){}(1.48,4.43);
+  \draw[style={<->,thin}] (m1) -- (0.37,4.45) node[left] {$t$};
+  \draw[style={<->,thin}] (-0.25,2.25) -- (0.25,2.53) node[midway,above] {$w$};
+  % \draw[help lines,step=0.25cm] (0,0) grid (4,4);
+      \end{tikzpicture}
+      \end{minipage}
+  \begin{minipage}[c]{0.5\textwidth}
+   \begin{flalign}\quad\text{Pot}(x,y) =\ &\Theta\left(\frac{d}{2}-\abs{x}\right)&\notag\\
+   \cdot\ &\Theta\left(\frac{\abs{y}-w/2}{t}+x\right)&\notag\\
+   \cdot\ &\Theta\left(\frac{\abs{y}-w/2}{t}-x\right)&
+   \end{flalign}
+   \end{minipage}
+  \caption{Potential landscape of a hard walled quantum point contact with triangular edges. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The depth of the wall $d$ and the width of the confinement $w$ are illustrated by the arrows. The parameter $t$ controls the extent of the triangle tip. The dimensionless analytical expression of the potential is presented on the right. The \textsc{Heaviside} step function is denoted by $\Theta$.}\label{fig:hardwalled}
 \end{figure}
 \begin{figure}[h!]
-\begin{minipage}[c]{0.5\textwidth}
-  \begin{tikzpicture}%[every text node part/.style={align=center}]
-      \node at (0,0)[above] {\includegraphics[width=0.9\textwidth]{images/qpcspherical-crop.png}};
-      \axes
-\draw[style={dashed,thin}] (-2,1.325) coordinate (r1) -- (-2,2.5);
-\draw[style={<->,thin}] (-2.75,1.825) -- (r1) node[midway,left,yshift=-0.5em] {$r$};
-% \draw[style={<->,thin}] (m1) -- (0.37,4.45) node[left] {$t$};
-\draw[style={->,thin}] (-0.16,2.34) -- (0.25,2.53) node[midway,above] {$w$};
-% \draw[help lines,step=0.25cm] (-4,0) grid (4,4);
-    \end{tikzpicture}
-    \end{minipage}
-\begin{minipage}[c]{0.5\textwidth}
- \begin{flalign}\quad\text{Pot}(x,y) =&\sqrt{r^2-x^2-Y(y)^2\Theta(Y(y))}&\notag\\
- % \cdot\ &\Theta\left(\frac{\abs{y}-w/2}{t}+x\right)&\notag\\
- \intertext{\hspace{4.7em}with}
-  Y(y)=&\left(r+w-\abs{y}\right)&
- \end{flalign}
- \end{minipage}
-\caption{Potential landscape of a quantum point contact with spherical tips. It exhibits both steep and smooth walls. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The radius of the wall $r$ and the width of the confinement $w$ are illustrated by the arrows. The dimensionless analytical expression of the potential is presented on the right. The \textsc{Heaviside} step function is denoted by $\Theta$.}\label{fig:hardwalled}
+  \begin{minipage}[c]{0.5\textwidth}
+    \begin{tikzpicture}%[every text node part/.style={align=center}]
+	\node at (0,0)[above] {\includegraphics[width=0.9\textwidth]{images/qpcspherical-crop.png}};
+	\axes
+  \draw[style={dashed,thin}] (-2,1.325) coordinate (r1) -- (-2,2.5);
+  \draw[style={<->,thin}] (-2.75,1.825) -- (r1) node[midway,left,yshift=-0.5em] {$r$};
+  % \draw[style={<->,thin}] (m1) -- (0.37,4.45) node[left] {$t$};
+  \draw[style={->,thin}] (-0.16,2.34) -- (0.25,2.53) node[midway,above] {$w$};
+  % \draw[help lines,step=0.25cm] (-4,0) grid (4,4);
+      \end{tikzpicture}
+      \end{minipage}
+  \begin{minipage}[c]{0.5\textwidth}
+   \begin{flalign}\quad\text{Pot}(x,y) =&\sqrt{r^2-x^2-Y(y)^2\Theta(Y(y))}&\notag\\
+   % \cdot\ &\Theta\left(\frac{\abs{y}-w/2}{t}+x\right)&\notag\\
+   \intertext{\hspace{4.7em}with}
+    Y(y)=&\left(r+w-\abs{y}\right)&
+   \end{flalign}
+   \end{minipage}
+  \caption{Potential landscape of a quantum point contact with spherical tips. It exhibits both steep and smooth walls. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The radius of the wall $r$ and the width of the confinement $w$ are illustrated by the arrows. The dimensionless analytical expression of the potential is presented on the right. The \textsc{Heaviside} step function is denoted by $\Theta$.}\label{fig:hardwalled}
 \end{figure}
 \begin{figure}[h!]
-% \begin{tabularx}{\textwidth}{m{0.45\textwidth} m{0.55\textwidth}}
-\begin{minipage}[c]{0.5\textwidth}
-  \begin{tikzpicture}%[every text node part/.style={align=center}]
-      \node at (0,0)[above] {\includegraphics[width=0.9\textwidth]{images/qpcpoint-crop.png}};
-      \axes
-\draw[style={<->,thin}] ($1.125*(-1.6,3)$) -- ($1.125*(1.3,4.3)$) node[midway,above] {$w$};
-    \end{tikzpicture}
-    \end{minipage}
-\begin{minipage}[c]{0.5\textwidth}
- \begin{flalign}\quad\text{Pot}(x,y) &= \frac{q}{\sqrt{x^2+(y+w/2)^2}}&\notag\\
- &+\frac{q}{\sqrt{x^2+(y-w/2)^2}}&\end{flalign}
-    \end{minipage}
-% \end{tabularx}
-\caption{Potential landscape of a soft walled quantum point contact of two point charges of charge $q$ and dislocation $w$. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The dimensionless analytical expression of the potential is presented on the right.}\label{fig:softwalled}
+  \begin{minipage}[c]{0.5\textwidth}
+    \begin{tikzpicture}%[every text node part/.style={align=center}]
+	\node at (0,0)[above] {\includegraphics[width=0.9\textwidth]{images/qpcpoint-crop.png}};
+	\axes
+  \draw[style={<->,thin}] ($1.125*(-1.6,3)$) -- ($1.125*(1.3,4.3)$) node[midway,above] {$w$};
+      \end{tikzpicture}
+      \end{minipage}
+  \begin{minipage}[c]{0.5\textwidth}
+   \begin{flalign}\quad\text{Pot}(x,y) &= \frac{q}{\sqrt{x^2+(y+w/2)^2}}&\notag\\
+   &+\frac{q}{\sqrt{x^2+(y-w/2)^2}}&\end{flalign}
+      \end{minipage}
+  % \end{tabularx}
+  \caption{Potential landscape of a soft walled quantum point contact of two point charges of charge $q$ and dislocation $w$. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The dimensionless analytical expression of the potential is presented on the right.}\label{fig:softwalled}
 \end{figure}
 % \begin{figure}[h!]
 %   \begin{minipage}[c]{0.5\textwidth}
@@ -102,27 +101,27 @@ Different potential changes are illustrated in \cref{fig:hardwalled,fig:softwall
 % \caption{Example potential landscape of variational-walled quantum point contact used in analysis}\label{fig:variationalwalled}
 % \end{figure}
 \begin{figure}[h!]
+    \begin{minipage}[c]{0.5\textwidth}
+    \begin{tikzpicture}%[every text node part/.style={align=center}]
+	\node at (0,0)[above] {\includegraphics[width=.9\textwidth]{images/qpcvariational2-crop.png}};
+  \draw[style={<->,thin}] ($1.125*(-0.205,2)$) -- ($1.125*(0.27,2.25)$) node[midway,above] {$w$};
+	\axes
+    \coordinate (a) at (1.65,2.3);
+    \coordinate (b) at (2.6,2.87825);
+    % \coordinate (b) at (2.505,2.81325);
+    \coordinate (c) at (2.6,3.982);
+    \coordinate (e) at (0.53,2.9);
+    \coordinate (f) at (1.45,4.5);
+    \draw[-] (a) node[above,xshift=0.5em,yshift=2em]{$m$} -- (b) node[midway,below,yshift=0.3em,xshift=0.8em]{$\Delta y$} -- (c) --cycle;
+    \draw[dashed] (a) -- (e);
+    \draw[-] (e) -- (f);
+    \draw[dashed] (c) -- (f);
+      \end{tikzpicture}
+  \end{minipage}
   \begin{minipage}[c]{0.5\textwidth}
-  \begin{tikzpicture}%[every text node part/.style={align=center}]
-      \node at (0,0)[above] {\includegraphics[width=.9\textwidth]{images/qpcvariational2-crop.png}};
-\draw[style={<->,thin}] ($1.125*(-0.205,2)$) -- ($1.125*(0.27,2.25)$) node[midway,above] {$w$};
-      \axes
-  \coordinate (a) at (1.65,2.3);
-  \coordinate (b) at (2.6,2.87825);
-  % \coordinate (b) at (2.505,2.81325);
-  \coordinate (c) at (2.6,3.982);
-  \coordinate (e) at (0.53,2.9);
-  \coordinate (f) at (1.45,4.5);
-  \draw[-] (a) node[above,xshift=0.5em,yshift=2em]{$m$} -- (b) node[midway,below,yshift=0.3em,xshift=0.8em]{$\Delta y$} -- (c) --cycle;
-  \draw[dashed] (a) -- (e);
-  \draw[-] (e) -- (f);
-  \draw[dashed] (c) -- (f);
-    \end{tikzpicture}
-\end{minipage}
-\begin{minipage}[c]{0.5\textwidth}
-\begin{flalign}\quad\text{Pot}(x,y) &= e^{-x^2/\xi^2}\cdot m\left(\abs{y}- \frac{w}{2}\right)&\end{flalign} 
-\end{minipage}
-\caption{Example potential landscape of a variational walled quantum point contact used in the analysis. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The width at the bottom of the potential $w$ is indicated by arrows. The slope of the transverse confinement $m$ is illustrated by a gradient triangle. The parameter $\xi$ controls the steepness of the walls in $x$ direction. The dimensionless analytical expression of the potential is presented on the right.}\label{fig:variationalwalled}
+  \begin{flalign}\quad\text{Pot}(x,y) &= e^{-x^2/\xi^2}\cdot m\left(\abs{y}- \frac{w}{2}\right)&\end{flalign} 
+  \end{minipage}
+  \caption{Example potential landscape of a variational walled quantum point contact used in the analysis. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The width at the bottom of the potential $w$ is indicated by arrows. The slope of the transverse confinement $m$ is illustrated by a gradient triangle. The parameter $\xi$ controls the steepness of the walls in $x$ direction. The dimensionless analytical expression of the potential is presented on the right.}\label{fig:variationalwalled}
 \end{figure}
 The presented quantum point contacts serve only as examples for three classes of constrictions. In the simulations either the geometry of the constriction or the charge of the point charges are varied. Modifying the width of the quantum point contact is usually experimentally achieved by the placement of several gate electrodes either on or in the 2DEG. A negative potential is applied to the electrodes which effectively results in a depopulating of the conductance band in their vicinity. It is important to note that by changing the voltage on the electrodes and therefore the charge not only the width of the potential is changed but also the steepness of the confining potential for a given energy. Hence the transfer from the adiabatic to the diabatic i.e. steep walled domain is possible.\par
 In the model electrons with a wavevector pointing in the direction of the constriction are placed in the lead at the top of all density plots corresponding to the linear response regime of transport.
@@ -233,7 +232,7 @@ Note that as the charge decreases the steepness of the potential increases for a
 \end{figure}
 \FloatBarrier
 \subsection{Variational Walled Quantum Point Contacts}
-The effects of  the wall slope on the smoothness of the conductance profile and thus possibly on the inter-subband scattering are investigated by increasing the width of the constriction for many different slopes $m$. Above a slope of $m \approx 0.03$ the conduction shows quantized steps with no significant influences if the slope changes in that interval. For slowly varying potential slopes a noticeable change in conduction quantization can be observed, see \cref{fig:slopes}. \Cref{fig:slopes} shows conductance profiles at constant slopes. A significant change in quantization is only observed in the slope interval $0.008 < m < 0.032$.\par
+The effects of the wall slope on the smoothness of the conductance profile and thus possibly on the inter-subband scattering are investigated by increasing the width of the constriction for many different slopes $m$. Above a slope of $m \approx 0.03$ the conduction shows quantized steps with no significant influences if the slope changes in that interval. For slowly varying potential slopes a noticeable change in conduction quantization can be observed, see \cref{fig:slopes}. \Cref{fig:slopes} shows conductance profiles at constant slopes. A significant change in quantization is only observed in the slope interval $0.008 < m < 0.032$.\par
 The electron densities in \cref{fig:variedens1} and \cref{fig:variedens2} provide further indications of inter-subband scattering. The comparison of both figures shows that the electron density for the softer quantum point contact is much less localized in discrete channels. This could indicate an increase in interaction of the modes passing through the quantum point contact.\par
 \begin{figure}[h] 
 \centering
@@ -250,7 +249,7 @@ The electron densities in \cref{fig:variedens1} and \cref{fig:variedens2} provid
 \node[below, rotate=90] at (2.7,1.17) {$G$ $[e^2/h]$};
 \end{tikzpicture}}
   \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
-      \node at (-14.8,-2.3) {\includegraphics[width=0.13\textwidth]{images/qpcvariational-crop.png}};
+      \node at (-15,-2.5) {\includegraphics[width=0.13\textwidth]{images/qpcvariational-crop.png}};
       \end{tikzpicture}
 \caption{(a) Conductance profiles at different slopes $m$. Note the disappearance of quantization for small $m$. (b) Full conduction profile in dependence of slope $0 < m < 0.4$ and width $0 < w < 200$ nm. Note the increased smoothing towards small slopes $m$. Color code denotes the conductance $G$ in $e^2/h$. The corresponding potential landscape for one $m$ is depicted on the left.}\label{fig:conductances}
 \end{figure}

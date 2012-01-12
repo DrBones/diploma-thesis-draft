@@ -1,3 +1,51 @@
 \chapter{RGA}
 \label{app:RGA}
-This will be the RGA appendix%, see Wimmer, Heikkil\"a or Nikonov
+The derivation of the recursive \gfnc{} algorithm will be presented. The discussion follows \cite{JApplPhys.91.2343}, \cite{JApplPhys.81.7845} and \cite{Wimmer2009Thesis} which obtain equivalent results with differences in notation.
+\section{Recursive Algorithm for \protect$\mat{G}^r$}
+Only the retarded \gfnc{} of the conductor will be discussed in this section, hence, all superscripts and subscripts will be dropped, i.e. $\mat{G} \equiv \mat{G}^r\equiv \mat{G}_C$. The recursive algorithm to calculate all diagonal and off-diagonal blocks of the retarded \gfnc{} can be obtained by starting from \cref{eqn:amatrix}
+\begin{align}
+(E\mathds{1}-\mat{H})\mat{G}_C = \mat{A}\mat{G}=\mathds{1}
+\label{eqn:amatrixppendix}
+\end{align}
+The solution to the partitioning
+\begin{align}
+\begin{pmatrix} \mat{A}_{Z,Z} & \mat{A}_{Z,Z'}\\
+		\mat{A}_{Z',Z} & \mat{A}_{Z',Z'}
+\end{pmatrix}
+\begin{pmatrix} \mat{G}_{Z,Z} & \mat{G}_{Z,Z'}\\
+		\mat{G}_{Z',Z} & \mat{G}_{Z',Z'}
+\end{pmatrix} = 
+\begin{pmatrix} \mathds{1} & \mat{0}\\
+		\mat{0} & \mathds{1}
+\end{pmatrix}
+\end{align}
+is
+\begin{align}
+\mat{G}^r=\mat{G}_0+\mat{G}_0\mat{U}\mat{G}
+\label{eqn:dysonequationappendix}
+\end{align}
+where 
+\begin{align}
+\mat{G}^r = 
+\begin{pmatrix} \mat{G}_{Z,Z} & \mat{G}_{Z,Z'}\\
+		\mat{G}_{Z',Z} & \mat{G}_{Z',Z'}
+\end{pmatrix}\ ,\quad
+\mat{G}_0^r &= 
+\begin{pmatrix} \mat{G}_{0 Z,Z} & \mat{0}\\
+		\mat{0} & \mat{G}_{0 Z',Z'}
+\end{pmatrix}=
+\begin{pmatrix} \mat{A}^{-1}_{Z,Z} & \mat{0}\\
+		\mat{0} & \mat{A}^{-1}_{Z',Z'}
+\end{pmatrix}\ ,\notag\\[3mm] 
+\text{and}\hspace{2em}
+\mat{U} &= 
+\begin{pmatrix} \mat{0} & -\mat{A}_{Z,Z'}\\
+		-\mat{A}_{Z',Z} & \mat{0}
+\end{pmatrix}\ .
+\end{align}
+The index $Z$ denotes a range of blocks, i.e. $Z = 1:i-1$ and $Z'=i:N$. Where $N$ is the maximum number of blocks and $i$ denotes the individual block. The $\mat{A}_{Z,Z}$ are submatrices of $\mat{A}$. \Cref{eqn:dysonequationappendix} is the \textsc{Dyson} equation for the retarded \gfnc{}. The matrix $\mat{G}_{0 Z,Z}$ represents the \gfnc{} of the system of size $Z$ and $\mat{G}_{0 Z',Z'}$ denotes the \gfnc{} for the isolated blocks $Z'$.
+The left connected \gfnc{} $\mat{G}^i$ is defined by the first $i$ blocks of the \cref{eqn:amatrixppendix} 
+\begin{align}
+\mat{A}_{1:i,1:i}\mat{G}^{i}=\mathds{1}_{1:i,1:i}
+\end{align}
+Here $\mat{G}^i$ represents the \gfnc{} of the system up to block $i$.

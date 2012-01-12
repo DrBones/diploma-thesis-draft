@@ -44,14 +44,16 @@ With the so-called retarded \emph{lead surface \gfnc{}}
 one can write the \emph{self energy} term $\mat{\Sigma}_L$ as
 \begin{align}
 \mat{\Sigma}_L = \v{\tau}^{\dagger} \mat{g}_L^r \v{\tau}\ .
+\label{eqn:sigmal}
 \end{align}
 The concept of the self energy allows for further inclusions of interactions like phonon or impurity scattering. In contrast to the theoretical accurate self energy of the lead the self energy due to scattering is usually only feasible to compute approximatly. The self energy includes a left lead $\mat{\Sigma}_{Ll}$ and a right lead $\mat{\Sigma}_{Lr}$ and for example a scattering term $\mat{\Sigma}_{\text{scat}}$. With this the \gfnc{} can be written as
 \begin{align}
 \mat{G}_C& = \left[E\mat{1}-\mat{H}_C -\mat{\Sigma}_{Ll}-\mat{\Sigma}_{Lr}-\mat{\Sigma}_{\text{scat}} \right]^{-1} \ .
 \label{eqn:finitegreensfunctionwithselfenergy}
 \end{align}
+This expression is the central equation to evaluate in the numerical calculation of the \gfnc{} of the 2DEG. 
 \subsection{Lead Surface \cgfncs{}}
-Even with this separation the direct evaluation of \cref{eqn:leadsurfacegfnc} is still unfeasible as it still includes $\mat{H}_L$ which is infinite.
+Even with the separation of the lead surface \gfnc{} the direct evaluation of \cref{eqn:finitegreensfunctionwithselfenergy} is still unfeasible as it still includes $\mat{H}_L$ via \cref{eqn:sigmal} and \cref{eqn:leadsurfacegfnc} which is infinite.
 If translation invariance along the lead exists, the so-called \textsc{Ando} method \cite{PhysRevB.44.8017} computes the surface \gfnc{} for a homogeneous lead consisting of repeating supercells, i.e. the smallest layer that exhibits periodicity.\par
 For simple systems without fields and spin phenomena \cref{eqn:leadsurfacegfnc} can be calculated analytically \cite{Datta1997}. For leads including fields and further interactions it has to be calculated semi-analytically via the \emph{eigenstate-decomposition} of their \emph{companion matrix} \cite{PhysRevB.25.3975} or \emph{transfer matrix} \cite{PhysRevB.55.5266} \cite{PhysRevB.66.205319}
 \begin{align}
