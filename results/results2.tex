@@ -1,0 +1,372 @@
+An implementation of the \gfnc{} formalism is used to investigate the transport properties of a 2DEG in an InAs heterojunction. A lattice spacing of $a=1$~nm and an effective mass of $m^*=0.026 \cdot m_0$ as in \cref{sec:validation} are assumed, here $m_0$ denotes the electron rest mass. The \textsc{Rashba} parameter is set to a typical value of $\alpha = 20 \cdot 10^{-12}$~eVm \cite{Jacob2009Thesis}. In the fist part of this chapter the influence of different quantum point contacts on the conductance and electron and spin densities in a nanowire is examined. In the second part the electron and spin densities of a 2DEG of varying geometry is presented. The simulated results are used to explain the interfernce in an \textsc{Aharonov-Bohm} ring qualitatively by an analytical model.
+\section{Colinear Quantum Point Contacts}
+In chapter \ref{sec:conductancefromtransmission} the ``\emph{relation of conductance and transmission}'' \cite{landauer1996} is shown. In experiments of semiconductor heterojunctions \cite{vanHoutenBeenakker2005} and metals \cite{PhysRevB.36.1284} it was found that the transmission of a device with a narrow constriction is \emph{quantized}. The analysis of quantized transmission in two-dimensional electron gases merits the investigation of small constrictions in more detail. A two-dimensional electron gas in a semiconductor heterojunction has a \textsc{Fermi} wavelength a hundred times larger than electrons in metal. Due to the large \textsc{Fermi} wavelength the electron transport in mesoscopic devices shows quantization. \emph{Quantum point contacts} are mesoscopic constrictions with a width comparable to the \textsc{Fermi} wavelength of $\lambda_F \approx 30\text{~nm}$ allowing the direct control of the quantization \cite{vanHoutenBeenakker2005}.\par
+The quantization of the conductance measurements depends on the width of the constriction. Additionally, the \emph{potential landscape}, if smooth or abrupt, influences the conductance \cite{PhysRevB.44.8017}. The potential landscapes of the quantum point contacts used in the simulations are illustrated in \cref{fig:recthardwalled,fig:trihardwalled,fig:sphericalsemihardwalled,fig:pointsoftwalled,fig:variationalwalled}.
+For the simulated quantum point contacts the width of the constriction is varied for electrons with a fixed energy of $E=0.06\cdot t_0$. At this energy 15 modes develop within the nanowire of 200~nm width when no constriction is present. All simulations are performed at an energy between the 15th and the 16th mode in the undisturbed nanowire to assure a constant initial conduction of $G =30$~$e^2/h$ without the interactions present when a mode is created or destroyed.
+\subsection{Hard Walled Quantum Point Contacts}
+The geometry of quantum devices in 2DEGs, for example, prepared by etching via reactive gases or the cleaved edge technique commonly exhibits steep walls of the confining potential \cite{ApplPhysLett.66.323}. Thus the influences of geometrical constrictions with strongly varying potential landscapes on the transport properties of the 2DEG are considered first.
+ \Cref{fig:recthardwalled} shows a potential constriction with abrupt walls also addressed as a \emph{hard walled} potential.\par
+\begin{figure}[h!]
+  \begin{minipage}[c]{0.5\textwidth}
+    \begin{tikzpicture}%[every text node part/.style={align=center}]
+	\node at (0,0)[above] {\includegraphics[width=0.9\textwidth]{images/qpcrect-crop.png}};
+	\axes
+  \draw[style={<->,thin}] ($1.125*(-1.3,3.6247)$) -- ($1.125*(-0.55,3.25)$) node[midway,left,yshift=-0.5em] {$d$};
+  \draw[style={<->,thin}] ($1.125*(0,2)$) -- ($1.125*(1,2.5)$) node[midway,above] {$w$};
+      \end{tikzpicture}
+      \end{minipage}
+  \begin{minipage}[c]{0.5\textwidth}
+   \begin{flalign}\quad\text{Pot}(x,y) =\ &\Theta\left(\frac{d}{2}-\abs{x}\right)&\notag\\
+   \cdot\ &\Theta\left(\abs{y}-\frac{w}{2}\right)&\end{flalign}
+   \end{minipage}
+  \caption{Potential landscape of a hard walled quantum point contact. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The depth of the wall $d$ and the width of the confinement $w$ are illustrated by the arrows. The dimensionless analytical expression of the potential is presented on the right. The \textsc{Heaviside} step function is denoted by $\Theta$.}\label{fig:recthardwalled}
+\end{figure}
+The simulations are performed in the regime of \emph{linear transport} i.e. the electrons enter and exit the conductor approximately at the same potential. The lateral electron propagation is disturbed if a constriction mirroring the potential of \cref{fig:recthardwalled} is brought into the 2DEG. The computated electron and spin density are shown in \cref{fig:rectedens} and \cref{fig:rectspindens} respectively. All figures of densities presented in this chapter represent a view parallel to the $z$ axis on the 2DEG under the influence of lateral confinement.\par
+In the steady state linear transport model of the \gfnc{} formalism the electrons are injected at a fixed enegy $E$, confer \cref{eqn:finitegreensfunctionwithselfenergy}, at the top of the image. The wave vectors of the incoming electrons initially point along the $x$ axis. If no constriction were present 15 modes would form in the nanowire which are translationaly invariant in respect to the $x$ axis. The electron density in \cref{fig:rectedens} indicates that only eight modes are able to form within the quantum point contact with $w=105$~nm as is evident from the eight continuous electron density channels along the $x$ axis. Including a 2 for the spin, this agrees with the conductance measurement of $G=16$~$e^2/h$ at $w=105$~nm, see \cref{fig:recttrans}. All subsequent figures of densities throughout this chapter show the electron and spin densities of a quantum point contact with conductance $G=16$~$e^2/h$ to ensure comparability.\par
+\begin{figure}[h]
+  \subfloat[]{\label{fig:rectedens}\includegraphics[]{images/238916-wire400x200-Nov-28-2011-17.41edens}}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node at (-6.8,-2.3) {\includegraphics[width=0.13\textwidth]{images/qpcrect-crop.png}};
+	\end{tikzpicture}
+  \subfloat[]{\label{fig:rectspindens}\includegraphics[]{images/238916-wire400x200-Nov-28-2011-17.41spindens}}
+  \caption{Simulated electron and spin density of a rectangular quantum point contact of  width $w$=105~nm, and depth $d$=60~nm. (a) Two-dimensional electron density. Color code denotes the electron density $n$. (b) Two-dimensional spin density. Note the well defined spin split from about 250~nm to 350~nm. Color code denotes the spin density $s_z$. The corresponding potential landscape is depicted on the left.}
+\end{figure}
+\begin{figure}[h]
+  \centering
+  \subfloat[]{\label{fig:recttrans} \includegraphics[]{images/238916-wire400x200-Nov-28-2011-17.41trans}}
+  \subfloat[]{\label{fig:rectdetailtrans} \includegraphics[]{images/238916-wire400x200-Nov-28-2011-17.41detailtrans}}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node at (-15,-2.2) {\includegraphics[width=0.13\textwidth]{images/qpcrect-crop.png}};
+	\end{tikzpicture}
+  \caption{(a) Simulated conductance profile of rectangular quantum point contact in dependence of the width of the constriction. Note the irregularities at each new step. (b) The first three conductance steps in more detail. Note the separation visible in the first and third step. The corresponding potential landscape is depicted on the left.}
+\end{figure}
+In the areas towards the leads strong interference disturbs the establishment of continuous electron channels despite the regularity within the qauantum point contact. The figures show the total electron densities in steady state i.e. a time independent state. All densities shown in this chapter represent the total electron distribution. Hence, the densities include both conducting and non-conducting electrons regardless if stationary or in motion. The interference pattern visible in the upper and lower half of \cref{fig:rectedens} can be explained by scattering of the propagating electrons on the confining potential. The reflection of the wave functions of the electrons are source of secondary spherical wave functions, located at the confinement boundaries, whose superposition results in the observed interference pattern. Note, for example, the points of high electron density both in the corners of the quantum point contact and on a central line parallel to the $x$ axis.\par
+The spin density in \cref{fig:rectspindens} shows a similar interference pattern to the electron density. Interestingly, two areas of dominant upward polarization to the left and downward polarization to the right side of the constriction are present. This effect seems related to the diffusion of spin injection from the quantum point contact into the lead. The spin scatters from the narrow constriction, in which fewer modes are available, into the wide nanowire, where the available modes almost double.\par
+In the conductance profile depicted in \cref{fig:recttrans} distinct steps of height 2~$e^2/h$ are visible. At each step, the conductance increases by one conductance quantum $e^2/h$ per mode per spin-up and spin-down electron. Upon close inspection, an irregularity in the conductance at the transition between modes can be observed. A separation of the conductance step of 2~$e^2/h$  into two smaller steps is expected due to the \emph{zero field spin split} induced by the \textsc{Rashba} interaction \cite{PhysRevB.41.8278}. Due to this interaction the spin degeneracy is lifted and two electrons in the same mode possess different energy whether in the spin-up or spin-down state. However, electrons of higher energy are able to populate a higher mode at lower width of the quantum point contact.\par
+\FloatBarrier
+To remedy the abrupt potential change of the rectangular quantum point contact a \emph{triangular} potential is introduced. This geometry is similar to the physical shape of the constriction used by \textsc{van Wees} et. al \cite{PhysRevLett.60.848}. The triangular constriction presented in \cref{fig:trihardwalled} is of variable width in dependence on the $x$ direction, in contrast to \cref{fig:recthardwalled}. The width varies linearly with $x$ from the maximum of $w_{\text{max}} = 2t+w$ to the minimum of $w_{\text{min}} = w$ towards the center of the constriction. In the simulations the tip size was set to $t=100$~nm and depth to $d=50$~nm. Although the triangular quantum point contact walls are of infinite slope the potential changes less abruptly in dependence to the $y$ axis compared to the rectangular case. Hence, the electron and spin densities are expected to exhibit a more continuous spatial distribution.\par
+\begin{figure}[h!]
+  \begin{minipage}[c]{0.5\textwidth}
+    \begin{tikzpicture}%[every text node part/.style={align=center}]
+	\node at (0,0)[above] {\includegraphics[width=0.9\textwidth]{images/qpctriangular-crop.png}};
+	\axes
+    \draw[style={<->,thin}] ($1.125*(-1.3,3.6247)$) -- ($1.125*(-0.55,3.25)$) node[midway,left,yshift=-0.5em] {$d$};
+    \draw[style={dashed,thin}] (0.3,4.85) -- node (m1){}(1.48,4.43);
+    \draw[style={<->,thin}] (m1) -- (0.37,4.45) node[left] {$t$};
+    \draw[style={<->,thin}] (-0.25,2.25) -- (0.25,2.53) node[midway,above] {$w$};
+  % \draw[help lines,step=0.25cm] (0,0) grid (4,4);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}[c]{0.5\textwidth}
+    \begin{flalign}
+      \quad\text{Pot}(x,y) =\ &\Theta\left(\frac{d}{2}-\abs{x}\right)&\notag\\
+      \cdot\ &\Theta\left(\abs{y}-\frac{w}{2}+tx\right)&\notag\\
+      \cdot\ &\Theta\left(\abs{y}-\frac{w}{2}-tx\right)&
+    \end{flalign}
+  \end{minipage}
+  \caption{Potential landscape of a hard walled quantum point contact with triangular edges. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The depth of the wall $d$ and the width of the confinement $w$ are illustrated by the arrows. The parameter $t$ controls the extent of the triangle tip. The dimensionless analytical expression of the potential is presented on the right. The \textsc{Heaviside} step function is denoted by $\Theta$.}\label{fig:trihardwalled}
+\end{figure}
+Due to the less abrupt changes of the triangular potential in the $x$ and $y$ direction the electron flow shows more continuous densities in \cref{fig:triedens} as can, for example, be observed on the edges of the triangular tips of the constriction. Within the constriction eight peaks in the electron density can be observed corresponding to a conductance of $G=16$~$e^2/h$ at a width of $w=102$~nm. The deviation in regard to the necessary width of $w=105$~nm to obtain the same conductance in the rectangular case lies in the coarse discretization of the triangle tip. The electron density within the constriction exhibits less pronounced minima and is smeared out over the central region of the quantum point contact. This blurred electron density indicates increased interaction that hinders the establishment of well pronounced modes. Similar to the rectangular quantum point contact there appear a number of points of high electron density in the upper and lower part. The maxima in the electron density are due to the reflection of the electron wave functions on the boundaries of the nanowire and the quantum point contact. The localized peaks in electron density near $(x,y) = (45,100)$ and $(x,y) = (345,100)$ are due to the constructive interference of the electrons scattering from both the sides of the nanowire at $y=0,200$ and the diagonal sides of the triangular constriction. Interestingly, the maximum remains localized and moves toward the quantum point contact when the width of the constriction is increased.\par
+\begin{figure}[h!]
+  \subfloat[]{\label{fig:triedens}\includegraphics[]{images/wire400x200-Nov-28-2011-00.47edens}}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node at (-6.8,-2.3) {\includegraphics[width=0.13\textwidth]{images/qpctriangular-crop.png}};
+	\end{tikzpicture}
+  \subfloat[]{\label{fig:trispindens}\includegraphics[]{images/wire400x200-Nov-28-2011-00.47spindens}}
+  \caption{Simulated electron and spin density for a triangle shaped constriction tip with a width of $w=102$~nm and a depth $d=50$~nm. (a) Two-dimensional electron density. Note the point of high density along the $y$ axis at $y=100$~nm. Color code denotes the electron density $n$. (b) Two-dimensional spin density.  Color code denotes the spin density $s_z$. The corresponding potential landscape is depicted on the left.}
+\end{figure}
+In the spin density plot in \cref{fig:trispindens} a spin split pattern very similar to the rectangular case can be observed. The spin-down electrons and spin-up electrons are separated after passing the constriction in positive $x$ direction. The interference pattern along the central axis in $y$ direction of the wire is more complex than in the rectangular case in \cref{fig:rectspindens}. Additionally, the almost parallel spin split at the very ends of the device and the maximum spin split throughout the device are diminished.\par
+It is interesting to note that there are almost no steps visible in \cref{fig:tritrans} although the potential is more adiabatic because of the less abrupt change in $x$ direction. For low intrusion of the quantum point contact tips smooth steps of height 2 $e^2/h$ are observed. A smoother shape of the steps is expected for devices with less abrupt changes but the walls of the triangular potential are still of \emph{infinite} slope. A possible non-physical cause might lie in the discretization. Because the device is mapped on a square lattice the angled walls of the constriction become highly ragged. This series of longitudinal and transverse wall segments might give rise to a steep increase of scattering effectively smoothing out the conductance steps due to a higher spread in the kinetic energy distribution of the propagating electrons. These effects might explain the unexpected result of the conductance quantization or the lack thereof.\par
+\begin{figure}[h]
+  \centering
+  \includegraphics[]{images/wire400x200-Nov-28-2011-00.47trans}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node at (-10.8,-1.7) {\includegraphics[width=0.13\textwidth]{images/qpctriangular-crop.png}};
+	\end{tikzpicture}
+  \caption{Simulated conduction profile of a triangular quantum point contact in dependence of the width of the constriction. The corresponding potential landscape is depicted on the left.}\label{fig:tritrans}
+\end{figure}
+\FloatBarrier
+\subsection{Soft Walled Quantum Point Contacts}
+The geometrical shape of the constriction influences the transport properties of the device as presented in the previous section. Changing the geometry perpendicular to the $z$ axis smoothed out most features related to quantized conductance either physically or by introducing artificial complexity not found in the actual continuous system. One possible remedy is to alter the slope of the confining potential landscape perpendicular to the $x$ and $y$. An in all directions slowly varying potential will be called \emph{soft walled} in contrast to the hard walled potentials considered before. A potential with \emph{spherical} tips illustrated in \cref{fig:sphericalsemihardwalled} has a shape with characteristics of both the abrupt and adiabatically varying potential walls. The hard walls perpendicular to each lateral axis are gradually smoothed towards higher potential. The rectangular or triangular tip of the gate electrodes are replaced by a quarter circle of radius $r=30$~nm, which mimics the potential introduced by a top gate above the 2DEG for small intrusions.\par
+\begin{figure}[!h]
+  \begin{minipage}[c]{0.5\textwidth}
+    \begin{tikzpicture}%[every text node part/.style={align=center}]
+	\node at (0,0)[above] {\includegraphics[width=0.9\textwidth]{images/qpcspherical-crop.png}};
+	\axes
+  \draw[style={dashed,thin}] (-2,1.325) coordinate (r1) -- (-2,2.5);
+  \draw[style={<->,thin}] (-2.75,1.825) -- (r1) node[midway,left,yshift=-0.5em] {$r$};
+  % \draw[style={<->,thin}] (m1) -- (0.37,4.45) node[left] {$t$};
+  \draw[style={->,thin}] (-0.16,2.34) -- (0.25,2.53) node[midway,above] {$w$};
+  % \draw[help lines,step=0.25cm] (-4,0) grid (4,4);
+      \end{tikzpicture}
+      \end{minipage}
+  \begin{minipage}[c]{0.5\textwidth}
+   \begin{flalign}\quad\text{Pot}(x,y) =&\sqrt{r^2-x^2-Y(y)^2\,\Theta(Y(y))}&\notag\\
+   % \cdot\ &\Theta\left(\frac{\abs{y}-w/2}{t}+x\right)&\notag\\
+   \intertext{\hspace{4.7em}with}
+    Y(y)=&\left(r+w-\abs{y}\right)&
+   \end{flalign}
+   \end{minipage}
+  \caption{Potential landscape of a quantum point contact with spherical tips. It exhibits both steep and smooth walls. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The radius of the wall $r$ and the width of the confinement $w$ are illustrated by the arrows. The dimensionless analytical expression of the potential is presented on the right. The \textsc{Heaviside} step function is denoted by $\Theta$.}\label{fig:sphericalsemihardwalled}
+\vskip -2em
+\end{figure}
+\begin{figure}[h!]
+  \subfloat[]{\label{fig:sphericaledens}\includegraphics[]{images/wire400x200-Nov-27-2011-21.41edens}}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node at (-6.8,-2.3) {\includegraphics[width=0.13\textwidth]{images/qpcspherical-crop.png}};
+	\end{tikzpicture}
+  \subfloat[]{\label{fig:sphericalspindens}\includegraphics[]{images/wire400x200-Nov-27-2011-21.41spindens}}
+  \caption{Simulated electron and spin density of a quantum point contact with spherical constriction of width $w$=100 nm, and radius of the tip $r$=60 nm. (a) Two-dimensional electron density. Note the well defined continuous areas of electron density within the constriction. Color code denotes the electron density $n$. (b) Two-dimensional spin density. Color code denotes the spin density $s_z$. The corresponding potential landscape is depicted on the left.}
+\end{figure}
+Looking at the electron density in \cref{fig:sphericaledens} a resemblance to the electron distribution of prior quantum point contacts can be seen. The 2DEG under influence of the spherical constriction exhibits increased continuous electron densities as well as points of high electron densities symmetrically arranged in the upper and lower half similar to the influences of the quantum point contact with triangular tips.  The in comparison to the hard walled potentials more adiabatic potential leads to extended continuous electron densities both in the center and at th edges of the constriction. Within the constriction eight well pronounced maxima can be observed which indicates the establishment of distinct modes and steps also indicated by the conductance profile in \cref{fig:sphericaltrans}. Despite the similarities to the triangular case clearly pronounced steps are seen in the conductance profile. The variations near the steps are smoothed out without the loss of discrete steps of height 2~$e^2/h$.  The spherical potential is used to validate the results of the conductance calculations in section \ref{sec:validation}.\par
+\begin{figure}[h]
+  \centering
+  \includegraphics[]{images/wire400x200-Nov-27-2011-21.41trans}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node at (-10.8,-1.7) {\includegraphics[width=0.13\textwidth]{images/qpcspherical-crop.png}};
+	\end{tikzpicture}
+  \caption{Simulated conduction profile of a quantum point contact with spherical constriction in dependence of the width of the constriction. The corresponding potential landscape is depicted on the left.}\label{fig:sphericaltrans}
+\end{figure}
+The spin densities pictured in \cref{fig:sphericalspindens} differ only slightly from the triangular and rectangular case. The spin plit in the lower half of the figure is still the dominant feature due to the reduced irregularity of the interference pattern. Additionally, the maximum spin split increases in respect to the triangular quantum point contact. \par
+Electrical point charges are introduced in the vicinity of the 2DEG to model a constriction formed by gate electrodes more closely. A quantum point contact of this kind exhibits a very slow varying potential throughout large parts with almost infinite slopes near the location $r_q$ of the point charges due to the $\sim 1/r_q$ dependency. \Cref{fig:pointsoftwalled} illustrates such a constriction formed by two electrical point charges.
+\begin{figure}[h!]
+  \begin{minipage}[c]{0.5\textwidth}
+    \begin{tikzpicture}%[every text node part/.style={align=center}]
+	\node at (0,0)[above] {\includegraphics[width=0.9\textwidth]{images/qpcpoint-crop.png}};
+	\axes
+  \draw[style={<->,thin}] ($1.125*(-1.6,3)$) -- ($1.125*(1.3,4.3)$) node[midway,above] {$w$};
+      \end{tikzpicture}
+      \end{minipage}
+  \begin{minipage}[c]{0.5\textwidth}
+   \begin{flalign}\quad\text{Pot}(x,y) &= \frac{q}{\sqrt{x^2+(y+w/2)^2}}&\notag\\
+   &+\frac{q}{\sqrt{x^2+(y-w/2)^2}}&\end{flalign}
+      \end{minipage}
+  \caption{Potential landscape of a soft walled quantum point contact of two point charges of charge $q$ and dislocation $w$. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The dimensionless analytical expression of the potential is presented on the right.}\label{fig:pointsoftwalled}
+\end{figure}
+In the simulations either the geometry of the constriction or the charge of the point charges are varied. Modifying the width of the quantum point contact is usually experimentally achieved by the placement of several gate electrodes either on or beside the 2DEG. A negative potential is applied to the electrodes which effectively results in a depopulation of the conductance band in their vicinity. The electrodes can experimetally be realized by oxidizing the surface above the 2DEG to form depleted isolating regions \cite{JApplPhys73.262} \cite{ElDevLett31.1227}. The use of isolated areas of 2DEG as electrodes is illustrated in \cref{fig:sidegatesketch}.\par
+\begin{figure}[h]
+  \subfloat[]{\label{fig:sidegatesketch}
+      \begin{tikzpicture}[circuit ee IEC,thick]
+	\node[above] at (0,0) {\includegraphics[scale=0.9]{images/sidegates}};
+	\draw (-3.2,2.7) -- ++(0,-2.4) -- (0,0.3) node[contact] (contact1){} -- ++(3.2,0) -- ++(0,2.2);
+	\draw (0,-0.8) node[rotate=-90,ground]{} to [battery={info={$\mp$}}] (contact1);
+	\node at (0,4) (2deg) {2DEG};
+	\draw[-latex] (2deg)-- (-1.5,2.45);
+	\draw[-latex] (2deg)-- (0,3);
+	\draw[-latex] (2deg)-- (1.5,2.45);
+	\node at (-3,4) (contact1) {Contact};
+	\draw[-latex] (contact1)-- ++(0,-1);
+	\node at (3.1,4) (contact2) {Contact};
+	\draw[-latex] (contact2)-- ++(0,-1.2);
+	\node at (-2.5,-0.5) (substrate) {Substrate};
+	\draw[-latex] (substrate)-- ++(0.8,1.5);
+	\node at (-0.9,0.95) {GaAs};
+      \end{tikzpicture}}
+  \subfloat[]{\label{fig:differentq}\includegraphics{images/differentq}}
+  \caption{(a) Illustration of the realization of sidegates in a 2DEG. The (blue) 2DEG is sketched on a (green) substrate. The application of a voltage via two (golden) leads is outlined. Note the lack of conducting substance in the trenches effectively creating three isolated 2DEGs. (b) Illustration of confining potential at two different charges. Transverse potential profile in Volt at charges $q_1 = 6.5 \cdot 10^{-18}$~C (blue line) and $q_2= 0.5 \cdot 10^{-18}$~C. (dotted green line). A fixed electron energy $E_{e^-}$ is depicted by a red line.} 
+\end{figure}
+% \caption{  The corresponding potential landscape is depicted on the left.}
+It is important to note that by changing the voltage on the electrodes, and therefore the charge, not only the width of the potential is changed but also the steepness of the confining potential for a given energy. Hence, the transfer from the adiabatic to the non-adiabatic i.e. steep walled domain is possible.\par
+
+\begin{figure}[h]
+  \subfloat[]{\label{fig:pointedens}\includegraphics[]{images/242255-wire400x200-Dec-02-2011-23.08edens}}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node at (-6.8,-2.3) {\includegraphics[width=0.13\textwidth]{images/qpcpoint-crop.png}};
+	\end{tikzpicture}
+  \subfloat[]{\label{fig:pointspindens}\includegraphics[]{images/242255-wire400x200-Dec-02-2011-23.08spindens}}
+  \caption{Simulated electron and spin density for a constriction formed by two point charges. The point charges are located at the transverse boundary of the wire 200 nm apart. The charge of the point charges is $q\approx 1.5\cdot 10^{-18}$~C. (a) Two-dimensional electron density. Note the lack of pronounced electron density in the center of the figure and the symmetrical reflection interference in the bottom and top part. Color code denotes the electron density $n$. (b) Two-dimensional spin density. Color code denotes the spin density $s_z$. The corresponding potential landscape is depicted on the left.}
+\end{figure}
+The electron density illustrated in \cref{fig:pointedens} shows the expected continuous density channel at the very edge of the nanowire while the center region is subject to complex interference. An interference pattern can also be observed before and after the quantum point contact. The pattern is much simpler in comparison to all prior quantum point contacts. The lateral offset near the upper and lower lead are due to the necessity to cut off the potential at some point which would otherwise extend to infinity.\par
+Although the maximum spin split is lower compared to all prior quantum point contacts it exhibits a much simplified interference pattern with localized areas of maximum polarization and otherwise almost negligible polarization. The simplicity of the pattern is due to the reduced number of modes. The probability distribution of the electrons is laterally confined to the same area. Due to the slow decrease of the potential there exists a finite potential throughout the device.\par
+\begin{figure}[h]
+  \centering
+  \subfloat[]{\label{fig:qpcpointtransspin}\includegraphics[]{images/242255-wire400x200-Dec-02-2011-23.08trans}}
+  \subfloat[]{\label{fig:qpcpointtransnospin}\includegraphics[]{images/242368-wire400x200-Dec-03-2011-04.35trans}}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node at (-15,-2.2) {\includegraphics[width=0.13\textwidth]{images/qpcpoint-crop.png}};
+	\end{tikzpicture}
+  \caption{Simulated conductance profile of quantum point contact of two point charges. The conductance is given in dependence of the charge of the point charges for $0 < q <7\cdot 10^{-18}$ C. (a) Spin resolved conductance in $e^2/h$. (b) Spin degenerate conductance in 2~$e^2/h$. Note the similarity to \cref{fig:qpcpointtransspin}. Note also the disappearance of conductance quantization below $\approx 2\cdot10^{-18}$~C and the reappearance close to $q=0$. The corresponding potential landscape is depicted on the left.}
+\end{figure}
+Both, the spin resolved conductance in \cref{fig:qpcpointtransspin} and the spin degenerate conductance profile in \cref{fig:qpcpointtransnospin} mirror both, the hard and the soft walled contributions to the potential. A well pronounced first and second conductance step can be observed but the steps smooth out more with decreasing charge. Interestingly the steps become well pronounced again when the charge approaches zero. As this pattern is also observed for spin degenerate systems as can be observed in \cref{fig:qpcpointtransnospin} a relation of this effect to a spin-orbit coupling seems unlikely. 
+The disappearance of steps can be explained by the onset of \emph{inter-subband scattering} which have been found to have significant effect starting at the fourth mode \cite{Lehmann2011}. If inter-subband scattering is indeed the cause for the smoothing of the conductance profile the reappearance of noticeable steps would correspond to the reduction of inter-subband scattering due to some change in the device at lower charge. The only observed change in the environment of the 2DEG at lower charge is the height and steepness of the potential landscape.
+Note that as the charge decreases the steepness of the potential increases for a given electron energy $E_{e^-}$ as illustrated in \cref{fig:differentq}. Due to the higher potential gradient the subband mode spacing increases similar to the abrupt wall scenario and the interactions between modes is therefore decreased.
+% \FloatBarrier
+\subsection{Variational Walled Quantum Point Contacts}
+To investigate the relation of the steepness of the potential landscape to the diminishing conductance quantization a parametrized  quantum point contact is introduced into the 2DEG, see \cref{fig:variationalwalled}.\par
+\begin{figure}[h!]
+  \vskip -1em
+    \begin{minipage}[c]{0.5\textwidth}
+    \begin{tikzpicture}%[every text node part/.style={align=center}]
+	\node at (0,0)[above] {\includegraphics[width=.9\textwidth]{images/qpcvariational2-crop.png}};
+  \draw[style={<->,thin}] ($1.125*(-0.205,2)$) -- ($1.125*(0.27,2.25)$) node[midway,above] {$w$};
+	\axes
+    \coordinate (a) at (1.65,2.3);
+    \coordinate (b) at (2.6,2.87825);
+    % \coordinate (b) at (2.505,2.81325);
+    \coordinate (c) at (2.6,3.982);
+    \coordinate (e) at (0.53,2.9);
+    \coordinate (f) at (1.45,4.5);
+    \draw[-] (a) node[above,xshift=0.5em,yshift=2em]{$m$} -- (b) node[midway,below,yshift=0.3em,xshift=0.8em]{$\Delta y$} -- (c) --cycle;
+    \draw[dashed] (a) -- (e);
+    \draw[-] (e) -- (f);
+    \draw[dashed] (c) -- (f);
+      \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}[c]{0.5\textwidth}
+  \begin{flalign}\quad\text{Pot}(x,y) &= e^{-x^2/\xi^2}\cdot m\left(\abs{y}- \frac{w}{2}\right)&\end{flalign} 
+  \end{minipage}
+  % \caption{hallo}
+  \caption{Example potential landscape of a variational walled quantum point contact used in the analysis. The longitudinal direction of electron flow $x$ and the transverse direction $y$ is denoted. The width at the bottom of the potential $w$ is indicated by arrows. The slope of the transverse confinement $m$ is illustrated by a gradient triangle. The parameter $\xi$ controls the steepness of the walls in $x$ direction. The dimensionless analytical expression of the potential is presented on the right.}\label{fig:variationalwalled}
+  \vskip -2em
+\end{figure}
+A potential which can be varied between hard and soft walled will be called \emph{variational potential}. The variational potential is designed to investigate the dependence of the conduction on the slope of the constricting potential. Here the walls can be symmetrically modified to achieve different but constant slopes $m$ of the confinement. The slope is taken to be the $y$ gradient at the center of the dimensionless potential landscape presented in \cref{fig:variationalwalled} and thus measured in nm$^{-1}$. The unit will be omitted and is taken to be nm$^{-1}$ if not noted otherwise. The parameter $\xi$ controls the steepness of the walls in $x$ direction and is set to $\xi=10$~nm to ensure an adiabatic increase of the potential in the $x$ direction.\par
+The effects of the wall slope on the smoothness of the conductance profile and thus possibly on the inter-subband scattering are investigated by increasing the width of the constriction for many different slopes $m$. The conductance quantization varies noticeably only in the interval $0 < m < 0.4$, see \cref{fig:slopes}. Thus for slopes $m > 0.4$ the potential could be considered hard walled.  Quantized steps in the conductance can already be observed above a slope of $m \approx 0.03$, with only slight changes if the slope increases further in that interval. For slowly varying potentials with slopes $m<0.032$ a noticeable change in conduction quantization can be observed, see \cref{fig:slope_cuts}. A significant change in quantization is only observed in the slope interval $0.008 < m < 0.032$. The offset in the conduction of quantum point contacts with varying slope is due to the relative width of the quantum point contact at a specific energy. For smaller slopes the constriction is wider and therefore a higher conductance compared to larger slopes is obtained. \Cref{fig:slopes} shows conductance profiles for constant slopes in the interval $0 < m < 0.4$.\par
+\begin{figure}[h] 
+  \subfloat[]{\label{fig:slope_cuts}\includegraphics[]{images/slope_cuts.pdf}}
+  \subfloat[]{\label{fig:slopes}\begin{tikzpicture}[font=\footnotesize]
+  \node[above] at (0,0){\includegraphics[width=0.46\textwidth]{images/slopesrainbow.png}};
+  \draw[style={<->,thin}] (-3.8,2.5) -- node[below,align=center,rotate=-44] {Slope [nm$^{-1}$]} (-1.15,0) node[left,yshift=-0.2em] {0} --   node[below,yshift=-0.5em,xshift=-1em,rotate=25] {Width [nm]} (3.75,2.2);
+  \draw[thin] (-3.7,2.4)--++(0.05,0.05) node[below,xshift=0.2em,yshift=-0.5em,rotate=-44] {0.4};
+  \draw[thin] (3.65,2.16)--++(-0.03,0.065) node[below,xshift=0em,yshift=-0.3em,rotate=25] {200};
+  \node[above] at (2.6,-0.3){\includegraphics[width=0.25cm,height=3cm]{images/slopescolorbar.png}};
+  % \draw[step=0.25cm,gray,very thin] (0,0) grid (3.5,3);
+  \node[right] at (2.7,0) {0};
+  \node[right] at (2.7,2.65) {30};
+  \node[below, rotate=90] at (2.7,1.17) {$G$ $[e^2/h]$};
+  \end{tikzpicture}}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node[thick,shape=rectangle,draw,inner sep=1pt] at (-13.5,-1.3) {\includegraphics[width=0.13\textwidth]{images/qpcvariational-crop.png}};
+    \end{tikzpicture}
+  \caption{(a) Conductance profiles at different slopes $m$. Note the disappearance of quantization for small $m$. (b) Full conduction profile in dependence of slope $0 < m < 0.4$ and width $0 < w < 200$ nm. Note the increased smoothing towards small slopes $m$. Color code denotes the conductance $G$ in $e^2/h$. The corresponding potential landscape for one $m$ is depicted in the inset.}\label{fig:conductances}
+\end{figure}
+The decrease of the conductance quantization for small slopes is likely due to the increase of inter-subband interaction. If the energy separation of the modes decreases comparable to the decrease of energy separation of the eigenvalues of the \textsc{Airy} functions in the triangular potential well the interaction between the eigenstates becomes significant. The electron densities presented in \cref{fig:variedens1} and \cref{fig:variedens2} provide further indications of inter-subband scattering. When compared, the figures show that the electron density for the softer quantum point contact is much less localized in discrete channels. This indicates an increase in interaction of the modes passing through the quantum point contact.\par
+Interestingly the spin split is increased for the smoother walled quantum point contact in \cref{fig:varispindens1} in comparison to \cref{fig:varispindens2,fig:trispindens,fig:rectspindens,fig:pointspindens}. Additionally the spin split exhibits less dominant interference than any hard walled potential. This might be caused by the smoother potential landscape and thus reduced possibility of a scattering event that alters the electron propagation significantly.\par
+\begin{figure}[h]
+  \subfloat[]{\label{fig:variedens1} \includegraphics[]{images/1edens-crop}}
+  \hspace{14pt}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node[thick,shape=rectangle,draw,inner sep=1pt] at (0,-8) {\includegraphics[width=0.13\textwidth]{images/qpcvariational-crop.png}};
+    \end{tikzpicture}
+  \hspace{4pt}
+  \subfloat[]{\label{fig:varispindens1} \includegraphics[]{images/1spindens}}
+  \caption{Simulated electron and spin density for a constriction formed by a variational walled constriction of slope $m=0.008$. Densities correspond to a conductance of 16 $e^2/h$ as is indicated by the eight maxima within the constriction. (a) Two-dimensional electron density. Note the smoothed out electron density within the constriction. Color code denotes the electron density $n$. (b) Two-dimensional spin density. Color code denotes the spin density $s_z$. The corresponding potential landscape is depicted in the inset.}
+\end{figure}
+\begin{figure}[h]
+  \subfloat[]{\label{fig:variedens2}\includegraphics[]{images/4edens-crop}}
+  \hspace{14pt}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node[thick,shape=rectangle,draw,inner sep=1pt] at (0,-8) {\includegraphics[width=0.13\textwidth]{images/qpcvariational-crop.png}};
+    \end{tikzpicture}
+  \hspace{4pt}
+  \subfloat[]{\label{fig:varispindens2}\includegraphics[]{images/4spindens}}
+  \caption{Simulated electron and spin density for a constriction formed by a variational walled constriction of slope $m=0.032$. Densities correspond to a conductance of 16 $e^2/h$ as is indicated by the eight maxima within the constriction. (a) Two-dimensional electron density. Note the distinct areas of electron density within the constriction. Color code denotes the electron density $n$. (b) Two-dimensional spin density. Note the diminished maximal spin split in comparison to \cref{fig:varispindens1}. Color code denotes the spin density $s_z$. The corresponding potential landscape is depicted in the inset.}
+\end{figure}
+The results present strong indications for the interaction of wall slope and inter-subband scattering similar to the mixing of intra-subband eigenstates due to higher order effects of the \textsc{Rashba} spin-orbit interaction \cite{Wolfgang2003PhysicaE.18.337}. The influence of spin-orbit coupling by the shape and slope of the constriction could also explain the difference in spin polarization and could be subject to further analysis.
+\FloatBarrier
+\section{Non-Colinear devices}
+The simulated electron and spin densities in the prior chapters show that both the electron density and the spin split induced by the \textsc{Rashba} interaction in the 2DEG are symmetric in regard to the $x$ axis. The electron densities exhibit reflection symmetry to a plane parallel to the $x$ axis in the center of the conductor whereas the spin densities show a rotational symmetry in respect to the $x$ axis. The geometry of the device can be changed to induce a break of the symmetry of the spin split. Therefore, asymmetric geometries in respect to the $x$ axis can be used to analyze the changes in spin polarization. To that end the assumption of colinear leads has to be dropped.
+\subsection{Curved Nanowire}
+A bend in the nanowire already introduces complex interactions both in real and in spin-space. This is demonstrated for the electron density in \cref{fig:curvedens1,fig:curvedens2,fig:curvedens3} and for the spin density in \cref{fig:curvspindens1,fig:curvspindens2,fig:curvspindens3}. The first three modes correspond to the energies 0.003~eV, 0.036~eV and 0.081~eV, respectively, of a straight nanowire of constant width.\par
+\begin{figure}[h!]
+  \centering
+  \subfloat[]{\label{fig:curvedens1}\begin{tikzpicture}
+  \node[above] at (0,0){\includegraphics[]{images/curve_1modes_edens-crop}};
+  \curveoutline
+  \end{tikzpicture}}
+  \subfloat[]{\label{fig:curvedens2}\begin{tikzpicture}
+  \node[above] at (0,0){\includegraphics[]{images/curve_2modes_edens-crop}};
+  \curveoutline
+  \end{tikzpicture}}
+  \subfloat[]{\label{fig:curvedens3}\begin{tikzpicture}
+  \node[above] at (0,0){\includegraphics[]{images/curve_3modes_edens-crop}};
+  \curveoutline
+  \end{tikzpicture}}
+  \caption{Electron densities of a curved nanowire of 40 nm width. The wire width is marginally reduced in the curve as outined by the gray lines. (a) First mode of energy $E=0.003$ eV. (b) Second mode of energy $E=0.036$ eV. (c) Third mode of energy $E=0.081$ eV. Color code indicates electron density $n$.}
+\end{figure}
+The electron densities are also slightly elevated due to the singularities in the LDOS at the band edge of these modes. If compared to \cref{fig:dens1,fig:dens2,fig:dens3}, for example, an apparent change is immediately seen. The spacial distribution of electrons along the wire is not constant and the spin densities exhibit a preference for up polarized electrons, see \cref{fig:curvspindens2}, for example. Note that the scale changes about the order of two in the \cref{fig:curvedens1,fig:curvedens2,fig:curvedens3} to prevent the loss of details for smaller electron densities. Likewise, the scale of the spin density in \cref{fig:curvspindens2} is due to the same reasons about twice as large compared to \cref{fig:curvspindens1,fig:curvspindens3}. The features of the curved 2DEG are energy dependent. For all three modes the spin-down density is suppressed. For the third mode the spin density shows an irregular interference pattern. This shows that already a slight departure from a symmetrical geometry alters the scale and the distribution of the spin density significantly.\par
+\begin{figure}[h!]
+  \centering
+  \subfloat[]{\label{fig:curvspindens1}\begin{tikzpicture}
+  \node[above] at (0,0){\includegraphics[]{images/curve_1modes_spindens-crop}};
+  \curveoutlinedark;
+  \end{tikzpicture}}
+  \subfloat[]{\label{fig:curvspindens2}\begin{tikzpicture}
+  \node[above] at (0,0){\includegraphics[]{images/curve_2modes_spindens-crop}};
+  \curveoutlinedark;
+  \end{tikzpicture}}
+  \subfloat[]{\label{fig:curvspindens3}\begin{tikzpicture}
+  \node[above] at (0,0){\includegraphics[]{images/curve_3modes_spindens-crop}};
+  \curveoutlinedark;
+  \end{tikzpicture}}
+  \caption{Spin densities of a curved nanowire of 40 nm width. The wire width is marginally reduced in the curve as outlined by the gray lines. (a) First mode of energy $E=0.003$ eV. (b) Second mode of energy $E=0.036$ eV. (c) Third mode of energy $E=0.081$ eV. Note the increasing irregularity of the spin split and the diminished spin-down density in (a) and (b). Color code indicates spin density $s_z$.}
+\end{figure}
+\subsection{\textsc{Aharonov-Bohm} Ring Interferometer}
+An interferometer is a common approach to the manipulation of properties of wave objects. A simple realization of such an interferometer is given by a modification of the \textsc{Arahonov-Bohm} ring. The \textsc{Arahonov-Bohm} ring is a two-dimensional annulus where the difference of inner and outer radius is smaller than the inner radius $\abs{r_o- r_i} \ll r_i$, see \cref{fig:aharonovbohmring}.
+Spin interference has been achieved via the attachment of multiple leads \cite{PhysRevB.75.035304} or the application of an electro-magnetic field \cite{PhysRevB.69.155335} to the \textsc{Arahonov-Bohm} ring.\par
+\begin{figure}[!h]
+  \centering
+  \begin{tikzpicture}
+    % \draw[step=.5cm,gray,very thin] (-2,-2) grid (2,2);
+    % \draw[dashed] (1.5,0) -- (1.5,0);
+    \draw[dashed] (0,-2) -- (0,2);
+    \draw[dashed] (0,-2) -- (0,2);
+    \draw[dashed] (0,0) -- (-2,0);
+    % \draw[dashed] (1,0) -- ++(0,1.5);
+    \draw[dashed] (1.5,0) -- ++(0,2);
+    \draw[<->] (0,1.75) -- node[above] {$r_o$}++(1.5,0);
+    \draw[<->] (0,0) -- node[above] {$r_i$}++(1,0);
+    \draw[thick] (0,0) circle (1);
+    \draw[thick] (1.5,0) arc (0:80:1.5) coordinate (n1);
+    \draw[thick] (-2,0.25)-- ++(0.51,0) coordinate(leftupper);
+    \draw[thick] (leftupper) arc (-10:-80:-1.5) coordinate (n2);
+    \draw[thick] (n1)-- ++(0,0.5);
+    \draw[thick] (n2)-- ++(0,0.5);
+    \draw[thick] (1.5,0) arc (0:-80:1.5) coordinate (n3);
+    \draw[thick,dashed] (n3)-- ++(0,-0.5);
+    \draw[thick] (-2,-0.25)-- ++(0.51,0) coordinate(left1);
+    \draw[thick] (left1) arc (10:80:-1.5) coordinate (n4);
+    \draw[thick,dashed] (n4)-- ++(0,-0.5);
+    \node (a) at (-1.5,-1.5) {$\alpha$};
+    \begin{scope}[dashed,decoration={
+      markings,
+      mark=at position 0.5 with {\arrow{latex}}}
+      ] 
+      \draw[postaction={decorate}] (0,-1.75) arc (270:180:1.75);
+  \end{scope}
+  \end{tikzpicture}
+  \caption{\textsc{Aharonov-Bohm} ring based interferometer of inner radius $r_i=65$~nm and outer radius $r_o=75$~nm. One of the leads is rotated. The angle of rotation is denoted by $\alpha$. Here $\alpha=\pi/2$.}\label{fig:aharonovbohmring}
+  \end{figure}
+  The most basic interferometer is obtained by the attachment to of two leads to the \textsc{Aharonov-Bohm} ring. To investigate changes in spin properties of the 2DEG one of the leads is then rotated against the other to obtain different enclosed angles. The device and process is sketched in \cref{fig:aharonovbohmring}.
+  \begin{figure}[h!]
+  \subfloat[]{\label{fig:ring0edens}\includegraphics[]{images/ring0edens}}
+  \subfloat[]{\label{fig:ring90edens}\includegraphics[]{images/ring90edens}}
+  \subfloat[]{\label{fig:ringneg90edens}\includegraphics[]{images/ringneg90edens}}
+  \caption{Electron densities in \textsc{Aharonov-Bohm} type ring for three different enclosing angles. (a) Enclosing angle $\alpha=0$. (b) Enclosing angle $\alpha=\pi/2$. (c) Enclosing angle $\alpha=-\pi/2$. Color code denotes electron density $n$.} 
+  \end{figure}
+  \begin{figure}[h!]
+  \subfloat[]{\label{fig:ring0spindens}\includegraphics[]{images/ring0spindens}}
+  \subfloat[]{\label{fig:ring90spindens}\includegraphics[]{images/ring90spindens}}
+  \subfloat[]{\label{fig:ringneg90spindens}\includegraphics[]{images/ringneg90spindens}}
+  \caption{Spin densities in \textsc{Aharonov-Bohm} type ring for three different enclosing angles. (a) Enclosing angle $\alpha=0$. (b) Enclosing angle $\alpha=\pi/2$. (c) Spin density $s_z$. Enclosing angle $\alpha=-\pi/2$ . Color code denotes the spin density $s_z$. Note the dependence of the maximum spin split and spin-up to spin-down ratio on enclosed angle.}
+\end{figure}
+Already for colinear leads the interference of spin is well pronounced. In contrast to a wire or closed ring \cite{PhysRevB.82.165322} the polarization depends on the angular coordinate $\phi$.
+The spins interact to form a standing wave in steady state. The circumference of a concentric circle in the center of inner and outer circle is $c\approx 408$~nm. For the energy $E=0.068$~eV 23 peaks and troughs of the standing wave can be observed which corresponds to a wavelength of $\lambda_{\text{spin}}=17.75$~nm. This length is well below the spin-precession length in undisturbed geometries of $L_{SO}\approx230$~nm due to the strength of the \textsc{Rashba} spin-orbit interaction $\alpha_{RSO}$ considered. Note the elevated electron density due to its energy dependence near the band edges.\par
+Upon rotation of the lower lead the interference pattern changes considerably in amplitude and spatial profile. The phase of the standing wave appears to be fixed to the bottom lead and rotates the peaks and troughs according to the angle the lead has been rotated. Whereas the polarization in the leads is almost negligible throughout \cref{fig:ring0edens,fig:ring90edens,fig:ringneg90edens,fig:ring0spindens,fig:ring90spindens,fig:ringneg90spindens} the amplitude increases sharply within the ring. The amplitudes of spin polarization within the \textsc{Aharonov-Bohm} ring with rotated lead decrease gradually with increasing rotation in about one order of magnitude.\par
+For the presented angles of 0,$\pi/2$ and $-\pi/2$ three very distinct situations occur. While the spin up to spin down amplitude ratio is unity for the symmetric device in \cref{fig:ring0edens} it reaches $n_{\uparrow}/n_{\downarrow}=5$ for $\alpha=\pi/2$ rotation in \cref{fig:ring90edens} and $n_{\uparrow}/n_{\downarrow}=0.2$ for $\alpha=-\pi/2$ rotation in \cref{fig:ringneg90spindens}. The electron densities in the ring with rotated leads are about twice as large in the longer arms than the shorter arms what is probably at least in part correlated to the increase in spin density.\par
+Qualitatively this result is reproduced analytically for a one dimensional ring for the presented rotations. Solving the \hamil{} for closed ring in polar coordinates one obtains the four eigenstates in each arm \cite{nitta1999.695}:
+\begin{align}
+  \Psi^{\pm}_{\uparrow} = e^{i\phi}\begin{pmatrix}\text{cos}(\theta/2)\\\pm\text{sin}(\theta/2)e^{i\phi}\end{pmatrix} 
+  \qquad\text{and}\qquad
+  \Psi^{\pm}_{\downarrow} = e^{\pm i\phi}\begin{pmatrix}\pm\text{sin}(\theta/2)e^{-i\phi}\\-\text{cos}(\theta/2)\end{pmatrix}
+\end{align}
+Plus and minus denotes the direction of travel and $\uparrow,\downarrow$ spin up and spin down respectively. Expanding each wave function in terms of the eigenstates the interference pattern in \cref{fig:ring90spindens} can be reproduced assuming partial reflection of the spin-up wave function and total transmission of the-spin down wave function at the junctions in the right arm and partial reflection of both spin states at the junctions in the left arm.
+\begin{figure}[!h]
+  \centering
+  \begin{tikzpicture}
+  \node at (0,0) {\includegraphics[width=\textwidth,height=5cm]{images/eigenspinorring}};
+  \node at (8,-0.5) {$\phi$};
+  \node at (0,3) {$s_z$ [a.u.]};
+  \end{tikzpicture}
+  \caption{Expansion of spin states in eigenstates of the closed ring for an enclosing angle of $\alpha = \pi/2$. Negative $\phi$ corresponds to the left arm and positive $\phi$ to the right. Interference pattern only shown for the first three peaks. Left arm state (brown line) corresponds to partial reflection ($\approx$ 20\%) of $\uparrow$ and $\downarrow$ states equally. Right arm state (gray line) corresponds to no reflection of $\downarrow$ and strong reflection of $\uparrow$ state ($\approx$ 60\%). Note the qualitative similarity to \cref{fig:ring90spindens}.}
+\end{figure}
+The model of pure eigenstates of the isolated ring breaks down for arbitrary enclosing angles as the coupling to the leads becomes significant. Due to the coupling of spin states to the lead the eigenstates of the isolated ring do not give an accurate model of the physical situation.\par
