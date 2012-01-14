@@ -4,11 +4,11 @@ The derivation of the recursive \gfnc{} algorithm will be presented. The discuss
 \section{Recursive Algorithm for the retarded \gfnc{}}
 Only the retarded \gfnc{} of the conductor will be discussed in this section, hence, all superscripts and subscripts will be dropped, i.e. $\mat{G} \equiv \mat{G}^r\equiv \mat{G}_C$. The recursive algorithm to calculate all diagonal and off-diagonal blocks of the retarded \gfnc{} can be obtained by starting from \cref{eqn:amatrix}
 \begin{align}
-  (E\mathds{1}-\mat{H})\mat{G}_C = \mat{A}\mat{G}=\mathds{1}
+  (E\mathds{1}-\mat{H})\mat{G}_C = \mat{A}\mat{G}=\mathds{1}\ .
   \label{eqn:amatrixppendix}
-  \end{align}
-  The solution to the partitioning
-  \begin{align}
+\end{align}
+The solution to the partitioning
+\begin{align}
   \begin{pmatrix} \mat{A}_{Z,Z} & \mat{A}_{Z,Z'}\\
 		  \mat{A}_{Z',Z} & \mat{A}_{Z',Z'}
   \end{pmatrix}
@@ -64,7 +64,7 @@ After one iteration from $i=0$ to $N$, the last element calculated by \cref{eqn:
 \section{Recursive Algorithm for the lesser \gfnc{}}}
 Starting from the \textsc{Keldysh} equation (\cref{eqn:keldyshequation}), the equation for the lesser \gfnc{} is written as
 \begin{align}
-\mat{A}\mat{G}^< = \mat{\Sigma}^< \mat{G}^a
+\mat{A}\mat{G}^< = \mat{\Sigma}^< \mat{G}^a\ .
 \end{align}
 Here $\mat{G}^<$ is the lesser \gfnc{}, and $\mat{\Sigma}^<$ and $\mat{G}^a$ are the lesser self energy (\cref{eqn:lesserselfenergy}) and the advanced \gfnc{} (\cref{eqn:retardedandadvancedgfnc}), respectively. The \textsc{Dyson} equation for $\mat{G}^<$ is the solution to
 \begin{align}
@@ -83,9 +83,10 @@ Here $\mat{G}^<$ is the lesser \gfnc{}, and $\mat{\Sigma}^<$ and $\mat{G}^a$ are
 \end{align}
 and reads
 \begin{align}
-\mat{G}^< = \mat{G}^0\mat{U}\mat{G}^< + \mat{G}^0\mat{\Sigma}^<\mat{G}^a
+\mat{G}^< = \mat{G}^0\mat{U}\mat{G}^< + \mat{G}^0\mat{\Sigma}^<\mat{G}^a\ .
 \end{align}
-The recursive algorithm for the lesser \gfnc{} follows the same approach as the algorithm for the retarded \gfnc{}, thus the left-connected lesser \gfnc{} is defined by
+The recursive algorithm for the lesser \gfnc{} follows the same approach as the algorithm for the retarded \gfnc{}, thus the left-connected lesser \gfnc{} $\mat{G}^{<,i}$ is defined by
 \begin{align}
-\mat{A}_{1:i,1:i}\mat{G}^{i}=\mathds{1}_{1:i,1:i}\ .
+\mat{A}_{1:i,1:i}\mat{G}^{<,i}=\mat{\Sigma}^<_{1:i,1:i}\mat{G}^a_{1:i,1:i}\ .
 \end{align}
+Again, by setting $Z=1:i$ and $Z'=i+1$ and using the \textsc{Dyson} equation for $\mat{G}$ and $\mat{G}^<$
