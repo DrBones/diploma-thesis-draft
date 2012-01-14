@@ -1,51 +1,91 @@
 \chapter{RGA}
 \label{app:RGA}
 The derivation of the recursive \gfnc{} algorithm will be presented. The discussion follows \cite{JApplPhys.91.2343}, \cite{JApplPhys.81.7845} and \cite{Wimmer2009Thesis} which obtain equivalent results with differences in notation.
-\section{Recursive Algorithm for \protect{$\mat{G}^r$}}
+\section{Recursive Algorithm for the retarded \gfnc{}}
 Only the retarded \gfnc{} of the conductor will be discussed in this section, hence, all superscripts and subscripts will be dropped, i.e. $\mat{G} \equiv \mat{G}^r\equiv \mat{G}_C$. The recursive algorithm to calculate all diagonal and off-diagonal blocks of the retarded \gfnc{} can be obtained by starting from \cref{eqn:amatrix}
 \begin{align}
-(E\mathds{1}-\mat{H})\mat{G}_C = \mat{A}\mat{G}=\mathds{1}
-\label{eqn:amatrixppendix}
-\end{align}
-The solution to the partitioning
-\begin{align}
-\begin{pmatrix} \mat{A}_{Z,Z} & \mat{A}_{Z,Z'}\\
-		\mat{A}_{Z',Z} & \mat{A}_{Z',Z'}
-\end{pmatrix}
-\begin{pmatrix} \mat{G}_{Z,Z} & \mat{G}_{Z,Z'}\\
-		\mat{G}_{Z',Z} & \mat{G}_{Z',Z'}
-\end{pmatrix} = 
-\begin{pmatrix} \mathds{1} & \mat{0}\\
-		\mat{0} & \mathds{1}
-\end{pmatrix}
+  (E\mathds{1}-\mat{H})\mat{G}_C = \mat{A}\mat{G}=\mathds{1}
+  \label{eqn:amatrixppendix}
+  \end{align}
+  The solution to the partitioning
+  \begin{align}
+  \begin{pmatrix} \mat{A}_{Z,Z} & \mat{A}_{Z,Z'}\\
+		  \mat{A}_{Z',Z} & \mat{A}_{Z',Z'}
+  \end{pmatrix}
+  \begin{pmatrix} \mat{G}_{Z,Z} & \mat{G}_{Z,Z'}\\
+		  \mat{G}_{Z',Z} & \mat{G}_{Z',Z'}
+  \end{pmatrix} = 
+  \begin{pmatrix} \mathds{1} & \mat{0}\\
+		  \mat{0} & \mathds{1}
+  \end{pmatrix}
 \end{align}
 is
 \begin{align}
-\mat{G}^r=\mat{G}_0+\mat{G}_0\mat{U}\mat{G}
-\label{eqn:dysonequationappendix}
+  \mat{G}=\mat{G}_0+\mat{G}_0\mat{U}\mat{G}
+  \label{eqn:dysonequationappendix}
 \end{align}
 where 
 \begin{align}
-\mat{G}^r = 
-\begin{pmatrix} \mat{G}_{Z,Z} & \mat{G}_{Z,Z'}\\
-		\mat{G}_{Z',Z} & \mat{G}_{Z',Z'}
-\end{pmatrix}\ ,\quad
-\mat{G}_0^r &= 
-\begin{pmatrix} \mat{G}_{0 Z,Z} & \mat{0}\\
-		\mat{0} & \mat{G}_{0 Z',Z'}
-\end{pmatrix}=
-\begin{pmatrix} \mat{A}^{-1}_{Z,Z} & \mat{0}\\
-		\mat{0} & \mat{A}^{-1}_{Z',Z'}
-\end{pmatrix}\ ,\notag\\[3mm] 
-\text{and}\hspace{2em}
-\mat{U} &= 
-\begin{pmatrix} \mat{0} & -\mat{A}_{Z,Z'}\\
-		-\mat{A}_{Z',Z} & \mat{0}
-\end{pmatrix}\ .
+  \mat{G} = 
+  \begin{pmatrix} \mat{G}_{Z,Z} & \mat{G}_{Z,Z'}\\
+		  \mat{G}_{Z',Z} & \mat{G}_{Z',Z'}
+  \end{pmatrix}\ ,\quad
+  \mat{G}_0 &= 
+  \begin{pmatrix} \mat{G}_{0 Z,Z} & \mat{0}\\
+		  \mat{0} & \mat{G}_{0 Z',Z'}
+  \end{pmatrix}=
+  \begin{pmatrix} \mat{A}^{-1}_{Z,Z} & \mat{0}\\
+		  \mat{0} & \mat{A}^{-1}_{Z',Z'}
+  \end{pmatrix}\ ,\notag\\[3mm] 
+  \text{and}\hspace{2em}
+  \mat{U} &= 
+  \begin{pmatrix} \mat{0} & -\mat{A}_{Z,Z'}\\
+		  -\mat{A}_{Z',Z} & \mat{0}
+  \end{pmatrix}\ .
 \end{align}
 The index $Z$ denotes a range of blocks, i.e. $Z = 1:i-1$ and $Z'=i:N$. Where $N$ is the maximum number of blocks and $i$ denotes the individual block. The $\mat{A}_{Z,Z}$ are submatrices of $\mat{A}$. \Cref{eqn:dysonequationappendix} is the \textsc{Dyson} equation for the retarded \gfnc{}. The matrix $\mat{G}_{0 Z,Z}$ represents the \gfnc{} of the system of size $Z$ and $\mat{G}_{0 Z',Z'}$ denotes the \gfnc{} for the isolated blocks $Z'$.
 The left connected \gfnc{} $\mat{G}^i$ is defined by the first $i$ blocks of the \cref{eqn:amatrixppendix} 
 \begin{align}
-\mat{A}_{1:i,1:i}\mat{G}^{i}=\mathds{1}_{1:i,1:i}
+\mat{A}_{1:i,1:i}\mat{G}^{i}=\mathds{1}_{1:i,1:i}\ .
 \end{align}
 Here $\mat{G}^i$ represents the \gfnc{} of the system up to block $i$.
+If inserted into the \textsc{Dyson} equation, \cref{eqn:dysonequationappendix}, the recursive relation for the diagonal elements of the left connected \gfnc{} reads
+\begin{align}
+  \mat{G}^{i}_{i,i} = \left[\mat{A}_{i,i}-\mat{A}_{i,i-1}\mat{G}^{i-1}_{i-1,i-1}\mat{A}_{i-1,i}\right]^{-1}\ .
+  \label{eqn:recrel1}
+\end{align}
+In a similar calculation, using the fact that the only nonzero element of $\mat{A}_{1:i,i+1:N}$ is $\mat{A}_{i,i+1}$ all other relations necessary for the algorithm are obtained
+\begin{align}
+  \mat{G}_{i,i-1} &= -\mat{G}_{i,i}\mat{A}_{i,i-1}\mat{G}^{i-1}_{i-1,i-1}\label{eqn:recrel2}\\\addlinespace
+  \mat{G}_{i-1,i} &= -\mat{G}^{,i-1}_{i-1,i-1}\mat{A}_{i-1,i} \mat{G}_{i,i}\label{eqn:recrel3}\\\addlinespace
+  \mat{G}_{i-1,i-1} &= \mat{G}^{i}_{i-1,i-1}-\mat{G}^{i-1}_{i-1,i-1}\mat{A}_{i-1,i}\mat{G}_{i,i-1}\label{eqn:recrel4}\ .
+\end{align}
+After one iteration from $i=0$ to $N$, the last element calculated by \cref{eqn:recrel1} is already the last element of the final \gfnc{}. Using this element as a starting point for a backward iteration using \cref{eqn:recrel2,eqn:recrel3,eqn:recrel4} the full retarded \gnfc{} $\mat{G}$ can be obtained. The off-diagonal elements $\mat{G}_{i+1,i}$ need to be saved for the computation of the lesser \gfnc{} $\mat{G}^<$.
+\section{Recursive Algorithm for the lesser \gfnc{}}}
+Starting from the \textsc{Keldysh} equation (\cref{eqn:keldyshequation}), the equation for the lesser \gfnc{} is written as
+\begin{align}
+\mat{A}\mat{G}^< = \mat{\Sigma}^< \mat{G}^a
+\end{align}
+Here $\mat{G}^<$ is the lesser \gfnc{}, and $\mat{\Sigma}^<$ and $\mat{G}^a$ are the lesser self energy (\cref{eqn:lesserselfenergy}) and the advanced \gfnc{} (\cref{eqn:retardedandadvancedgfnc}), respectively. The \textsc{Dyson} equation for $\mat{G}^<$ is the solution to
+\begin{align}
+  \begin{pmatrix} \mat{A}_{Z,Z} & \mat{A}_{Z,Z'}\\
+		  \mat{A}_{Z',Z} & \mat{A}_{Z',Z'}
+  \end{pmatrix}
+  \begin{pmatrix} \mat{G}^<_{Z,Z} & \mat{G}^<_{Z,Z'}\\
+		  \mat{G}^<_{Z',Z} & \mat{G}^<_{Z',Z'}
+  \end{pmatrix} = 
+  \begin{pmatrix} \mat{\Sigma}^<_{Z,Z} & \mat{\Sigma}^<_{Z,Z'}\\
+		  \mat{\Sigma}^<_{Z',Z} & \mat{\Sigma}^<_{Z',Z'}
+  \end{pmatrix}
+  \begin{pmatrix} \mat{G}^a_{Z,Z} & \mat{G}^a_{Z,Z'}\\
+		  \mat{G}^a_{Z',Z} & \mat{G}^a_{Z',Z'}
+  \end{pmatrix}\ .
+\end{align}
+and reads
+\begin{align}
+\mat{G}^< = \mat{G}^0\mat{U}\mat{G}^< + \mat{G}^0\mat{\Sigma}^<\mat{G}^a
+\end{align}
+The recursive algorithm for the lesser \gfnc{} follows the same approach as the algorithm for the retarded \gfnc{}, thus the left-connected lesser \gfnc{} is defined by
+\begin{align}
+\mat{A}_{1:i,1:i}\mat{G}^{i}=\mathds{1}_{1:i,1:i}\ .
+\end{align}

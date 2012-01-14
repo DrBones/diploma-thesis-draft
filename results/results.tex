@@ -211,32 +211,32 @@ The effects of the wall slope on the smoothness of the conductance profile and t
 The electron densities in \cref{fig:variedens1} and \cref{fig:variedens2} provide further indications of inter-subband scattering. The comparison of both figures shows that the electron density for the softer quantum point contact is much less localized in discrete channels. This could indicate an increase in interaction of the modes passing through the quantum point contact.\par
 \begin{figure}[h] 
 \centering
-\subfloat[]{\label{fig:slope_cuts}\includegraphics[]{images/slope_cuts.pdf}}
-\subfloat[]{\label{fig:slopes}\begin{tikzpicture}[font=\footnotesize]
-\node[above] at (0,0){\includegraphics[width=0.46\textwidth]{images/slopesrainbow.png}};
-\draw[style={<->,thin}] (-3.8,2.5) -- node[below,align=center,rotate=-44] {Slope} (-1.15,0) node[left,yshift=-0.2em] {0} --   node[below,yshift=-0.5em,xshift=-1em,rotate=25] {Width [nm]} (3.75,2.2);
-\draw[thin] (-3.7,2.4)--++(0.05,0.05) node[below,xshift=0.5em,yshift=-0.5em,rotate=-44] {0.4};
-\draw[thin] (3.65,2.16)--++(-0.03,0.065) node[below,xshift=0em,yshift=-0.3em,rotate=25] {200};
-\node[above] at (2.6,-0.3){\includegraphics[width=0.25cm,height=3cm]{images/slopescolorbar.png}};
-% \draw[step=0.25cm,gray,very thin] (0,0) grid (3.5,3);
-\node[right] at (2.7,0) {0};
-\node[right] at (2.7,2.65) {30};
-\node[below, rotate=90] at (2.7,1.17) {$G$ $[e^2/h]$};
-\end{tikzpicture}}
-  \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
-      \node at (-15,-2.5) {\includegraphics[width=0.13\textwidth]{images/qpcvariational-crop.png}};
-      \end{tikzpicture}
-\caption{(a) Conductance profiles at different slopes $m$. Note the disappearance of quantization for small $m$. (b) Full conduction profile in dependence of slope $0 < m < 0.4$ and width $0 < w < 200$ nm. Note the increased smoothing towards small slopes $m$. Color code denotes the conductance $G$ in $e^2/h$. The corresponding potential landscape for one $m$ is depicted on the left.}\label{fig:conductances}
+  \subfloat[]{\label{fig:slope_cuts}\includegraphics[]{images/slope_cuts.pdf}}
+  \subfloat[]{\label{fig:slopes}\begin{tikzpicture}[font=\footnotesize]
+  \node[above] at (0,0){\includegraphics[width=0.46\textwidth]{images/slopesrainbow.png}};
+  \draw[style={<->,thin}] (-3.8,2.5) -- node[below,align=center,rotate=-44] {Slope} (-1.15,0) node[left,yshift=-0.2em] {0} --   node[below,yshift=-0.5em,xshift=-1em,rotate=25] {Width [nm]} (3.75,2.2);
+  \draw[thin] (-3.7,2.4)--++(0.05,0.05) node[below,xshift=0.5em,yshift=-0.5em,rotate=-44] {0.4};
+  \draw[thin] (3.65,2.16)--++(-0.03,0.065) node[below,xshift=0em,yshift=-0.3em,rotate=25] {200};
+  \node[above] at (2.6,-0.3){\includegraphics[width=0.25cm,height=3cm]{images/slopescolorbar.png}};
+  % \draw[step=0.25cm,gray,very thin] (0,0) grid (3.5,3);
+  \node[right] at (2.7,0) {0};
+  \node[right] at (2.7,2.65) {30};
+  \node[below, rotate=90] at (2.7,1.17) {$G$ $[e^2/h]$};
+  \end{tikzpicture}}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node at (-15,-2.5) {\includegraphics[width=0.13\textwidth]{images/qpcvariational-crop.png}};
+	\end{tikzpicture}
+  \caption{(a) Conductance profiles at different slopes $m$. Note the disappearance of quantization for small $m$. (b) Full conduction profile in dependence of slope $0 < m < 0.4$ and width $0 < w < 200$ nm. Note the increased smoothing towards small slopes $m$. Color code denotes the conductance $G$ in $e^2/h$. The corresponding potential landscape for one $m$ is depicted on the left.}\label{fig:conductances}
 \end{figure}
 Interestingly the spin split is increased for the smoother walled quantum point contact in \cref{fig:varispindens1} in comparison to \cref{fig:varispindens2,fig:trispindens,fig:rectspindens,fig:pointspindens}. Additionally the spin plit exhibits less dominant interference than any hard walled potential since the smoother the potential landscape the less likely is a reflection that alters the electron propagation.\par
 There seem to be strong indications for the interaction of wall slope and possible inter-subband scattering similar to the mixing of intra-subband eigenstates due to higher order effects of the \textsc{Rashba} spin-orbit interaction \cite{Wolfgang2003PhysicaE.18.337}. Spin-orbit coupling that is influenced by the shape of the constriction could also explain the difference in spin-polarization and could be subject to further analysis.
 \begin{figure}[h]
-\subfloat[]{\label{fig:variedens1}\includegraphics[]{images/1edens}}
-  \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
-      \node at (-6.8,-2.3) {\includegraphics[width=0.13\textwidth]{images/qpcvariational-crop.png}};
-      \end{tikzpicture}
-\subfloat[]{\label{fig:varispindens1}\includegraphics[]{images/1spindens}}
-\caption{Simulated electron and spin density for a constriction formed by a variational walled constriction of slope $m=0.008$. Densities correspond to a conductance of 16 $e^2/h$. (a) Two-dimensional electron density. Note the smoothed out electron density within the constriction. Color code denotes the electron density $n$. (b) Two-dimensional spin density. Color code denotes the spin density $s_z$. The corresponding potential landscape is depicted on the left.}
+  \subfloat[]{\label{fig:variedens1}\includegraphics[]{images/1edens}}
+    \begin{tikzpicture}[overlay]%[every text node part/.style={align=center}]
+	\node at (-6.8,-2.3) {\includegraphics[width=0.13\textwidth]{images/qpcvariational-crop.png}};
+	\end{tikzpicture}
+  \subfloat[]{\label{fig:varispindens1}\includegraphics[]{images/1spindens}}
+  \caption{Simulated electron and spin density for a constriction formed by a variational walled constriction of slope $m=0.008$. Densities correspond to a conductance of 16 $e^2/h$. (a) Two-dimensional electron density. Note the smoothed out electron density within the constriction. Color code denotes the electron density $n$. (b) Two-dimensional spin density. Color code denotes the spin density $s_z$. The corresponding potential landscape is depicted on the left.}
 \end{figure}
 \begin{figure}[h]
 \subfloat[]{\label{fig:variedens2}\includegraphics[]{images/4edens}}
