@@ -60,8 +60,8 @@ In a similar calculation, using the fact that the only nonzero element of $\mat{
   \mat{G}_{i-1,i} &= -\mat{G}^{,i-1}_{i-1,i-1}\mat{A}_{i-1,i} \mat{G}_{i,i}\label{eqn:recrel3}\\\addlinespace
   \mat{G}_{i-1,i-1} &= \mat{G}^{i}_{i-1,i-1}-\mat{G}^{i-1}_{i-1,i-1}\mat{A}_{i-1,i}\mat{G}_{i,i-1}\label{eqn:recrel4}\ .
 \end{align}
-After one iteration from $i=0$ to $N$, the last element calculated by \cref{eqn:recrel1} is already the last element of the final \gfnc{}. Using this element as a starting point for a backward iteration using \cref{eqn:recrel2,eqn:recrel3,eqn:recrel4} the full retarded \gnfc{} $\mat{G}$ can be obtained. The off-diagonal elements $\mat{G}_{i+1,i}$ need to be saved for the computation of the lesser \gfnc{} $\mat{G}^<$.
-\section{Recursive Algorithm for the lesser \gfnc{}}}
+After one iteration from $i=0$ to $N$, the last element calculated by \cref{eqn:recrel1} is already the last element of the final \gfnc{}. Using this element as a starting point for a backward iteration using \cref{eqn:recrel2,eqn:recrel3,eqn:recrel4} the full retarded \gfnc{} $\mat{G}$ can be obtained. The off-diagonal elements $\mat{G}_{i+1,i}$ need to be saved for the computation of the lesser \gfnc{} $\mat{G}^<$.
+\section{Recursive Algorithm for the lesser \gfnc{}}
 Starting from the \textsc{Keldysh} equation (\cref{eqn:keldyshequation}), the equation for the lesser \gfnc{} is written as
 \begin{align}
 \mat{A}\mat{G}^< = \mat{\Sigma}^< \mat{G}^a\ .

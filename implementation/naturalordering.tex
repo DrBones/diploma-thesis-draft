@@ -4,32 +4,33 @@ The number of lattice points can be reduced by discarding the environment of the
 The full inversion of matrices of this size has high demands on memory and computational power due to its $\mathcal{O}(\text{N})$ complexity. Even with specialized algorithms direct inversion is still very time-consuming \cite{Datta2000.2.53}, \cite{Li2009Thesis}. Faster and more efficient techniques for the computation of the \gfnc{} are required. There exist several techniques for example based on \textsc{Takahashi}'s observation \cite{Takahashi1973} or the \textsc{Dyson} equation that deliver much higher performance.\par
 For structures like quantum wires the \hamil{} turns out to be in a block tridiagonal form, a \emph{natural ordering}. This natural ordering leads to so-called \emph{layered devices}, see \cref{fig:layered}, in which the device is cut into slices perpendicular to the longest dimension as shown in \cref{sec:discretematrixrep}. Each slice is represented by a block on the diagonal of the \hamil{} and their interactions on the off-diagonal.
 \begin{figure}[h!]
-\centering
-\subfloat[]{\raisebox{30pt}{\includegraphics[]{images/4x7wire}}}
-\subfloat[]{\begin{tikzpicture}
-\node[above] at (0,0) {\includegraphics[]{images/4x7hamil}};
-% \draw[step=.5cm,gray,very thin] (-2,0) grid (2,5);
-\def\a{0.68}
-\draw[dashed,thick] (-2.411,5.13) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] ($(-2.411+\a,5.13)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] (-1.72,4.46) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] ($(-1.72+\a,4.46)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] ($(-1.72-\a,4.46)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] (-1.027,3.768) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] ($(-1.027+\a,3.768)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] ($(-1.027-\a,3.768)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] (-0.32,3.065) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] ($(-0.32+\a,3.065)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] ($(-0.32-\a,3.065)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] (0.368,2.365) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] ($(0.368+\a,2.365)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] ($(0.368-\a,2.365)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] (1.07,1.68) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] ($(1.07+\a,1.68)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] ($(1.07-\a,1.68)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] (1.75,0.98) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\draw[dashed,thick] ($(1.75-\a,0.98)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
-\end{tikzpicture}}
-\caption{(a) Schematic of a discretized nanowire with as a layered structure. The leads are connected to the left and right side. The dots denote lattice points. The slices are indicated by alternating white and gray background. (b) \hamil{} of the discretized nanowire. The Blocks are highlighted by dashed lines.}
-\label{fig:layered}
+  \centering
+  \subfloat[]{\includegraphics[bb=-20 0 160 130]{images/4x7wire}}\qquad
+  \subfloat[]{
+  \begin{tikzpicture}
+    \node[above] at (-0.44,0.09) {\includegraphics[]{images/4x7hamil-crop}};
+    % \draw[step=.5cm,gray,very thin] (-2,0) grid (2,5);
+    \def\a{0.68}
+    \draw[dashed,thick] (-2.411,5.13) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] ($(-2.411+\a,5.13)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] (-1.72,4.46) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] ($(-1.72+\a,4.46)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] ($(-1.72-\a,4.46)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] (-1.027,3.768) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] ($(-1.027+\a,3.768)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] ($(-1.027-\a,3.768)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] (-0.32,3.065) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] ($(-0.32+\a,3.065)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] ($(-0.32-\a,3.065)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] (0.368,2.365) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] ($(0.368+\a,2.365)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] ($(0.368-\a,2.365)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] (1.07,1.68) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] ($(1.07+\a,1.68)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] ($(1.07-\a,1.68)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] (1.75,0.98) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+    \draw[dashed,thick] ($(1.75-\a,0.98)$) -- ++(\a,0)--++(0,-\a)--++(-\a,0) -- cycle;
+  \end{tikzpicture}}
+  \caption{(a) Schematic of a discretized nanowire with as a layered structure. The leads are connected to the left and right side. The dots denote lattice points. The slices are indicated by alternating white and gray background. (b) \hamil{} of the discretized nanowire. The Blocks are highlighted by dashed lines.}
+  \label{fig:layered}
 \end{figure}
