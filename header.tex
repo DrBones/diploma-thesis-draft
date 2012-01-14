@@ -61,6 +61,11 @@
 \newpagestyle{main}{%
   \headrule
   \sethead[\chaptername~\thechapter\quad\chaptertitle][][]{}{}{\thesection\quad\sectiontitle}
+  % \footrule
+\renewcommand{\makefootrule}{%
+  % \makebox[0pt][l]{\rule[.7\baselineskip]{\linewidth}{0.8pt}}%
+  % \color{red}%
+  \rule[1.3\baselineskip]{\linewidth}{0.4pt}}
   \setfoot[][\thepage][]{}{\thepage}{}
 }
 % \usepackage{calligra}
@@ -130,7 +135,7 @@
 %\usepackage{url}
 \usepackage{tikz}
 \tikzstyle{every picture}+=[remember picture]
-\usetikzlibrary{decorations.pathreplacing,decorations.markings}
+\usetikzlibrary{decorations.pathreplacing,decorations.markings,circuits.ee.IEC}
 %\usepackage{paralist}
 %\usepackage{xspace}
 %\usepackage[dvips,letterpaper,margin=0.75in,bottom=0.5in]{geometry}
@@ -220,7 +225,7 @@
 
 
 % configure subfig
-\captionsetup[subfloat]{labelformat=simple,listofformat=subsimple}
+\captionsetup[subfloat]{position=top,labelformat=simple,listofformat=subsimple,singlelinecheck=false}
 \def\thesubfigure{(\alph{subfigure})} 
 %
 %% url
