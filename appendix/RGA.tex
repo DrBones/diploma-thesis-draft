@@ -1,7 +1,7 @@
 \chapter{RGA}
 \label{app:RGA}
-The derivation of the recursive \gfnc{} algorithm will be presented. The discussion follows \cite{JApplPhys.91.2343}, \cite{JApplPhys.81.7845} and \cite{Wimmer2009Thesis} which obtain equivalent results with differences in notation.
-\section{Recursive Algorithm for the retarded \gfnc{}}
+The outline of the derivation of the recursive algorithms for the retarded and the lesser \gfnc{} will be presented. The discussion closely follows \cite{JApplPhys.91.2343}, \cite{JApplPhys.81.7845} and \cite{Wimmer2009Thesis} which obtain equivalent results with differences in notation.
+\section{Recursive Algorithm for the retarded \cgfnc{}}
 Only the retarded \gfnc{} of the conductor will be discussed in this section, hence, all superscripts and subscripts will be dropped, i.e. $\mat{G} \equiv \mat{G}^r\equiv \mat{G}_C$. The recursive algorithm to calculate all diagonal and off-diagonal blocks of the retarded \gfnc{} can be obtained by starting from \cref{eqn:amatrix}
 \begin{align}
   (E\mathds{1}-\mat{H})\mat{G}_C = \mat{A}\mat{G}=\mathds{1}\ .
@@ -61,7 +61,7 @@ In a similar calculation, using the fact that the only nonzero element of $\mat{
   \mat{G}_{i-1,i-1} &= \mat{G}^{i}_{i-1,i-1}-\mat{G}^{i-1}_{i-1,i-1}\mat{A}_{i-1,i}\mat{G}_{i,i-1}\label{eqn:recrel4}\ .
 \end{align}
 After one iteration from $i=0$ to $N$, the last element calculated by \cref{eqn:recrel1} is already the last element of the final \gfnc{}. Using this element as a starting point for a backward iteration using \cref{eqn:recrel2,eqn:recrel3,eqn:recrel4} the full retarded \gfnc{} $\mat{G}$ can be obtained. The off-diagonal elements $\mat{G}_{i+1,i}$ need to be saved for the computation of the lesser \gfnc{} $\mat{G}^<$.
-\section{Recursive Algorithm for the lesser \gfnc{}}
+\section{Recursive Algorithm for the lesser \cgfnc{}}
 Starting from the \textsc{Keldysh} equation (\cref{eqn:keldyshequation}), the equation for the lesser \gfnc{} is written as
 \begin{align}
 \mat{A}\mat{G}^< = \mat{\Sigma}^< \mat{G}^a\ .
