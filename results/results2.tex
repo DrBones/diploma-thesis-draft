@@ -173,7 +173,6 @@ In the simulations either the geometry of the constriction or the charge of the 
   \caption{(a) Illustration of the realization of sidegates in a 2DEG. The (blue) 2DEG is sketched on a (green) substrate. The application of a voltage via two (golden) leads is outlined. Note the lack of conducting substance in the trenches effectively creating three isolated 2DEGs. (b) Illustration of confining potential at two different charges. Transverse potential profile in Volt at charges $q_1 = 6.5 \cdot 10^{-18}$~C (blue line) and $q_2= 0.5 \cdot 10^{-18}$~C. (dotted green line). A fixed electron energy $E_{e^-}$ is depicted by a red line.} 
 \end{figure}
 It is important to note that by changing the voltage on the electrodes, and therefore the charge, not only the width of the potential is changed but also the steepness of the confining potential for a given energy. Hence, the transfer from the adiabatic to the non-adiabatic i.e. steep walled domain is possible.\par
-
 \begin{figure}[h]
   \subfloat[]{\label{fig:pointedens}\includegraphics[]{images/242255-wire400x200-Dec-02-2011-23.08edens}}
   \hspace{14pt}
@@ -310,7 +309,7 @@ The electron densities are also slightly elevated due to the singularities in th
   \caption{Spin densities of a curved nanowire of 40 nm width. The wire width is marginally reduced in the curve as outlined by the gray lines. (a) First mode of energy $E=0.003$ eV. (b) Second mode of energy $E=0.036$ eV. (c) Third mode of energy $E=0.081$ eV. Note the increasing irregularity of the spin split and the diminished spin-down density in (a) and (b). Color code indicates spin density $s_z$.}
 \end{figure}
 \subsection{\textsc{Aharonov-Bohm} Ring Interferometer}
-An interferometer is a common approach to the manipulation of properties of wave objects. A realization of such an interferometer is given by a modification of the \textsc{Arahonov-Bohm} ring. The \textsc{Arahonov-Bohm} ring is a two-dimensional annulus where the difference of inner and outer radius is smaller than the inner radius $\abs{r_o- r_i} \ll r_i$, see \cref{fig:aharonovbohmring}.
+The changes in spin density under the influence of an asymmetrical confinement can be analyzed in a ring interferometer with rotatable leads. An interferometer is a common approach to the manipulation of properties of wave objects. A realization of such a ring interferometer is given by a modification of the \textsc{Arahonov-Bohm} ring. The \textsc{Arahonov-Bohm} ring is a two-dimensional annulus where the difference of inner and outer radius is smaller than the inner radius $\abs{r_o- r_i} \ll r_i$, see \cref{fig:aharonovbohmring}.
 Spin interference has been achieved via the attachment of multiple leads \cite{PhysRevB.75.035304} or the application of an electro-magnetic field \cite{PhysRevB.69.155335} to the \textsc{Arahonov-Bohm} ring.\par
 \begin{figure}[!h]
   \centering
@@ -345,11 +344,11 @@ Spin interference has been achieved via the attachment of multiple leads \cite{P
   \end{tikzpicture}
   \caption{\textsc{Aharonov-Bohm} ring based interferometer of inner radius $r_i=65$~nm and outer radius $r_o=75$~nm. One of the leads is rotated. The angle of rotation is denoted by $\alpha$. Here $\alpha=\pi/2$.}\label{fig:aharonovbohmring}
 \end{figure}
-The most basic interferometer is obtained by the attachment of two leads to the \textsc{Aharonov-Bohm} ring. To investigate changes in spin properties of the 2DEG one of the leads is then rotated against the other to obtain different enclosed angles. The device is sketched in \cref{fig:aharonovbohmring}.\par
+The most basic interferometer is obtained by the attachment of two leads to the \textsc{Aharonov-Bohm} ring \cite{PhysRevLett.79.273}. To investigate changes in spin properties of the 2DEG one of the leads is then rotated against the other to obtain different enclosed angles. The device is sketched in \cref{fig:aharonovbohmring}. The symmetry of the interferometer is broken by rotating the lower lead and the distriution of electron and spin densities is altered significantly.\par
 \begin{figure}[h!]
-  \subfloat[]{\label{fig:ring0edens}\includegraphics[]{images/ring0edens}}
-  \subfloat[]{\label{fig:ring90edens}\includegraphics[]{images/ring90edens}}
-  \subfloat[]{\label{fig:ringneg90edens}\includegraphics[]{images/ringneg90edens}}
+  \subfloat[]{\label{fig:ring0edens}\includegraphics[trim=0 0 0 6pt,clip]{images/ring0edens}}
+  \subfloat[]{\label{fig:ring90edens}\includegraphics[trim=0 0 0 6pt,clip]{images/ring90edens}}
+  \subfloat[]{\label{fig:ringneg90edens}\includegraphics[trim=0 0 0 6pt,clip]{images/ringneg90edens}}
   \caption{Electron densities in \textsc{Aharonov-Bohm} type ring for three different enclosing angles. (a) Enclosing angle $\alpha=0$. (b) Enclosing angle $\alpha=\pi/2$. (c) Enclosing angle $\alpha=-\pi/2$. Color code denotes electron density $n$.} 
 \end{figure}
 \begin{figure}[h!]
@@ -362,33 +361,42 @@ Already for colinear leads the interference of spin is well pronounced. In contr
 The spins interact to form a standing wave in steady state. The circumference of a concentric circle in the center of inner and outer circle is $c\approx 408$~nm. For the energy $E=0.068$~eV 23 peaks and troughs of the standing wave can be observed which corresponds to a wavelength of $\lambda_{\text{spin}}=17.75$~nm. This length is well below the spin-precession length in undisturbed geometries of $L_{SO}\approx230$~nm due to the strength of the \textsc{Rashba} spin-orbit interaction $\alpha_{RSO}$ considered. Note the elevated electron density due to its energy dependence near the band edges.\par
 Upon rotation of the lower lead the interference pattern changes considerably in amplitude and spatial profile. The phase of the standing wave appears to be fixed to the bottom lead and rotates the peaks and troughs according to the angle the lead has been rotated. Whereas the polarization in the leads is almost negligible throughout \cref{fig:ring0edens,fig:ring90edens,fig:ringneg90edens,fig:ring0spindens,fig:ring90spindens,fig:ringneg90spindens} the amplitude increases sharply within the ring. The amplitudes of spin polarization within the \textsc{Aharonov-Bohm} ring with rotated lead decrease gradually with increasing rotation in about one order of magnitude.\par
 For the presented angles of 0,$\pi/2$ and $-\pi/2$ three very distinct situations occur. While the spin up to spin down amplitude ratio is unity for the symmetric device in \cref{fig:ring0edens} it reaches $n_{\uparrow}/n_{\downarrow}=5$ for $\alpha=\pi/2$ rotation in \cref{fig:ring90edens} and $n_{\uparrow}/n_{\downarrow}=0.2$ for $\alpha=-\pi/2$ rotation in \cref{fig:ringneg90spindens}. The electron densities in the ring with rotated leads are about twice as large in the longer arms than the shorter arms what is probably at least in part correlated to the increase in spin density.\par
-Qualitatively this result is reproduced analytically for a one dimensional ring for the presented rotations. Solving the \hamil{} for closed ring in polar coordinates one obtains the four eigenstates in each arm \cite{nitta1999.695}:
+Qualitatively this result is reproduced analytically for a one dimensional ring for the presented rotations. Diagonalizing the \hamil{} for a charged particle of mass $m^*$ in the presence of spin-orbit interaction closed ring of radius $a$ in polar coordinates \cite{PhysRevB.73.155325} 
+\begin{align}
+\mat{H}_{1D}=\hbar\omega_0 \left[\left(-i\pd{}{/phi}+\frac{\omega_{SO}}{2\omega_{0}} (\mat{\sigma}_x\text{cos}\phi+\mat{\sigma}_y\text{sin}\phi)\right)^2-\frac{\omega_{SO}^2}{4\omega_0^2}\right]
+\end{align}
+leads to the four eigenstates in term of the \textsc{Pauli} spin states ($\begin{pmatrix}1\\0\end{pmatrix}$ and $\begin{pmatrix}0\\1\end{pmatrix}$) in each arm \cite{nitta1999.695}:
 \begin{align}
   \Psi^{\pm}_{\uparrow} = e^{i\phi}\begin{pmatrix}\text{cos}(\theta/2)\\\pm\text{sin}(\theta/2)e^{i\phi}\end{pmatrix} 
   \qquad\text{and}\qquad
-  \Psi^{\pm}_{\downarrow} = e^{\pm i\phi}\begin{pmatrix}\pm\text{sin}(\theta/2)e^{-i\phi}\\-\text{cos}(\theta/2)\end{pmatrix}
+  \Psi^{\pm}_{\downarrow} = e^{\pm i\phi}\begin{pmatrix}\pm\text{sin}(\theta/2)e^{-i\phi}\\-\text{cos}(\theta/2)\end{pmatrix}\ ,
 \end{align}
-Plus and minus denotes the direction of travel and $\uparrow,\downarrow$ spin up and spin down respectively. Expanding each wave function in terms of the eigenstates the interference pattern in \cref{fig:ring90spindens} can be reproduced assuming partial reflection of the spin-up wave function and total transmission of the-spin down wave function at the junctions in the right arm and partial reflection of both spin states at the junctions in the left arm.
+with the dimensionless kinetic energy of the particle $\hbar\omega_0=\hbar^2/2m^*a^2$, and the frequency associated to the spin-orbit interaction $\omega_{SO} = \alpha/\hbar a$. Here, only the \textsc{Rashba} spin-orbit interaction is considered, thus the parameter for the strength of the interaction is $\alpha = \alpha_{RSO}$, confer \cref{eqn:alpharashba}. Plus and minus denotes the direction of travel and $\uparrow,\downarrow$ spin up and spin down respectively. The spin tilt angle is constant and given by
+\begin{align}
+\theta = \text{arctan}(-\omega_{SO}/\omega_0)\ .
+\end{align}
+Expanding each wave function in terms of the eigenstates the interference pattern in \cref{fig:ring90spindens} can be reproduced assuming partial reflection of the spin-up wave function and total transmission of the-spin down wave function at the junctions in the right arm and partial reflection of both spin states at the junctions in the left arm.
 \begin{figure}[!h]
   \centering
-  \begin{tikzpicture}
-  \node at (0,0) {\includegraphics[width=\textwidth,height=5cm]{images/eigenspinorring}};
-  \node at (8,-0.5) {$\phi$};
-  \node at (0,3) {$s_z$ [a.u.]};
-  \end{tikzpicture}
+  \includegraphics[]{images/spinors}
+  % \begin{tikzpicture}
+  % \node at (0,0) {\includegraphics[width=\textwidth,height=5cm]{images/eigenspinorring}};
+  % \node at (8,-0.5) {$\phi$};
+  % \node at (0,3) {$s_z$ [a.u.]};
+  % \end{tikzpicture}
   \caption{Expansion of spin states in eigenstates of the closed ring for an enclosing angle of $\alpha = \pi/2$. Negative $\phi$ corresponds to the left arm and positive $\phi$ to the right. Interference pattern only shown for the first three peaks. Left arm state (brown line) corresponds to partial reflection ($\approx$ 20\%) of $\uparrow$ and $\downarrow$ states equally. Right arm state (gray line) corresponds to no reflection of $\downarrow$ and strong reflection of $\uparrow$ state ($\approx$ 60\%). Note the qualitative similarity to \cref{fig:ring90spindens}.}
 \end{figure}
 The model of pure eigenstates of the isolated ring breaks down for arbitrary enclosing angles as the coupling to the leads becomes significant. Due to the coupling of spin states to the lead the eigenstates of the isolated ring do not give an accurate model of the physical situation.\par
 \begin{figure}[h!]
-  \subfloat[]{\label{fig:ring15edens}\includegraphics[]{images/ring3edens}}\hspace{-0.5em}
-  \subfloat[]{\label{fig:ring25edens}\includegraphics[]{images/ring5edens}}\hspace{-0.5em}
-  \subfloat[]{\label{fig:ring30edens}\includegraphics[]{images/ring6edens}}
+  \subfloat[]{\label{fig:ring15edens}\includegraphics[trim=0 0 0 6pt,clip]{images/ring3edens}}%\hspace{-0.5em}
+  \subfloat[]{\label{fig:ring25edens}\includegraphics[trim=0 0 0 6pt,clip]{images/ring5edens}}%\hspace{-0.5em}
+  \subfloat[]{\label{fig:ring30edens}\includegraphics[trim=0 0 0 6pt,clip]{images/ring6edens}}
   \caption{Electron densities in \textsc{Aharonov-Bohm} type ring for three different enclosing angles. (a) Enclosing angle $\alpha\approx 1/12 \pi$. (b) Enclosing angle $\alpha\approx 1/7\pi$. (c) Enclosing angle $\alpha=1/6\pi$. Color code denotes electron density $n$.} 
 \end{figure}
 \begin{figure}[h!]
-  \subfloat[]{\label{fig:ring15spindens}\includegraphics[]{images/ring3spindens}}\hspace{-0.5em}
-  \subfloat[]{\label{fig:ring25spindens}\includegraphics[]{images/ring5spindens}}\hspace{-0.5em}
-  \subfloat[]{\label{fig:ringneg30spindens}\includegraphics[]{images/ring6spindens}}
+  \subfloat[]{\label{fig:ring15spindens}\includegraphics[trim=0 0 0 3pt,clip]{images/ring3spindens}}%\hspace{-0.5em}
+  \subfloat[]{\label{fig:ring25spindens}\includegraphics[trim=0 0 0 3pt,clip]{images/ring5spindens}}%\hspace{-0.5em}
+  \subfloat[]{\label{fig:ringneg30spindens}\includegraphics[trim=0 0 0 3pt,clip]{images/ring6spindens}}
   \caption{Spin densities in \textsc{Aharonov-Bohm} type ring for three different enclosing angles. (a) Enclosing angle $\alpha\approx 1/12 \pi$. (b) Enclosing angle $\alpha=1/7\pi$. (c) Spin density $s_z$. Enclosing angle $\alpha=1/6\pi$ . Color code denotes the spin density $s_z$. Note the dependence of the maximum spin split and spin-up to spin-down ratio on enclosed angle.}
 \end{figure}
  with magnetic field, interference \cite{Nitta2002PhysicaE.12.753}
