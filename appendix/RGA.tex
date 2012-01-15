@@ -89,4 +89,18 @@ The recursive algorithm for the lesser \gfnc{} follows the same approach as the 
 \begin{align}
 \mat{A}_{1:i,1:i}\mat{G}^{<,i}=\mat{\Sigma}^<_{1:i,1:i}\mat{G}^a_{1:i,1:i}\ .
 \end{align}
-Again, by setting $Z=1:i$ and $Z'=i+1$ and using the \textsc{Dyson} equation for $\mat{G}$ and $\mat{G}^<$
+Again, by setting $Z=1:i$ and $Z'=i+1$ and using the \textsc{Dyson} equation for $\mat{G}$ and $\mat{G}^<$ the recursive relations for the left-connected lesser \gfnc{} is obtained
+\begin{align}
+\mat{G}^{<,i}_{i,i} = \mat{G}^{i}_{i,i}( \mat{\Sigma}^<_{i,i}+\mat{\sigma}^<_{i})\mat{G}^{a,i}_{i,i}
+\end{align}
+with $\mat{\sigma}^<_i=\mat{A}_i\mat{G}^{<,i-1}_{i-1,i-1}\mat{A}^{\dagger}_i$. The recursive relations for the diagonal and off-diagonal elements of the full lesser \gfnc{} can be obtained by noting again that the only nonzero element of $\mat{A}_{1:i,i+1:N}$ is $\mat{A}_{i,i+1}$. The off-diagonal elements can be calculated by
+\begin{align}
+\mat{G}^<_{i,i-1} = \mat{G}_{i,i}\mat{A}_{i,i-1}\mat{G}^{<,i-1}_{i-1,i-1} +\mat{G}^<_{i,i}\mat{A}^{\dagger}_{i,i-1}\mat{G}^{a,i-1}_{i-1,i-1}\ .
+\end{align}
+Using the \textsc{Dyson} equation for the lesser \gfnc{} again, the expression for the diagonal elements is found to be
+\begin{align}
+\mat{G}^<_{i-1,i-1} = \mat{G}^{<,i-1}_{i-1,i-1} &+\mat{G}^{i-1}_{i-1,i-1}(\mat{A}_{i-1,i}\mat{G}^{<}_{i,i}\mat{A}^{\dagger}_{i,i-1})\mat{G}^{a,i-1}_{i-1,i-1}\notag \\
+&+ \mat{G}^{<,i-1}_{i-1,i-1}\mat{A}^{\dagger}_{i-1,i}\mat{G}^a_{i,i-1}\notag \\
+&+\mat{G}_{i-1,i}\mat{A}_{i,i-1}\mat{G}^{<,i-1}_{i-1,i-1}\ .
+\end{align}
+For further details and a deeper physical discussion of the individual terms see \cite{JApplPhys.91.2343}.

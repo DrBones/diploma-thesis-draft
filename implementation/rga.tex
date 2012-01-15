@@ -71,6 +71,7 @@ It is important to note that not all matrix elements can be calculated during on
 \caption{Schematic of the recursive \gfnc{} algorithm. (a) Slices connected up to index i-1. (b) The \gfnc{} $\mat{G}_0$ of the blocks up to $i-1$ plus the isolated \gfnc{} at index $i$. (c) The isolated block is connected and the \gfnc{} $\mat{G}^{r,i}$ is obtained.}
 \label{fig:rgaschematic}
 \end{figure}
+\vskip 1em
 \noindent\begin{minipage}{\textwidth}
 \begin{algo}\label{alg:retardedrga}
 \textit{Recursive Algorithm for $\mat{G}^r$}\\
@@ -98,8 +99,7 @@ The recursive computation of the lesser \gfnc{} follows the same concept startin
 \begin{align}
 \mat{G}^<_{i,j} = \mat{G}^r_{i,0}\mat{\Sigma}^<_L(\mat{G}^r_{j,0})^{\dagger}+\mat{G}^r_{i,N+1}\mat{\Sigma}^<_R(\mat{G}^r_{j,N+1})^{\dagger}\ .
 \end{align}
-Here $\Sigma^<_L$ and $\Sigma^<_R$ denote the self-energy term  for the left and right lead. For the computation of the lesser \gfnc{} it is sufficient to compute diagonal and one off-diagonal of the retarded \gfnc{} $\mat{G}^r$.\par
-The algoritm to compute the lesser \gfnc{} is illustrated in \cref{alg:lesserrga}. It requires a forward and a backward pass like the algorithm for the retarded \gfnc{}.\par
+Here $\Sigma^<_L$ and $\Sigma^<_R$ denote the lesser self-energy term for the left and right lead. For the computation of the lesser \gfnc{} it is sufficient to compute diagonal and one off-diagonal of the retarded \gfnc{} $\mat{G}^r$. The algorithm to compute the lesser \gfnc{} is illustrated in \cref{alg:lesserrga}, with $\mat{\sigma}^<_i=\mat{A}_i\mat{G}^{<,i-1}_{i-1,i-1}\mat{A}^{\dagger}_i$. It requires a forward and a backward pass like the algorithm for the retarded \gfnc{}.\par
 \vskip 1em
 \noindent\begin{minipage}{\textwidth}
 \begin{algo}\label{alg:lesserrga} 
