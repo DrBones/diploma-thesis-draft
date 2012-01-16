@@ -7,10 +7,10 @@ The application of the RGA requires a block tridiagonal \hamil{}. Layered system
 \draw (-6,0) circle (4pt) [fill=black];
 \node at (2,3.5){$a$};
 \end{tikzpicture}
-\caption{Non-colinear device. Dots denote lattice points and slices, if treated as a layered structure, are indicated by alternating white and gray background.}
+\caption{Non-colinear device. Dots denote lattice points and slices, if treated as a layered structure, are indicated by alternating white and gray colored background.}
 \label{fig:noncolinear}
 \end{figure}
-In essence one needs a \hamil{} with a particular block tri-diagonal structure that has a small bandwidth i.e. small blocks. This can in principle be achieved by a process called matrix reordering. Because the diagonal elements represent the on-site energy the reordering should only exchange one diagonal element with another. In order to do so, the same permutation is applied to the rows and columns. These \emph{symmetric permutations} can be realized by a permutation martix $P$ as follows \cite{saad2003iterative}:
+In essence, one needs a \hamil{} with a particular block tri-diagonal structure that has a small bandwidth i.e. small blocks. This can in principle be achieved by a process called matrix reordering. Because the diagonal elements represent the on-site energy the reordering should only exchange one diagonal element with another. In order to do so, the same permutation is applied to the rows and columns. These \emph{symmetric permutations} can be realized by a permutation martix $P$ as follows \cite{saad2003iterative}:
 \begin{align}
 \mat{H}' = \mat{P} \mat{H} \mat{P}^{T}\ .
 \label{eqn:permutation}
@@ -18,14 +18,14 @@ In essence one needs a \hamil{} with a particular block tri-diagonal structure t
 In order to find such a permutation matrix enabling the use of the RGA one needs an algorithm adhering to the requirements of the RGA.
 A potent formulation of matrix reordering can be achieved in the form of graph theory. The tight-binding \hamil{} and therefore the matrix $A$ to invert is sparse as well as Hermitian. Thus one can use a natural one-to-one correspondence between sparse matrices and graphs.
 \subsection{Graph Representation}
-A graph is a way to represent binary relations between objects of a set. A common definition of a graph is given by
-\begin{dfn}
+A graph is a way to represent binary relations between objects of a set. A common definition of a graph is given in \cref{dfn:graph}.
+\begin{dfn}\label{dfn:graph}
 A \emph{graph} \textpzc{G} consists of an ordered pair $\mathpzc{G} :=(\mathpzc{N},\mathpzc{E})$, where \textpzc{N} is a non-empty set of \emph{nodes} \textpzc{n} and \textpzc{E} a set of ordered pairs of nodes $(\mathpzc{n}_1,\mathpzc{n}_2) \in \mathpzc{N} \times \mathpzc{N}$ called \emph{edges}.
 A graph is called \emph{directed} if the edges observe a direction of incidence  and it is called \emph{undirected} if for any two $(\mathpzc{n}_1,\mathpzc{n}_2) \in \mathpzc{E}$ also $(\mathpzc{n}_2,\mathpzc{n}_1) \in \mathpzc{E}$.
 Two nodes $\mathpzc{n}_i$ and $\mathpzc{n}_j$ are \emph{adjacent} if $(\mathpzc{n}_i,\mathpzc{n}_j) \in \mathpzc{E}$. \cite{graham1995handbook}
 \end{dfn}
 The \emph{adjacency graph} of a sparse $n \times n$ matrix $\mat{A}$ is a graph $\mathpzc{G}$ whose $n$ nodes represent the $n$ unknowns of the equation system the matrix is based on and the edges represent the dependence on the unknowns. For each non-zero matrix entry $\mat{A}_{i,j}\neq 0$ there exists an edge $(\mathpzc{i},\mathpzc{j}) \in \mathpzc{E}$. The matrix corresponding to an undirected graph is the \emph{adjacency matrix}. Because the \hamil{} is often Hermitian, the non-zero matrix elements are usually symmetric. Hence an undirected adjacency graph represents the matrix \emph{structure}. It is important to note that by default the graph does not hold any information about the value of the matrix elements but only their relation. However it is a simple matter of storing the values of the matrix elements as a \emph{weight} of the edges.\par
-A graph may be pictured as a collection of circles as nodes and connecting lines representing the edges. Incidentally for tight-binding models each circle corresponds to a site and the lines depict the hopping options. If the graph is weighted the thickness of a line may represent the hopping \emph{possibility}. An example for a small number of grid points can be seen in \cref{fig:adjacencygraph}.
+A graph may be pictured as a collection of circles representing the nodes and the connecting lines representing the edges. Incidentally for tight-binding models each circle corresponds to a site and the lines depict the hopping options. If the graph is weighted the thickness of a line may represent the hopping \emph{possibility}. An example for a small number of grid points can be seen in \cref{fig:adjacencygraph}.
 
 \begin{figure}[!h]
 \centering
@@ -66,7 +66,7 @@ A level structure $\mathpzc{L}(\mathpzc{G}) = (\mathpzc{l}_0,\mathpzc{l}_1,\math
 \item for $1 < i < N$, all nodes adjacent to nodes in level $\mathpzc{l}_{i}$ are either in level $\mathpzc{l}_{i-1}$, $\mathpzc{l}_{i}$ or $\mathpzc{l}_{i+1}$
 \end{enumerate}
 \end{dfn}
-For a simple colinear geometry a level is usually identical to a slice. For more complex geometries a level and a slice may differ. A possible choice to fulfill these requirements is the \textsc{Gibbs-Poole-Stockmeyer} (GPS) algorithm \cite{gibbs.Siam.13.236}. Two conditions are of crucial importance for the reordering in order to achieve high RGA performance. As the complexity of the RGA is of order $\mathcal{O}(N^3)$(\cref{sec:rgacomplexity}) one has to avoid large blocks. In addition one seeks a balanced level structure that is all the levels ideally have the same number of nodes.
+For a simple colinear geometry a level is usually identical to a slice. For more complex geometries a level and a slice may differ. A possible choice to fulfill these requirements is the \textsc{Gibbs-Poole-Stockmeyer} (GPS) algorithm \cite{gibbs.Siam.13.236}. Two conditions are of crucial importance for the reordering in order to achieve high RGA performance. As the complexity of the RGA is of order $\mathcal{O}(N^3)$(\cref{sec:rgacomplexity}) large blocks have to be avoided. In addition, a balanced level structure has to be sought i.e. ideally,  all the levels have the same number of nodes.
 An algorithm tailored to the demands of high RGA performance has been introduced by \textsc{Wimmer}. As it outperforms the GPS algorithm and offers greater versatility \cite{Wimmer2009JComPhys} it is applied to the adjacency graph of the \hamil{} prior to the execution of the RGA.
 \subsection{RGA Tailored Block-Tridiagonalization Algorithm}
 The process of graph partitioning is known to be NP-Complete \cite{GareyTCS.1.237}. Hence one cannot compute the optimal level structure from first principles but has to employ heuristics. The algorithm used by \textsc{Wimmer} incorporates a global and a local approach. To find the maximum number of levels for a given geometry a \emph{Breadth-First-Search} (BFS) as described in \cref{alg:bfs} is performed as it yields a level structure by construction as well as the maximum number of levels $N_0$.

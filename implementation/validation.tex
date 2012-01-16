@@ -1,11 +1,11 @@
 Due to the lack of proper standard problems regarding the validity of a quantum mechanical simulator the outcome of the numerical calculations via the \gfnc{} method will be compared to a selection of simple analytical problems and experimental results.\par
 \subsubsection{Electron Density}
 For the case of a quantum wire the probability distribution can be calculated analytically. The quantum wire is simply a one-dimensional potential well in $y$ direction which ideally extends infinitely in the $x$ direction.
-Because of this the wavefunction can be separated into transverse $\sqrt{2/L}\text{ sin}(n\pi/L \cdot y)$ and longitudinal $e^{ik_xx}$ parts
+Because of this, the wavefunction can be separated into transverse $\sqrt{2/L}\text{ sin}(n\pi/L \cdot y)$ and longitudinal $e^{ik_xx}$ parts
 \begin{align}
 \Psi(x,y) = \sqrt{2/L}\text{ sin}(n\pi/L \cdot y) \cdot e^{ik_xx}\ .
 \end{align}
-Because of the transverse confinement the eigenenergies become discrete similar to the case of the $z$ confinement illustrated in \cref{fig:potentialwell}.
+Because of the transverse confinement the eigenenergies become discrete, similar to the case of the $z$ confinement illustrated in \cref{fig:potentialwell}.
 \begin{figure}[h!]
   \begin{center}
     % \showthe\columnwidth % Use this to determine the width of the figure.
@@ -16,7 +16,7 @@ Because of the transverse confinement the eigenenergies become discrete similar 
     \caption{Comparison of analytical and simulated electron densities for the first mode in dependence on the position $y$ perpendicular to the direction of electron propagation $x$. (a) Analytical pure first mode wavefunction (dotted green line) and probability amplitude (blue line) in arbitrary units. (b) Cut of simulated electron density close to the band edge (red markers) and analytical calculation (blue line) perpendicular to the length of the wire overlayed, (c) Relative error of the simulated result, (d) Two-dimensional electron density. Color code denotes the electron density $n$. }\label{fig:mode1}
   \end{center}
 \end{figure}
-The electrons populate only the first mode at the calculated energy using the dispersion relation of electrons on a lattice in transverse direction
+The electrons populate only the first mode at the calculated energy, using the dispersion relation of electrons on a lattice in transverse direction
 \begin{align}
 E_{n} = 2t_0(1-\text{cos}(n\pi a/L)).
 \label{eqn:dispersionlattice}
@@ -40,7 +40,7 @@ In \cref{fig:overlay1} of the tableau of \cref{fig:mode1} the overlay of the ren
     \subfloat[]{\label{fig:overlay2}\includegraphics[width=210pt]{images/overlay2}}\\
     \subfloat[]{\label{fig:relerror2}\includegraphics[width=210pt]{images/error2}}\qquad
     \subfloat[]{\label{fig:dens2}\includegraphics[width=210pt]{images/dens2}}
-    \caption{Comparison of analytical and simulated electron densities for the second mode in dependence on the position $y$ perpendicular to the direction of electron propagation $x$. (a) Analytical pure first mode wavefunction (dotted green line) and probability amplitude (blue line) in arbitrary units. (b) Cut of simulated electron density of the first mode close to the band edge (red markers), second mode (green markers) and analytical calculation (blue line) perpendicular to the length of the wire overlayed , (c) Relative error of the simulated result, (d) Two-dimensional electron density. Color code denotes the electron density $n$.}\label{fig:mode2}
+    \caption{Comparison of analytical and simulated electron densities for the second mode in dependence on the position $y$ perpendicular to the direction of electron propagation $x$. (a) Analytical pure first mode wavefunction (dotted green line) and probability amplitude (blue line) in arbitrary units. (b) Cut of simulated electron density of the first mode close to the band edge (red markers), second mode (green markers) and analytical calculation (blue line) perpendicular to the length of the wire overlayed, (c) Relative error of the simulated result, (d) Two-dimensional electron density. Color code denotes the electron density $n$.}\label{fig:mode2}
   \end{center}
 \end{figure}
 The second mode is also appropriately populated for $n=2$. The analytical calculation does not consider the existence of lower modes at a certain energy, in contrast the model employed in the simulations does. The relative error increases considerably but stays within acceptable bounds considering the rather simple analytical model.
@@ -51,7 +51,7 @@ Also the uniform distribution along the wire remains and the two maxima in elect
     \subfloat[]{\label{fig:overlay3}\includegraphics[width=210pt]{images/overlay3}}\\
     \subfloat[]{\label{fig:relerror3}\includegraphics[width=210pt]{images/error3}}\qquad
     \subfloat[]{\label{fig:dens3}\includegraphics[width=210pt]{images/dens3}}
-    \caption{Comparison of analytical and simulated electron densities for the third mode in dependence on the position $y$ perpendicular to the direction of electron propagation $x$. (a) Analytical pure first mode wavefunction (dotted green line) and probability amplitude (blue line) in arbitrary units. (b) Cut of simulated electron density of the second mode close to the band edge (green markers), third mode (black markers) and analytical calculation (blue line) perpendicular to the length of the wire overlayed , (c) Relative error of the simulated result, (d) Two-dimensional electron density. Color code denotes the electron density $n$.}\label{fig:mode3}
+    \caption{Comparison of analytical and simulated electron densities for the third mode in dependence on the position $y$ perpendicular to the direction of electron propagation $x$. (a) Analytical pure first mode wavefunction (dotted green line) and probability amplitude (blue line) in arbitrary units. (b) Cut of simulated electron density of the second mode close to the band edge (green markers), third mode (black markers) and analytical calculation (blue line) perpendicular to the length of the wire overlayed, (c) Relative error of the simulated result, (d) Two-dimensional electron density. Color code denotes the electron density $n$.}\label{fig:mode3}
   \end{center}
 \end{figure}
 The results of simulation and simple analytical model begin to derivate stronger for the case of the third mode. Only the previous lower mode is considered in the renormalization of the analytical result at the energy of the third modes band edge in the overlay of transversal electron densities but the simulated results are for still within acceptable bounds as \cref{fig:relerror3} shows. Derivations in the predictions of electron density for the compared models continue to exist as is expected because the analytical model does not incorporate the many-particle nature of the 2DEG like the \gfnc{} theory does.
@@ -68,13 +68,13 @@ The spin density of flowing electrons in a conductor with spin-orbit coupling ex
   \end{center}
 \end{figure}
 % \todo[noline]{Spin oscillation??}
-The spin split is also shown in the results of the simulations in the \gfnc{} model. Due to the approximative and simplifying nature of the model considered only an idealized system is described therefore lacking common physical features like temperature induced noise although they can be implemented in an efficient fashion.\par
+The spin split is also shown in the results of the simulations in the \gfnc{} model. Due to the approximations and simplifications in the model considered, only an idealized system is described which therefore lacks common physical features like temperature induced noise.\par
 \FloatBarrier
 \subsubsection{Transmission}
 Validating the results from the transmission calculations can be done in a straightforward manner. For quantum point contacts of varying constriction or if the energy parameter is altered the conductance will vary only in discrete steps.\par
 This is a direct quantum mechanical consequence, as from a classical point of view a linear relation between conductance and device width is expected.
-Is has been found out that the conductance is quantized in steps of the conductance quantum $e^2/h$ c.f. \cref{eqn:conductance}.
-It is due to the finite transverse size of the modes within the conductor that only if space permits another mode is established. The transmission probability function (\cref{eqn:transmissionfunction}) will reach a plateau when each new mode is established and ideally performs a unit step per mode when the next higher or lower state begins to exist in the conductor. The shape and height of the steps is subject to a multitude of influences but because of its discrete step height under certain conditions a valuable tool for comparison.\par
+It has been found that the conductance is quantized in steps of the conductance quantum $e^2/h$ c.f. \cref{eqn:conductance}.
+It is due to the finite transverse size of the modes within the conductor that only if space permits, another mode is established. The transmission probability function (\cref{eqn:transmissionfunction}) will reach a plateau when each new mode is established and ideally performs a unit step per mode when the next higher or lower state begins to exist in the conductor. The shape and height of the steps is subject to a multitude of influences but the transmission is because of the discrete step height under certain conditions a valuable tool for comparison.\par
 \begin{figure}[h]
   \begin{center}
     \subfloat[] {\includegraphics[]{images/qpcwees}}
@@ -83,6 +83,6 @@ It is due to the finite transverse size of the modes within the conductor that o
 \end{center}
 \end{figure}
 The comparison of experimentally measured and simulated conductance quantization show excellent agreement in step height as new propagating modes are established.\par
-The simulated results show in summary acceptable results to merit its application in the theoretical analysis of quantum devices embedded in a 2DEG.
+In summary, the simulations yield acceptable results which merit the application of the developed code in the theoretical analysis of quantum devices embedded in a 2DEG.
 The roughness and shape of the steps is subject to investigation of the following chapter.\par
 \FloatBarrier
