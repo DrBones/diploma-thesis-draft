@@ -11,12 +11,12 @@ The procedure will be outlined for the \hamil{} in the effective mass $m^*$ appr
 \end{equation}
 
 To achieve a discrete matrix-representation of the \hamil{}, self-energies and\sloppy{~\gfnc{} one can expand the equations in any localized basis functions like Muffin-Tin orbitals, \textsc{Wannier} functions, or \textsc{Dirac} distributions giving rise to a so-called tight-binding \hamil{} limiting the interaction, e.g. to nearest neighbors. A coordinate in discrete space will be refered to as a lattice point regardless of the nature and space of the localized function.}
-Using a \textsc{Dirac} delta distribution basis amounts to replacing the continuous function with it's values at the respective points in space \cite{JApplPhys.92.3730}.
+Using a \textsc{Dirac} delta distribution basis amounts to replacing the continuous function with values at the respective points in space \cite{JApplPhys.92.3730}
 \begin{equation}
   \int \delta (\v{r}-\v{r}') f(\v{r}) \mathrm{d}\v{r} = f(\v{r}')\ .
   \label{eqn:deltabasis}
 \end{equation}
-In order to study the influence of geometry on the transport properties of a 2DEG a real-space approach with \textsc{Dirac} delta distributions is chosen. Real-space discretization leads to the replacement of continuous real space $x$ and $y$ directions by an infinite net of lattice points. Here the same spacing $a$ is assumed in both directions. The lattice points are located in the continuous space at the coordinates $x=i*a$ and $y=j*a$ with $i,j$ being integers and $a$ the lattice spacing. The \hamil{} now operates on functions defined on discrete points in space obtained by
+In order to study the influence of geometry on the transport properties of a 2DEG a real-space approach with \textsc{Dirac} delta distributions is chosen. Real-space discretization leads to the replacement of continuous real space $x$ and $y$ directions by an infinite net of lattice points. Here the same spacing $a$ is assumed in both directions. The lattice points are located in the continuous space at the coordinates $x=i\cdot a$ and $y=j\cdot a$ with $i,j$ being integers and $a$ the lattice spacing. The \hamil{} now operates on functions defined on discrete points in space obtained by
 \begin{equation}
   T_{i,j} \leftrightarrow T(x=ia,y=ja) \mbox{ and } U_{i,j}\leftrightarrow U(x=ia,y=ja)\ .
   \label{FunctionDescrete}
@@ -38,7 +38,7 @@ In this case the subscript denotes evaluation at a point between two lattice poi
   &\sim \frac{1}{a^2}\left(T_{i+1}-2T_{i}+T_{i-1}\right)\ .
   \label{ApproximateSecondDerivative}
 \end{align}
-Following Nicoli\'c \cite{Nikolic2010} the bras $\bra{\v{m}}$ and kets $\ket{\v{n}}$ denote localized states at the lattice-points. The finite-difference aproximation is  expressend in the second quantization formalism with a point $(i,j) = \v{m}$ as
+Following \textsc{Nicoli\'c} \cite{Nikolic2010}, the bras $\bra{\v{m}}$ and kets $\ket{\v{n}}$ denote localized states at the lattice-points. The finite-difference aproximation is  expressend in the second quantization formalism with a point $(i,j) = \v{m}$ as
 \begin{align}
 	\bra{\v{m}} \pd{}{x} \ket{\v{n}} &= \frac{\braket{\v{m}+1}{\v{n}}-\braket{\v{m}-1}{\v{n}}}{2a}\notag\\ 
 				&= \frac{\delta_{\v{n},\v{m}+1}-\delta_{\v{n},\v{m}-1}}{2a}\ .
@@ -62,7 +62,7 @@ Inserting \cref{eqn:finitedifffirstderivative}, \ref{eqn:finitediffsecondderivat
 	\sum_{\v{m},\v{m}',\sigma} t_{\v{m},\v{m}'} \hat{c}^{\dagger}_{\v{m}\sigma} \hat{c}_{\v{m}'\sigma}\ .
 	\label{eqn:discretizedeffectivemassHamil}
 \end{align}
-The sum runs in addition to the states $\v{m}$ over the spin $\sigma=\uparrow,\downarrow$. The $\epsilon$ account for local potentials in the form of $U(x,y)$ like lateral confinement or atomic disorder.
+The sum runs in addition to the states $\v{m}$ over the spin $\sigma=\uparrow,\downarrow$. The $\epsilon$ accounts for local potentials in the form of $U(x,y)$ like lateral confinement or atomic disorder.
 The spin independent hopping parameter $t_{\v{m}\v{m'}}$ is given by
 \begin{align}
 t_{\v{m}\v{m'}} = \left\{ \begin{array}[c]{cl} -t_0 & \text{if } \v{m} = \v{m}' \pm a \cdot \v{e}_{x,y} \\ 0 & \text{otherwise} \end{array} \right.\ .
@@ -74,7 +74,7 @@ The hopping parameter $t_0 = \hbar^2/2m^*a^2$ describes the probability of one e
 	\sum_{\v{m},\v{m'},\sigma}  \hat{c}^{\dagger}_{\v{m}\sigma} \mat{t}_{\v{m}\v{m'}\sigma\sigma '} \hat{c}_{\v{m'}\sigma}\ .
 	\label{eqn:discretizedrashbahamil}
 \end{align}
-Now the hopping parameter $\mat{t}_{\v{m}\v{m'}\sigma\sigma '}$ is a non-trivial $2 \times 2$ matrix with distinct coefficients depending on hopping direction:
+Now, the hopping parameter $\mat{t}_{\v{m}\v{m'}\sigma\sigma '}$ is a non-trivial $2 \times 2$ matrix with distinct coefficients depending on hopping direction:
 \begin{align}
 	\mat{t}_{\v{m}\v{m'}\sigma\sigma '} = \left\{ \begin{array}[c]{cl} -t_0\mathds{1}_S - i t_{SO} \mat{\sigma}_y & \text{if } \v{m} = \v{m}' \pm a \v{e}_{x} \\
 		-t_0\mathds{1}_S + i t_{SO} \mat{\sigma}_x & \text{if } \v{m} = \v{m}' \pm a \v{e}_{y} \end{array} \right.\ .

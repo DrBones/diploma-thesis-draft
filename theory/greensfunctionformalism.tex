@@ -12,7 +12,7 @@ Currently, such large ensembles cannot be solved exactly so some kind of physica
 It is advantageous to skip the computation of eigenstates used in the previous chapters and use a technique to compute the transport properties in a direct way. One such technique is the non-equilibrium \gfnc{} formalism (NEGF) developed by \textsc{Kadanoff} and \textsc{Baym} \cite{kadanoff1962quantum} and refined by \textsc{Keldysh} \cite{keldysh1965}. This is especially the case as several efficient algorithms exist that compute for example the electron density or the transmission coefficients one of which will be outlined in \cref{sec:recursivegreenfncalgorithm}.\par
 The non-equilibrium \gfnc{} formalism is very powerful as it is based on a quantum-field theoretical approach capable of describing non-equilibrium systems with interactions. As a rigorous derivation would obscure its central results only key concepts necessary for the computation of the desired observables will be presented following \textsc{Wimmer}s \cite{Wimmer2009Thesis} and \textsc{Datta} \cite{Datta1997}.\par
 \subsection{Equilibrium \cgfnc s}
-In electrodynamics the \gfnc{} was first introduced as a means to solve an inhomogeneous differential equation of the form
+In electrodynamics, the \gfnc{} was first introduced as a means to solve an inhomogeneous differential equation of the form
 \begin{align}
 \hat{L}G(\v{r},\v{r}';t,t') = \delta(\v{r}-\v{r}')\delta(t-t')\ .
 \label{eqn:lineardiff}
@@ -29,7 +29,7 @@ These two solutions are called retarded \gfnc{} $G^r$ and advanced \gfnc{} $G^a$
 \left[ E \pm i \eta -\hat{H}(\v{r})\right] \hat{G}^{r(a)}(\v{r},\v{r}';E) = \delta (\v{r}-\v{r}')\ .
 \label{eqn:retardedandadvancedgfnc}
 \end{align}
-The imaginary part $\pm i\eta$ sets the boundary conditions so that the only viable solution becomes the retarded \gfnc{} for $+i\eta$ and the advanced \gfnc{} for $-i \eta$.
+The imaginary part $\pm i\eta$ sets the boundary conditions such that the only viable solution becomes the retarded \gfnc{} for $+i\eta$ and the advanced \gfnc{} for $-i \eta$.
 This equation can be inverted and the \gfnc{} can be defined in the second quantization in terms of an operator identity as
 \begin{align}
 \hat{G}^{r(a)}(\v{r},\v{r}';E) = \bra{\v{r}} [E\pm i \eta - \hat{H}(\v{r})]^{-1} \ket{\v{r}'}\ .
@@ -39,7 +39,7 @@ It immediately becomes apparent that the retarded and advanced \gfnc{} are the c
 \hat{G}^r = (\hat{G}^a)^{\dagger} \equiv \hat{G}\ .
 \end{align}
 \subsection{Non-Equilibrium \cgfnc s}
-In the case of a non-interacting system in equilibrium as well as in non-equilibrium the retarded \gfnc{} describes the spectrum i.e. the eigenstates and eigenenergies. However, one needs to know how these states is filled.\par
+In the case of a non-interacting system in equilibrium as well as in non-equilibrium the retarded \gfnc{} describes the spectrum i.e. the eigenstates and eigenenergies. However, one needs to know how these states are filled.\par
 There exist different but interdependent variations of \gfnc s each one especially suited to access certain information about the system.
 In addition to the retarded \gfnc{} the so-called \emph{lesser \gfnc{}} is employed in transport calculations \cite{haug2008quantum}.\par
 Within a non-equilibrium pertubation theory describing the dependence of the system on the full \hamil{} $\mathcal{H}$ only in terms of the non-interacting \hamil{} $\mathcal{H}_0$ \cite{Jauho2006} the lesser \gfnc{} can be expressed in terms of the retarded \gfnc{}. The retarded self-energy term $\hat{\Sigma}_p$ describes the coupling of the device to the lead $p$. The strength of the coupling of the central scattering region to the leads is given by \cite{datta2005quantum}

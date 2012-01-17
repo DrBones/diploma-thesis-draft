@@ -1,6 +1,6 @@
 Due to the lack of proper standard problems regarding the validity of a quantum mechanical simulator the outcome of the numerical calculations via the \gfnc{} method will be compared to a selection of simple analytical problems and experimental results.\par
 \subsubsection{Electron Density}
-For the case of a quantum wire the probability distribution can be calculated analytically. The quantum wire is simply a one-dimensional potential well in $y$ direction which ideally extends infinitely in the $x$ direction.
+For the case of a quantum wire, the probability distribution can be calculated analytically. The quantum wire is simply a one-dimensional potential well in $y$ direction which ideally extends infinitely in the $x$ direction.
 Because of this, the wavefunction can be separated into transverse $\sqrt{2/L}\text{ sin}(n\pi/L \cdot y)$ and longitudinal $e^{ik_xx}$ parts
 \begin{align}
 \Psi(x,y) = \sqrt{2/L}\text{ sin}(n\pi/L \cdot y) \cdot e^{ik_xx}\ .
@@ -24,7 +24,7 @@ E_{n} = 2t_0(1-\text{cos}(n\pi a/L)).
 Here $L=100$ nm is the transverse extent of the nanowire and $n=1,2,3,\dotsc$ the number of the modes. Figure~\ref{fig:analytical1} shows the normalized wavefunction and probability density for the first mode.\par
 The mode energies obtained by \cref{eqn:dispersionlattice} correspond to electrons directly at the band edge. Thus a group velocity of $v_n=0$. However, at $v_n=0$ the local density of states (LDOS) exhibits singularities \cite{ghasemi:69010R} impeding the numerical calculation of the electron density \cite{Wimmer2009Thesis}.
 All electron densities are calculated with energies as close to the band edge as possible to ensure comparability to the analytically calculated results. Due to the divergence of the LDOS the simulated energy dependent electron densities close to the band edge are elevated by about a factor of 10 regarding experimental measurements of $n \sim2.3\cdot 10^{16}/m^2$ \cite{gelfand2006} \cite{JJAP.26.L59}. Calculating the energy independent electron density via \cref{eqn:gfncdensity} leads to values comparable to experimental results. For qualitative comparison the analytical probility distribution is normalized to the simulated electron density.
-In \cref{fig:mode1,fig:mode2,fig:mode3} the analytical calculation for the first three modes is superimposed with the simulated results for a nanowire of 100 nm. 
+In \cref{fig:mode1,fig:mode2,fig:mode3} the analytical calculation for the first three modes is superimposed with the simulated results for a nanowire with a width of 100 nm. 
 The parameters for the effective mass of an electron in a InAs 2DEG are taken to be $0.026\cdot m_0$ with $m_0$ being the electron rest mass \cite{PhysRev.105.460}.\par
 The relative error between analytical and numerical results is defined by
 \begin{align}
@@ -54,7 +54,7 @@ Also the uniform distribution along the wire remains and the two maxima in elect
     \caption{Comparison of analytical and simulated electron densities for the third mode in dependence on the position $y$ perpendicular to the direction of electron propagation $x$. (a) Analytical pure first mode wavefunction (dotted green line) and probability amplitude (blue line) in arbitrary units. (b) Cut of simulated electron density of the second mode close to the band edge (green markers), third mode (black markers) and analytical calculation (blue line) perpendicular to the length of the wire overlayed, (c) Relative error of the simulated result, (d) Two-dimensional electron density. Color code denotes the electron density $n$.}\label{fig:mode3}
   \end{center}
 \end{figure}
-The results of simulation and simple analytical model begin to derivate stronger for the case of the third mode. Only the previous lower mode is considered in the renormalization of the analytical result at the energy of the third modes band edge in the overlay of transversal electron densities but the simulated results are for still within acceptable bounds as \cref{fig:relerror3} shows. Derivations in the predictions of electron density for the compared models continue to exist as is expected because the analytical model does not incorporate the many-particle nature of the 2DEG like the \gfnc{} theory does.
+The results of simulation and simple analytical model begin to derivate stronger for the case of the third mode. Only the previous lower mode is considered in the renormalization of the analytical result at the energy of the third modes band edge in the overlay of transversal electron densities but the simulated results are still within acceptable bounds as \cref{fig:relerror3} shows. Deviations in the predictions of electron density for the compared models continue to exist as is expected because the analytical model does not incorporate the many-particle nature of the 2DEG like the \gfnc{} theory does.
 The electron density calculation show throughout satisfactory and acceptable results.\par
 \FloatBarrier
 \subsubsection{Spin densities}

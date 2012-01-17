@@ -1,14 +1,14 @@
 \label{sec:rgapresentation}
-The \emph{Recursive-\gfnc-Algorithm} (RGA) \cite{MacKinnon1985} is an optimized algorithm to compute the retarded \gfnc{}. It has been extended by the \textsc{Keldysh} equation to compute the lesser \gfnc{} $G^<$ \cite{JApplPhys.91.2343}.
+The \emph{Recursive-\gfnc-Algorithm} (RGA) \cite{MacKinnon1985} is an optimized algorithm to compute the retarded \gfnc{}. It has been extended by the \textsc{Keldysh} equation to compute the lesser \gfnc{} $\mat{G}^<$ \cite{JApplPhys.91.2343}.
 The RGA is based on the possibility that the \hamil{} can be written in a block tridiagonal form as described in \cref{sec:naruralordering}.
-This form can be achieved for any system in the tight-binding approximation  each block representing a distinct section of the device \cite{Wimmer2009Thesis}.\par
+This form can be achieved for any system in the tight-binding approximation, each block representing a distinct section of the device \cite{Wimmer2009Thesis}.\par
 % \todo{Complexity and implementation in Appendix \ref{app:RGA}, see Wimmer page 189}
 Due to the fact that the electron and spin density only depend on certain elements of the \gfnc{} matrix the RGA computes those elements with only a little overhead. While still superfluous elements are computed the complexity is greatly reduced. The algorithm can be derived by the \textsc{Dyson} equation
 \begin{align}
 	\mat{G} = \mat{G}_0+\mat{G}_0\mat{U}\mat{G}\ .
 	\label{eqn:DysonEquationG}
 \end{align}
-Here $G_0$ denotes the \gfnc{} of the isolated block and $G$ includes the remaining blocks and their interactions. The recursive calculation of connected blocks of the \gfnc{} matrix is obtained by the pertubation term $\mat{G}_0\mat{U}\mat{G}$. A more detailed derivation is outlined in Appendix \ref{app:RGA}.\par
+Here $\mat{G}_0$ denotes the \gfnc{} of the isolated block and $\mat{G}$ includes the remaining blocks and their interactions. The recursive calculation of connected blocks of the \gfnc{} matrix is obtained by the pertubation term $\mat{G}_0\mat{U}\mat{G}$. A more detailed derivation is outlined in Appendix \ref{app:RGA}.\par
 For conduction, spin and electron densities, the retarded and lesser \gfnc s have to be computed. Because the computation of the lesser \gfnc{} is based on a prior computation of the retarded \gfnc{} the results of the former can be saved to obtain both \gfnc s.\par
 In order to simplify the notation, the subscript $C$ will be dropped and the inverse of \cref{eqn:finitegreensfunctionwithselfenergy} can be written as
 \begin{align}
@@ -99,7 +99,7 @@ The recursive computation of the lesser \gfnc{} follows the same concept startin
 \begin{align}
 \mat{G}^<_{i,j} = \mat{G}^r_{i,0}\mat{\Sigma}^<_L(\mat{G}^r_{j,0})^{\dagger}+\mat{G}^r_{i,N+1}\mat{\Sigma}^<_R(\mat{G}^r_{j,N+1})^{\dagger}\ .
 \end{align}
-Here $\Sigma^<_L$ and $\Sigma^<_R$ denote the lesser self-energy term for the left and right lead. For the computation of the lesser \gfnc{} it is sufficient to compute diagonal and one off-diagonal of the retarded \gfnc{} $\mat{G}^r$. The algorithm to compute the lesser \gfnc{} is illustrated in \cref{alg:lesserrga}, with $\mat{\sigma}^<_i=\mat{A}_i\mat{G}^{<,i-1}_{i-1,i-1}\mat{A}^{\dagger}_i$. It requires a forward and a backward pass like the algorithm for the retarded \gfnc{}.\par
+Here $\mat{\Sigma}^<_L$ and $\mat{\Sigma}^<_R$ denote the lesser self-energy term for the left and right lead. For the computation of the lesser \gfnc{} it is sufficient to compute diagonal and one off-diagonal of the retarded \gfnc{} $\mat{G}^r$. The algorithm to compute the lesser \gfnc{} is illustrated in \cref{alg:lesserrga}, with $\mat{\sigma}^<_i=\mat{A}_i\mat{G}^{<,i-1}_{i-1,i-1}\mat{A}^{\dagger}_i$. It requires a forward and a backward pass like the algorithm for the retarded \gfnc{}.\par
 \vskip 1em
 \noindent\begin{minipage}{\textwidth}
 \begin{algo}\label{alg:lesserrga} 
