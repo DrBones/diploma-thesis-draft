@@ -1,14 +1,14 @@
-The application of the RGA requires a block tridiagonal \hamil{}. Layered systems naturally lead to a block tridiagonal \hamil{} but due to the serial construction of the RGA the choice of systems is limited to this geometry. For the computation of each \gfnc{} it traverses the blocks of the $A$-Matrix first from start to end and then vice versa. It can not take any detours or traverse each element more than once per path. Because of this restriction, given a device similar to the one shown in \cref{fig:noncolinear} one has to assign all remaining nodes to a large last layer once the angled output has been reached. This results in a very large last block. As can be seen in \cref{sec:rgacomplexity} large blocks in the \hamil{} are prohibitively expensive and would effectively render the algorithm useless.
+The application of the RGA requires a block tridiagonal \hamil{}. Layered systems naturally lead to a block tridiagonal \hamil{} but due to the serial construction of the RGA the choice of systems is limited to this geometry. For the computation of each \gfnc{} it traverses the blocks of the $A$-Matrix first from start to end and then vice versa. It can not take any detours or traverse each element more than once per path. Because of this restriction, given a device similar to the one shown in \cref{fig:noncollinear} one has to assign all remaining nodes to a large last layer once the angled output has been reached. This results in a very large last block. As can be seen in \cref{sec:rgacomplexity} large blocks in the \hamil{} are prohibitively expensive and would effectively render the algorithm useless.
 \begin{figure}[!ht]
 \centering
 \begin{tikzpicture}
-\node at (0,0)[above] {\includegraphics[scale=0.65]{images/noncolineardevice}};
+\node at (0,0)[above] {\includegraphics[scale=0.65]{images/noncollineardevice}};
 \draw[style={latex-latex,line width=2pt}] (-6,1) node[right]{$y$} -- (-6,0) node [below left]{$z$} -- (-5,0) node[below]{$x$};
 \draw (-6,0) circle (4pt) [fill=black];
 \node at (2,3.5){$a$};
 \end{tikzpicture}
-\caption{Non-colinear device. Dots denote lattice points and slices, if treated as a layered structure, are indicated by alternating white and gray colored background.}
-\label{fig:noncolinear}
+\caption{Non-collinear device. Dots denote lattice points and slices, if treated as a layered structure, are indicated by alternating white and gray colored background.}
+\label{fig:noncollinear}
 \end{figure}
 In essence, one needs a \hamil{} with a particular block tri-diagonal structure that has a small bandwidth i.e. small blocks. This can in principle be achieved by a process called matrix reordering. Because the diagonal elements represent the on-site energy the reordering should only exchange one diagonal element with another. In order to do so, the same permutation is applied to the rows and columns. These \emph{symmetric permutations} can be realized by a permutation martix $P$ as follows \cite{saad2003iterative}:
 \begin{align}
@@ -29,7 +29,7 @@ A graph may be pictured as a collection of circles representing the nodes and th
 
 \begin{figure}[!h]
 \centering
-\subfloat[]{\label{fig:discretizeddevice}\includegraphics[scale=1]{images/noncolineardevicelevelstructure}}\hspace{2.35em}
+\subfloat[]{\label{fig:discretizeddevice}\includegraphics[scale=1]{images/noncollineardevicelevelstructure}}\hspace{2.35em}
 \subfloat[]{\label{fig:adjacencygraph}\includegraphics[scale=0.4]{images/7x6l_graph}}\hspace{2.35em}
 \subfloat[]{\label{fig:hamilmatrix}
 \begin{tikzpicture}
@@ -52,7 +52,7 @@ A graph may be pictured as a collection of circles representing the nodes and th
 \draw[-latex,line width=2pt] (-12.5,-1)--++(1,0);
 \draw[-latex,line width=2pt] (-6.25,-1)--++(1,0);
 \end{tikzpicture}
-\caption{(a) Schematic of a simple discretized non-colinear device. The dots denote lattice points. The levels are indicated by alternating white and gray background. (b) The relations between nodes are stored in the edges of the depicted graph. Nodes are represented as red circles. (c) \hamil{} of the discretized nanowire obtained by matrix reordering. The blocks are highlighted by dashed lines. The arrows indicate the matrix reordering procedure.}
+\caption{(a) Schematic of a simple discretized non-collinear device. The dots denote lattice points. The levels are indicated by alternating white and gray background. (b) The relations between nodes are stored in the edges of the depicted graph. Nodes are represented as red circles. (c) \hamil{} of the discretized nanowire obtained by matrix reordering. The blocks are highlighted by dashed lines. The arrows indicate the matrix reordering procedure.}
 \label{fig:matrixtograph}
 \end{figure}
 \subsection{Matrix Reordering as a Graph Partitioning Problem}
@@ -66,7 +66,7 @@ A level structure $\mathpzc{L}(\mathpzc{G}) = (\mathpzc{l}_0,\mathpzc{l}_1,\math
 \item for $1 < i < N$, all nodes adjacent to nodes in level $\mathpzc{l}_{i}$ are either in level $\mathpzc{l}_{i-1}$, $\mathpzc{l}_{i}$ or $\mathpzc{l}_{i+1}$
 \end{enumerate}
 \end{dfn}
-For a simple colinear geometry a level is usually identical to a slice. For more complex geometries a level and a slice may differ. A possible choice to fulfill these requirements is the \textsc{Gibbs-Poole-Stockmeyer} (GPS) algorithm \cite{gibbs.Siam.13.236}. Two conditions are of crucial importance for the reordering in order to achieve high RGA performance. As the complexity of the RGA is of order $\mathcal{O}(N^3)$(\cref{sec:rgacomplexity}) large blocks have to be avoided. In addition, a balanced level structure has to be sought i.e. ideally,  all the levels have the same number of nodes.
+For a simple collinear geometry a level is usually identical to a slice. For more complex geometries a level and a slice may differ. A possible choice to fulfill these requirements is the \textsc{Gibbs-Poole-Stockmeyer} (GPS) algorithm \cite{gibbs.Siam.13.236}. Two conditions are of crucial importance for the reordering in order to achieve high RGA performance. As the complexity of the RGA is of order $\mathcal{O}(N^3)$(\cref{sec:rgacomplexity}) large blocks have to be avoided. In addition, a balanced level structure has to be sought i.e. ideally,  all the levels have the same number of nodes.
 An algorithm tailored to the demands of high RGA performance has been introduced by \textsc{Wimmer}. As it outperforms the GPS algorithm and offers greater versatility \cite{Wimmer2009JComPhys} it is applied to the adjacency graph of the \hamil{} prior to the execution of the RGA.
 \subsection{RGA Tailored Block-Tridiagonalization Algorithm}
 The process of graph partitioning is known to be NP-Complete \cite{GareyTCS.1.237}. Hence one cannot compute the optimal level structure from first principles but has to employ heuristics. The algorithm used by \textsc{Wimmer} incorporates a global and a local approach. To find the maximum number of levels for a given geometry a \emph{Breadth-First-Search} (BFS) as described in \cref{alg:bfs} is performed as it yields a level structure by construction as well as the maximum number of levels $N_0$.
